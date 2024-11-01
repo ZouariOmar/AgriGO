@@ -10,7 +10,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 #* Compile sass to css in watch mode
-sass --watch ../sass/$1.sass:../css/$1.css
+sass --watch sass/$1.sass:css/$1.css
 
 # Compile Sass to CSS
 #sass --style expanded "../project/sass/$1" > "../project/css/$2"
