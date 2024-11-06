@@ -1,0 +1,55 @@
+# Ignore environment files
+.env
+.env.*.backup
+.env.encrypted
+
+# Ignore node modules and Yarn files
+/node_modules
+/npm-debug.log
+/yarn-error.log
+
+# Ignore Composer dependencies
+/vendor
+
+# Ignore Laravel cache, logs, and storage
+/storage/*.key
+/storage/app/public
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/bootstrap/cache/*.php
+/public/hot
+/public/storage
+/public/vendor
+
+# Ignore IDE and OS-specific files
+.idea
+*.swp
+*.swo
+*.DS_Store
+*.log
+*.env.local.php
+Thumbs.db
+.DS_Store
+*.vscode
+.phpunit.result.cache
+
+# Ignore compiled and cached files
+/.phpunit.result.cache
+/.vagrant
+Homestead.yaml
+Homestead.json
+
+# Ignore deployment and backup files
+composer.lock
+node_modules/
+.env.backup
+.env.*
+
+# Laravel Horizon (optional)
+horizon.pid
+
+# Additional specific logs and debugging files
+error_log
