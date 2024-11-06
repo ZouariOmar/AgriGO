@@ -1,3 +1,0 @@
-# AgriGO Web2.0 Project
-
-start soon...
