@@ -4,7 +4,7 @@
  */
 
 //? Include declaration part
-include '../../vendor/autoload.php';  // Load Composer autoload
+include '/vendor/autoload.php';  // Load Composer autoload
 
 //? Using declaration part
 use Dotenv\Dotenv;
