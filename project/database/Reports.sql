@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2024 at 03:05 PM
+-- Generation Time: Nov 13, 2024 at 03:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,19 +32,8 @@ CREATE TABLE `rapports` (
   `category` varchar(255) NOT NULL,
   `sujet` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `piece` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rapportstat`
---
-
-CREATE TABLE `rapportstat` (
-  `Stat_ID` int(11) NOT NULL,
-  `Stat_Report_ID` int(11) NOT NULL,
-  `Status` int(11) NOT NULL
+  `piece` varchar(255) NOT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -58,13 +47,6 @@ ALTER TABLE `rapports`
   ADD PRIMARY KEY (`Report_ID`);
 
 --
--- Indexes for table `rapportstat`
---
-ALTER TABLE `rapportstat`
-  ADD PRIMARY KEY (`Stat_ID`),
-  ADD KEY `fk_reportid` (`Stat_Report_ID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -73,22 +55,6 @@ ALTER TABLE `rapportstat`
 --
 ALTER TABLE `rapports`
   MODIFY `Report_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `rapportstat`
---
-ALTER TABLE `rapportstat`
-  MODIFY `Stat_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `rapportstat`
---
-ALTER TABLE `rapportstat`
-  ADD CONSTRAINT `fk_reportid` FOREIGN KEY (`Stat_Report_ID`) REFERENCES `rapports` (`Report_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
