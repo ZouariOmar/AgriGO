@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2024 at 03:48 PM
+-- Generation Time: Nov 13, 2024 at 06:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Reports`
+-- Database: `AgriGO`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `rapports` (
   `sujet` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `piece` varchar(255) NOT NULL,
-  `status` int(11) DEFAULT NULL
+  `status` enum('RECIEVED','IN PROCESS','FINISHED') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
