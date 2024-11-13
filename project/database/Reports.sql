@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2024 at 09:52 AM
+-- Generation Time: Nov 13, 2024 at 03:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,7 +32,7 @@ CREATE TABLE `rapports` (
   `category` varchar(255) NOT NULL,
   `sujet` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `pièce jointe` varchar(255) NOT NULL
+  `piece` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
