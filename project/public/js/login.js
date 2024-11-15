@@ -6,10 +6,12 @@ const container = document.getElementById("container");
 
 signUpButton.addEventListener("click", () => {
 	container.classList.add("right-panel-active");
+	document.getElementById("signInError").textContent = "";
 });
 
 signInButton.addEventListener("click", () => {
 	container.classList.remove("right-panel-active");
+	document.getElementById("signUpError").textContent = "";
 });
 
 /**
@@ -18,8 +20,9 @@ signInButton.addEventListener("click", () => {
  * ! No need to verify the password
  */
 class FormatVerify {
-	constructor(identifier, email = null) {
+	constructor(identifier, password, email = null) {
 		this.identifier = identifier; // Either email or username for sign-in
+		this.password = password; // Password for sign In/Up
 		this.email = email; // Separate email for sign-up
 	}
 
@@ -39,10 +42,19 @@ class FormatVerify {
 	 * @param {string} username
 	 * @returns {boolean}
 	 */
-
 	isValidUsername(username) {
-		const usernamePattern = /^[a-zA-Z0-9]{3,20}$/;
+		const usernamePattern = /^[a-zA-Z0-9]{5,20}$/;
 		return usernamePattern.test(username);
+	}
+
+	/**
+	 * Method to verify password existence
+	 * ! Assuming password must be complex and at less have 10 characters
+	 * @returns {boolean}
+	 */
+	isValidPassword() {
+		const passwordPattern = /^[a-zA-Z0-9]{10,20}$/;
+		return passwordPattern.test(this.password);
 	}
 
 	/**
@@ -64,6 +76,8 @@ class FormatVerify {
 	getSignInErrorMessage() {
 		return !this.isValidIdentifier()
 			? "Please enter a valid email or username."
+			: !this.isValidPassword()
+			? "Password should be complex (a-z, A-Z, 0-9, ('/*)...) and have at less 10 characters."
 			: "";
 	}
 
@@ -72,18 +86,21 @@ class FormatVerify {
 	 * @returns {string}
 	 */
 	getSignUpErrorMessage() {
-		if (!this.isValidUsername(this.identifier))
-			return "Username should be alphanumeric and between 5 to 20 characters.";
-		if (!this.isValidEmail(this.email))
-			return "Please enter a valid email address.";
-		return "";
+		return !this.isValidUsername(this.identifier)
+			? "Username should be alphanumeric and between 5 to 20 characters."
+			: !this.isValidEmail(this.email)
+			? "Please enter a valid email address."
+			: !this.isValidPassword()
+			? "Password should be complex (a-z, A-Z, 0-9, ('/*)...) and have at less 10 characters."
+			: "";
 	}
 }
 
 function validateSignInForm() {
 	const identifier = document.getElementById("identifier").value;
+	const password = document.getElementById("password2").value;
 
-	const verifier = new FormatVerify(identifier);
+	const verifier = new FormatVerify(identifier, password);
 	const errorMessage = verifier.getSignInErrorMessage();
 	if (errorMessage) {
 		document.getElementById("signInError").textContent = errorMessage;
@@ -98,8 +115,9 @@ function validateSignInForm() {
 function validateSignUpForm() {
 	const username = document.getElementById("username").value;
 	const email = document.getElementById("email").value;
+	const password = document.getElementById("password1").value;
 
-	const verifier = new FormatVerify(username, email);
+	const verifier = new FormatVerify(username, password, email);
 	const errorMessage = verifier.getSignUpErrorMessage();
 	if (errorMessage) {
 		document.getElementById("signUpError").textContent = errorMessage;

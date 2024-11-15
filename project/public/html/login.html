@@ -5,49 +5,104 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="AgriGO 2.0 Website" />
+		<title>AGRIGO || Login</title>
+
+		<!-- Favicons Icons -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="../assets/imgs/favicons/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="../assets/imgs/favicons/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="../assets/imgs/favicons/favicon-16x16.png" />
+		<link rel="manifest" href="../assets/imgs/favicons/site.webmanifest" />
+
+		<!-- Login css -->
 		<link rel="stylesheet" href="../css/login.css" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-		<title>AGRIGO || Login</title>
 	</head>
 	<body>
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-        <!-- Start signUp form-->
-				<form onsubmit="return validateSignUpForm();" action="../../app/Controllers/UserController.php" method="post">
+				<!-- Start signUp form-->
+				<form
+					onsubmit="return validateSignUpForm();"
+					action="../../app/Controllers/addUsr.php"
+					method="post">
 					<h1>Create Account</h1>
 					<div class="social-container">
-						<a href="#" class="social"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="social"><i class="fa fa-google"></i></a>
-						<a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-google"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
 					</div>
 					<span>or use your email for registration</span>
-					<input id="username" name="username" type="text" placeholder="Username" title="Enter Your Username"/>
-					<input id="email" name="email" type="email" placeholder="Email" title="Enter Your Email"/>
-					<input id="password1" name="password" type="password" placeholder="Password" title="Enter Your Password"/>
+					<input
+						id="username"
+						name="username"
+						type="text"
+						placeholder="Username"
+						title="Enter Your Username" />
+					<input
+						id="email"
+						name="email"
+						type="email"
+						placeholder="Email"
+						title="Enter Your Email" />
+					<input
+						id="password1"
+						name="password"
+						type="password"
+						placeholder="Password"
+						title="Enter Your Password" />
+					<div class="checkboxes">
+						<label for="checker">Are You a Farmer ?</label>
+						<input type="checkbox" name="checker" id="checker" />
+					</div>
 					<button>Sign Up</button>
-          <p id="signUpError" style="color: red;"></p>
+					<p id="signUpError" style="color: red"></p>
 				</form>
-        <!-- End signUp form-->
+				<!-- End signUp form-->
 			</div>
 			<div class="form-container sign-in-container">
-        <!-- Start signIn form-->
-				<form onsubmit="return validateSignInForm();" action="../../app/Controllers/UserController.php" method="post">
+				<!-- Start signIn form-->
+				<form
+					onsubmit="return validateSignInForm();"
+					action="../../app/Middleware/signIn.php"
+					method="post">
 					<h1>Sign in</h1>
 					<div class="social-container">
-						<a href="#" class="social"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="social"><i class="fa fa-google"></i></a>
-						<a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-google"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
 					</div>
 					<span>or use your account</span>
-					<input id="identifier" name="identifier" type="text" placeholder="Email or Username" title="Enter Your Email Or Username"/>
-					<input id="password2" name="password" type="password" placeholder="Password" title="Enter Your Password"/>
-					<a href="#">Forgot your password?</a>
+					<input
+						id="identifier"
+						name="identifier"
+						type="text"
+						placeholder="Email or Username"
+						title="Enter Your Email Or Username" />
+					<input
+						id="password2"
+						name="password"
+						type="password"
+						placeholder="Password"
+						title="Enter Your Password" />
+					<a href="OTP.html">Forgot your password?</a>
 					<button>Sign In</button>
-          <p id="signInError" style="color: red;"></p>
+					<p id="signInError" style="color: red"></p>
 				</form>
-        <!-- End signIn form-->
+				<!-- End signIn form-->
 			</div>
 			<div class="overlay-container">
 				<div class="overlay">

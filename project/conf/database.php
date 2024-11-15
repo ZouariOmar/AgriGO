@@ -3,9 +3,6 @@
  * @author @ZouariOmar <zouariomar20@gmail.com>
  */
 
-//? Include declaration part
-include '/vendor/autoload.php';  // Load Composer autoload
-
 //? Using declaration part
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
@@ -22,10 +19,10 @@ class Database
   /**
    * @brief ### Construct the Database object
    */
-  public function __construct()
+  public function __construct($env_path)
   {
     try {  //? Hold the .env locale file
-      $dotenv = Dotenv::createImmutable(__DIR__ . '../../');  // Navigate to the .env fil lvl
+      $dotenv = Dotenv::createImmutable($env_path);  // Navigate to the .env fil lvl
       $dotenv->load();
     } catch (InvalidPathException $e) {  // Catches the specific error if .env file path is incorrect or file is missing
       echo "Error: .env file not found or incorrect path specified." . $e->getMessage();
@@ -67,8 +64,6 @@ class Database
     $stmt->execute();  // Execute the statement
 
     // Determine if the query is a SELECT statement
-    if (stripos($sql, 'SELECT') === 0)
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);  // Return results for SELECT
-    return $stmt->rowCount();                    // Return affected rows for INSERT, UPDATE, DELETE
+    return (stripos($sql, 'SELECT') === 0) ? $stmt->fetchAll(PDO::FETCH_ASSOC) : $stmt->rowCount();  // Return results for SELECT, else return affected rows for INSERT, UPDATE, DELETE
   }
 }

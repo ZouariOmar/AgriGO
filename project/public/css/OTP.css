@@ -1,0 +1,92 @@
+/**
+ * @format
+ * @ZouariOmar
+ */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15rem 0;
+	background: linear-gradient(rgba(47, 255, 0, 0.537), rgba(47, 255, 0, 0));
+}
+
+.card {
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(0, 0, 0, 0.869);
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.125);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px 40px;
+	box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+.lock-icon {
+	font-size: 10rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 10px;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 12px;
+}
+
+button {
+	margin-top: 15px;
+	width: 80%;
+	background-color: deepskyblue;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	border: 1px solid deepskyblue;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: rgb(0, 175, 233);
+}
+
+.email-input-container {
+	position: relative;
+	width: 80%;
+	max-width: 400px;
+}
+
+.email-icon {
+	position: absolute;
+	top: 60%;
+	left: 10px;
+	transform: translateY(-50%);
+	color: #888;
+	font-size: 16px;
+}
+
+.email-input {
+	margin-top: 10px;
+	width: 83%;
+	padding: 10px 10px 10px 35px; /* Adjust padding to make space for the icon */
+	font-size: 16px;
+	border: 1px solid deepskyblue;
+	border-radius: 5px;
+	outline: none;
+}
+
+.email-input:focus {
+	border-color: deepskyblue;
+	box-shadow: 0 0 10px deepskyblue;
+}
