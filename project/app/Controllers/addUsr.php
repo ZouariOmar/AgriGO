@@ -1,4 +1,6 @@
 <?php
+//* NOTE: We Hash the password securely using password_hash (Bcrypt) @ZouariOmar
+
 //? Include declaration part
 include '../../../vendor/autoload.php';  // Load Composer autoload (for .env)
 include "../../conf/database.php";
@@ -6,8 +8,11 @@ include "../../conf/database.php";
 //* Connect to the DB
 $db = new Database('../../');
 
-// Prepare the sql command
-$sql = "
+session_start(); // Start the session to manage status messages
+
+try {
+  // Prepare the sql commands
+  $sql_insert_user = "
         INSERT INTO Usrs (Username, Email, Password_hash)
         SELECT :username, :email, :password
         WHERE NOT EXISTS (
@@ -15,33 +20,24 @@ $sql = "
         )
     ";
 
-// Hash the password using SHA256 algorithm
-$password_hash = hash('sha256', $_POST['password']);
+  // Lance the query
+  $user = $db->query($sql_insert_user, ["username" => $_POST['username'], "email" => $_POST['email'], "password" => password_hash($_POST['password'], PASSWORD_BCRYPT)]);
+
+  if (empty($user)) {
+    $_SESSION['status'] = "Username or email already used!";
+    header("Location: ../Views/login.php");
+    exit();
+  }
+
+  // Login successful - Set session variables
+  $_SESSION['user_id'] = $user['ID'];
+  $_SESSION['status'] = "Login successful!";
+  header("Location: ../Views/login.php");
+  exit();
+} catch (Exception $e) {
+  // Handle any unexpected errors
+  $_SESSION['status'] = "An unexpected error occurred: " . $e->getMessage();
+  header("Location: ../Views/login.php");
+  exit();
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirect on Load</title>
-  <script>
-    window.onload = function () {
-      <?php if ($db->query($sql, ["username" => $_POST['username'], "email" => $_POST['email'], "password" => $password_hash])): ?>
-        window.location.href = "http://localhost/AgriGO/project/public/html/welcome.html"; // URL to redirect to the Welcome Page
-      <?php else: ?>
-        window.location.href = "http://localhost/AgriGO/project/public/html/login.html"; // URL to redirect to the login page (+ "Error: Username or Email already exists!" msg)
-      <?php endif; ?>
-    };
-  </script>
-</head>
-
-<body>
-  <p>
-    If you are not redirected automatically,
-    <a href="http://localhost/AgriGO/project/public/html/login.html">click here</a>.
-  </p>
-</body>
-
-</html>

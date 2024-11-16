@@ -49,11 +49,12 @@ class FormatVerify {
 
 	/**
 	 * Method to verify password existence
-	 * ! Assuming password must be complex and at less have 10 characters
+	 * ! Assuming password must be complex and at less have 8 characters
 	 * @returns {boolean}
 	 */
 	isValidPassword() {
-		const passwordPattern = /^[a-zA-Z0-9]{10,20}$/;
+		const passwordPattern =
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 		return passwordPattern.test(this.password);
 	}
 
@@ -77,7 +78,7 @@ class FormatVerify {
 		return !this.isValidIdentifier()
 			? "Please enter a valid email or username."
 			: !this.isValidPassword()
-			? "Password should be complex (a-z, A-Z, 0-9, ('/*)...) and have at less 10 characters."
+			? "Password should be complex (a-z, A-Z, 0-9, ('/*)...) and have at less 8 characters."
 			: "";
 	}
 
@@ -91,7 +92,7 @@ class FormatVerify {
 			: !this.isValidEmail(this.email)
 			? "Please enter a valid email address."
 			: !this.isValidPassword()
-			? "Password should be complex (a-z, A-Z, 0-9, ('/*)...) and have at less 10 characters."
+			? "Password must be at least 8 chars, include A-Z, a-z, 0-9, and a special character (@, $, !, %, *, ?, &)."
 			: "";
 	}
 }
@@ -108,7 +109,6 @@ function validateSignInForm() {
 	}
 
 	document.getElementById("signInError").textContent = ""; // Clear error
-	alert("Sign-In successful!");
 	return true;
 }
 
@@ -125,6 +125,21 @@ function validateSignUpForm() {
 	}
 
 	document.getElementById("signUpError").textContent = ""; // Clear error
-	alert("Sign-Up successful!");
 	return true;
+}
+
+/**
+ * Alert msg box
+ */
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+	close[i].onclick = function () {
+		var div = this.parentElement;
+		div.style.opacity = "0";
+		setTimeout(function () {
+			div.style.display = "none";
+		}, 600);
+	};
 }

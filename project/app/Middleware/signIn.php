@@ -6,36 +6,36 @@ include "../../conf/database.php";
 //* Connect to the DB
 $db = new Database('../../');
 
-// Prepare the sql command (Verify the identifier with his password)
-$sql = 'SELECT * FROM Usrs WHERE (Email = :identifier OR Username = :identifier) AND Password_hash = :password';  //! Find the identifier(can be email or username) with his password
+session_start(); // Start the session to manage status messages
 
-// Hash the password using SHA256 algorithm
-$password_hash = hash('sha256', $_POST['password']);
-?>
+try {
+  // Fetch user by identifier (username or email)
+  $sql = 'SELECT * FROM Usrs WHERE Email = :identifier OR Username = :identifier';
+  $login_user = $db->query($sql, ["identifier" => $_POST['identifier']]);
 
-<!DOCTYPE html>
-<html lang="en">
+  // Check if user exists
+  if (empty($login_user)) {
+    $_SESSION['status'] = "User not found!";
+    header("Location: ../Views/login.php");
+    exit();
+  }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirect on Load</title>
-  <script>
-    window.onload = function () {  // Execute the query
-      <?php if ($db->query($sql, ["identifier" => $_POST['identifier'], "password" => $password_hash])): ?>
-        window.location.href = "http://localhost/AgriGO/project/public/html/#"; // URL to redirect to the Home/Dashboard Page
-      <?php else: ?>
-        window.location.href = "http://localhost/AgriGO/project/public/html/login.html"; // URL to redirect to the Login page (+ "Invalid identifier or password!" msg)
-      <?php endif; ?>
-    };
-  </script>
-</head>
+  // Verify the password
+  $user = $login_user[0]; // Retrieve the first (and only) result
+  if (!password_verify($_POST['password'], $user['Password_hash'])) {
+    $_SESSION['status'] = "Invalid password!";
+    header("Location: ../Views/login.php");
+    exit();
+  }
 
-<body>
-  <p>
-    If you are not redirected automatically,
-    <a href="http://localhost/AgriGO/project/public/html/login.html">click here</a>.
-  </p>
-</body>
-
-</html>
+  // Login successful - Set session variables
+  $_SESSION['user_id'] = $user['ID'];
+  $_SESSION['status'] = "Login successful!";
+  header("Location: ../Views/login.php");
+  exit();
+} catch (Exception $e) {
+  // Handle any unexpected errors
+  $_SESSION['status'] = "An unexpected error occurred: " . $e->getMessage();
+  header("Location: ../Views/login.php");
+  exit();
+}
