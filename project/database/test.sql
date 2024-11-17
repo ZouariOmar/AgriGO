@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `test`
 --
 
-CREATE TABLE `test` (
-  `d` int(11) NOT NULL,
-  `s` int(11) NOT NULL,
-  `q` int(11) NOT NULL,
-  `W` int(11) NOT NULL
+CREATE TABLE Partenaire (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    telephone VARCHAR(15)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 COMMIT;
 
