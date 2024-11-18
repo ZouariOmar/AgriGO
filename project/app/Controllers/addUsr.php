@@ -29,7 +29,7 @@ try {
 
   if (empty($user)) {
     $_SESSION['status'] = "Username or email already used!";
-    header("Location: ../Views/login.php");
+    header("Location: ../Views/dashboard.php");
     exit();
   }  //* ### User successfully added to the `Usr` table  ###
 
@@ -59,12 +59,12 @@ try {
   // Registration successful - Set session variables
   $_SESSION['user_id'] = $user_id;
   $_SESSION['status'] = "Registration has been successful!";
-  header("Location: ../Views/login.php");
+  header("Location: ../Views/dashboard.php");
   exit();
 } catch (Exception $e) {
   // Handle any unexpected errors
   $_SESSION['status'] = "An unexpected error occurred: " . $e->getMessage();
-  header("Location: ../Views/login.php");
+  header("Location: ../Views/dashboard.php");
   exit();
 }
 ?>
