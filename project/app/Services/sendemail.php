@@ -3,7 +3,7 @@
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
-include '../../../vendor/autoload.php';  // Load Composer's auto-loader (for .env)
+include '../../../vendor/autoload.php';  // Load Composer's auto-loader
 
 //? Using declaration part
 use PHPMailer\PHPMailer\PHPMailer;

@@ -21,17 +21,44 @@ try {
     ";
 
   // Lance the query
-  $user = $db->query($sql_insert_user, ["username" => $_POST['username'], "email" => $_POST['email'], "password" => password_hash($_POST['password'], PASSWORD_BCRYPT)]);
+  $user = $db->query($sql_insert_user, [
+    "username" => $_POST['username'],
+    "email" => $_POST['email'],
+    "password" => password_hash($_POST['password'], PASSWORD_BCRYPT)
+  ]);
 
   if (empty($user)) {
     $_SESSION['status'] = "Username or email already used!";
     header("Location: ../Views/login.php");
     exit();
-  }
+  }  //* ### User successfully added to the `Usr` table  ###
 
-  // Login successful - Set session variables
-  $_SESSION['user_id'] = $user['ID'];
-  $_SESSION['status'] = "Login successful!";
+  // Get the `ID` of the added user (SELECT action)
+  $user_id = $db->query('SELECT LAST_INSERT_ID() AS id LIMIT 1')[0]['id'];
+
+  // Get `Role_ID` from `Roles` table for user id (SELECT action)
+  $role = ($_POST['checker'] === 'on') ? 'FARMER' : 'CLIENT';
+  $sql_get_role_id = "SELECT Role_ID FROM Roles WHERE Role_name = :role";
+  $role_id = $db->query($sql_get_role_id, [
+    'role' => $role
+  ])[0]['Role_ID'];
+
+  // Assign role to user in `Usr_Roles` table (INSERT action)
+  $sql_assign_role = "INSERT INTO Usr_Roles (Usr_ID, Role_ID) VALUES (:user_id, :role_id)";
+  $db->query($sql_assign_role, [
+    'user_id' => $user_id,
+    'role_id' => $role_id
+  ]);
+
+  // Assign profile to user in `Usr_Profile` table (INSERT action)
+  $sql_assign_user_profile = "INSERT INTO Usr_Profile (Usr_ID) VALUES (:user_id)";
+  $db->query($sql_assign_user_profile, [
+    'user_id' => $user_id
+  ]);
+
+  // Registration successful - Set session variables
+  $_SESSION['user_id'] = $user_id;
+  $_SESSION['status'] = "Registration has been successful!";
   header("Location: ../Views/login.php");
   exit();
 } catch (Exception $e) {

@@ -1,7 +1,8 @@
 <?php
 session_start();
-$status = $_SESSION['status'] ?? null; // Fetch and clear the status message
-unset($_SESSION['status']);
+$status = $_SESSION['status'] ?? null;    // Fetch and clear the status message
+$user_id = $_SESSION['user_id'] ?? null;  // Fetch and clear the status message
+unset($_SESSION['status'], $_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -108,6 +109,30 @@ unset($_SESSION['status']);
 			<span class="closebtn">&times;</span>
 			<i class="fa fa-check" aria-hidden="true"></i>
 			Login successful!
+		</div>
+		<script>
+			// Redirect to the main/welcome user page
+			setTimeout(() => {
+				window.location.href = "../../public/html/contact.html?id=<?= $user_id ?>";
+			}, 1000);
+		</script>
+	<?php elseif ($status === "Registration has been successful!"): ?>
+		<div class="alert success">
+			<span class="closebtn">&times;</span>
+			<i class="fa fa-check" aria-hidden="true"></i>
+			Registration has been successful!
+		</div>
+		<script>
+			// Redirect to the welcome page
+			setTimeout(() => {
+				window.location.href = "welcome.php?id=<?= $user_id ?>";
+			}, 1000);
+		</script>
+	<?php elseif ($status): ?>
+		<div class="alert">
+			<span class="closebtn">&times;</span>
+			<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+			<?= $status ?>
 		</div>
 	<?php endif; ?>
 	</div>
