@@ -90,7 +90,7 @@ class FormatVerify {
 		return !this.isValidUsername(this.identifier)
 			? "Username should be alphanumeric and between 5 to 20 characters."
 			: !this.isValidEmail(this.email)
-			? "Please enter a valid email address."
+			? "Please enter a valid email address!"
 			: !this.isValidPassword()
 			? "Password must be at least 8 chars, include A-Z, a-z, 0-9, and a special character (@, $, !, %, *, ?, &)."
 			: "";

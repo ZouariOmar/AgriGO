@@ -1,4 +1,7 @@
 <?php
+//? Include declaration part
+include '../../public/components/custom.php';
+
 session_start();
 $status = $_SESSION['status'] ?? null;    // Fetch and clear the status message
 $user_id = $_SESSION['user_id'] ?? null;  // Fetch and clear the status message
@@ -62,7 +65,7 @@ unset($_SESSION['status'], $_SESSION['user_id']);
 				<input id="identifier" name="identifier" type="text" placeholder="Email or Username"
 					title="Enter Your Email Or Username" />
 				<input id="password2" name="password" type="password" placeholder="Password" title="Enter Your Password" />
-				<a href="OTP.html" id="forgetPass">Forot your password?</a>
+				<a href="../Services/OTP.php" id="forgetPass">Forot your password?</a>
 				<button>Sign In</button>
 				<p id="signInError" style="color: red"></p>
 			</form>
@@ -86,56 +89,37 @@ unset($_SESSION['status'], $_SESSION['user_id']);
 		</div>
 	</div>
 
-	<?php if ($status === "User not found!"): ?>
-		<div class="alert">
-			<span class="closebtn">&times;</span>
-			<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-			User not found!
-		</div>
-	<?php elseif ($status === "Invalid password!"): ?>
-		<div class="alert">
-			<span class="closebtn">&times;</span>
-			<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-			Invalid password!
-		</div>
-	<?php elseif ($status === "Username or email already used!"): ?>
-		<div class="alert">
-			<span class="closebtn">&times;</span>
-			<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-			Username or email already used
-		</div>
-	<?php elseif ($status === "Login successful!"): ?>
-		<div class="alert success">
-			<span class="closebtn">&times;</span>
-			<i class="fa fa-check" aria-hidden="true"></i>
-			Login successful!
-		</div>
+	<?php
+	if ($status === "User not found!"):
+		alert("alert", "User not found!");
+	elseif ($status === "Invalid password!"):
+		alert("alert", "Invalid password!");
+	elseif ($status === "Username or email already used!"):
+		alert("alert", "Username or email already used!");
+	elseif ($status === "Login successful!"):
+		alert("alert success", "Login successful!");
+		?>
 		<script>
 			// Redirect to the main/welcome user page
 			setTimeout(() => {
 				window.location.href = "../../public/html/contact.html?id=<?= $user_id ?>";
 			}, 1000);
 		</script>
-	<?php elseif ($status === "Registration has been successful!"): ?>
-		<div class="alert success">
-			<span class="closebtn">&times;</span>
-			<i class="fa fa-check" aria-hidden="true"></i>
-			Registration has been successful!
-		</div>
+		<?php
+	elseif ($status === "Registration has been successful!"):
+		alert("alert success", "Registration has been successful!");
+		?>
 		<script>
 			// Redirect to the welcome page
 			setTimeout(() => {
 				window.location.href = "welcome.php?id=<?= $user_id ?>";
 			}, 1000);
 		</script>
-	<?php elseif ($status): ?>
-		<div class="alert">
-			<span class="closebtn">&times;</span>
-			<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-			<?= $status ?>
-		</div>
-	<?php endif; ?>
-	</div>
+		<?php
+	elseif ($status):
+		alert("alert", $status);
+	endif;
+	?>
 
 	<!-- Login js -->
 	<script src="../../public/js/login.js"></script>
