@@ -1,6 +1,6 @@
 <?php
 //? Include declaration part
-include '../../public/components/custom.php';
+include '../components/custom.php';
 
 session_start();
 $status = $_SESSION['status'] ?? null;    // Fetch and clear the status message

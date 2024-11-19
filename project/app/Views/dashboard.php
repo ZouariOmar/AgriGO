@@ -2,7 +2,7 @@
 //? Include declaration part
 include '../../../vendor/autoload.php';  // Load Composer autoload (for .env)
 include '../../conf/database.php';
-include '../../public/components/custom.php';
+include '../components/custom.php';
 
 session_start();
 $status = $_SESSION['status'] ?? null;    // Fetch and clear the status message
