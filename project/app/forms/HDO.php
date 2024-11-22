@@ -1,0 +1,91 @@
+<?php
+include_once '../Controllers/Offre_Controller.php';
+
+$message = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['id'])) {
+        $offreController = new OffreController();
+        $id = intval($_POST['id']); // Sanitize the input
+
+        if ($offreController->deleteOffre($id)) {
+            $message = "L'offre avec l'ID $id a été supprimée avec succès.";
+        } else {
+            $message = "Erreur lors de la suppression de l'offre avec l'ID $id.";
+        }
+    } else {
+        $message = "Aucun ID d'offre fourni.";
+    }
+} else {
+    $message = "Méthode de requête invalide.";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppression de l'Offre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0fdf4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #155724;
+        }
+        .container {
+            background-color: #ffffff;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #155724;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .button {
+            display: inline-block;
+            background-color: #28a745;
+            color: #ffffff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Suppression de l'Offre</h1>
+        <div class="message">
+            <?php echo $message; ?>
+        </div>
+        <a href="../Views/offre/index.php" class="button">Retour à la page d'accueil</a>
+    </div>
+</body>
+</html>
+

@@ -1,87 +1,109 @@
 <?php
+include __DIR__ . '/../config.php';
 
 class OffreController
 {
-    protected $db;
+    private $db;
 
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+        $dbConfig = new Config();
+        $this->db = $dbConfig->getConnection();
     }
 
-    // Create offre
-    public function createOffre()
+    public function createOffre($titre, $prix, $telephone, $localisation, $email, $image, $detail, $categorie_id)
     {
-        $titre = $_POST['titre'];
-        $prix = $_POST['prix'];
-        $telephone = $_POST['telephone'];
-        $localisation = $_POST['localisation'];
-        $email = $_POST['email'];
-        $image = $_POST['image'];
-        $detail = $_POST['detail'];
-        $date_creation = date('Y-m-d H:i:s');
-        $categorie_id = $_POST['categorie_id'];
-
         $query = "INSERT INTO offres (titre, prix, telephone, localisation, email, image, detail, date_creation, categorie_id) 
-                  VALUES (:titre, :prix, :telephone, :localisation, :email, :image, :detail, :date_creation, :categorie_id)";
+                  VALUES (:titre, :prix, :telephone, :localisation, :email, :image, :detail, NOW(), :categorie_id)";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':titre', $titre);
-        $stmt->bindParam(':prix', $prix);
-        $stmt->bindParam(':telephone', $telephone);
-        $stmt->bindParam(':localisation', $localisation);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':image', $image);
-        $stmt->bindParam(':detail', $detail);
-        $stmt->bindParam(':date_creation', $date_creation);
-        $stmt->bindParam(':categorie_id', $categorie_id);
-        $stmt->execute();
+        
+        try {
+            $stmt->bindParam(':titre', $titre);
+            $stmt->bindParam(':prix', $prix);
+            $stmt->bindParam(':telephone', $telephone);
+            $stmt->bindParam(':localisation', $localisation);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':detail', $detail);
+            $stmt->bindParam(':categorie_id', $categorie_id);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Error creating offer: " . $e->getMessage());
+            return false;
+        }
     }
 
-    // Read offre
-    public function readOffres()
+    public function readAllOffres()
     {
         $query = "SELECT * FROM offres";
         $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $offres = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $offres;
+
+        try {
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error reading offers: " . $e->getMessage());
+            return false;
+        }
     }
 
-    //Update offre
-    public function updateOffre($id)
-    {
-        $titre = $_POST['titre'];
-        $prix = $_POST['prix'];
-        $telephone = $_POST['telephone'];
-        $localisation = $_POST['localisation'];
-        $email = $_POST['email'];
-        $image = $_POST['image'];
-        $detail = $_POST['detail'];
-        $categorie_id = $_POST['categorie_id'];
-
-        $query = "UPDATE offres SET titre = :titre, prix = :prix, telephone = :telephone, localisation = :localisation, 
-                  email = :email, image = :image, detail = :detail, categorie_id = :categorie_id 
-                  WHERE id = :id";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':titre', $titre);
-        $stmt->bindParam(':prix', $prix);
-        $stmt->bindParam(':telephone', $telephone);
-        $stmt->bindParam(':localisation', $localisation);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':image', $image);
-        $stmt->bindParam(':detail', $detail);
-        $stmt->bindParam(':categorie_id', $categorie_id);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-    }
-
-    // Delete offre
     public function deleteOffre($id)
     {
-        // Supprimer une offre de la table "offres"
         $query = "DELETE FROM offres WHERE id = :id";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
+    
+        try {
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                // Debugging: Output database error info
+                error_log(print_r($stmt->errorInfo(), true));
+                return false;
+            }
+        } catch (PDOException $e) {
+            error_log("Error deleting offer: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function readOffreById($id)
+    {
+        $query = "SELECT * FROM offres WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+
+        try {
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error reading offer by ID: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function updateOffre($id, $titre, $prix, $telephone, $localisation, $email, $image, $detail, $categorie_id)
+    {
+        $query = "UPDATE offres SET titre = :titre, prix = :prix, telephone = :telephone, 
+                  localisation = :localisation, email = :email, image = :image, detail = :detail, 
+                  categorie_id = :categorie_id WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+
+        try {
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':titre', $titre);
+            $stmt->bindParam(':prix', $prix);
+            $stmt->bindParam(':telephone', $telephone);
+            $stmt->bindParam(':localisation', $localisation);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':detail', $detail);
+            $stmt->bindParam(':categorie_id', $categorie_id);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Error updating offer: " . $e->getMessage());
+            return false;
+        }
     }
 }
+
