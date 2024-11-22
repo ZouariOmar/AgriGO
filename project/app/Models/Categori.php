@@ -2,34 +2,53 @@
 
 class Categorie
 {
-    public $id;
-    public $nom;
-    public $type;
+    // Properties
+    private $id;
+    private $nom;
+    private $type;
 
-    public static function all()
+    // Constructor
+    public function __construct($id, $nom, $type)
     {
-        $db = Database::getInstance();
-        $stmt = $db->prepare("SELECT * FROM categories");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Categorie');
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->type = $type;
     }
 
-    public static function find($id)
+    // Getters
+    public function getId()
     {
-        $db = Database::getInstance();
-        $stmt = $db->prepare("SELECT * FROM categories WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetchObject('Categorie');
+        return $this->id;
     }
 
-    public function save()
+    public function getNom()
     {
-        $db = Database::getInstance();
-        $stmt = $db->prepare("INSERT INTO categories (nom, type) VALUES (:nom, :type)");
-        $stmt->bindParam(':nom', $this->nom);
-        $stmt->bindParam(':type', $this->type);
-        $stmt->execute();
-        $this->id = $db->lastInsertId();
+        return $this->nom;
     }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    // Setters
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    
 }
+
+
+?>
