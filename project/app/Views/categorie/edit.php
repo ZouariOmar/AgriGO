@@ -73,10 +73,23 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
             background-color: #218838;
         }
 
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 12px;
             color: #6c757d;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
         }
     </style>
 </head>
@@ -84,15 +97,16 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
     <div class="container">
         <h1>Mettre à jour une catégorie</h1>
 
-        <form method="post" action="../../forms/handlerUpdate.php">
+        <form method="post" action="../../forms/handlerUpdate.php" id="categoryForm">
             <label for="id">ID :</label>
-            <input type="text" name="id" value="<?php echo $id; ?>" required>
+            <input type="text" name="id" id="id" value="<?php echo $id; ?>" required>
 
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars(""); ?>" required>
 
             <label for="type">Type :</label>
-            <input type="text" id="type" name="type" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="text" id="type" name="type" placeholder="job, lending, ou produce" required>
+            <div id="typeError" class="error-message"></div>
 
             <button type="submit">Mettre à jour la catégorie</button>
         </form>
@@ -101,5 +115,7 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
             <p>Assurez-vous que les informations sont correctes avant de soumettre.</p>
         </div>
     </div>
+    <script src="../../../public/js/Cat.js"></script>
 </body>
 </html>
+

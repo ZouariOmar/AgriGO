@@ -1,9 +1,5 @@
-
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +28,6 @@
             width: 100%;
         }
 
- 
         h1 {
             color: #155724;
             font-size: 24px;
@@ -74,27 +69,43 @@
             background-color: #218838; 
         }
 
-        
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
         .footer {
             font-size: 12px;
             color: #6c757d; 
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Créer une Nouvelle Catégorie</h1>
-        <form method="post" action="../../forms/handleCreation.php">
+        <form method="post" action="../../forms/handleCreation.php" id="categoryForm">
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" placeholder="Nom de la catégorie" required>
 
             <label for="type">Type :</label>
-            <input type="text" id="type" name="type" placeholder="Type de la catégorie" required>
+            <input type="text" id="type" name="type" placeholder="job, lending, ou produce" required>
+            <div id="typeError" class="error-message"></div>
 
             <button type="submit">Créer la catégorie</button>
         </form>
+        <div class="footer">
             <p>Veuillez vérifier les informations avant de soumettre.</p>
         </div>
     </div>
+    <script src="../../../public/js/Cat.js"></script>
 </body>
 </html>
+

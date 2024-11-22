@@ -73,10 +73,23 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
             background-color: #218838;
         }
 
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 12px;
             color: #6c757d;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
         }
     </style>
 </head>
@@ -84,30 +97,37 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
     <div class="container">
         <h1>Mettre à jour une offre</h1>
 
-        <form method="post" action="../../forms/HUO.php">
+        <form method="post" action="../../forms/HUO.php" id="offerForm">
             <label for="id">ID :</label>
-            <input type="text" name="id" value="<?php echo $id; ?>" required>
+            <input type="text" name="id" id="id" value="<?php echo $id; ?>" required>
 
             <label for="titre">Titre :</label>
             <input type="text" id="titre" name="titre" value="<?php echo htmlspecialchars(""); ?>" required>
+            <div id="titreError" class="error-message"></div>
 
             <label for="prix">Prix :</label>
             <input type="number" id="prix" name="prix" step="0.01" value="<?php echo htmlspecialchars(""); ?>" required>
+            <div id="prixError" class="error-message"></div>
 
             <label for="telephone">Téléphone :</label>
-            <input type="text" id="telephone" name="telephone" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="text" id="telephone" name="telephone" value="<?php echo htmlspecialchars(""); ?>" placeholder="+216 ** *** ***" required>
+            <div id="telephoneError" class="error-message"></div>
 
             <label for="localisation">Localisation :</label>
             <input type="text" id="localisation" name="localisation" value="<?php echo htmlspecialchars(""); ?>" required>
+            <div id="localisationError" class="error-message"></div>
 
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars(""); ?>" required>
+            <div id="emailError" class="error-message"></div>
 
             <label for="image">URL de l'image :</label>
             <input type="text" id="image" name="image" value="<?php echo htmlspecialchars(""); ?>" required>
+            <div id="imageError" class="error-message"></div>
 
             <label for="detail">Détail :</label>
             <textarea id="detail" name="detail" rows="4" required><?php echo htmlspecialchars(""); ?></textarea>
+            <div id="detailError" class="error-message"></div>
 
             <label for="categorie_id">ID de la catégorie :</label>
             <input type="number" id="categorie_id" name="categorie_id" value="<?php echo htmlspecialchars(""); ?>" required>
@@ -119,6 +139,7 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
             <p>Assurez-vous que les informations sont correctes avant de soumettre.</p>
         </div>
     </div>
+    <script src="../../../public/js/off.js"></script>
 </body>
 </html>
 
