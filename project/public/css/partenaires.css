@@ -1,0 +1,15 @@
+/* Styles pour la pagination des partenaires */
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+}
+.pagination a.active {
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+}

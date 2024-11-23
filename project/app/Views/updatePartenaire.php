@@ -1,6 +1,6 @@
 <?php
-include "../Model/Partenaire.php";
-include "../Controller/PartenaireController.php";
+include "../Models/Partenaire.php";
+include "../Controllers/PartenaireController.php";
 $Partenaire = null;
 $error = "";
 // create an instance of the controller

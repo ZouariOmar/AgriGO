@@ -1,6 +1,6 @@
 <?php
-include "../Model/Partenaire.php";
-include "../Controller/PartenaireController.php";
+include "../Models/Partenaire.php";
+include "../Controllers/PartenaireController.php";
 
 if (
     isset($_POST["pName"])  && $_POST["email"] && $_POST["telephone"]
