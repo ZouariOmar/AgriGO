@@ -140,7 +140,7 @@
         </form>
 
         <div class="footer">
-            <p>Gestion des offres - Tous droits réservés</p>
+            <p>Gestion des offres - Tous droits réservés (this was hell to make)</p>
         </div>
     </div>
 </body>
