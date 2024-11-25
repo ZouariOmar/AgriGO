@@ -5,15 +5,15 @@ class report{
     private $category;
     private $subject;
     private $description;
-    private $piece;
+    private $sta;
 
 
-    public function __construct($id,$category,$subject,$description,$piece) {
+    public function __construct($id,$category,$subject,$description,$sta) {
         $this->id=$id;
         $this->category = $category;
         $this->subject = $subject;
         $this->description = $description;
-        $this->piece= $piece;
+        $this->sta= $sta;
 
     }
 
@@ -78,22 +78,24 @@ class report{
         return $this;
     }
 
+
+
     /**
-     * Get the value of piece
+     * Get the value of sta
      */ 
-    public function getPiece()
+    public function getSta()
     {
-        return $this->piece;
+        return $this->sta;
     }
 
     /**
-     * Set the value of piece
+     * Set the value of sta
      *
      * @return  self
      */ 
-    public function setPiece($piece)
+    public function setSta($sta)
     {
-        $this->piece = $piece;
+        $this->sta = $sta;
 
         return $this;
     }

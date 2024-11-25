@@ -1,8 +1,8 @@
 <?php
 
-include "../Controllers/reportController.php";
-$reportC = new reportController();
-$list = $reportC->reportList();
+include "../Controllers/adminreportController.php";
+$adminreportC = new adminreportController();
+$adminlist = $adminreportC->reportList();
 ?>
 
 <!DOCTYPE html>
@@ -17,33 +17,24 @@ $list = $reportC->reportList();
 
 <body>
     <!-- Title section -->
-    <h1>Your Reports</h1>
-    
-    <!-- Add Report link -->
-    <a href="addReport.php">Add Report</a>
+    <h1>Reports Dashboard</h1>
     
     <!-- Table to display reports -->
     <table>
         <thead>
             <tr>
-                <th>Category</th>
-                <th>Subject</th>
-                <th>Description</th>
+                <th>Report ID</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            foreach ($list as $report) {
+            foreach ($adminlist as $radmineport) {
                 ?>
                 <tr>
-                    <td><?= htmlspecialchars($report['category']); ?></td>
-                    <td><?= htmlspecialchars($report['subject']); ?></td>
-                    <td><?= htmlspecialchars($report['description']); ?></td>
-                    <td> 
-                       <?= htmlspecialchars($report['sta']) ?>
-                    </td>
+                    <td><?= htmlspecialchars($adminreport['StatRapportID']); ?></td>
+                    <td><?= htmlspecialchars($adminreport['Status']); ?></td>
                     <td>
                         <form method="POST" action="updateReport.php">
                             <input type="submit" name="update" value="Update">

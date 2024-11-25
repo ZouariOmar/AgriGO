@@ -1,53 +1,26 @@
 <?php
-include "../Models/report.php";
-include "../Controllers/reportController.php";
-ini_set('file_uploads', '1');
+require "../Models/report.php";
+require "../Controllers/reportController.php";
+
+
 
 // Check if form data is set
 if (isset($_POST["subject"]) && isset($_POST["category"]) && isset($_POST["description"])) {
+
     // Ensure required fields are not empty
     if (!empty($_POST["subject"]) && !empty($_POST["category"]) && !empty($_POST["description"])) {
-        $imagePath = null; // Initialize image path
-
-        // Check if an image file is uploaded
-        if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
-            $uploadDir = 'uploads/'; // Define upload directory
-
-            // Create the directory if it doesn't exist
-            if (!is_dir($uploadDir)) {
-                if (mkdir($uploadDir, 0777, true)) {
-                    echo "Uploads folder created successfully.<br>";
-                } else {
-                    echo "Failed to create uploads folder.<br>";
-                }
-            }
-
-            // Ensure the uploaded file has a unique name
-            $uniqueFileName = uniqid() . "_" . basename($_FILES["image"]["name"]);
-            $imagePath = $uploadDir . $uniqueFileName;
-
-            // Move the uploaded file to the server directory
-            if (move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath)) {
-              echo "File uploaded successfully.<br>";
-          } else {
-              $error = $_FILES["image"]["error"];
-              die("Failed to move uploaded file. Error code: $error<br>");
-          }
-        }
-
+        
         // Create a new report object
-        $report = new report (null, $_POST["category"], $_POST["subject"], $_POST["description"], $imagePath);
+        $report = new report(null, $_POST["category"], $_POST["subject"], $_POST["description"], "RECEIVED");
 
         // Initialize the reportController
         $reportC = new reportController();
 
-        // Add the report to the database
+        // Step 1: Add the report to the 'rapports' table and get the Report_ID
         $reportC->addReport($report);
 
-        // Redirect to the report list page
-        header('Location: reportList.php');
+        header("Location: reportList.php");
 
-        exit;
     }
 }
 ?>
@@ -81,10 +54,6 @@ if (isset($_POST["subject"]) && isset($_POST["category"]) && isset($_POST["descr
       <!-- Description -->
       <label for="description">Description</label>
       <textarea id="description" name="description" placeholder="Describe the issue in detail" rows="4" ></textarea>
-
-      <!-- Image Upload -->
-      <label for="image">Upload Picture (Optional)</label>
-      <input type="file" id="image" name="image">
 
       <!-- Submit Button -->
       <button type="submit">Submit Report</button>

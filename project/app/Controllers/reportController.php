@@ -25,8 +25,8 @@ class reportController
             $query = $db->prepare($sql);
             $query->execute();
 
-            $product = $query->fetch();
-            return $product;
+            $report= $query->fetch();
+            return $report;
         } catch (Exception $e) {
             die('Error: ' . $e->getMessage());
         }
@@ -34,8 +34,8 @@ class reportController
 
     public function addReport($report)
     {
-        $sql = "INSERT INTO rapports (Report_ID,category,subject,description,piece)
-        VALUES (NULL,:category,:subject,:description,:piece)";
+        $sql = "INSERT INTO rapports (Report_ID,category,subject,description,sta)
+        VALUES (NULL,:category,:subject,:description,'RECIEVED')";
         $conn = config::getConnexion();
 
         try {
@@ -44,9 +44,11 @@ class reportController
                 'category' => $report->getCategory(),
                 'subject' => $report->getSubject(),
                 'description' => $report->getDescription(),
-                'piece' => $report->getPiece(),
 
             ]);
+            $reportId = $conn->lastInsertId();  // Returns the ID of the last inserted row
+
+            return $reportId;  // Ensure this is being returned correctly
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
         }
@@ -61,7 +63,7 @@ class reportController
                 category = :category,
                 subject = :subject,
                 description = :description,
-                piece = :piece
+                sta = :sta
             WHERE Report_ID = :id'
         );
 
@@ -70,7 +72,7 @@ class reportController
                 'category' => $report->getCategory(),
                 'subject' => $report->getSubject(),
                 'description' => $report->getDescription(),
-                'piece' => $report->getPiece(),
+                'sta' => "RECIEVED",
                 'id' => $id  
             ]);
 

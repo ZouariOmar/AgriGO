@@ -1,4 +1,5 @@
 <?php
+
 include "../Models/Report.php";
 include "../Controllers/ReportController.php";
 
@@ -15,21 +16,19 @@ $reportC = new reportController();
 if (isset($_POST['id']) || isset($_GET['id'])) {
     $report_id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
     $report = $reportC->getReportById($report_id);
+
+    if (!$report) {
+        die("Error: Report not found.");
+    }
+
+} else {
+    die("Error: ID not provided.");
 }
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subject'], $_POST['category'], $_POST['description'])) {
     if (!empty($_POST['subject']) && !empty($_POST['category']) && !empty($_POST['description'])) {
-        $image = null;
-
-        // Handle image upload
-        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            $target_dir = "uploads/";
-            $target_file = $target_dir . basename($_FILES['image']['name']);
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-                $image = basename($_FILES['image']['name']);
-            }
-        }
+        // Use the retrieved 'sta' value
 
         // Create the report object
         $report = new report(
@@ -37,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subject'], $_POST['ca
             $_POST['category'],
             $_POST['subject'],
             $_POST['description'],
-            $image
+            'RECIEVED'
         );
 
         // Attempt to update the report
@@ -47,7 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subject'], $_POST['ca
         } else {
             $error = "Update failed. Please check the update function.";
         }
+    } else {
+        $error = "Error: All fields are required.";
     }
+}
+
+// Display error if any
+if (!empty($error)) {
+    echo "<p style='color: red;'>$error</p>";
 }
 
 // Ensure output buffering is flushed before sending headers
@@ -86,8 +92,6 @@ ob_end_flush();
     <label for="description">Description</label>
     <textarea id="description" name="description" rows="4"><?php echo htmlspecialchars($report['description']); ?></textarea><br>
 
-    <label for="image">Upload an image (optional)</label>
-    <input type="file" id="image" name="image"><br>
 
     <button type="submit">Update Report</button>
 </form>
@@ -100,5 +104,5 @@ ob_end_flush();
 <?php endif; ?>
 
 </body>
-<script src="../../public/js/reportscript.js"></script>
+<script src="../../public/js/updatereportscript.js"></script>
 </html>
