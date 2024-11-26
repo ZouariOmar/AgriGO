@@ -420,6 +420,7 @@
 
   // Order Statistics Chart
   // --------------------------------------------------------------------
+  const test = parseFloat(document.getElementById("test").value) || 0;
   const chartOrderStatistics = document.querySelector('#orderStatisticsChart'),
     orderChartConfig = {
       chart: {
@@ -428,7 +429,7 @@
         type: 'donut'
       },
       labels: ['Electronic', 'Sports', 'Decor', 'Fashion'],
-      series: [85, 15, 50, 50],
+      series: [test, 15, 50, 50],
       colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success],
       stroke: {
         width: 5,

@@ -29,7 +29,7 @@ try {
 
   if (empty($user)) {
     $_SESSION['status'] = "Username or email already used!";
-    header("Location: ../Views/dashboard.php");
+    header("Location: ../Views/login.php");
     exit();
   }  //* ### User successfully added to the `Usr` table  ###
 
@@ -38,7 +38,7 @@ try {
 
   // Get `Role_ID` from `Roles` table for user id (SELECT action)
   $role = ($_POST['checker'] === 'on') ? 'FARMER' : 'CLIENT';
-  $sql_get_role_id = "SELECT Role_ID FROM Roles WHERE Role_name = :role";
+  $sql_get_role_id = "SELECT Role_ID FROM Roles WHERE Role_Name = :role";
   $role_id = $db->query($sql_get_role_id, [
     'role' => $role
   ])[0]['Role_ID'];
@@ -59,12 +59,12 @@ try {
   // Registration successful - Set session variables
   $_SESSION['user_id'] = $user_id;
   $_SESSION['status'] = "Registration has been successful!";
-  header("Location: ../Views/dashboard.php");
+  header("Location: ../Views/welcome.php");
   exit();
 } catch (Exception $e) {
   // Handle any unexpected errors
   $_SESSION['status'] = "An unexpected error occurred: " . $e->getMessage();
-  header("Location: ../Views/dashboard.php");
+  header("Location: ../Views/login.php");
   exit();
 }
 ?>

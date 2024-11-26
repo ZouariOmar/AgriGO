@@ -1,5 +1,7 @@
 <?php
-
+session_start();
+$user_id = $_SESSION['user_id'] ?? null;    // Fetch the `user_id` session
+unset($_SESSION['user_id']);
 ?>
 
 <!-- Welcome page after sign-up successfully -->
@@ -10,7 +12,11 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>AgriGO || Welcome!</title>
+	<title>AGNT || Welcome!</title>
+
+	<!-- Favicons Icons -->
+	<link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/imgs/favicons/favicon-16x16.png" />
+	<!-- / Favicons Icons -->
 	<link rel="stylesheet" href="../../public/css/welcome.css" />
 </head>
 
@@ -34,7 +40,7 @@
 			</p>
 
 			<!-- Go to the "new events" page-->
-			<a href="../../public/html/contact.html?id=<?php echo $_GET['id']; ?>" id="contBtn">Continue</a>
+			<a href="../../public/html/contact.html?id=<?php echo $user_id ?>" id="contBtn">Continue</a>
 		</div>
 	</div>
 </body>

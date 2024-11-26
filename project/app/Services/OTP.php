@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +20,7 @@
 </head>
 
 <body>
-	<form class="card" action="sendmail.php" method="post">
+	<form class="card" action="sendemail.php"post">
 		<p class="lock-icon"><i class="fas fa-lock"> </i></p>
 		<h2>Forgot Password?</h2>
 		<p>You can reset your Password here</p>
@@ -33,7 +29,7 @@
 				<i class="fa fa-envelope"></i>
 				<!-- Replace with an icon library of your choice -->
 			</span>
-			<input type="email" placeholder="Enter your email" class="email-input" />
+			<input type="email" name="recipient_email" placeholder="Enter your email" class="email-input" />
 		</div>
 		<button>Send My Password</button>
 	</form>

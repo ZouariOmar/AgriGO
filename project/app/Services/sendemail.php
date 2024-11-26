@@ -72,7 +72,7 @@ try {
 	$mail->Body .= 'Subject: ' . $subject . "<br>";
 	$mail->Body .= 'message: ' . "<br>" . $message;
 
-	if ($mail->send());
+	$mail->send();
 	?>
 
 	<html lang="en">
@@ -100,7 +100,8 @@ try {
 			<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
 			<p class="main-content__body" data-lead-id="main-content-body">Thanks for contacting us. We will contact you ASAP!
 			</p>
-			<p class="main-content__body">You will be redirected to the home page in <span id="countdown">5</span> seconds...</p>
+			<p class="main-content__body">You will be redirected to the home page in <span id="countdown">5</span> seconds...
+			</p>
 		</main>
 		<footer class="site-footer" id="footer">
 			<p class="site-footer__fineprint" id="fineprint">Copyright ©2024 | All Rights Reserved</p>

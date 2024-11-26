@@ -3,9 +3,10 @@
 include '../components/custom.php';
 
 session_start();
-$status = $_SESSION['status'] ?? null;    // Fetch and clear the status message
-$user_id = $_SESSION['user_id'] ?? null;  // Fetch and clear the status message
-unset($_SESSION['status'], $_SESSION['user_id']);
+$status = $_SESSION['status'] ?? null;      // Fetch the `status` session
+$user_id = $_SESSION['user_id'] ?? null;    // Fetch the `user_id` session
+$user_role = $_SESSION['user_role'] ?? null;  // Fetch the `user_role` session
+unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ unset($_SESSION['status'], $_SESSION['user_id']);
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="AgriGO 2.0 Website" />
-	<title>AGRIGO || Login</title>
+	<title>AGNT || Login</title>
 
 	<!-- Favicons Icons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/imgs/favicons/apple-touch-icon.png" />
@@ -98,24 +99,13 @@ unset($_SESSION['status'], $_SESSION['user_id']);
 		alert("alert", "Username or email already used!");
 	elseif ($status === "Login successful!"):
 		alert("alert success", "Login successful!");
-		?>
-		<script>
-			// Redirect to the main/welcome user page
-			setTimeout(() => {
-				window.location.href = "../../public/html/contact.html?id=<?= $user_id ?>";
-			}, 1000);
-		</script>
-		<?php
+		$redirectUrl = ($user_role != 2)
+			? "../../public/html/contact.html?id=$user_id"   // Redirect to the home
+			: "dashboard.php?id=$user_id"; 									 // Redirect to the admin_dashboard
+		redirect($redirectUrl, 2000);
 	elseif ($status === "Registration has been successful!"):
 		alert("alert success", "Registration has been successful!");
-		?>
-		<script>
-			// Redirect to the welcome page
-			setTimeout(() => {
-				window.location.href = "welcome.php?id=<?= $user_id ?>";
-			}, 1000);
-		</script>
-		<?php
+		redirect("Location: welcome.php?id=$user_id", 2000);  // Redirect to the welcome page
 	elseif ($status):
 		alert("alert", $status);
 	endif;
