@@ -1,27 +1,30 @@
 <?php
-require "../Models/report.php";
-require "../Controllers/reportController.php";
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include "../Models/report.php";
+include_once "../Controllers/reportController.php";
+include_once "../Controllers/adminreportController.php";
 
 
 
 // Check if form data is set
 if (isset($_POST["subject"]) && isset($_POST["category"]) && isset($_POST["description"])) {
+  if (!empty($_POST["subject"]) && !empty($_POST["category"]) && !empty($_POST["description"])) {
+      $report = new report(null, $_POST["category"], $_POST["subject"], $_POST["description"], "RECIEVED");
+      $reportC = new reportController();
+      $reportId = $reportC->addReport($report); // Step 1: Add report to 'rapports'
 
-    // Ensure required fields are not empty
-    if (!empty($_POST["subject"]) && !empty($_POST["category"]) && !empty($_POST["description"])) {
-        
-        // Create a new report object
-        $report = new report(null, $_POST["category"], $_POST["subject"], $_POST["description"], "RECEIVED");
-
-        // Initialize the reportController
-        $reportC = new reportController();
-
-        // Step 1: Add the report to the 'rapports' table and get the Report_ID
-        $reportC->addReport($report);
-
-        header("Location: reportList.php");
-
-    }
+      if ($reportId) { // Ensure Report_ID is valid
+          $adminReportController = new adminreportController();
+          if ($adminReportController->addAdminReport($reportId)) { // Step 2: Add report to 'rapportstat'
+              header("Location: reportList.php");
+              exit(); // Stop further execution after redirect
+          }
+      }
+  }
 }
 ?>
 <!DOCTYPE html>

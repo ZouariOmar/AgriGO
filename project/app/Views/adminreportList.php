@@ -30,17 +30,17 @@ $adminlist = $adminreportC->reportList();
         </thead>
         <tbody>
             <?php
-            foreach ($adminlist as $radmineport) {
+            foreach ($adminlist as $report) {
                 ?>
                 <tr>
-                    <td><?= htmlspecialchars($adminreport['StatRapportID']); ?></td>
-                    <td><?= htmlspecialchars($adminreport['Status']); ?></td>
+                    <td><?= htmlspecialchars($report['StatRapportID']); ?></td>
+                    <td><?= htmlspecialchars($report['Status']); ?></td>
                     <td>
-                        <form method="POST" action="updateReport.php">
+                        <form method="POST" action="adminupdateReport.php">
                             <input type="submit" name="update" value="Update">
                             <input type="hidden" value="<?= htmlspecialchars($report['Report_ID']); ?>" name="id">
                         </form>
-                        <a href="deleteReport.php?id=<?= htmlspecialchars($report['Report_ID']); ?>" class="delete-link">Delete</a>
+                        <a href="admindeleteReport.php?id=<?= htmlspecialchars($report['Report_ID']); ?>" class="delete-link">Delete</a>
                     </td>
                 </tr>
                 <?php

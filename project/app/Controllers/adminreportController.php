@@ -1,6 +1,5 @@
 <?php
-require "../config.php";
-include "../Models/adminreport.php";      
+require_once "../config.php"; 
 
 class adminreportController
 {
@@ -40,47 +39,53 @@ class adminreportController
     // Function to add the report to the 'adminreport' table with default status 'RECEIVED'
     public function addAdminReport($reportId)
     {
-        $conn = config::getConnexion();  // Assuming the database connection is set
-    
+        $conn = config::getConnexion(); // Ensure this retrieves the correct database connection
+
         try {
-            // Insert the Report_ID and status 'RECEIVED' into the 'rapportstat' table
-            $sql = "INSERT INTO rapportstat (Stat_ID,StatRapportID, Status) VALUES (NULL,:StatRapportID, :Status)";
+            $sql = "INSERT INTO rapportstat (StatID, StatRapportID, Status) 
+                    VALUES (NULL, :StatRapportID, :Status)";
             $query = $conn->prepare($sql);
+
             $query->execute([
-                'StatRapportID' => $reportId,  // Ensure this is the correct column name
-                'Status' => 'RECEIVED',  // Default status
+                'StatRapportID' => $reportId, // Ensure this corresponds to a valid ID in 'rapports'
+                'Status' => 'RECIEVED',      // Default status
             ]);
-    
-            // Debugging: Check if the insert was successful
-            if ($query->rowCount() > 0) {
-                echo "Admin report inserted successfully.";
-            } else {
-                echo "Failed to insert admin report.";
-            }
-    
+
+            // Log for debugging
+            error_log("SQL executed successfully with Report ID: $reportId");
+
+            return $query->rowCount() > 0; // Check if the record was inserted
         } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
+            // Log the detailed error message and query
+            error_log('Error in addAdminReport: ' . $e->getMessage());
+            error_log('Report ID: ' . $reportId);
+
+            // Optionally print the error for immediate feedback (in development environment)
+            echo 'Error: ' . $e->getMessage();
+
+            return false; // Explicitly return false on failure
         }
     }
 
 
 
-    function updateReport($report, $id)
+    function adminupdateReport($report, $id)
     {
         $db = config::getConnexion();
-
+    
         $query = $db->prepare(
             'UPDATE rapportstat SET 
-                status = :status
+                Status = :status
             WHERE StatID = :id'
         );
-
+    
         try {
+            // Execute the query with properly cased keys
             $query->execute([
-                'Status' => $report->getStatus(),
-                'id' => $id  
+                'Status' => $report->getStatus(), // Match 'Status' in DB
+                'id' => $id
             ]);
-
+    
             // Check if the query was successful
             if ($query->rowCount() > 0) {
                 return true; // Success
