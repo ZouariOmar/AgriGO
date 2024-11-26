@@ -10,9 +10,11 @@ try {
         echo "<table class='styled-table'>";
         echo "<thead><tr>";
     
+
         foreach (array_keys($categories[0]) as $header) {
             echo "<th>" . htmlspecialchars($header) . "</th>";
         }
+        echo "<th>Actions</th>"; 
         echo "</tr></thead><tbody>";
     
         foreach ($categories as $category) {
@@ -20,6 +22,20 @@ try {
             foreach ($category as $value) {
                 echo "<td>" . htmlspecialchars($value) . "</td>";
             }
+
+            //Sup and UPD buttons
+            echo "<td>";
+            echo "<form method='post' action='../../forms/handlerDelete.php' style='display:inline;'>";
+            echo "<input type='hidden' name='id' value='" . $category['id'] . "'>";
+            echo "<button type='submit' class='action-btn delete-btn'>Supprimer</button>";
+            echo "</form>";
+            echo "<form method='post' action='edit.php' style='display:inline;'>";
+            echo "<input type='hidden' name='id' value='" . htmlspecialchars($category['id']) . "'>";
+            echo "<input type='hidden' name='nom' value='" . htmlspecialchars($category['nom']) . "'>";
+            echo "<input type='hidden' name='type' value='" . htmlspecialchars($category['type']) . "'>";
+            echo "<button type='submit' class='action-btn edit-btn'>Mettre à jour</button>";
+            echo "</form>";
+            echo "</td>";
             echo "</tr>";
         }
         echo "</tbody></table></div>";
@@ -30,3 +46,4 @@ try {
     die('<p class="error-message">ACAB  ' . $e->getMessage() . '</p>');
 }
 ?>
+

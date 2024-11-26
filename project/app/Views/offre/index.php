@@ -16,10 +16,10 @@
         .container {
             background-color: #ffffff;
             border: 1px solid #c3e6cb;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 100spx;
+            padding: 50px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 3000px;
             margin: 0 auto;
         }
 
@@ -109,6 +109,42 @@
         button:hover {
             background-color: #218838; 
         }
+        .action-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 5px;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .edit-btn {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+
+        .update-btn {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+
+        .update-btn:hover {
+            background-color: #218838;
+        }
 
         .footer {
             margin-top: 20px;
@@ -124,23 +160,13 @@
         
         <?php include '../../forms/HRO.php'; ?>
 
-        <h2>Supprimer une Offre</h2>
-        <form method="post" action="../../forms/HDO.php">
-            <label for="id">ID de l'offre à supprimer :</label>
-            <input type="number" id="id" name="id" placeholder="Entrez l'ID ici" required>
-            <button type="submit">Supprimer</button>
-        </form>
 
         <form method="get" action="create.php">
             <button type="submit">Créer une nouvelle offre</button>
         </form>
 
-        <form method="get" action="edit.php">
-            <button type="submit">Mettre à jour une offre</button>
-        </form>
-
         <div class="footer">
-            <p>Gestion des offres - Tous droits réservés (this was hell to make)</p>
+            <p>Gestion des offres - Tous droits réservés ( AgriGO.com ) </p>
         </div>
     </div>
 </body>

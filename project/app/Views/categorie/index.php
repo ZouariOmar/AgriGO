@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,6 +106,43 @@
             background-color: #218838; 
         }
 
+        .action-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 5px;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .edit-btn {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+
+        .update-btn {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+
+        .update-btn:hover {
+            background-color: #218838;
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 12px;
@@ -122,24 +157,16 @@
         
         <?php include '../../forms/handleRead.php'; ?>
 
-        <h2>Supprimer une Catégorie</h2>
-        <form method="post" action="../../forms/handlerDelete.php">
-            <label for="id">ID de la catégorie à supprimer :</label>
-            <input type="number" id="id" name="id" placeholder="Entrez l'ID ici" required>
-            <button type="submit">Supprimer</button>
-        </form>
 
         <form method="get" action="create.php">
             <button type="submit">Create A New Categorie</button>
         </form>
-        <form method="post" action="edit.php">
-            <button type="submit">Mettre A Jour La Categorie</button>
-        </form>
 
         <div class="footer">
-            <p>This Was a massive (No Homo) pain in my ass pls never again</p>
+            <p>Gestion des categoreis - Tous droits réservés ( AgriGO.com )</p>
         </div>
     </div>
+    
 </body>
 </html>
 

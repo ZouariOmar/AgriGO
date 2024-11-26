@@ -1,6 +1,15 @@
 <?php
 // Check if the ID is set in the POST data, or initialize it to an empty string
 $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
+$titre = isset($_POST['titre']) ? htmlspecialchars($_POST['titre']) : '';
+$prix = isset($_POST['prix']) ? htmlspecialchars($_POST['prix']) : '';
+$telephone = isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : '';
+$localisation = isset($_POST['localisation']) ? htmlspecialchars($_POST['localisation']) : '';
+$email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+$image = isset($_POST['image']) ? htmlspecialchars($_POST['image']) : '';
+$detail = isset($_POST['detail']) ? htmlspecialchars($_POST['detail']) : '';
+$date_creation = isset($_POST['date_creation']) ? htmlspecialchars($_POST['date_creation']) : '';
+$categorie_id = isset($_POST['categorie_id']) ? htmlspecialchars($_POST['categorie_id']) : '';
 ?>
 
 <!DOCTYPE html>
@@ -98,39 +107,38 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
         <h1>Mettre à jour une offre</h1>
 
         <form method="post" action="../../forms/HUO.php" id="offerForm">
-            <label for="id">ID :</label>
-            <input type="text" name="id" id="id" value="<?php echo $id; ?>" required>
+            <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
 
             <label for="titre">Titre :</label>
-            <input type="text" id="titre" name="titre" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="text" id="titre" name="titre" value="<?php echo $titre; ?>" required>
             <div id="titreError" class="error-message"></div>
 
             <label for="prix">Prix :</label>
-            <input type="number" id="prix" name="prix" step="0.01" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="number" id="prix" name="prix" step="0.01" value="<?php echo $prix; ?>" required>
             <div id="prixError" class="error-message"></div>
 
             <label for="telephone">Téléphone :</label>
-            <input type="text" id="telephone" name="telephone" value="<?php echo htmlspecialchars(""); ?>" placeholder="+216 ** *** ***" required>
+            <input type="text" id="telephone" name="telephone" value="<?php echo $telephone; ?>" placeholder="+216 ** *** ***" required>
             <div id="telephoneError" class="error-message"></div>
 
             <label for="localisation">Localisation :</label>
-            <input type="text" id="localisation" name="localisation" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="text" id="localisation" name="localisation" value="<?php echo $localisation; ?>" required>
             <div id="localisationError" class="error-message"></div>
 
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
             <div id="emailError" class="error-message"></div>
 
             <label for="image">URL de l'image :</label>
-            <input type="text" id="image" name="image" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="text" id="image" name="image" value="<?php echo $image; ?>" required>
             <div id="imageError" class="error-message"></div>
 
             <label for="detail">Détail :</label>
-            <textarea id="detail" name="detail" rows="4" required><?php echo htmlspecialchars(""); ?></textarea>
+            <textarea id="detail" name="detail" rows="4" required><?php echo $detail; ?></textarea>
             <div id="detailError" class="error-message"></div>
 
             <label for="categorie_id">ID de la catégorie :</label>
-            <input type="number" id="categorie_id" name="categorie_id" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="number" id="categorie_id" name="categorie_id" value="<?php echo $categorie_id; ?>" required>
 
             <button type="submit">Mettre à jour l'offre</button>
         </form>

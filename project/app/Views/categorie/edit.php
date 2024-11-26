@@ -1,6 +1,8 @@
 <?php
 // Check if the ID is set in the POST data, or initialize it to an empty string
 $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
+$nom = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
+$type = isset($_POST['type']) ? htmlspecialchars($_POST['type']) : '';
 ?>
 
 <!DOCTYPE html>
@@ -98,14 +100,13 @@ $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
         <h1>Mettre à jour une catégorie</h1>
 
         <form method="post" action="../../forms/handlerUpdate.php" id="categoryForm">
-            <label for="id">ID :</label>
-            <input type="text" name="id" id="id" value="<?php echo $id; ?>" required>
+            <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
 
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars(""); ?>" required>
+            <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
 
             <label for="type">Type :</label>
-            <input type="text" id="type" name="type" placeholder="job, lending, ou produce" required>
+            <input type="text" id="type" name="type" value="<?php echo $type; ?>" placeholder="job, lending, ou produce" required>
             <div id="typeError" class="error-message"></div>
 
             <button type="submit">Mettre à jour la catégorie</button>
