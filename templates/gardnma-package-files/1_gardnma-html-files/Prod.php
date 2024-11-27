@@ -64,13 +64,13 @@ License URI: http://www.themevault.net/license/-->
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4" id="logo" >
-                    <a href="home.html" class="logo-text">
+                    <a href="Store.html" class="logo-text">
                         Agri<span style="color:#39BAF0; font-size:40px">GO</span>
                     </a>		
                 </div>
                 <div class="col-md-2 col-sm-12 col-xs-12" style="display:none " id="navbar_hide" >
                     <nav  role="navigation" class="navbar navbar-inverse">
-                        <a href="home.html" style="float: left" class="logo-text">
+                        <a href="Store.html" style="float: left" class="logo-text">
                             Agri<span style="color:#39BAF0; font-size:40px">GO</span>
                         </a>
                         <div id="nav">
@@ -83,7 +83,7 @@ License URI: http://www.themevault.net/license/-->
                             </div>
                             <div class="collapse navbar-collapse" id="myNavbar">
                                 <ul class="nav navbar-nav site_nav_menu1"  >
-                                    <li class="first " ><a href="home.html">Home</a></li>
+                                    <li class="first " ><a href="Store.html">Home</a></li>
                                     <li><a href="#">About us</a></li>
                                     <li><a href="#">Guarantee</a></li>
                                     <li><a href="#">Disclaimer</a></li>
@@ -177,7 +177,7 @@ License URI: http://www.themevault.net/license/-->
                                     </div>
                                     <div class="collapse navbar-collapse" id="myNavbar">
                                         <ul class="nav navbar-nav site_nav_menu1"  >
-                                            <li class="first "><a href="home.html">Home</a></li>
+                                            <li class="first "><a href="Store.html">Home</a></li>
                                             <li><a href="#">About us</a></li>
                                             <li><a href="#">Guarantee</a></li>
                                             <li><a href="#">Disclaimer</a></li>
@@ -373,7 +373,7 @@ License URI: http://www.themevault.net/license/-->
                     <div class="col-md-9 col-sm-8 col-xs-12" id="content">            
                         <div class="contentText">
                             <div class="breadcrumbs">
-                                <a href="home.html"><i class="fa fa-home"></i></a>
+                                <a href="Store.html"><i class="fa fa-home"></i></a>
                                 <a href="#">Product</a>
                             </div>
                             <h1>Lorem</h1>
@@ -590,13 +590,13 @@ License URI: http://www.themevault.net/license/-->
                     <div class="container">
                         <div class="row">
                             <div class="col-md-2 col-sm-3 col-xs-12 txt-center">
-                                <a href="home.html">
+                                <a href="Store.html">
                                     <span class="logo-text">DRUGSTORE</span>
                                 </a>
                             </div>
                             <div class="col-md-7 col-sm-6 col-xs-12">
                                 <div id="footer_menu">
-                                    <a href="home.html">Home</a> | 
+                                    <a href="Store.html">Home</a> | 
                                     <a href="#">About Us</a> | 
                                     <a href="#">Disclaimer</a> | 
                                     <a href="#">Guarantee</a> | 

@@ -1,3 +1,37 @@
+<?php
+include '../../../project/app/Controllers/Offre_Controller.php';
+session_start(); // Start the session
+
+if (isset($_POST['offre_id'])) {
+    $offreId = $_POST['offre_id'];
+    
+    // Create an instance of the OffreController
+    $offreController = new OffreController();
+    
+    // Use the readOffreById function to fetch the offer details
+    $offre = $offreController->readOffreById($offreId);
+    
+    if ($offre) {
+        // Display the offer details
+        $offre['titre'];
+        $offre['prix'];
+        $offre['telephone'];
+        $offre['image'];
+        $offre['detail'];
+        $offre['localisation'];
+
+    } else {
+        echo "Offer not found.";
+    }
+} else {
+    echo "No offer ID provided.";
+}
+?>
+
+
+
+
+
 <!--Template Name: Medistore
 File Name: single-product.html
 Author Name: ThemeVault
@@ -392,23 +426,27 @@ License URI: http://www.themevault.net/license/-->
                                     <button  title="" class="btn btn-default mr_5"  type="button"><i class="fa fa-heart"></i></button>
                                     <button  title="" class="btn btn-default"  type="button"><i class="fa fa-exchange"></i></button>
                                 </div>
-                                <h1 style="color: #39baf0">Lorem</h1>
+                                <h1 style="color: #39baf0"><?php echo $offre['titre']?></h1>
                                 <ul class="list-unstyled product-section">
-                                    <li><span>Product Code:</span> SAM1</li>
-                                    <li><span>Reward Points:</span> 1000</li>
                                     <li><span>Availability:</span> <span class="check-stock">Pre-Order</span></li>
                                 </ul>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h2>€241.99</h2>
+                                        <h2><?php echo $offre['prix']?>DT</h2>
                                     </li>
-                                    <li>Ex Tax: €199.99</li>
+                                    <div class="caption">
+                                    <p>Details:</p>
+                                    <p><?php echo $offre['detail']?></p>
+                                    </div>
+                                    <li>Localisation:</li>
+                                    <li><?php echo $offre['localisation']?></li>
                                 </ul>
+
                                 <div id="product">
                                     <div class="form-group">
                                         <label for="input-quantity" class="control-label">Qty</label>
                                         <input type="text" class="form-control" id="input-quantity" size="2" value="1" name="quantity">
-                                        <input type="hidden" value="49" name="product_id">
+
                                         <br>
                                         <a class="btn btn-primary btn-lg btn-block reg_button" href="cart.html"><i class="fa fa-shopping-cart"></i> BUY NOW!</a>
                                     </div>
