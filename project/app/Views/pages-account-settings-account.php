@@ -25,6 +25,12 @@ $user_profile = $db->query("SELECT * FROM Usr_Profile WHERE Usr_ID = :id", [
 	'id' => $id
 ]);
 $user_profile = $user_profile[0];  // Select the first (and only) result
+
+// Fetch the usr image profile
+$user_profile_image = $db->query("SELECT * FROM Images WHERE Image_ID = :Image_ID", [
+	'Image_ID' => $user_profile['Image_ID']
+]);
+$user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/default-user.png';  // Select the first (and only) result
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +67,7 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 
 	<!-- Helpers -->
 	<script src="../../../vendor/js/helpers.js"></script>
+	<script src="../../public/js/del.js"></script>
 
 	<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 	<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -136,6 +143,32 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 						</ul>
 					</li>
 					<!-- / Account Settings -->
+
+					<!-- Users Settings -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-dock-top"></i>
+							<div data-i18n="Account Settings">Users Settings</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="clients.php?id=<?php echo $id ?>" class="menu-link">
+									<div data-i18n="Account">Clients Table</div>
+								</a>
+							</li>
+							<li class="menu-item">
+								<a href="farmers.php?id=<?php echo $id ?>" class="menu-link">
+									<div data-i18n="Notifications">Farmers Table</div>
+								</a>
+							</li>
+							<li class="menu-item">
+								<a href="admins.php?id=<?php echo $id ?>" class="menu-link">
+									<div data-i18n="Connections">Admins Table</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- / Users Settings -->
 
 					<!-- Authentications -->
 					<li class="menu-item">
@@ -246,7 +279,7 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 							<li class="nav-item navbar-dropdown dropdown-user dropdown">
 								<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
 									<div class="avatar avatar-online">
-										<img src="../../public/assets/imgs/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+										<img src="<?php echo $user_profile_image ?>" alt class="w-px-40 h-40 rounded-circle" />
 									</div>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end">
@@ -255,8 +288,7 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 											<div class="d-flex">
 												<div class="flex-shrink-0 me-3">
 													<div class="avatar avatar-online">
-														<img src="../../public/assets/imgs/avatars/1.png" alt
-															class="w-px-40 h-auto rounded-circle" />
+														<img src="<?php echo $user_profile_image ?>" alt class="w-px-40 h-40 rounded-circle" />
 													</div>
 												</div>
 												<div class="flex-grow-1">
@@ -343,35 +375,35 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 									</li>
 								</ul>
 								<div class="card mb-4">
-									<h5 class="card-header">Profile Details</h5>
-									<!-- Account -->
-									<div class="card-body">
-										<div class="d-flex align-items-start align-items-sm-center gap-4">
-											<img src="../../public/assets/imgs/avatars/1.png" alt="user-avatar" class="d-block rounded"
-												height="100" width="100" id="uploadedAvatar" />
-											<div class="button-wrapper">
-												<label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-													<span class="d-none d-sm-block">Upload new photo</span>
-													<i class="bx bx-upload d-block d-sm-none"></i>
-													<input type="file" id="upload" class="account-file-input" hidden
-														accept="image/png, image/jpeg" />
-												</label>
-												<button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-													<i class="bx bx-reset d-block d-sm-none"></i>
-													<span class="d-none d-sm-block">Reset</span>
-												</button>
+									<!-- Edit form -->
+									<form id="formAccountSettings" method="POST" action="../Controllers/editUsr.php"
+										enctype="multipart/form-data">
+										<h5 class="card-header">Profile Details</h5>
+										<!-- Account -->
+										<div class="card-body">
+											<div class="d-flex align-items-start align-items-sm-center gap-4">
+												<img src="<?php echo $user_profile_image ?>" alt="user-avatar" class="d-block rounded"
+													height="100" width="100" id="uploadedAvatar" />
+												<div class="button-wrapper">
+													<label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+														<span class="d-none d-sm-block">Upload new photo</span>
+														<i class="bx bx-upload d-block d-sm-none"></i>
+														<input name="image" type="file" id="upload" class="account-file-input" hidden
+															accept="image/png, image/jpeg" />
+													</label>
+													<button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+														<i class="bx bx-reset d-block d-sm-none"></i>
+														<span class="d-none d-sm-block">Reset</span>
+													</button>
 
-												<p class="text-muted mb-0">
-													Allowed JPG, GIF or PNG. Max size of 800K
-												</p>
+													<p class="text-muted mb-0">
+														Allowed JPG, GIF or PNG. Max size of 800K
+													</p>
+												</div>
 											</div>
 										</div>
-									</div>
-									<hr class="my-0" />
-									<div class="card-body">
-
-										<!-- Edit form -->
-										<form id="formAccountSettings" method="POST" action="../Controllers/editUsr.php">
+										<hr class="my-0" />
+										<div class="card-body">
 											<div class="row">
 												<div class="mb-3 col-md-6">
 													<label for="firstName" class="form-label">First Name</label>
@@ -386,7 +418,7 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 												<div class="mb-3 col-md-6">
 													<label for="email" class="form-label">E-mail</label>
 													<input class="form-control" type="text" id="email" name="email"
-														value="<?php echo $user['Email'] ?>" placeholder="john.doe@example.com" />
+														value="<?php echo $user['Email'] ?>" placeholder="exemple@example.com" />
 												</div>
 
 												<div class="mb-3 col-md-6">
@@ -404,36 +436,30 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 														<option value="<?php echo $user_profile['State'] ?? '' ?>">
 															<?php echo $user_profile['State'] ?? '' ?>
 														</option>
-														<option value="Australia">Australia</option>
-														<option value="Bangladesh">Bangladesh</option>
-														<option value="Belarus">Belarus</option>
-														<option value="Brazil">Brazil</option>
-														<option value="Canada">Canada</option>
-														<option value="China">China</option>
-														<option value="France">France</option>
-														<option value="Germany">Germany</option>
-														<option value="India">India</option>
-														<option value="Indonesia">Indonesia</option>
-														<option value="Israel">Israel</option>
-														<option value="Italy">Italy</option>
-														<option value="Japan">Japan</option>
-														<option value="Korea">Korea, Republic of</option>
-														<option value="Mexico">Mexico</option>
-														<option value="Philippines">Philippines</option>
-														<option value="Russia">Russian Federation</option>
-														<option value="South Africa">South Africa</option>
-														<option value="Thailand">Thailand</option>
-														<option value="Turkey">Turkey</option>
-														<option value="Ukraine">Ukraine</option>
-														<option value="United Arab Emirates">
-															United Arab Emirates
-														</option>
-														<option value="United Kingdom">
-															United Kingdom
-														</option>
-														<option value="United States">
-															United States
-														</option>
+														<option value="Ariana">Ariana</option>
+														<option value="Beja">Beja</option>
+														<option value="Ben Arous">Ben Arous</option>
+														<option value="Bizerte">Bizerte</option>
+														<option value="Gabes">Gabes</option>
+														<option value="Gafsa">Gafsa</option>
+														<option value="Jendouba">Jendouba</option>
+														<option value="Kairouan">Kairouan</option>
+														<option value="Kasserine">Kasserine</option>
+														<option value="Kebili">Kebili</option>
+														<option value="Kef">Kef</option>
+														<option value="Mahdia">Mahdia</option>
+														<option value="Manouba">Manouba</option>
+														<option value="Medenine">Medenine</option>
+														<option value="Monastir">Monastir</option>
+														<option value="Nabeul">Nabeul</option>
+														<option value="Sfax">Sfax</option>
+														<option value="Sidi Bouzid">Sidi Bouzid</option>
+														<option value="Siliana">Siliana</option>
+														<option value="Sousse">Sousse</option>
+														<option value="Tataouine">Tataouine</option>
+														<option value="Tozeur">Tozeur</option>
+														<option value="Tunis">Tunis</option>
+														<option value="Zaghouan">Zaghouan</option>
 													</select>
 												</div>
 
@@ -475,80 +501,80 @@ $user_profile = $user_profile[0];  // Select the first (and only) result
 														Cancel
 													</button>
 												</div>
-										</form>
-										<!-- / Edit form -->
+									</form>
+									<!-- / Edit form -->
 
-									</div>
-									<!-- /Account -->
 								</div>
-								<div class="card">
-									<h5 class="card-header">Delete Account</h5>
-									<div class="card-body">
-										<div class="mb-3 col-12 mb-0">
-											<div class="alert alert-warning">
-												<h6 class="alert-heading fw-bold mb-1">
-													Are you sure you want to delete your account?
-												</h6>
-												<p class="mb-0">
-													Once you delete your account, there is no going
-													back. Please be certain.
-												</p>
-											</div>
+								<!-- /Account -->
+							</div>
+							<div class="card">
+								<h5 class="card-header">Delete Account</h5>
+								<div class="card-body">
+									<div class="mb-3 col-12 mb-0">
+										<div class="alert alert-warning">
+											<h6 class="alert-heading fw-bold mb-1">
+												Are you sure you want to delete your account?
+											</h6>
+											<p class="mb-0">
+												Once you delete your account, there is no going
+												back. Please be certain.
+											</p>
 										</div>
-										<form id="formAccountDeactivation" onsubmit="return false">
-											<div class="form-check mb-3">
-												<input class="form-check-input" type="checkbox" name="accountActivation"
-													id="accountActivation" />
-												<label class="form-check-label" for="accountActivation">I confirm my account
-													deactivation</label>
-											</div>
-											<button type="submit" class="btn btn-danger deactivate-account">
-												Deactivate Account
-											</button>
-										</form>
 									</div>
+									<form id="formAccountDeactivation" onsubmit="return false">
+										<div class="form-check mb-3" onclick="accountDeactivation()">
+											<input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" />
+											<label class="form-check-label" for="accountActivation">I confirm my account
+												deactivation</label>
+										</div>
+										<button type="submit" class="btn btn-danger deactivate-account" id="accountDeactivate" disabled>
+											Deactivate Account
+										</button>
+									</form>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- / Content -->
-
-					<!-- Footer -->
-					<footer class="content-footer footer bg-footer-theme">
-						<div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-							<div class="mb-2 mb-md-0">
-								©
-								<script>
-									document.write(new Date().getFullYear());
-								</script>
-								<a href="https://github.com/ZouariOmar/AgriGO/blob/main/LICENSE" target="_blank"
-									class="footer-link fw-bolder">Copyright</a>
-							</div>
-							<div>
-								<a href="https://github.com/ZouariOmar/AgriGO/blob/main/LICENSE" class="footer-link me-4"
-									target="_blank">License</a>
-								<a href="https://www.linkedin.com/in/zouari-omar-143239283" target="_blank"
-									class="footer-link me-4">Linkedin</a>
-
-								<a href="https://github.com/ZouariOmar/AgriGO/blob/main/README.md" target="_blank"
-									class="footer-link me-4">Documentation</a>
-
-								<a href="https://github.com/ZouariOmar/AgriGO/blob/main/README.md" target="_blank"
-									class="footer-link me-4">Support</a>
-							</div>
-						</div>
-					</footer>
-					<!-- / Footer -->
-
-					<div class="content-backdrop fade"></div>
 				</div>
-				<!-- Content wrapper -->
-			</div>
-			<!-- / Layout page -->
-		</div>
 
-		<!-- Overlay -->
-		<div class="layout-overlay layout-menu-toggle"></div>
+				<!-- / Content -->
+
+				<!-- Footer -->
+				<footer class="content-footer footer bg-footer-theme">
+					<div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+						<div class="mb-2 mb-md-0">
+							©
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							<a href="https://github.com/ZouariOmar/AgriGO/blob/main/LICENSE" target="_blank"
+								class="footer-link fw-bolder">Copyright</a>
+						</div>
+						<div>
+							<a href="https://github.com/ZouariOmar/AgriGO/blob/main/LICENSE" class="footer-link me-4"
+								target="_blank">License</a>
+							<a href="https://www.linkedin.com/in/zouari-omar-143239283" target="_blank"
+								class="footer-link me-4">Linkedin</a>
+
+							<a href="https://github.com/ZouariOmar/AgriGO/blob/main/README.md" target="_blank"
+								class="footer-link me-4">Documentation</a>
+
+							<a href="https://github.com/ZouariOmar/AgriGO/blob/main/README.md" target="_blank"
+								class="footer-link me-4">Support</a>
+						</div>
+					</div>
+				</footer>
+				<!-- / Footer -->
+
+				<div class="content-backdrop fade"></div>
+			</div>
+			<!-- Content wrapper -->
+		</div>
+		<!-- / Layout page -->
+	</div>
+
+	<!-- Overlay -->
+	<div class="layout-overlay layout-menu-toggle"></div>
 	</div>
 	<!-- / Layout wrapper -->
 

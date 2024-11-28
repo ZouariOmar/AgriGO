@@ -148,6 +148,32 @@ $admins = $db->query($sql, [
 					</li>
 					<!-- / Account Settings -->
 
+					<!-- Users Settings -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-dock-top"></i>
+							<div data-i18n="Account Settings">Users Settings</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="clients.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Account">Clients Table</div>
+								</a>
+							</li>
+							<li class="menu-item">
+								<a href="farmers.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Notifications">Farmers Table</div>
+								</a>
+							</li>
+							<li class="menu-item">
+								<a href="admins.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Connections">Admins Table</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- / Users Settings -->
+
 					<!-- Authentications -->
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -257,7 +283,7 @@ $admins = $db->query($sql, [
 							<li class="nav-item navbar-dropdown dropdown-user dropdown">
 								<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
 									<div class="avatar avatar-online">
-										<img src="../../public/assets/imgs/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+										<img src="../../public/assets/default-user.png" alt class="w-px-40 h-auto rounded-circle" />
 									</div>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end">
@@ -266,7 +292,7 @@ $admins = $db->query($sql, [
 											<div class="d-flex">
 												<div class="flex-shrink-0 me-3">
 													<div class="avatar avatar-online">
-														<img src="../../public/assets/imgs/avatars/1.png" alt
+														<img src="../../public/assets/default-user.png" alt
 															class="w-px-40 h-auto rounded-circle" />
 													</div>
 												</div>
@@ -810,83 +836,6 @@ $admins = $db->query($sql, [
 								</div>
 							</div>
 							<!--/ Transactions -->
-
-							<!-- Clients Table -->
-							<ul class="order-5">
-								<div class="card col-lg order-4 mb-4">
-									<h5 class="card-header">Clients Table</h5>
-									<div class="table-responsive text-nowrap">
-										<table class="table table-hover">
-											<thead>
-												<tr>
-													<th>Username</th>
-													<th>Email</th>
-													<th>Profile Link</th>
-													<th>Created At</th>
-													<th>Update At</th>
-													<th>Status</th>
-													<th>Actions</th>
-												</tr>
-											</thead>
-											<tbody class="table-border-bottom-0">
-												<?php admin_table($clients, $admin_id); ?>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</ul>
-							<!--/ Clients Table -->
-
-							<!-- Farmers Table -->
-							<ul class="order-5">
-								<div class="card col-lg order-5 mb-4">
-									<h5 class="card-header">Farmers Table</h5>
-									<div class="table-responsive text-nowrap">
-										<table class="table table-hover">
-											<thead>
-												<tr>
-													<th>Username</th>
-													<th>Email</th>
-													<th>Profile Link</th>
-													<th>Created At</th>
-													<th>Update At</th>
-													<th>Status</th>
-													<th>Actions</th>
-												</tr>
-											</thead>
-											<tbody class="table-border-bottom-0">
-												<?php admin_table($farmers, $admin_id); ?>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</ul>
-							<!--/ Farmers Table -->
-
-							<!-- Admin Table -->
-							<ul class="order-5">
-								<div class="card col-lg order-5 mb-4">
-									<h5 class="card-header">Admin Table</h5>
-									<div class="table-responsive text-nowrap">
-										<table class="table table-hover">
-											<thead>
-												<tr>
-													<th>Username</th>
-													<th>Email</th>
-													<th>Profile Link</th>
-													<th>Created At</th>
-													<th>Update At</th>
-													<th>Status</th>
-												</tr>
-											</thead>
-											<tbody class="table-border-bottom-0">
-												<?php admin_table($admins, $admin_id); ?>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</ul>
-							<!--/ Admin Table -->
 						</div>
 					</div>
 					<!-- / Content -->

@@ -26,7 +26,7 @@ function redirect($url, $seconds)
     </script>";
 }
 
-function admin_table($array, $admin_id)
+function users_table($array, $admin_id)
 {
     if (empty($array)) {
         echo '<tr><td colspan="7" class="text-center">Nothing Her!</td></tr>';
@@ -43,8 +43,8 @@ function admin_table($array, $admin_id)
         <td>
             <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                    class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                    <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
+                    class="avatar avatar-xs pull-up" title="' . htmlspecialchars($raw['Username']) . '">
+                    <img src="../../public/assets/default-user.png" alt="Avatar" class="rounded-circle" />
                 </li>
             </ul>
         </td>
@@ -52,34 +52,47 @@ function admin_table($array, $admin_id)
         <td>' . $raw['Updated_at'] . '</td>
         <td>
             <span class="badge ' .
-            (($raw['Status'] === 'ACTIVE') ? " bg-label-success" : (($raw['Status'] === 'INACTIVE') ? "bg-label-danger"
-                : "bg-label-warning")) . ' me-1">
+            (($raw['Status'] === 'ACTIVE') ? " bg-label-success" : (($raw['Status'] === 'INACTIVE') ? "bg-label-warning"
+                : "bg-label-danger")) . ' me-1">
             ' . $raw['Status'] . '
             </span>
         </td>
             <td>
-                <div class="dropdown">
-                    <button
-                        type="button"
-                        class="btn p-0 dropdown-toggle hide-arrow"
-                        data-bs-toggle="dropdown">
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a
-                            class="dropdown-item"
-                            href="javascript:void(0);"
-                            ><i class="bx bx-message-alt me-1"></i> Message</a
-                        >
-                        <a
-                            class="dropdown-item"
-                            href="../Controllers/delUsr.php?admin_id=' . $admin_id . '&id=' . $raw['ID'] . '"
-                            ><i class="bx bx-trash me-1"></i> Delete</a
-                        >
-                    </div>
-                </div>
+                ' . del_AToAA($raw, $admin_id) . '
             </td>
         </td>
     </tr>';
     }
+}
+
+/**
+ * ### Del admin to admin actions
+ * @return string
+ */
+function del_AToAA($raw, $admin_id) {
+    if ($raw['Role_ID'] != 2) {
+        return '
+        <div class="dropdown">
+            <button
+                type="button"
+                class="btn p-0 dropdown-toggle hide-arrow"
+                data-bs-toggle="dropdown">
+                <i class="bx bx-dots-vertical-rounded"></i>
+            </button>
+            <div class="dropdown-menu">
+                <a
+                    class="dropdown-item"
+                    href="javascript:void(0);"
+                    ><i class="bx bx-message-alt me-1"></i> Message</a
+                >
+                <a
+                    class="dropdown-item"
+                    href="../Controllers/setUsrStatus.php?admin_id=' . $admin_id . '&id=' . $raw['ID'] . '&status=' . ($raw['Status'] == 'SUSPENDED' ? 'ACTIVE' : 'SUSPENDED') . '"
+                    ><i class=" ' . ($raw['Status'] == 'SUSPENDED' ? 'bx bx-lock-open' : 'bx bx-block') . ' me-1"></i> '. ($raw['Status'] == 'SUSPENDED' ? 'Reactive' : 'Suspend') . '</a
+                >
+            </div>
+        </div>
+        ';
+    }
+    return '';
 }
