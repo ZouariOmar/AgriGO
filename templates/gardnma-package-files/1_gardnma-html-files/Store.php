@@ -24,6 +24,34 @@
         <script src="assets/js/custom copy.js"></script>
 
 
+
+
+
+        <!-- the head -->
+        <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+        <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+        <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+        <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+        <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+        <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+        <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+        <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+        <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+        <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+        <link rel="stylesheet" href="assets/vendors/slick-slider/slick.css">
+        <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
+        <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
+
+
          <!-- loop -->
         <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
         <!-- template styles -->
@@ -34,50 +62,194 @@
     </head>
     <body>
 
+    <!-- head -->
+    <header class="main-header main-header-one">
+            <!--Start Main Header One Top-->
+            <div class="main-header-one__top">
+                <div class="auto-container">
+                    <div class="main-header-one__top-inner">
+
+                        <div class="main-header-one__top-left">
+                            <ul class="main-header__contact-info">
+                                <li>
+                                    <div class="inner">
+                                        <div class="icon-box">
+                                            <span class="icon-time"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Mon to Sat: 09:00 am to 05:00 pm</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="inner">
+                                        <div class="icon-box">
+                                            <span class="icon-email"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p><a href="mailto:yourmail@email.com">needhelp@company.com</a></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-4" id="logo" >
-                    <a href="home.html" class="logo-text">
-                        Agri<span style="color:#39BAF0; font-size:40px">GO</span>
-                    </a>		
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12" style="display:none " id="navbar_hide" >
-                    <nav  role="navigation" class="navbar navbar-inverse">
-                        <a href="home.html" style="float: left" class="logo-text">
-                            Medi<span style="color:#39BAF0; font-size:40px">STORE</span>
-                        </a>
-                        <div id="nav">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="background: #8EBE08; border: none; margin-right: 0">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <div class="collapse navbar-collapse" id="myNavbar">
-                                <ul class="nav navbar-nav site_nav_menu1"  >
-                                    <li class="first " ><a href="home.html">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Guarantee</a></li>
-                                    <li><a href="#">Disclaimer</a></li>
-                                    <li><a href="#">Shipping & Payment</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Site Map</a></li>
+                        <div class="main-header-one__top-right">
+                            <div class="main-header-one__top-menu">
+                                <ul class="main-header-one__top-menu-list">
+                                    <li><a href="#">Our Faqs </a></li>
+                                    <li><a href="#">Pricing </a></li>
+                                    <li><a href="#">Contact </a></li>
                                 </ul>
+                            </div>
+
+                            <ul class="main-header-one__top-social-links">
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Main Header One Top-->
+            <div class="main-header-one__bottom">
+                <div class="main-header-one__bottom-inner">
+                    <nav class="main-menu main-menu-one">
+                        <div class="main-menu__wrapper clearfix">
+                            <div class="auto-container">
+                                <div class="main-menu__wrapper-inner">
+                                    <div class="main-header-one__bottom-left">
+                                        <div class="logo-box-one">
+                                            <a href="index.html">
+                                                <img src="assets/images/resources/logo-1.png" alt="Awesome Logo"
+                                                    title="">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="main-header-one__bottom-middle">
+                                        <div class="main-menu-box">
+                                            <a href="#" class="mobile-nav__toggler">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+
+                                            <ul class="main-menu__list">
+                                                <li class="dropdown current">
+                                                    <a href="index.html">Home <span class="line"></span></a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="index.html">Home One</a>
+                                                        </li>
+                                                        <li><a href="index-2.html">Home Two</a></li>
+                                                        <li><a href="Store.php">Store</a></li>
+                                                        <li class="dropdown">
+                                                            <a href="#">Header Styles</a>
+                                                            <ul>
+                                                                <li><a href="index.html">Header One</a></li>
+                                                                <li><a href="index-2.html">Header Two</a></li>
+                                                                <li><a href="index-3.html">Header Three</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li>
+                                                    <a href="about.html">About <span class="line"></span></a>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Services <span class="line"></span></a>
+                                                    <ul>
+                                                        <li><a href="services.html">Services</a></li>
+                                                        <li><a href="arbor-management.html">Arbor Management</a>
+                                                        </li>
+                                                        <li><a href="garden-management.html">Garden Management</a>
+                                                        </li>
+                                                        <li><a href="nursery.html">Nursery & Tree Farm</a>
+                                                        </li>
+                                                        <li><a href="trimming.html">Trimming & Pruning</a>
+                                                        </li>
+                                                        <li><a href="weeds-control.html">Pests & Weeds Control</a>
+                                                        </li>
+                                                        <li><a href="flowers-garden.html">Fruits & Flowers Garden</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Pages <span class="line"></span></a>
+                                                    <ul>
+                                                        <li><a href="team.html">Team</a></li>
+                                                        <li><a href="team-details.html">Team Details</a></li>
+                                                        <li><a href="portfolio-1.html">Portfolio 01</a></li>
+                                                        <li><a href="portfolio-2.html">Portfolio 02</a>
+                                                        <li><a href="faq.html">Faq</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Blog <span class="line"></span></a>
+                                                    <ul>
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="blog-grid.html">Blog Grid</a></li>
+                                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="contact.html">Contact <span class="line"></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="main-header-one__bottom-right">
+                                        <div class="header-search-box">
+                                            <a href="#" class="main-menu__search search-toggler icon-magnifying-glass">
+                                            </a>
+                                        </div>
+                                        <div class="main-header-one__bottom-right-btn">
+                                            <a href="contact.html">Get A Quote</a>
+                                        </div>
+
+                                        <div class="contact-box">
+                                            <div class="icon">
+                                                <span class="icon-chatting"></span>
+                                            </div>
+                                            <div class="text">
+                                                <p>Call Anytime</p>
+                                                <a href="tel:926668880000">92 666 888 0000</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </nav>
                 </div>
+            </div>
+            <!--End Main Header One Bottom-->
+    </header>
+        <!--End Main Header One-->
+
+
+
+
+
+        <div class="container">
+
+            <div class="row">
                 <div class="col-md-4 col-md-offset-4 col-sm-offset-2  col-sm-6 col-xs-12" >
                     <div id="top_right">
                         <div id="cart">
                             <div class="text">
                                 <div class="img">
-                                    <a href="cart.html"> <img class="img-responsive" src="images/cart.png" alt="" title="" width="26" height="27" /></a>
+                                    <a href="cart.php"> <img class="img-responsive" src="images/cart.png" alt="" title="" width="26" height="27" /></a>
                                 </div><span>Your cart:</span><span class="cart_total">€0.00</span><span class="cart_items">(0 items)</span>
                             </div> 
                         </div>
@@ -91,120 +263,31 @@
                                         </div>			
                                     </div>
                                 </div> 
-                                <div class="dropdown-bn wd-33 col-md-6 remove_PL col-xs-6">
-                                    <div class="row">
-                                        <div class=" pl-0 col-md-6 col-xs-6">
-
-                                            <div class="dropdown btn-group">
-                                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">language
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">English</a></li>
-                                                    <li><a href="#">French</a></li>
-                                                    <li><a href="#">German</a></li>
-                                                    <li><a href="#">Dutch</a></li>
-                                                    <li><a href="#">Swedish</a></li>
-                                                    <li><a href="#">Danish</a></li>
-                                                    <li><a href="#">Portuguese</a></li>
-                                                    <li><a href="#">Finish</a></li>
-                                                    <li><a href="#">German</a></li><li><a href="#">Norwegian</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="pl_0 col-md-6 col-xs-6">
-                                            <div class="dropdown btn-group">
-                                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">currency
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">U.S. Dollar</a></li>
-                                                    <li><a href="#">Euro</a></li>
-                                                    <li><a href="#">Pounds Sterling</a></l>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div> 
-        <div class="container-fluid bg-color">
-            <div class="row">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                            <nav  role="navigation" class="navbar navbar-inverse" id="nav_show">
-                                <div id="nav">
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
 
-                                    </div>
-                                    <div class="collapse navbar-collapse" id="myNavbar">
-                                        <ul class="nav navbar-nav site_nav_menu1"  >
-                                            <li class="first "><a href="home.html">Home</a></li>
-                                            <li><a href="#">About us</a></li>
-                                            <li><a href="#">Guarantee</a></li>
-                                            <li><a href="#">Disclaimer</a></li>
-                                            <li><a href="#">Shipping & Payment</a></li>
-                                            <li><a href="#">Privacy Policy</a></li>
-                                            <li><a href="#">Terms & Conditions</a></li>
-                                            <li><a href="#">Contact Us</a></li>
-                                            <li><a href="#">Site Map</a></li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </div> 
-
-                </div>
-            </div>
-        </div>
-        <div class="container" >
-            <div class="row" id="search_manu" style="margin-top: 10px">
+            <div class="row" id="search_manu" style="margin-left: 800px">
                 <div class="col-md-6 col-xs-12">
                     <form  name="quick_find">
                         <div class="form-group">
                             <div class="input-group">
                                 <input type="text" placeholder="Enter search keywords here" class="form-control input-lg" id="inputGroup"/>
                                 <span class="input-group-addon">
-                                    <a href="#" style="color:white">Search</a>
+                                    <a href="#" style="color:white  ">Search</a>
                                 </span>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 col-xs-12">
-
-                    <form  name="manufacturers"> 
-                        <div class="form-group">
-                            <div class="">
-                                <select  style="font-size: 14px; background: #EAEAEA; border: none;" name="manufacturers_id"  size="1" class="input-lg form-control arrow-hide date_class">
-                                    <option value="" selected="selected">Please Select manufacturers</option>
-                                    <option>lorem</option>
-                                    <option>lorem</option>
-                                    <option>lorem</option>
-                                    <option>lorem</option>
-                                </select>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            
             </div>
-        </div>
+        </div> 
+
+        <!-- somerevs -->
 
         <div id="site_content">
             <div class="container">
@@ -222,6 +305,7 @@
                                                 </a>
                                             </div>
                                         </div>
+
                                         <div id="collapseOne" class="panel-collapse collapse in">
                                             <div class="panel-body">
                                                 <div class="infoBoxContents">
@@ -236,98 +320,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="infoBoxHeading">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">What's New?</a>
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                    <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right accordan_plus"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <div class="infoBoxContainer">  
-                                                    <div class="infoBoxHeading">
-                                                        <a href="#">What's New?</a>
-                                                    </div> 
-                                                    <div class="infoBoxContents" id="sidebar">
-                                                        <div>
-                                                            <a href="single-prod.html">
-                                                                <img src="images/img4.jpg" class="img-responsive" />
-                                                            </a>
-                                                        </div>
-                                                        <a href="single-prod.html">Lorem Simply</a><br />€21.00
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="infoBoxHeading">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Information</a>
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                    <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <div class="infoBoxContents">    
-                                                    <a href="#">Shipping &amp; Returns</a><br />   
-                                                    <a href="#">Privacy Notice</a><br />   
-                                                    <a href="#">Conditions of Use</a><br />   
-                                                    <a href="#">Contact Us</a> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="infoBoxHeading">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Bestsellers</a>
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                                    <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div id="collapseFour" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <div class="infoBoxContents" id="sidebar">
-                                                    <a href="single-prod.html">
-                                                        <img src="images/img4.jpg"  class="img-responsive" />
-                                                    </a>
-                                                    <a href="single-prod.html">Lorem Big Block</a><br /><del></del>
-                                                    <span class="productSpecialPrice">€21.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="infoBoxHeading">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Specials</a>
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                                    <i id="accordan_plus" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div id="collapseFive" class="panel-collapse collapse">
-                                            <div class="panel-body">
-
-                                                <div class="infoBoxContents" id="sidebar">
-
-                                                    <a href="single-prod.html">
-                                                        <img src="images/img6.jpg"  class="img-responsive" />
-                                                    </a>
-                                                    <a href="single-prod.html">Lorem Big Block</a><br /><del></del>
-                                                    <span class="productSpecialPrice">€21.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    
                                 </div>
 
                             </div>
@@ -354,157 +347,6 @@
                                         <a href="addOffre.php">Make your offre  +</a>		
                                     </div>
                                 </div>
-
-                                <!----slidder start-!-->
-                                <div class="contentText">
-                                    <div class="infoBoxHeading">Today Bestsellers</div>
-
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 col-xs-12"  >
-                                            <!--                                        <div class="bg_best">-->
-                                            <div class="bg_best">
-                                                <div class="owl-carousel">
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/d1.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img4.jpg">
-                                                            </a>
-                                                        </span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img6.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img13.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img14.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img16.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img15.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <!--                                                    <div class="item">
-                                                                                                            <span>
-                                                                                                                <a href="single-prod.html">
-                                                                                                                    <img class="carasoul_image" src="images/d25.jpg">
-                                                                                                                </a></span>
-                                                                                                            <a class="btn btn-default"  href="cart.html" role="button" >
-                                                                                                                Buy Now!
-                                                                                                            </a>
-                                                                                                        </div>-->
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/img1.png">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/d2.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                    <div class="item">
-                                                        <span>
-                                                            <a href="single-prod.html">
-                                                                <img class="carasoul_image" src="images/d7.jpg">
-                                                            </a></span>
-                                                        <a class="btn btn-default"  href="cart.html" role="button" >
-                                                            Buy Now!
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <script>
-                                                    $(document).ready(function () {
-                                                        $('.owl-carousel').owlCarousel({
-                                                            loop: true,
-                                                            margin: 10,
-                                                            responsiveClass: true,
-                                                            responsive: {
-                                                                0: {
-                                                                    items: 2,
-                                                                    nav: true
-                                                                },
-                                                                600: {
-                                                                    items: 3,
-                                                                    nav: false
-                                                                },
-                                                                1000: {
-                                                                    items: 5,
-                                                                    nav: true,
-                                                                    loop: false,
-                                                                    margin: 20
-                                                                }
-
-                                                            }
-                                                        })
-                                                    })
-                                                </script>
-                                            </div>
-                                            <!--                                    </div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!----slidder End-!-->
-                                <!----content_1--!-->
-                                <div class="contentText Static">
-                                    <h1>What is Lorem Ipsum?</h1>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s </p>
-                                    <p>Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div>
-                                <!----content_1 End--!-->
 
 
                                 <!----content_2 For New Products--!-->
@@ -578,315 +420,158 @@
                                 </div>
                                 <!----content_2 End--!-->
 
-                                <!----content_3--!-->
-                                <div class="contentText">
-                                    <h1>Specials</h1>
-                                    
-                                    <div class="row margin-top product-layout_width">
-                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
-                                            <div class="product-thumb-height">
-                                                <div class="product-thumb transition">
-                                                    <ul>
-                                                        <li class="li_product_title">
-                                                            <div class="product_title">
-                                                                <a href="single-prod.html">Aroma Therapy</a>
-                                                            </div></li>
-                                                        <li class="li_product_image">
-                                                            <div class="image">
-                                                                <a href="single-prod.html">
-                                                                    <img src="images/d17.jpg" class="img-responsive" width="200" height="200"/>
-                                                                </a>
+                               
+                            </div>
 
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_price">
-                                                            <span class="old_price1"></span>
-                                                            <span class="new_price1">€134.00</span>
-                                                            <span class="saving1"></span><li>
-                                                        <li class="li_product_desc">
-                                                            <div class="caption">
-                                                                <p>
-                                                                    Lorem Ipsum is simply dummy text of the printing
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_buy_button">
-                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
-                                                                Buy Now!
-                                                            </a>
-                                                            <div class="pull-right">
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-heart"></i></button>
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-exchange"></i></button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--Start Footer One -->
+        <footer class="footer-one">
+            <div class="footer-one__bg" style="background-image: url(assets/images/shapes/footer-v1-shape3.png);"></div>
+            <div class="shape1 float-bob-y"><img src="assets/images/shapes/footer-v1-shape1.png" alt="#"></div>
+            <div class="shape2 float-bob-y"><img src="assets/images/shapes/footer-v1-shape2.png" alt="#"></div>
+            <!--Start Footer-->
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <!--Start Footer Widget Single-->
+                        <div class="col-xl-5 col-lg-5  wow animated fadeInUp" data-wow-delay="0.1s">
+                            <div class="footer-widget__single">
+                                <div class="footer-widget__single-about">
+                                    <div class="logo-box">
+                                        <a href="index.html"><img src="assets/images/resources/footer-logo.png"
+                                                alt="#"></a>
+                                    </div>
+
+                                    <form class="footer-widget__subscribe-box">
+                                        <div class="title-box">
+                                            <h5>Subsrcibe for Latest Articles and Resources</h5>
                                         </div>
-                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
-                                            <div class="product-thumb-height">
-                                                <div class="product-thumb transition">
-                                                    <ul>
-                                                        <li class="li_product_title">
-                                                            <div class="product_title">
-                                                                <a href="single-prod.html">Herbal</a>
-                                                            </div></li>
-                                                        <li class="li_product_image">
-                                                            <div class="image">
-                                                                <a href="single-prod.html">
-                                                                    <img src="images/d21.jpg"  class="img-responsive" width="200" height="200" />		
-                                                                </a>
-
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_price">
-                                                            <span class="old_price1"></span>
-                                                            <span class="new_price1">€21.00</span>
-                                                            <span class="saving1"></span><li>
-                                                        <li class="li_product_desc">
-                                                            <div class="caption">
-                                                                <p>
-                                                                    Lorem Ipsum is simply dummy text of the printing
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_buy_button">
-                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
-                                                                Buy Now!
-                                                            </a>
-                                                            <div class="pull-right">
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-heart"></i></button>
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-exchange"></i></button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="footer-widget__subscribe-input-box">
+                                            <input type="email" placeholder="Email Address" name="email">
+                                            <button type="submit" class="footer-widget__subscribe-btn">
+                                                <span>Go</span>
+                                            </button>
                                         </div>
-                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
-                                            <div class="product-thumb-height">
-                                                <div class="product-thumb transition">
-                                                    <ul>
-                                                        <li class="li_product_title">
-                                                            <div class="product_title">
-                                                                <a href="single-prod.html">Pills Drug</a>
-                                                            </div></li>
-                                                        <li class="li_product_image">
-                                                            <div class="image">
-                                                                <a href="single-prod.html">
-                                                                    <img src="images/d23.jpg"  class="img-responsive" width="200" height="200" />		
-                                                                </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Footer Widget Single-->
 
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_price">
-                                                            <span class="old_price1"></span>
-                                                            <span class="new_price1">€235.00</span>
-                                                            <span class="saving1"></span><li>
-                                                        <li class="li_product_desc">
-                                                            <div class="caption">
-                                                                <p>
-                                                                    Lorem Ipsum is simply dummy text of the printing
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_buy_button">
-                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
-                                                                Buy Now!
-                                                            </a>
-                                                            <div class="pull-right">
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-heart"></i></button>
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-exchange"></i></button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                        <!--Start Footer One Right-->
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="footer-one__right">
+                                <div class="row">
+                                    <!--Start Footer One Right Single-->
+                                    <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
+                                        <div class="footer-one__right-single mb50">
+                                            <div class="title">
+                                                <h2>Our Services</h2>
                                             </div>
-                                        </div> 
-
-                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
-                                            <div class="product-thumb-height">
-                                                <div class="product-thumb transition">
-                                                    <ul>
-                                                        <li class="li_product_title">
-                                                            <div class="product_title">
-                                                                <a href="single-prod.html">Capsule Pill</a>
-                                                            </div></li>
-                                                        <li class="li_product_image">
-                                                            <div class="image">
-                                                                <a href="single-prod.html">
-                                                                    <img src="images/d2.jpg"  class="img-responsive" width="200" height="200" />		
-                                                                </a>
-
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_price">
-                                                            <span class="old_price1"></span>
-                                                            <span class="new_price1">€137.00</span>
-                                                            <span class="saving1"></span><li>
-                                                        <li class="li_product_desc">
-                                                            <div class="caption">
-                                                                <p>
-                                                                    Lorem Ipsum is simply dummy text of the printing
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_buy_button">
-                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
-                                                                Buy Now!
-                                                            </a>
-                                                            <div class="pull-right">
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-heart"></i></button>
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-exchange"></i></button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
-                                            <div class="product-thumb-height">
-                                                <div class="product-thumb transition">
-                                                    <ul>
-                                                        <li class="li_product_title">
-                                                            <div class="product_title">
-                                                                <a href="single-prod.html">Medication Cure</a>
-                                                            </div></li>
-                                                        <li class="li_product_image">
-                                                            <div class="image">
-                                                                <a href="single-prod.html">
-                                                                    <img src="images/d7.jpg"  class="img-responsive" width="200" height="200" />		
-                                                                </a>
-
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_price">
-                                                            <span class="old_price1"></span>
-                                                            <span class="new_price1">€212.00</span>
-                                                            <span class="saving1"></span><li>
-                                                        <li class="li_product_desc">
-                                                            <div class="caption">
-                                                                <p>
-                                                                    Lorem Ipsum is simply dummy text of the printing
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_buy_button">
-                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
-                                                                Buy Now!
-                                                            </a>
-                                                            <div class="pull-right">
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-heart"></i></button>
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-exchange"></i></button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-layout  col-md-4 col-sm-6 col-xs-12">
-                                            <div class="product-thumb-height">
-                                                <div class="product-thumb transition">
-                                                    <ul>
-                                                        <li class="li_product_title">
-                                                            <div class="product_title">
-                                                                <a href="single-prod.html">China GuangDong Seeds</a>
-                                                            </div></li>
-                                                        <li class="li_product_image">
-                                                            <div class="image">
-                                                                <a href="single-prod.html">
-                                                                    <img src="images/d15.jpg"  class="img-responsive" width="200" height="200" />		
-                                                                </a>
-
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_price">
-                                                            <span class="old_price1"></span>
-                                                            <span class="new_price1">€129.00</span>
-                                                            <span class="saving1"></span><li>
-                                                        <li class="li_product_desc">
-                                                            <div class="caption">
-                                                                <p>
-                                                                    Lorem Ipsum is simply dummy text of the printing
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li class="li_product_buy_button">
-                                                            <a class="btn btn-default" id="but" href="cart.html" role="button" >
-                                                                Buy Now!
-                                                            </a>
-                                                            <div class="pull-right">
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-heart"></i></button>
-                                                                <button  type="button" class="btn btn-primary wish_button"><i class="fa fa-exchange"></i></button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                            <div class="footer-one__right-single-services">
+                                                <ul class="footer-one__right-single-list">
+                                                    <li><a href="services.html">Lawn Moving</a></li>
+                                                    <li><a href="services.html">Hedge Cutting</a></li>
+                                                    <li><a href="services.html">Flower Planting</a></li>
+                                                    <li><a href="services.html">Working Process</a></li>
+                                                    <li><a href="services.html">Garden Restoration</a></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
+                                    <!--End Footer One Right Single-->
+
+                                    <!--Start Footer One Right Single-->
+                                    <div class="col-xl-3 col-lg-3 wow animated fadeInUp" data-wow-delay="0.3s">
+                                        <div class="footer-one__right-single mb50">
+                                            <div class="title">
+                                                <h2>Links</h2>
+                                            </div>
+                                            <div class="footer-one__right-single-links">
+                                                <ul class="footer-one__right-single-list">
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="team.html">Our Team</a></li>
+                                                    <li><a href="contact.html">Contact Us</a></li>
+                                                    <li><a href="#">Our History</a></li>
+                                                    <li><a href="#">Testimonials</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Footer One Right Single-->
+
+                                    <!--Start Footer One Right Single-->
+                                    <div class="col-xl-5 col-lg-5 wow animated fadeInUp" data-wow-delay="0.4s">
+                                        <div class="footer-one__right-single">
+                                            <div class="title">
+                                                <h2>Contact</h2>
+                                            </div>
+                                            <div class="footer-one__right-single-contact">
+                                                <p> <a href="mailto:yourmail@email.com">needhelp@company.com</a>
+                                                    <br> 80 Broklyn Road Street <br>
+                                                    New York. USA</p>
+                                                <a href=" mailto:yourmail@email.com">info@example.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Footer One Right Single-->
                                 </div>
-                                <!----content_3 End--!-->
+
+                                <div class="footer-one__right-bottom wow animated fadeInUp" data-wow-delay="0.1s">
+                                    <ul class="social-links">
+                                        <li> <a href="#"><span class="icon-twitter"></span></a> </li>
+                                        <li> <a href="#"><span class="icon-facebook"></span></a> </li>
+                                        <li> <a href="#"><span class="icon-pinterest"></span></a> </li>
+                                        <li> <a href="#"><span class="icon-instagram"></span></a> </li>
+                                    </ul>
+
+                                    <div class="footer-one__right-bottom-contact">
+                                        <div class="icon-box">
+                                            <span class="icon-phone-call"></span>
+                                        </div>
+                                        <div class="content-box">
+                                            <p>Call Anytime</p>
+                                            <h4><a href="tel:9288006780">+92 ( 8800 ) - 6780</a></h4>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-
                         </div>
-
+                        <!--End Footer One Right-->
                     </div>
-
                 </div>
             </div>
-        </div>
+            <!--End Footer-->
 
 
-
-        <div id="footer1">
-            <div class="container-fluid footer-background">
-                <div class="row">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-3 col-xs-12 txt-center">
-                                <a href="home.html">
-                                    <span class="logo-text">DRUGSTORE</span>
-                                </a>
-                            </div>
-                            <div class="col-md-7 col-sm-6 col-xs-12">
-                                <div id="footer_menu">
-                                    <a href="home.html">Home</a> | 
-                                    <a href="#">About Us</a> | 
-                                    <a href="#">Disclaimer</a> | 
-                                    <a href="#">Guarantee</a> | 
-                                    <a href="#">Shipping & Payment</a> | 
-                                    <a href="#">Privacy Policy</a> <br class="disable_content" />
-                                    <a href="#">Terms & Conditions</a> | 
-                                    <a href="#">Contact Us</a> | 
-                                    <a href="#">Site Map<span></span></a>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                <div id="social_icons" class="pull-right">
-                                    <a href="#" class="btn btn-default reg_button"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="btn btn-default reg_button"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="btn btn-default reg_button"><i class="fa fa-yahoo"></i></a>
-                                    <a href="#" class="btn btn-default reg_button"><i class="fa fa-envelope"></i></a>
-                                    <a href="#" class="btn btn-default reg_button"><i class="fa fa-linkedin"></i></a>	
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="copyright">
-                                    <!--Do not remove Backlink from footer of the template. To remove it you can purchase the Backlink !-->
-                                    © 2017 All right reserved. Designed by
-                                    <a href="http://www.themevault.net/" target="_blank">ThemeVault.</a>
-                                </div>
-                            </div>
+            <div class="footer-one__bottom">
+                <div class="container">
+                    <div class="bottom-inner">
+                        <div class="copyright">
+                            <p>Copyright © 2023 All Rights Reserved.</p>
                         </div>
+
+                        <ul class="footer-one__bottom-menu">
+                            <li><a href="about.html">Terms & Condition</a></li>
+                            <li><a href="about.html">Privacy </a></li>
+                            <li><a href="about.html">Support</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-        </div>
-        <a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
+        </footer>
+        <!--End Footer One-->
 
 
     <!-- the stoping loop -->

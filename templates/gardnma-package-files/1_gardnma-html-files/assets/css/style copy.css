@@ -88,8 +88,8 @@ a:focus, a:hover{
 }
 
 select.form-control, textarea.form-control, input.form-control[type="text"], input.form-control[type="password"], input.form-control[type="datetime"], input.form-control[type="datetime-local"], input.form-control[type="date"], input.form-control[type="month"], input.form-control[type="time"], input.form-control[type="week"], input.form-control[type="number"], input.form-control[type="email"], input.form-control[type="url"], input.form-control[type="search"], input.form-control[type="tel"], input.form-control[type="color"] {
-    //  border-radius: 0;
-    font-size: 14px;
+     border-radius: 0;
+    font-size : 14px;
 }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus{
     outline: none;
@@ -123,9 +123,8 @@ body
 }
 #top_right
 {
-    /*	float:right;
-            width:700px;*/
-    width: auto;/* 11/03*/
+    padding-left: 4000px;
+    width: auto;
 }
 .pl-0 .dropdown-menu, .pl_0 .dropdown-menu{
     left: auto;
@@ -149,11 +148,11 @@ body
 }
 #cart .cart_total
 {
-    color:#82B100;
+    color: #79b823;;
 }
 #cart .cart_items
 {
-    color:#28A7DC;
+    color:#000000;
 }
 #cart .img
 {
@@ -166,7 +165,7 @@ body
 {
     /*    float: right;*/
     /*    height: 40px;*/
-    //  margin-top: 6px;
+    margin-top: 6px;
     line-height: 40px;
 
     /*padding-left: 70px;*/
@@ -183,15 +182,15 @@ body
 {
     font-size:30px;
 }
-#bottom_right 
+/* #bottom_right 
 {
-    /*	float:inherit;left*/
-    /*	height:100px;*/
-    //  height: auto;
-    //  width: auto;
+    float:inherit;left
+    height:100px;
+    height: auto;
+      width: auto;
     font-size:14px;
-    /*width:100%;*/
-}
+    width:100%;
+} */
 #bottom_right .left
 {
     /*	float:left;*/
@@ -246,7 +245,7 @@ body
     background: #aaaaaa;
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgxJSIgc3RvcC1jb2xvcj0iI2U3ZTZlNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlM2UzZTMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
     background: -moz-linear-gradient(top,  #ffffff 0%, #e7e6e6 81%, #e3e3e3 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(81%,#e7e6e6), color-stop(100%,#e3e3e3));
+    /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(81%,#e7e6e6), color-stop(100%,#e3e3e3)); */
     background: -webkit-linear-gradient(top,  #ffffff 0%,#e7e6e6 81%,#e3e3e3 100%);
     background: -o-linear-gradient(top,  #ffffff 0%,#e7e6e6 81%,#e3e3e3 100%); 
     background: -ms-linear-gradient(top,  #ffffff 0%,#e7e6e6 81%,#e3e3e3 100%);
@@ -1127,73 +1126,13 @@ textarea  { width:304px; background:#f1f1f1; border:1px solid #d8d8d8;border-rad
     height: 80px !important;
 }
 
-.bg-color{
-    background: #39BAF0 !important;
-    border-color: white !important;
-    box-shadow: 5px 5px 5px 0px gainsboro !important;
-    margin: 0px 0 10px 0 !important;
-}
-.navbar{
-    margin-bottom: 0px;
-}
-/*add css 21/03/16*/
-.navbar-inverse {
-
-    background: #39BAF0 !important;
-    border-color: transparent !important;
-    //border-radius: 10px !important;
-
-    /*    background:url(http://steroid-shop.local/images/menu-bg.png) no-repeat;*/
-
-}
-#a_hower_menu a{
-    display:block !important;
-    height:60px !important;
-    margin-top:3px !important;
-    color:#fff !important;
-    padding:0px 9px !important;
-    font-size: 13px !important;
-    text-decoration: none !important;
-    line-height: 50px !important;
-}
-.navbar-inverse .navbar-nav > li > a:hover {
-    background: #8EBE08 !important;
-    box-shadow: 1px 5px 5px 0px #888888 !important;
-    color:white !important;
-}
-.navbar-inverse .navbar-nav > li > a
-{
-    color:white !important;
-    text-transform: capitalize;
-}
-.select_extra
-{
-    background-color: #f1f1f1 !important;
-    border: 2px solid #d8d8d8 !important;
-    color: #7f7f7f !important;
-    font-size: 14px !important;
-    margin-top: 10px !important;
-    padding-top: 1px !important;
-    border-radius: 0 !important;
-
-}
 #search_manu .input-lg, #search_manu .input-group-addon, .navbar {
-    border-radius: 0px;
+    border-radius: 10px;
 }
-.input-group .form-control {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    // border-radius: 10px;
-    font-size: 13px;
-    background: #EAEAEA;
 
-    border: medium none;
-    /*    height: 40px;*/
-    outline: medium none;
-
-}
 .input-group-addon {
-    background: #8EBE08 !important;
+    border-radius: 100px;
+    background: #79b823 !important;
     /*    padding-right: 25px !important;*/
 
 }
@@ -1206,8 +1145,7 @@ textarea  { width:304px; background:#f1f1f1; border:1px solid #d8d8d8;border-rad
     color: white !important;
     border-radius: 0 !important;
     border: none;
-    font-weight: 600;
-    transition: background 0.5s;    
+    font-weight: 600;  
 }
 
 .btn-default:hover {
@@ -1267,16 +1205,16 @@ textarea  { width:304px; background:#f1f1f1; border:1px solid #d8d8d8;border-rad
     border: 1px solid transparent !important;
 }
 .continue_button{
-    background: #7AA307 !important;
+    background: #79b823 !important;
     color: #FFFFFF !important;
 }
 
 .login_button{
-    background: #7AA307 !important;
+    background: #79b823 !important;
     color: #FFFFFF !important;
 }
 .checkout_button{
-    background: #7AA307 !important;
+    background: #79b823 !important;
     color: #FFFFFF !important;
     font-weight: bold !important;
     border-radius: 10px !important;
@@ -1296,7 +1234,7 @@ textarea  { width:304px; background:#f1f1f1; border:1px solid #d8d8d8;border-rad
     margin: 20px 0 20px 0;
 }
 .cart_button{
-    background: #7AA307 !important;
+    background: #79b823 !important;
     color: #FFFFFF !important;
 }
 .cat_product .cat_prod_image{
@@ -1344,7 +1282,7 @@ select.arrow-hide {
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
     background: #39baf0;
     border: 1px solid #39baf0;
-    // border-radius: 5px;
+    border-radius: 5px;
 }
 
 
