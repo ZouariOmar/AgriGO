@@ -52,7 +52,7 @@
         <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
 
 
-         <!-- loop -->
+        <!-- loop -->
         <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
         <!-- template styles -->
         <link rel="stylesheet" href="assets/css/style.css" />
