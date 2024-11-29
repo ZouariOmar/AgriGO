@@ -38,7 +38,7 @@ $identifiant = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'id indispon
     <h1 class="text-logo"><span class="glyphicon glyphicon-grain"></span> Checkout <span class="glyphicon glyphicon-grain"></span></h1>  
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="../index.php">Nos produits</a></li>
+            <li class="active"><a href="/AgriGo/index.php">Nos produits</a></li>
         </ul>
     </div>
     <div class="row">
@@ -123,10 +123,10 @@ $identifiant = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'id indispon
         doc.text(`ID Utilisateur: ${user_id}`, 10, 40);
         doc.text(`ID Article: ${article_id}`, 10, 50);
         doc.text(`Adresse de livraison: ${shippingAddress}`, 10, 60);
-        doc.text(`Méthode de paiement: ${document.getElementById("paymentMethod").value}`, 10, 70);
-        doc.text(`Lieu de départ: ${location}`, 10, 80);
-        doc.text(`Date de départ: ${date_depart}`, 10, 90);
-        doc.text(`Date d'arrivée: ${date_arrivee}`, 10, 100);
+        doc.text(`Methode de paiement: ${document.getElementById("paymentMethod").value}`, 10, 70);
+        doc.text(`Lieu de depart: ${location}`, 10, 80);
+        doc.text(`Date de depart: ${date_depart}`, 10, 90);
+        doc.text(`Date d'arrivee: ${date_arrivee}`, 10, 100);
         doc.text(`Email: ${email}`, 10, 110);
 
         doc.save("commande.pdf");  // Save the file

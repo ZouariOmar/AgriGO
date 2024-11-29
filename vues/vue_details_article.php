@@ -13,7 +13,7 @@
         <h1 class="text-logo"><span class="glyphicon glyphicon-grain"></span>Details De l'Article<span class="glyphicon glyphicon-grain"></span></h1>    
         <div id="panier" class="fond-dark text-dark">
             <p>Votre panier d'achat
-                <a href="../index.php?action=5" class="btn btn-info btn-lg">
+                <a href="../AgriGo/index.php?action=5" class="btn btn-info btn-lg">
                     <span class="glyphicon glyphicon-shopping-cart"></span> 
                         <?=empty($totalArticles)?"0 ":$totalArticles." "?>article(s)
                 </a>
@@ -21,7 +21,7 @@
         </div>
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li ><a href="../index.php">Nos produits</a></li>
+                <li ><a href="../AgriGo/index.php">Nos produits</a></li>
                 
             </ul>
         </div>

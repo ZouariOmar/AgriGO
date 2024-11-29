@@ -4,7 +4,7 @@
     <h1 class="text-logo"><span class="glyphicon glyphicon-grain"></span> Cart Page <span class="glyphicon glyphicon-grain"></span></h1>  
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="../index.php">Nos produits</a></li>
+            <li class="active"><a href="/AgriGo/index.php">Nos produits</a></li>
         </ul>
     </div>
     <div class="row">
@@ -74,7 +74,7 @@
                                 </td>
                                 <td><?= number_format($prix * $quantite, 2) . "DT" ?></td>
                                 <td>
-                                    <a href="index.php?action=3&id=<?= $identifiant ?>&quantite=<?= $quantite ?>" class="btn btn-primary">
+                                    <a href="/AgriGo/index.php?action=3&id=<?= $identifiant ?>&quantite=<?= $quantite ?>" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-remove-sign"></span> Supprimer l'article
                                     </a>
                                 </td>
