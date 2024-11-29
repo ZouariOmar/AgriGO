@@ -108,7 +108,7 @@
                     <img id="felicitations" src="/images/animations/felicitations.gif">
                 </div>
                 <div>
-                    <a href="../index.php">Retour à la page d'accueil</a>
+                    <a href="../AgriGo/index.php">Retour à la page d'accueil</a>
                 </div>
             </div>
         </div>

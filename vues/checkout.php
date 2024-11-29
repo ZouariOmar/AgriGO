@@ -17,7 +17,7 @@ try {
 $titre = "Checkout Page"; 
 
 // Fetch usr_id from the 'commande' table
-$sql = "SELECT usr_id FROM commande LIMIT 1";  // Fetch one usr_id from the 'commande' table
+$sql = "SELECT usr_id FROM commande ";  // Fetch one usr_id from the 'commande' table
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
