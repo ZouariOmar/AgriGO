@@ -521,16 +521,18 @@ $user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/def
 											</p>
 										</div>
 									</div>
-									<form id="formAccountDeactivation" onsubmit="return false">
+									<article>
 										<div class="form-check mb-3" onclick="accountDeactivation()">
 											<input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" />
 											<label class="form-check-label" for="accountActivation">I confirm my account
 												deactivation</label>
 										</div>
-										<button type="submit" class="btn btn-danger deactivate-account" id="accountDeactivate" disabled>
-											Deactivate Account
-										</button>
-									</form>
+										<a href="../Controllers/setUsrStatus.php?admin_id=<?php $admin_id ?>&id=<?php $admin_id ?>&status=SUSPENDED">
+											<input value="Deactivate Account" type="submit" class="btn btn-danger deactivate-account"
+												id="accountDeactivate" disabled>
+											</input>
+										</a>
+									</article>
 								</div>
 							</div>
 						</div>

@@ -69,7 +69,8 @@ function users_table($array, $admin_id)
  * ### Del admin to admin actions
  * @return string
  */
-function del_AToAA($raw, $admin_id) {
+function del_AToAA($raw, $admin_id)
+{
     if ($raw['Role_ID'] != 2) {
         return '
         <div class="dropdown">
@@ -88,11 +89,39 @@ function del_AToAA($raw, $admin_id) {
                 <a
                     class="dropdown-item"
                     href="../Controllers/setUsrStatus.php?admin_id=' . $admin_id . '&id=' . $raw['ID'] . '&status=' . ($raw['Status'] == 'SUSPENDED' ? 'ACTIVE' : 'SUSPENDED') . '"
-                    ><i class=" ' . ($raw['Status'] == 'SUSPENDED' ? 'bx bx-lock-open' : 'bx bx-block') . ' me-1"></i> '. ($raw['Status'] == 'SUSPENDED' ? 'Reactive' : 'Suspend') . '</a
+                    ><i class=" ' . ($raw['Status'] == 'SUSPENDED' ? 'bx bx-lock-open' : 'bx bx-block') . ' me-1"></i> ' . ($raw['Status'] == 'SUSPENDED' ? 'Reactive' : 'Suspend') . '</a
                 >
             </div>
         </div>
         ';
     }
     return '';
+}
+
+/**
+ * Summary of is_suspend
+ * * Verify if the user is suspended or not
+ * @param string $redirection
+ * @return void
+ */
+function is_suspend($user_id, $redirection)
+{
+    
+    include_once '../../conf/database.php';
+
+    //* Connect to the DB
+    $db = new Database('../../');
+
+    // Fetch the `user` using `id` to verify if the user is suspended or not
+    $user = $db->query("SELECT Status FROM Usrs WHERE ID = :id", [
+        'id' => $user_id
+    ]);
+
+    echo 'her';
+
+    if ($user[0]['Status'] == 'SUSPENDED') {
+        $_SESSION['status'] = 'You Are SUSPENDED!';
+        header($redirection);
+        exit();
+    }
 }

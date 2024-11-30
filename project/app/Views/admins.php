@@ -12,6 +12,9 @@ unset($_SESSION['status']);
 // Fetch the GET Request
 $admin_id = $_GET['id'];
 
+// Verify if the user is suspended or not
+is_suspend($admin_id, 'Location: login.php');
+
 //* Connect to the DB
 $db = new Database('../../');
 

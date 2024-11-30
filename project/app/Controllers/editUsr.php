@@ -81,18 +81,19 @@ class Edit_user
   private function update_user_profile()
   {
     $img_id = $this->update_user_image();
-    $this->db->query("UPDATE Usr_Profile SET 
-        Image_ID = :Image_ID,
-        First_Name = :First_Name,
-        Last_Name = :Last_Name,
-        Tel = :Tel,
-        Sex = :Sex,
-        State = :State,
-        Address = :Address,
-        Zip_Code = :Zip_Code,
-        About = :About
-    WHERE Usr_ID = :id", [
-      "Image_ID" => $img_id,
+
+    // Base SQL and parameters
+    $sql = "UPDATE Usr_Profile SET 
+    First_Name = :First_Name,
+    Last_Name = :Last_Name,
+    Tel = :Tel,
+    Sex = :Sex,
+    State = :State,
+    Address = :Address,
+    Zip_Code = :Zip_Code,
+    About = :About";
+
+    $params = [
       "First_Name" => $_POST['firstName'],
       "Last_Name" => $_POST['lastName'],
       "Tel" => $_POST['tel'],
@@ -102,7 +103,18 @@ class Edit_user
       "Zip_Code" => $_POST['zipCode'],
       "About" => $_POST['about'],
       "id" => $this->user_id
-    ]);
+    ];
+
+    // Include Image_ID only if it's not `null`
+    if ($img_id !== null) {
+      $sql .= ", Image_ID = :Image_ID";
+      $params["Image_ID"] = $img_id;
+    }
+
+    $sql .= " WHERE Usr_ID = :id";
+
+    // Execute the query
+    $this->db->query($sql, $params);
   }
 
   /**

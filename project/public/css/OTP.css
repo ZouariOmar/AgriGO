@@ -15,11 +15,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 15rem 0;
-	background: #00712D;
 }
 
 .card {
-	backdrop-filter: blur(16px) saturate(180%);
+	backdrop-filter: blur(16px) ;
 	-webkit-backdrop-filter: blur(16px) saturate(180%);
 	background-color: rgba(0, 0, 0, 0.869);
 	border-radius: 12px;

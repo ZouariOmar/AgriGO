@@ -1,7 +1,9 @@
 <?php
 //? Include declaration part
-include '../../../vendor/autoload.php';  // Load Composer autoload
-include "../../conf/database.php";
+include_once '../../../vendor/autoload.php';
+include_once "../../conf/database.php";
+include_once '../components/custom.php';
+
 
 //* Connect to the DB
 $db = new Database('../../');
@@ -22,6 +24,10 @@ try {
   }
 
   $user_id = $login_user[0]; // Retrieve the first (and only) result
+
+  // Verify if the user is suspended or not
+  is_suspend($user_id['ID'], 'Location: ../Views/login.php');
+
   // Assign login_history to user in `Login_History` table (INSERT action)
   $sql_assign_history = "INSERT INTO Login_History (Usr_ID, IP_Address, Usr_Host, Server_Address, Server_Name, Server_Protocol, Status)
                       VALUES (:user_id, :ip_address, :user_host, :server_address, :server_name, :server_protocol, :status)";

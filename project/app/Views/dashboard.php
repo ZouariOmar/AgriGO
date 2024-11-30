@@ -12,26 +12,37 @@ unset($_SESSION['status']);
 // Fetch the GET Request
 $admin_id = $_GET['id'];
 
+// Verify if the user is suspended or not
+is_suspend($admin_id, 'Location: login.php');
+
 //* Connect to the DB
 $db = new Database('../../');
 
-// Select with role
-$sql = "SELECT U.* FROM Usrs AS U
-				JOIN Usr_Roles AS UR ON U.ID = UR.Usr_ID
-    		WHERE UR.Role_ID = :role
-";
+// Fetch the `user profile` using `id`
+$user_profile = $db->query("SELECT * FROM Usr_Profile WHERE Usr_ID = :id", [
+	'id' => $admin_id
+]);
+$user_profile = $user_profile[0];  // Select the first (and only) result
 
-// Fetch all users
-$clients = $db->query($sql, [
-	'role' => 3
+// Fetch the `usr image` profile using `image id`
+$user_profile_image = $db->query("SELECT * FROM Images WHERE Image_ID = :Image_ID", [
+	'Image_ID' => $user_profile['Image_ID']
 ]);
-$farmers = $db->query($sql, [
-	'role' => 4
-]);
-$admins = $db->query($sql, [
-	'role' => 2
-]);
+$user_profile_image = $user_profile_image[0]['Path'] ?? '<?php echo $user_profile_image ?>';  // Select the first (and only) result
 
+// Retrieve the number of users
+$result = $db->query("SELECT 
+        SUM(CASE WHEN Role_ID = 3 THEN 1 ELSE 0 END) AS client_count,
+        SUM(CASE WHEN Role_ID = 4 THEN 1 ELSE 0 END) AS farmer_count,
+        SUM(CASE WHEN Role_ID = 2 THEN 1 ELSE 0 END) AS admin_count
+    FROM Usr_Roles
+");
+
+// Retrieve users counts
+$client_count = $result[0]['client_count'] ?? 0;
+$farmer_count = $result[0]['farmer_count'] ?? 0;
+$admin_count = $result[0]['admin_count'] ?? 0;
+$total_count = $admin_count + $farmer_count + $client_count;
 ?>
 
 <!DOCTYPE html>
@@ -67,8 +78,8 @@ $admins = $db->query($sql, [
 
 	<!-- Vendors CSS -->
 	<link rel="stylesheet" href="../../../vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
 	<link rel="stylesheet" href="../../../vendor/libs/apex-charts/apex-charts.css" />
+	<link rel="stylesheet" href="../../public/css/sub_btns.css">
 
 	<!-- Helpers -->
 	<script src="../../../vendor/js/helpers.js"></script>
@@ -278,12 +289,18 @@ $admins = $db->query($sql, [
 						</div>
 						<!-- /Search -->
 
-						<ul class="navbar-nav flex-row align-items-center ms-auto">
+						<div class="ms-auto me-4">
+							<button class="button" id="cut"><span> Download</span></button>
+							<button class="button" id="copy"></><span> Copy</span></button>
+							<button class="button" id="paste"><span> Paste</span></button>
+						</div>
+
+						<ul class="navbar-nav flex-row align-items-center ">
 							<!-- User -->
 							<li class="nav-item navbar-dropdown dropdown-user dropdown">
 								<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
 									<div class="avatar avatar-online">
-										<img src="../../public/assets/default-user.png" alt class="w-px-40 h-auto rounded-circle" />
+										<img src="<?php echo $user_profile_image ?>" alt class="w-px-40 h-40 rounded-circle" />
 									</div>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end">
@@ -292,8 +309,7 @@ $admins = $db->query($sql, [
 											<div class="d-flex">
 												<div class="flex-shrink-0 me-3">
 													<div class="avatar avatar-online">
-														<img src="../../public/assets/default-user.png" alt
-															class="w-px-40 h-auto rounded-circle" />
+														<img src="<?php echo $user_profile_image ?>" alt class="w-px-40 h-40 rounded-circle" />
 													</div>
 												</div>
 												<div class="flex-grow-1">
@@ -342,13 +358,11 @@ $admins = $db->query($sql, [
 						</ul>
 					</div>
 				</nav>
-
 				<!-- / Navbar -->
 
 				<!-- Content wrapper -->
 				<div class="content-wrapper">
 					<!-- Content -->
-
 					<div class="container-xxl flex-grow-1 container-p-y">
 						<div class="row">
 							<?php if ($status)
@@ -359,7 +373,6 @@ $admins = $db->query($sql, [
 									document.getElementById('alert1').style.display = 'none';
 								}, 3000);
 							</script>
-
 
 							<div class="col-lg-8 mb-4 order-0">
 								<div class="card">
@@ -576,8 +589,8 @@ $admins = $db->query($sql, [
 								<div class="card h-100">
 									<div class="card-header d-flex align-items-center justify-content-between pb-0">
 										<div class="card-title mb-0">
-											<h5 class="m-0 me-2">Order Statistics</h5>
-											<small class="text-muted">42.82k Total Sales</small>
+											<h5 class="m-0 me-2">Platform User Insights</h5>
+											<small class="text-muted">Tracking total registrations on Lance</small>
 										</div>
 										<div class="dropdown">
 											<button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
@@ -585,8 +598,8 @@ $admins = $db->query($sql, [
 												<i class="bx bx-dots-vertical-rounded"></i>
 											</button>
 											<div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-												<a class="dropdown-item" href="javascript:void(0);">Select All</a>
-												<a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+												<a class="dropdown-item" href="javascript:void(0);"
+													onclick="window.location.reload(true);">Refresh</a>
 												<a class="dropdown-item" href="javascript:void(0);">Share</a>
 											</div>
 										</div>
@@ -594,66 +607,57 @@ $admins = $db->query($sql, [
 									<div class="card-body">
 										<div class="d-flex justify-content-between align-items-center mb-3">
 											<div class="d-flex flex-column align-items-center gap-1">
-												<h2 class="mb-2">8,258</h2>
-												<span>Total Orders</span>
+												<h2 class="mb-2"><?php echo $client_count + $farmer_count + $admin_count ?></h2>
+												<span>Registered Users</span>
 											</div>
 											<div id="orderStatisticsChart"></div>
-											<input id="test" type="number" value="200" style="display: none;" />
+											<input id="clients_count" type="number" value="<?php echo $client_count ?>"
+												style="display: none;" />
+											<input id="farmers_count" type="number" value="<?php echo $farmer_count ?>"
+												style="display: none;" />
+											<input id="admins_count" type="number" value="<?php echo $admin_count ?>"
+												style="display: none;" />
 										</div>
 										<ul class="p-0 m-0">
 											<li class="d-flex mb-4 pb-1">
 												<div class="avatar flex-shrink-0 me-3">
-													<span class="avatar-initial rounded bg-label-primary"><i class="bx bx-mobile-alt"></i></span>
+													<span class="avatar-initial rounded bg-label-primary"><i class="bx bx-face"></i></span>
 												</div>
 												<div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
 													<div class="me-2">
-														<h6 class="mb-0">Electronic</h6>
-														<small class="text-muted">Mobile, Earbuds, TV</small>
+														<h6 class="mb-0">Clients</h6>
+														<small class="text-muted">Total registered clients</small>
 													</div>
 													<div class="user-progress">
-														<small class="fw-semibold">82.5k</small>
+														<small class="fw-semibold"><?php echo $client_count ?></small>
 													</div>
 												</div>
 											</li>
 											<li class="d-flex mb-4 pb-1">
 												<div class="avatar flex-shrink-0 me-3">
-													<span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
+													<span class="avatar-initial rounded bg-label-success"><i class="bx bxs-face"></i></span>
 												</div>
 												<div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
 													<div class="me-2">
-														<h6 class="mb-0">Fashion</h6>
-														<small class="text-muted">T-shirt, Jeans, Shoes</small>
+														<h6 class="mb-0">Farmers</h6>
+														<small class="text-muted">Total registered farmers</small>
 													</div>
 													<div class="user-progress">
-														<small class="fw-semibold">23.8k</small>
+														<small class="fw-semibold"><?php echo $farmer_count ?></small>
 													</div>
 												</div>
 											</li>
 											<li class="d-flex mb-4 pb-1">
 												<div class="avatar flex-shrink-0 me-3">
-													<span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
+													<span class="avatar-initial rounded bg-label-info"><i class="bx bxs-user"></i></span>
 												</div>
 												<div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
 													<div class="me-2">
-														<h6 class="mb-0">Decor</h6>
-														<small class="text-muted">Fine Art, Dining</small>
+														<h6 class="mb-0">Admins</h6>
+														<small class="text-muted">Total registered admins </small>
 													</div>
 													<div class="user-progress">
-														<small class="fw-semibold">849k</small>
-													</div>
-												</div>
-											</li>
-											<li class="d-flex">
-												<div class="avatar flex-shrink-0 me-3">
-													<span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
-												</div>
-												<div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-													<div class="me-2">
-														<h6 class="mb-0">Sports</h6>
-														<small class="text-muted">Football, Cricket Kit</small>
-													</div>
-													<div class="user-progress">
-														<small class="fw-semibold">99</small>
+														<small class="fw-semibold"><?php echo $admin_count ?></small>
 													</div>
 												</div>
 											</li>
@@ -664,40 +668,41 @@ $admins = $db->query($sql, [
 							<!--/ Order Statistics -->
 
 							<!-- Expense Overview -->
-							<div class="col-md-6 col-lg-4 order-1 mb-4">
+
+							<div class="col-md-6 col-lg-8 order-1 mb-4">
 								<div class="card h-100">
-									<div class="card-header">
-										<ul class="nav nav-pills" role="tablist">
-											<li class="nav-item">
-												<button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-													data-bs-target="#navs-tabs-line-card-income" aria-controls="navs-tabs-line-card-income"
-													aria-selected="true">
-													Income
-												</button>
-											</li>
-											<li class="nav-item">
-												<button type="button" class="nav-link" role="tab">
-													Expenses
-												</button>
-											</li>
-											<li class="nav-item">
-												<button type="button" class="nav-link" role="tab">
-													Profit
-												</button>
-											</li>
-										</ul>
+									<div class="card-header d-flex align-items-center justify-content-between pb-0">
+										<div class="card-title mb-0">
+											<h5 class="m-0 me-2">User Statistics Overview</h5>
+											<small class="text-muted">Total registered users over the past year</small>
+										</div>
+										<div class="dropdown">
+											<button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">
+												<i class="bx bx-dots-vertical-rounded"></i>
+											</button>
+											<div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+												<a class="dropdown-item" href="javascript:void(0);"
+													onclick="window.location.reload(true);">Refresh</a>
+												<a class="dropdown-item" href="javascript:void(0);">Share</a>
+											</div>
+										</div>
 									</div>
 									<div class="card-body px-0">
 										<div class="tab-content p-0">
 											<div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
 												<div class="d-flex p-4 pt-3">
 													<div class="avatar flex-shrink-0 me-3">
-														<img src="../../public/assets/imgs/icons/unicons/wallet.png" alt="User" />
+														<img src="../../public/assets/imgs/icons/unicons/chart.png" alt="User" />
 													</div>
 													<div>
-														<small class="text-muted d-block">Total Balance</small>
+														<small class="text-muted d-block">Total Registration for
+															<script>
+																document.write(new Date().getFullYear());
+															</script>
+														</small>
 														<div class="d-flex align-items-center">
-															<h6 class="mb-0 me-1">$459.10</h6>
+															<h6 class="mb-0 me-1"><?php echo $total_count ?> User</h6>
 															<small class="text-success fw-semibold">
 																<i class="bx bx-chevron-up"></i>
 																42.9%
@@ -836,6 +841,59 @@ $admins = $db->query($sql, [
 								</div>
 							</div>
 							<!--/ Transactions -->
+
+							<!-- Todo list -->
+							<div class="col-md-6 col-lg-6 order-2">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">To do list</h4>
+										<div class="add-items d-flex">
+											<input type="text" class="form-control todo-list-input" placeholder="enter task..">
+											<button class="add btn btn-primary todo-list-add-btn">Add</button>
+										</div>
+										<div class="list-wrapper">
+											<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+												<li>
+													<div class="form-check form-check-primary">
+														<label class="form-check-label">
+															<input class="checkbox" type="checkbox"> Create invoice </label>
+													</div>
+													<i class="remove mdi mdi-close-box"></i>
+												</li>
+												<li>
+													<div class="form-check form-check-primary">
+														<label class="form-check-label">
+															<input class="checkbox" type="checkbox"> Meeting with Alita </label>
+													</div>
+													<i class="remove mdi mdi-close-box"></i>
+												</li>
+												<li class="completed">
+													<div class="form-check form-check-primary">
+														<label class="form-check-label">
+															<input class="checkbox" type="checkbox" checked> Prepare for presentation </label>
+													</div>
+													<i class="remove mdi mdi-close-box"></i>
+												</li>
+												<li>
+													<div class="form-check form-check-primary">
+														<label class="form-check-label">
+															<input class="checkbox" type="checkbox"> Plan weekend outing </label>
+													</div>
+													<i class="remove mdi mdi-close-box"></i>
+												</li>
+												<li>
+													<div class="form-check form-check-primary">
+														<label class="form-check-label">
+															<input class="checkbox" type="checkbox"> Pick up kids from school </label>
+													</div>
+													<i class="remove mdi mdi-close-box"></i>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- / Todo list -->
 						</div>
 					</div>
 					<!-- / Content -->
@@ -880,8 +938,7 @@ $admins = $db->query($sql, [
 	<!-- / Layout wrapper -->
 
 	<div class="buy-now">
-		<a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
-			class="btn btn-danger btn-buy-now">New Event</a>
+		<a href="#" target="_blank" class="btn btn-danger btn-buy-now">New Event</a>
 	</div>
 
 	<!-- Core JS -->
@@ -902,6 +959,7 @@ $admins = $db->query($sql, [
 
 	<!-- Page JS -->
 	<script src="../../public/js/dashboards-analytics.js"></script>
+	<script src="../../public/js/todolist.js"></script>
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
