@@ -3,57 +3,87 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;  /* Light gray background */
-    color: #333;  /* Dark text color for contrast */
-}
-
-/* Styling the Add Report link */
-a {
-    text-decoration: none;
-    color: #fff;
-    background-color: #28a745;  /* Green background */
-    padding: 12px 24px;
-    border-radius: 8px;
-    display: inline-block;
-    margin: 20px 0;
-    font-weight: bold;
-    text-align: center;
-}
-
-a:hover {
-    background-color: #218838;  /* Darker green on hover */
+    background-color: #f4f7f6;
+    color: #333;
 }
 
 /* Title styling */
-h1 {
+.reports-title {
     text-align: center;
-    color: #28a745;  /* Green color */
+    color: #28a745;
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-/* Table styling */
-table {
+/* Styling the Add Report link */
+.reports-add-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: #28a745;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 20px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.reports-add-link:hover {
+    background-color: #218838;
+}
+
+/* Filter form styling */
+.reports-filter-form {
     width: 90%;
-    margin: 20px auto;  /* Add margin on top and bottom of the table */
-    padding: 15px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+.reports-filter-form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.reports-category-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.reports-filter-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.reports-filter-button:hover {
+    background-color: #218838;
+}
+
+/* Table styling */
+.reports-table {
+    width: 90%;
+    margin: 20px auto;
     border-collapse: collapse;
-    background-color: #fff;  /* White background for the table */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Table header styling */
-th {
-    background-color: #28a745;  /* Green background */
+.reports-table-header {
+    background-color: #28a745;
     color: white;
     padding: 12px 15px;
     text-align: left;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
 }
 
 /* Table data cell styling */
-td {
+.reports-table-cell {
     border: 1px solid #ddd;
     padding: 12px 15px;
     text-align: left;
@@ -61,17 +91,17 @@ td {
 }
 
 /* Alternate row coloring */
-tr:nth-child(even) {
-    background-color: #f9f9f9;  /* Light gray for alternate rows */
+.reports-table-row:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 /* Table row hover effect */
-tr:hover {
-    background-color: #e2f9e1;  /* Light green background on hover */
+.reports-table-row:hover {
+    background-color: #e2f9e1;
 }
 
-/* Form button styling */
-input[type="submit"] {
+/* Form button styling within table */
+.report-update-button {
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
@@ -82,18 +112,18 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-input[type="submit"]:hover {
+.report-update-button:hover {
     background-color: #218838;
 }
 
 /* Delete link styling */
-a.delete-link {
-    color: #dc3545;  /* Red color for delete link */
+.report-delete-link {
+    color: #dc3545;
     text-decoration: none;
     font-weight: bold;
 }
 
-a.delete-link:hover {
+.report-delete-link:hover {
     text-decoration: underline;
 }
 
@@ -102,10 +132,10 @@ a.delete-link:hover {
     body {
         padding: 10px;
     }
-    table {
+    .reports-table {
         font-size: 12px;
     }
-    a {
+    .reports-add-link {
         padding: 10px 20px;
     }
 }

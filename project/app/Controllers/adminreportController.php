@@ -69,35 +69,49 @@ class adminreportController
 
 
 
-    function adminupdateReport($report, $id) {
-        $db = config::getConnexion();
     
-        try {
     
-            // Prepare query
-            $query = $db->prepare(
-                'UPDATE rapportstat SET 
-                    ST = :st
-                WHERE StatID = :id'
-            );
-    
-            // Execute query
-            $query->execute([
-                'st' => $report->getST(),
-                'id' => $id  
-            ]);
-    
-            // Check for success
-            if ($query->rowCount() > 0) {
-                return true; // Success
-            } else {
-                return false; // No rows updated
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+function updateReportStatus($id, $status)
+{
+    $db = config::getConnexion();
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Log values for debugging
+    error_log("Debug: Status = '" . $status . "', ID = '" . $id . "'");
+
+    if (empty($status) || empty($id)) {
+        error_log("Error: Invalid values for status or ID.");
+        return false;
+    }
+
+    try {
+        $query = $db->prepare(
+            'UPDATE `rapportstat` SET 
+                `ST` = :st 
+            WHERE `StatID` = :id'
+        );
+
+        // Execute the query
+        $result = $query->execute([
+            'st' => $status,
+            'id' => $id
+        ]);
+
+        // Log the result
+        error_log("Query executed. Result: " . var_export($result, true));
+
+        if ($query->rowCount() > 0) {
+            error_log("Update successful.");
+            return true;
+        } else {
+            error_log("No rows updated.");
             return false;
         }
+    } catch (PDOException $e) {
+        error_log("PDO Exception: " . $e->getMessage());
+        return false;
     }
+}
 
 
 

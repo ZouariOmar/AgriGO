@@ -1,8 +1,7 @@
 <?php
 
-
-include "../Models/Report.php";  // Include the model for report
-include "../Controllers/adminreportController.php";  // Include the controller
+include "../Models/adminreport.php";  
+include "../Controllers/adminreportController.php";  
 
 ob_start(); // Make sure no output is sent before headers
 
@@ -26,29 +25,26 @@ if (isset($_POST['id']) || isset($_GET['id'])) {
 }
 
 // Handle form submission
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Statue'])) {
-    // Check if the Status field is populated
-    if (!empty($_POST['Statue'])) {
-        echo "DEBUG: Received Status: " . htmlspecialchars($_POST['Statue']) . "<br>";
-        echo "DEBUG: Report ID: " . htmlspecialchars($report_id) . "<br>";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve and sanitize input values
+    $status = isset($_POST['ST']) ? trim($_POST['ST']) : '';
+    $report_id = isset($_POST['id']) ? trim($_POST['id']) : '';
 
-        // Create the report object
-        $adminreport = new adminreport(
-            null,  // Assuming StatRapportID is not being updated here
-            null,  // StatRapportID is not relevant for update
-            $_POST['Statue']
-        );
+    // Log values for debugging
+    error_log("Form Submission: Status = '" . $status . "', ID = '" . $report_id . "'");
 
+    // Check if the Status and ID fields are populated
+    if (!empty($status) && !empty($report_id)) {
         // Attempt to update the report status
-        if ($adminreportC->adminupdateReport($adminreport, $report_id)) {
+        if ($adminreportC->updateReportStatus($report_id, $status)) {
             header('Location: adminreportList.php');
             exit;
         } else {
             $error = "Update failed. Please check the update function.";
         }
     } else {
-        $error = "Error: Status field is required.";
+        $error = "Error: Status and ID fields are required.";
+        error_log($error);
     }
 }
 
@@ -99,10 +95,10 @@ ob_end_flush();
     <h1>Update Report Status</h1>
     <p>Select the new status for the report.</p>
     <form action="" method="POST">
-        <input type="hidden" name="StatRapportID" value="<?php echo $_GET['id']; ?>">
-        <button class="status-button received" name="Statue" value="RECIEVED">Recieved</button>
-        <button class="status-button in-process" name="Statue" value="IN PROCESS">In Process</button>
-        <button class="status-button done" name="Statue" value="DONE">Done</button>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($report_id); ?>">
+        <button class="status-button received" name="ST" value="RECIEVED">Recieved</button>
+        <button class="status-button in-process" name="ST" value="IN PROCESS">In Process</button>
+        <button class="status-button done" name="ST" value="DONE">Done</button>
     </form>
 </body>
 </html>

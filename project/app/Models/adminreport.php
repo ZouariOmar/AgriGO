@@ -45,7 +45,7 @@ class adminreport {
      *
      * @return  self
      */ 
-    public function setStatus($ST)
+    public function setST($ST)
     {
         $this->ST = $ST;
 

@@ -4,17 +4,26 @@ require_once "../config.php";
 class reportController
 {
 
-    public function reportList()
-    {
+    public function reportList($category = null) {
+        $db = config::getConnexion(); // Assurez-vous d'avoir la connexion à la base de données
         $sql = "SELECT * FROM rapports";
-        $conn = config::getConnexion();
-
-        try {
-            $liste = $conn->query($sql);
-            return $liste;
-        } catch (Exception $e) {
-            die('Erreur: ' . $e->getMessage());
+        
+        // Si une catégorie est spécifiée, ajoutez une condition WHERE
+        if ($category) {
+            $sql .= " WHERE category = :category";
         }
+        
+        $stmt = $db->prepare($sql);
+        
+        // Liez le paramètre de catégorie si nécessaire
+        if ($category) {
+            $stmt->bindParam(':category', $category);
+        }
+        
+        $stmt->execute();
+        
+        // Récupérez les résultats et retournez-les
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getReportById($id)
