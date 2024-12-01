@@ -77,40 +77,45 @@ if (isset($_POST['offre_id'])) {
         <link rel="stylesheet" href="assets/css/responsive.css" />
         <link rel="stylesheet" href="assets/css/style-2.css" />
 
+        <!-- the stoping loop -->
+        <script src="assets/vendors/timepicker/timePicker.js"></script>
+        <!-- Template js -->
+        <script src="assets/js/custom.js"></script>
+
 
     </head>
     <body>
             <!-- Start Preloader -->
-            <!-- <div class="loader-wrap">
-                <div class="preloader">
-                    <div class="preloader-close">x</div>
-                    <div id="handle-preloader" class="handle-preloader">
-                        <div class="animation-preloader">
-                            <div class="spinner"></div>
-                            <div class="txt-loading">
-                                <span data-text-preloader="A" class="letters-loading">
+        <div class="loader-wrap">
+            <div class="preloader">
+                <div class="preloader-close">x</div>
+                <div id="handle-preloader" class="handle-preloader">
+                    <div class="animation-preloader">
+                        <div class="spinner"></div>
+                        <div class="txt-loading">
+                            <span data-text-preloader="A" class="letters-loading">
                                     A
-                                </span>
-                                <span data-text-preloader="G" class="letters-loading">
+                            </span>
+                            <span data-text-preloader="G" class="letters-loading">
                                     G
-                                </span>
-                                <span data-text-preloader="R" class="letters-loading">
+                            </span>
+                            <span data-text-preloader="R" class="letters-loading">
                                     R
-                                </span>
-                                <span data-text-preloader="I" class="letters-loading">
+                            </span>
+                            <span data-text-preloader="I" class="letters-loading">
                                     I
-                                </span>
-                                <span data-text-preloader="G" class="letters-loading">
+                            </span>
+                            <span data-text-preloader="G" class="letters-loading">
                                     G
-                                </span>
-                                <span data-text-preloader="O" class="letters-loading">
+                            </span>
+                            <span data-text-preloader="O" class="letters-loading">
                                     O
-                                </span>
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
+        </div>
         <!-- End Preloader -->
 
 
@@ -747,10 +752,7 @@ if (isset($_POST['offre_id'])) {
     
     
     
-    <!-- the stoping loop -->
-    <script src="assets/vendors/timepicker/timePicker.js"></script>
-    <!-- Template js -->
-    <script src="assets/js/custom.js"></script>
+
 
 
 

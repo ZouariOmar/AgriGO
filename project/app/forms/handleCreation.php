@@ -7,9 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nom']) && isset($_POST['type'])) {
         $name = htmlspecialchars(trim($_POST['nom']));
         $type = htmlspecialchars(trim($_POST['type']));
+        $date_in = htmlspecialchars(trim($_POST['date_in']));
+        $date_out = htmlspecialchars(trim($_POST['date_out']));
+        $Qnt = htmlspecialchars(trim($_POST['Qnt']));
 
         $categorieController = new CategorieController();
-        if ($categorieController->createCategorie($name, $type)) {
+        if ($categorieController->createCategorie($name, $type,$date_in,$date_out,$Qnt)) {
             $message = "La catégorie a été créée avec succès.";
         } else {
             $message = "Erreur lors de la création de la catégorie. Veuillez réessayer.";

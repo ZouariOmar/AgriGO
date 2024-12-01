@@ -3,17 +3,20 @@ require_once '../Controllers/Categorie_Controller.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if all required fields are provided
-    if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['type'])) {
+    if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['type']) && isset($_POST['date_in']) && isset($_POST['date_out']) && isset($_POST['Qnt'])) {
         // Sanitize and trim input data to avoid SQL injection and XSS attacks
         $id = $_POST['id']; // Ensure ID is an integer
         $nom = htmlspecialchars(trim($_POST['nom']));
         $type = htmlspecialchars(trim($_POST['type']));
+        $date_in = htmlspecialchars(trim($_POST['date_in']));
+        $date_out = htmlspecialchars(trim($_POST['date_out']));
+        $Qnt = htmlspecialchars(trim($_POST['Qnt']));
 
         // Instantiate the controller
         $categorieController = new CategorieController();
 
         // Call the update method
-        if ($categorieController->updateCategorie($id, $nom, $type)) {
+        if ($categorieController->updateCategorie($id, $nom, $type, $date_in, $date_out, $Qnt)) {
             $message = "La catégorie a été mise à jour avec succès.";
         } else {
             $message = "Erreur lors de la mise à jour de la catégorie. Veuillez réessayer.";

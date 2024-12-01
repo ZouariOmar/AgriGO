@@ -58,9 +58,50 @@
         <link rel="stylesheet" href="assets/css/style.css" />
         <link rel="stylesheet" href="assets/css/responsive.css" />
         <link rel="stylesheet" href="assets/css/style-2.css" />
+        <!-- js scripts -->
+         <!-- the stoping loop -->
+        <script src="assets/vendors/timepicker/timePicker.js"></script>
+        <!-- Template js -->
+        <script src="assets/js/custom.js"></script>
+        <!-- search script -->
+        <script src="assets/js/search.js"></script>
 
     </head>
     <body>
+
+        <!-- Start Preloader -->
+        <div class="loader-wrap">
+        <div class="preloader">
+            <div class="preloader-close">x</div>
+            <div id="handle-preloader" class="handle-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                    <div class="txt-loading">
+                        <span data-text-preloader="A" class="letters-loading">
+                                        A
+                        </span>
+                        <span data-text-preloader="G" class="letters-loading">
+                                        G
+                        </span>
+                        <span data-text-preloader="R" class="letters-loading">
+                                        R
+                        </span>
+                        <span data-text-preloader="I" class="letters-loading">
+                                        I
+                        </span>
+                        <span data-text-preloader="G" class="letters-loading">
+                                        G
+                        </span>
+                        <span data-text-preloader="O" class="letters-loading">
+                                        O
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- End Preloader -->
+
 
     <!-- head -->
     <header class="main-header main-header-one">
@@ -275,7 +316,7 @@
                     <form  name="quick_find">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Enter search keywords here" class="form-control input-lg" id="inputGroup"/>
+                                <input type="text" placeholder="Search Here" class="form-control input-lg" id="inputGroup"/>
                                 <span class="input-group-addon">
                                     <a href="#" style="color:white  ">Search</a>
                                 </span>
@@ -573,11 +614,36 @@
         </footer>
         <!--End Footer One-->
 
+        <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/parallax/parallax.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/typed-2.0.11/typed-2.0.11.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/language-switcher/jquery.polyglot.language.switcher.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/slick-slider/slick.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/progress-bar/knob.js"></script>
 
-    <!-- the stoping loop -->
-    <script src="assets/vendors/timepicker/timePicker.js"></script>
-    <!-- Template js -->
-    <script src="assets/js/custom.js"></script>
 
 
     </body>

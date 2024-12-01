@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('categoryForm');
     const typeInput = document.getElementById('type');
+    const dateInInput = document.getElementById('date_in');
+    const dateOutInput = document.getElementById('date_out');
     const submitButton = form.querySelector('button[type="submit"]');
     const errorMessage = document.getElementById('typeError');
 
@@ -9,23 +11,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentValue = typeInput.value.toLowerCase().trim();
         
         if (validTypes.includes(currentValue)) {
-            errorMessage.style.display = 'none';
-            submitButton.disabled = false;
             return true;
         } else {
-            errorMessage.textContent = 'Le type doit être "job", "lending" ou "produce".';
-            errorMessage.style.display = 'block';
-            submitButton.disabled = true;
+            displayError('Le type doit être "job", "lending" ou "produce".');
             return false;
         }
     }
 
-    typeInput.addEventListener('input', validateType);
+    function validateDates() {
+        const dateIn = new Date(dateInInput.value);
+        const dateOut = new Date(dateOutInput.value);
+
+        if (dateIn > dateOut) {
+            displayError('La date d\'entrée doit être antérieure à la date de sortie.');
+            return false;
+        }
+        return true;
+    }
+
+    function displayError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+        submitButton.disabled = true;
+    }
+
+    function clearError() {
+        errorMessage.style.display = 'none';
+        submitButton.disabled = false;
+    }
+
+    function validateForm() {
+        clearError();
+        return validateType() && validateDates();
+    }
+
+    typeInput.addEventListener('input', validateForm);
+    dateInInput.addEventListener('input', validateForm);
+    dateOutInput.addEventListener('input', validateForm);
 
     form.addEventListener('submit', function(event) {
-        if (!validateType()) {
+        if (!validateForm()) {
             event.preventDefault();
         }
     });
 });
-

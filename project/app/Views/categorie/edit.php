@@ -3,6 +3,9 @@
 $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
 $nom = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
 $type = isset($_POST['type']) ? htmlspecialchars($_POST['type']) : '';
+$date_in = isset($_POST['date_out']) ? htmlspecialchars($_POST['date_in']) : '';
+$date_out = isset($_POST['date_in']) ? htmlspecialchars($_POST['date_out']) : '';
+$Qnt = isset($_POST['Qnt']) ? htmlspecialchars($_POST['Qnt']) : '';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@ $type = isset($_POST['type']) ? htmlspecialchars($_POST['type']) : '';
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             color: #155724;
         }
 
@@ -52,7 +55,7 @@ $type = isset($_POST['type']) ? htmlspecialchars($_POST['type']) : '';
             text-align: left;
         }
 
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="number"], input[type="date"] {
             padding: 10px;
             font-size: 14px;
             border: 1px solid #c3e6cb;
@@ -108,6 +111,15 @@ $type = isset($_POST['type']) ? htmlspecialchars($_POST['type']) : '';
             <label for="type">Type :</label>
             <input type="text" id="type" name="type" value="<?php echo $type; ?>" placeholder="job, lending, ou produce" required>
             <div id="typeError" class="error-message"></div>
+
+            <label for="date_in">Date de sortie deliv :</label>
+            <input type="date" id="date_in" name="date_in" value="<?php echo $date_in; ?>">
+
+            <label for="date_out">Date d'entrée deliv :</label>
+            <input type="date" id="date_out" name="date_out" value="<?php echo $date_out; ?>">
+
+            <label for="Qnt">Quantité :</label>
+            <input type="number" id="Qnt" name="Qnt" value="<?php echo $Qnt; ?>">
 
             <button type="submit">Mettre à jour la catégorie</button>
         </form>

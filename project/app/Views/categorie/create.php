@@ -7,14 +7,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0fdf4; 
+            background-color: #f0fdf4;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #155724; 
+            min-height: 100vh;
+            color: #155724;
         }
 
         .container {
@@ -24,7 +24,7 @@
             padding: 20px 40px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 500px;
+            max-width: 400px;
             width: 100%;
         }
 
@@ -37,7 +37,6 @@
         form {
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
         }
 
         label {
@@ -46,7 +45,7 @@
             text-align: left;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="number"], input[type="date"] {
             padding: 10px;
             font-size: 14px;
             border: 1px solid #c3e6cb;
@@ -55,7 +54,7 @@
         }
 
         button {
-            background-color: #28a745; 
+            background-color: #28a745;
             color: #ffffff;
             font-size: 16px;
             border: none;
@@ -66,7 +65,7 @@
         }
 
         button:hover {
-            background-color: #218838; 
+            background-color: #218838;
         }
 
         button:disabled {
@@ -75,8 +74,9 @@
         }
 
         .footer {
+            margin-top: 20px;
             font-size: 12px;
-            color: #6c757d; 
+            color: #6c757d;
         }
 
         .error-message {
@@ -98,6 +98,16 @@
             <label for="type">Type :</label>
             <input type="text" id="type" name="type" placeholder="job, lending, ou produce" required>
             <div id="typeError" class="error-message"></div>
+
+            <label for="date_in">Date de sortie deliv :</label>
+            <input type="date" id="date_in" name="date_in">
+
+            <label for="date_out">Date d'entrée deliv :</label>
+            <input type="date" id="date_out" name="date_out">
+            <div id="dateError" class="error-message"></div>
+
+            <label for="Qnt">Quantité :</label>
+            <input type="number" id="Qnt" name="Qnt">
 
             <button type="submit">Créer la catégorie</button>
         </form>

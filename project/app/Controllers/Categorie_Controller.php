@@ -12,14 +12,17 @@ class CategorieController
         $this->db = $dbConfig->getConnection();
     }
 
-    public function createCategorie($nom,$type)
+    public function createCategorie($nom,$type,$date_in,$date_out,$Qnt)
     {
-        $query = "INSERT INTO categories (nom,type) VALUES (:nom,:type)";
+        $query = "INSERT INTO categories (nom,type,date_in,date_out,Qnt) VALUES (:nom,:type,:date_in,:date_out,:Qnt)";
         $stmt = $this->db->prepare($query);
         
         try {
             $stmt->bindParam(':nom',$nom);
             $stmt->bindParam(':type',$type);
+            $stmt->bindParam(':date_in', $date_in);
+            $stmt->bindParam(':date_out', $date_out);
+            $stmt->bindParam(':Qnt', $Qnt);
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Error creating category: " . $e->getMessage());
@@ -78,15 +81,18 @@ class CategorieController
         }
     }
 
-    public function updateCategorie($id, $nom, $type)
+    public function updateCategorie($id, $nom, $type, $date_in, $date_out, $Qnt)
     {
-        $query = "UPDATE categories SET nom = :nom, type = :type WHERE id = :id";
+        $query = "UPDATE categories SET nom = :nom, type = :type, date_in = :date_in, date_out = :date_out, Qnt = :Qnt WHERE id = :id";
         $stmt = $this->db->prepare($query);
 
         try {
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':type', $type);
+            $stmt->bindParam(':date_in', $date_in);
+            $stmt->bindParam(':date_out', $date_out);
+            $stmt->bindParam(':Qnt', $Qnt);
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Error updating category: " . $e->getMessage());

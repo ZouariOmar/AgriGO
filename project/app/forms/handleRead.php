@@ -33,6 +33,9 @@ try {
             echo "<input type='hidden' name='id' value='" . htmlspecialchars($category['id']) . "'>";
             echo "<input type='hidden' name='nom' value='" . htmlspecialchars($category['nom']) . "'>";
             echo "<input type='hidden' name='type' value='" . htmlspecialchars($category['type']) . "'>";
+            echo "<input type='hidden' name='date_in' value='" . htmlspecialchars($category['date_in']) . "'>";
+            echo "<input type='hidden' name='date_out' value='" . htmlspecialchars($category['date_out']) . "'>";
+            echo "<input type='hidden' name='Qnt' value='" . htmlspecialchars($category['Qnt']) . "'>";
             echo "<button type='submit' class='action-btn edit-btn'>Mettre à jour</button>";
             echo "</form>";
             echo "</td>";
