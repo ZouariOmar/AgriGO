@@ -3,12 +3,12 @@
 class adminreport {
     private $id;
     private $StatRapportID;
-    private $Status;
+    private $ST;
 
-    public function __construct($id,$StatRapportID,$Status) {
+    public function __construct($id,$StatRapportID,$ST) {
         $this->id=$id;
         $this->StatRapportID = $StatRapportID;
-        $this->Status = $Status;
+        $this->ST = $ST;
 
     }
 
@@ -35,9 +35,9 @@ class adminreport {
     /**
      * Get the value of status
      */ 
-    public function getStatus()
+    public function getST()
     {
-        return $this->Status;
+        return $this->ST;
     }
 
     /**
@@ -45,9 +45,9 @@ class adminreport {
      *
      * @return  self
      */ 
-    public function setStatus($Status)
+    public function setStatus($ST)
     {
-        $this->Status = $Status;
+        $this->ST = $ST;
 
         return $this;
     }

@@ -34,13 +34,13 @@ $adminlist = $adminreportC->reportList();
                 ?>
                 <tr>
                     <td><?= htmlspecialchars($report['StatRapportID']); ?></td>
-                    <td><?= htmlspecialchars($report['Status']); ?></td>
+                    <td><?= htmlspecialchars($report['ST']); ?></td>
                     <td>
                         <form method="POST" action="adminupdateReport.php">
                             <input type="submit" name="update" value="Update">
                             <input type="hidden" value="<?= htmlspecialchars($report['Stat_ID']); ?>" name="id">
                         </form>
-                        <a href="admindeleteReport.php?id=<?= htmlspecialchars($report['Stat_ID']); ?>" class="delete-link">Delete</a>
+                        
                     </td>
                 </tr>
                 <?php

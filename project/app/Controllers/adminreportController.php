@@ -42,13 +42,13 @@ class adminreportController
         $conn = config::getConnexion(); // Ensure this retrieves the correct database connection
 
         try {
-            $sql = "INSERT INTO rapportstat (StatID, StatRapportID, Status) 
-                    VALUES (NULL, :StatRapportID, :Status)";
+            $sql = "INSERT INTO rapportstat (StatID, StatRapportID, ST) 
+                    VALUES (NULL, :StatRapportID, :st)";
             $query = $conn->prepare($sql);
 
             $query->execute([
                 'StatRapportID' => $reportId, // Ensure this corresponds to a valid ID in 'rapports'
-                'Status' => 'RECIEVED',      // Default status
+                'st' => 'RECIEVED',      // Default status
             ]);
 
             // Log for debugging
@@ -69,31 +69,32 @@ class adminreportController
 
 
 
-    function adminupdateReport($report, $id)
-    {
+    function adminupdateReport($report, $id) {
         $db = config::getConnexion();
     
-        // Prepare the query
-        $query = $db->prepare(
-            'UPDATE rapportstat SET 
-                Status = :status
-            WHERE StatID = :id'
-        );
-    
         try {
-            // Execute the query
+    
+            // Prepare query
+            $query = $db->prepare(
+                'UPDATE rapportstat SET 
+                    ST = :st
+                WHERE StatID = :id'
+            );
+    
+            // Execute query
             $query->execute([
-                'status' => $report->getStatus(),
-                'id' => $id
+                'st' => $report->getST(),
+                'id' => $id  
             ]);
     
+            // Check for success
             if ($query->rowCount() > 0) {
-                return true;
+                return true; // Success
             } else {
-                return false; // No rows affected
+                return false; // No rows updated
             }
         } catch (PDOException $e) {
-            echo "rror: " . $e->getMessage();
+            echo "Error: " . $e->getMessage();
             return false;
         }
     }
