@@ -73,6 +73,7 @@ class adminreportController
     {
         $db = config::getConnexion();
     
+        // Prepare the query
         $query = $db->prepare(
             'UPDATE rapportstat SET 
                 Status = :status
@@ -80,20 +81,19 @@ class adminreportController
         );
     
         try {
-            // Execute the query with properly cased keys
+            // Execute the query
             $query->execute([
-                'Status' => $report->getStatus(), // Match 'Status' in DB
+                'status' => $report->getStatus(),
                 'id' => $id
             ]);
     
-            // Check if the query was successful
             if ($query->rowCount() > 0) {
-                return true; // Success
+                return true;
             } else {
-                return false; // No rows were updated
+                return false; // No rows affected
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "rror: " . $e->getMessage();
             return false;
         }
     }
@@ -101,18 +101,4 @@ class adminreportController
 
 
 
-
-    public function deleteReport($id)
-{
-    $sql = "DELETE FROM rapportstat WHERE StatID = :id";
-    $conn = config::getConnexion();
-    $req = $conn->prepare($sql);
-    $req->bindValue(':id', $id);
-    try {
-        $req->execute();
-        echo "Report with ID $id has been successfully deleted.<br>";
-    } catch (Exception $e) {
-        die('Erreur: ' . $e->getMessage());
-    }
-}
 }

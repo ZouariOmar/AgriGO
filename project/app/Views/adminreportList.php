@@ -38,9 +38,9 @@ $adminlist = $adminreportC->reportList();
                     <td>
                         <form method="POST" action="adminupdateReport.php">
                             <input type="submit" name="update" value="Update">
-                            <input type="hidden" value="<?= htmlspecialchars($report['Report_ID']); ?>" name="id">
+                            <input type="hidden" value="<?= htmlspecialchars($report['Stat_ID']); ?>" name="id">
                         </form>
-                        <a href="admindeleteReport.php?id=<?= htmlspecialchars($report['Report_ID']); ?>" class="delete-link">Delete</a>
+                        <a href="admindeleteReport.php?id=<?= htmlspecialchars($report['Stat_ID']); ?>" class="delete-link">Delete</a>
                     </td>
                 </tr>
                 <?php

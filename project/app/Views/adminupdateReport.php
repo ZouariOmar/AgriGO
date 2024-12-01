@@ -1,7 +1,7 @@
 <?php
 
-include "../Models/Report.php";
-include "../Controllers/adminreportController.php";
+include "../Models/Report.php";  // Include the model for report
+include "../Controllers/adminreportController.php";  // Include the controller
 
 ob_start(); // Make sure no output is sent before headers
 
@@ -20,32 +20,29 @@ if (isset($_POST['id']) || isset($_GET['id'])) {
     if (!$adminreport) {
         die("Error: Report not found.");
     }
-
 } else {
     die("Error: ID not provided.");
 }
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Status']) && isset($_POST['StatRapportID'])) {
-    if (!empty($_POST['Status']) && !empty($_POST['StatRapportID'])) {
-
-        // Create the report object
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Status'])) {
+    if (!empty($_POST['Status'])) {
+        // Create the report object (assuming no need for StatRapportID as we are just updating Status)
         $adminreport = new adminreport(
-            null,
-            $_POST['StatRapportID'],
+            null, // Assuming StatRapportID is not being updated here
+            null, // StatRapportID is not relevant for update
             $_POST['Status']
-            
         );
 
-        // Attempt to update the report
-        if ($adminreportC->adminupdateReport($adminreport, $_POST['id'])) {
+        // Attempt to update the report status
+        if ($adminreportC->adminupdateReport($adminreport, $report_id)) {
             header('Location: adminreportList.php');
             exit; 
         } else {
             $error = "Update failed. Please check the update function.";
         }
     } else {
-        $error = "Error: All fields are required.";
+        $error = "Error: Status field is required.";
     }
 }
 
@@ -97,9 +94,9 @@ ob_end_flush();
     <p>Select the new status for the report.</p>
     <form action="" method="POST">
         <input type="hidden" name="StatRapportID" value="<?php echo $_GET['id']; ?>">
-        <button class="status-button received" name="Status" value="RECIEVED">Recieved</button>
-        <button class="status-button in-process" name="Status" value="IN PROCESS">In Process</button>
-        <button class="status-button done" name="Status" value="DONE">Done</button>
+        <button class="status-button received" name="Status" value="'RECIEVED'">Recieved</button>
+        <button class="status-button in-process" name="Status" value="'IN PROCESS'">In Process</button>
+        <button class="status-button done" name="Status" value="'DONE'">Done</button>
     </form>
 </body>
 </html>
