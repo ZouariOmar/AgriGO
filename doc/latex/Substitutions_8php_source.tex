@@ -1,0 +1,62 @@
+\doxysection{Substitutions.\+php}
+\hypertarget{Substitutions_8php_source}{}\label{Substitutions_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/Rules/Substitutions.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/Rules/Substitutions.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1English_1_1Rules}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules}};}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00007}00007\ use\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1WordInflector}{Doctrine\(\backslash\)Inflector\(\backslash\)WordInflector}};}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00009}00009\ use\ \textcolor{keyword}{function}\ strtolower;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00010}00010\ use\ \textcolor{keyword}{function}\ strtoupper;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00011}00011\ use\ \textcolor{keyword}{function}\ substr;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00013}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{Substitutions}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1WordInflector}{WordInflector}}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{private}\ \$substitutions;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \_\_construct(\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitution}{Substitution}}\ ...\$substitutions)}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$substitutions\ as\ \$substitution)\ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>substitutions[\$substitution-\/>getFrom()-\/>getWord()]\ =\ \$substitution;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ getFlippedSubstitutions():\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{Substitutions}}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \$substitutions\ =\ [];}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$this-\/>substitutions\ as\ \$substitution)\ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \$substitutions[]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitution}{Substitution}}(}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$substitution-\/>getTo(),}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$substitution-\/>getFrom()}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{Substitutions}}(...\$substitutions);}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ inflect(\textcolor{keywordtype}{string}\ \$word):\ \textcolor{keywordtype}{string}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \$lowerWord\ =\ strtolower(\$word);}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$this-\/>substitutions[\$lowerWord]))\ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \$firstLetterUppercase\ =\ \$lowerWord[0]\ !==\ \$word[0];}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \$toWord\ =\ \$this-\/>substitutions[\$lowerWord]-\/>getTo()-\/>getWord();}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$firstLetterUppercase)\ \{}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strtoupper(\$toWord[0])\ .\ substr(\$toWord,\ 1);}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$toWord;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$word;}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Substitutions_8php_source_l00057}00057\ \}}
+
+\end{DoxyCode}

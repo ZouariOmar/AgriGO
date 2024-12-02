@@ -1,8 +1,7 @@
 <?php
 //? Include declaration part
 include '../../../vendor/autoload.php';  // Load Composer autoload
-include '../../conf/database.php';
-include '../components/custom.php';
+include '../Helpers/custom.php';
 
 // Fetch Sessions and clear them
 session_start();
@@ -14,6 +13,9 @@ $admin_id = $_GET['id'];
 
 // Verify if the user is suspended or not
 is_suspend($admin_id, 'Location: login.php');
+
+// Set the user in active mode
+set_active($admin_id);
 
 //* Connect to the DB
 $db = new Database('../../');
@@ -160,11 +162,11 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 					</li>
 					<!-- / Account Settings -->
 
-					<!-- Users Settings -->
+					<!-- Users Management -->
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
 							<i class="menu-icon tf-icons bx bx-dock-top"></i>
-							<div data-i18n="Account Settings">Users Settings</div>
+							<div data-i18n="Account Settings">Users Management</div>
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
@@ -184,7 +186,7 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 							</li>
 						</ul>
 					</li>
-					<!-- / Users Settings -->
+					<!-- / Users Management -->
 
 					<!-- Authentications -->
 					<li class="menu-item">
@@ -347,7 +349,8 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 										<div class="dropdown-divider"></div>
 									</li>
 									<li>
-										<a class="dropdown-item" href="auth-login-basic.html">
+										<a class="dropdown-item"
+											href="../Controllers/setUsrStatus.php?admin_id=<?php echo $admin_id ?>&id=<?php echo $admin_id ?>&status=INACTIVE">
 											<i class="bx bx-power-off me-2"></i>
 											<span class="align-middle">Log Out</span>
 										</a>
@@ -878,41 +881,26 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 											<button class="add btn btn-primary todo-list-add-btn">Add</button>
 										</div>
 										<div class="list-wrapper">
-											<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-												<li>
-													<div class="form-check form-check-primary">
-														<label class="form-check-label">
-															<input class="checkbox" type="checkbox"> Create invoice </label>
-													</div>
-													<i class="remove mdi mdi-close-box"></i>
+											<ul class="list-group list-group-flush">
+												<li class="list-group-item">
+													<input class="form-check-input me-1" id="li1" type="checkbox" value="" aria-label="...">
+													<label for="li1">First checkbox</label>
 												</li>
-												<li>
-													<div class="form-check form-check-primary">
-														<label class="form-check-label">
-															<input class="checkbox" type="checkbox"> Meeting with Alita </label>
-													</div>
-													<i class="remove mdi mdi-close-box"></i>
+												<li class="list-group-item">
+													<input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+													Second checkbox
 												</li>
-												<li class="completed">
-													<div class="form-check form-check-primary">
-														<label class="form-check-label">
-															<input class="checkbox" type="checkbox" checked> Prepare for presentation </label>
-													</div>
-													<i class="remove mdi mdi-close-box"></i>
+												<li class="list-group-item">
+													<input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+													Third checkbox
 												</li>
-												<li>
-													<div class="form-check form-check-primary">
-														<label class="form-check-label">
-															<input class="checkbox" type="checkbox"> Plan weekend outing </label>
-													</div>
-													<i class="remove mdi mdi-close-box"></i>
+												<li class="list-group-item">
+													<input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+													Fourth checkbox
 												</li>
-												<li>
-													<div class="form-check form-check-primary">
-														<label class="form-check-label">
-															<input class="checkbox" type="checkbox"> Pick up kids from school </label>
-													</div>
-													<i class="remove mdi mdi-close-box"></i>
+												<li class="list-group-item">
+													<input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+													Fifth checkbox
 												</li>
 											</ul>
 										</div>

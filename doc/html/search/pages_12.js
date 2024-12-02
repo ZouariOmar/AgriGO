@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['php_0',['Google Auth Library for PHP',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2google_2auth_2README.html',1,'']]],
+  ['php_20api_20client_20services_1',['Google PHP API Client Services',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2google_2apiclient-services_2README.html',1,'']]],
+  ['php_20fig_20simple_20cache_20psr_2',['PHP FIG Simple Cache PSR',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2psr_2simple-cache_2README.html',1,'']]],
+  ['php_20secure_20communications_20library_3',['phpseclib - PHP Secure Communications Library',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2phpseclib_2phpseclib_2README.html',1,'']]],
+  ['php73_4',['Symfony Polyfill / Php73',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-php73_2README.html',1,'']]],
+  ['php80_5',['Symfony Polyfill / Php80',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-php80_2README.html',1,'']]],
+  ['phpmailer_6',['phpmailer',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2templates_2gardnma-package-files_21295e8df9ec4ea68e65463223086ba174.html',1,'Security notices relating to PHPMailer'],['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2PHPMailer_2SECURITY.html',1,'Security notices relating to PHPMailer']]],
+  ['phpseclib_20php_20secure_20communications_20library_7',['phpseclib - PHP Secure Communications Library',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2phpseclib_2phpseclib_2README.html',1,'']]],
+  ['policy_8',['policy',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2google_2auth_2SECURITY.html',1,'Security Policy'],['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2google_2apiclient-services_2SECURITY.html',1,'Security Policy'],['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2google_2apiclient_2SECURITY.html',1,'Security Policy']]],
+  ['polyfill_20ctype_9',['Symfony Polyfill / Ctype',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-ctype_2README.html',1,'']]],
+  ['polyfill_20intl_3a_20grapheme_10',['Symfony Polyfill / Intl: Grapheme',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-intl-grapheme_2README.html',1,'']]],
+  ['polyfill_20intl_3a_20normalizer_11',['Symfony Polyfill / Intl: Normalizer',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-intl-normalizer_2README.html',1,'']]],
+  ['polyfill_20mbstring_12',['Symfony Polyfill / Mbstring',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-mbstring_2README.html',1,'']]],
+  ['polyfill_20php73_13',['Symfony Polyfill / Php73',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-php73_2README.html',1,'']]],
+  ['polyfill_20php80_14',['Symfony Polyfill / Php80',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2symfony_2polyfill-php80_2README.html',1,'']]],
+  ['promises_15',['Guzzle Promises',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2guzzlehttp_2promises_2README.html',1,'']]],
+  ['psr_16',['PHP FIG Simple Cache PSR',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2psr_2simple-cache_2README.html',1,'']]],
+  ['psr_207_20message_20implementation_17',['PSR-7 Message Implementation',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2guzzlehttp_2psr7_2README.html',1,'']]],
+  ['psr_207_20usage_18',['PSR-7 Usage',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2psr_2http-message_2docs_2PSR7-Usage.html',1,'']]],
+  ['psr_20clock_19',['PSR Clock',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2psr_2clock_2README.html',1,'']]],
+  ['psr_20http_20message_20',['PSR Http Message',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2psr_2http-message_2README.html',1,'']]],
+  ['psr_20log_21',['PSR Log',['../md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2psr_2log_2README.html',1,'']]]
+];

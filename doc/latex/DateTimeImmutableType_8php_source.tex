@@ -1,0 +1,31 @@
+\doxysection{Date\+Time\+Immutable\+Type.\+php}
+\hypertarget{DateTimeImmutableType_8php_source}{}\label{DateTimeImmutableType_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/carbonphp/carbon-\/doctrine-\/types/src/Carbon/Doctrine/DateTimeImmutableType.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/carbonphp/carbon-\/doctrine-\/types/src/Carbon/Doctrine/DateTimeImmutableType.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }Carbon\(\backslash\)Doctrine;}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00007}00007\ use\ \mbox{\hyperlink{classCarbon_1_1CarbonImmutable}{Carbon\(\backslash\)CarbonImmutable}};}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00008}00008\ use\ DateTimeImmutable;}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00009}00009\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Platforms\(\backslash\)AbstractPlatform;}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00010}00010\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Types\(\backslash\)VarDateTimeImmutableType;}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00012}\mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeImmutableType}{00012}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeImmutableType}{DateTimeImmutableType}}\ \textcolor{keyword}{extends}\ VarDateTimeImmutableType\ implements\ \mbox{\hyperlink{interfaceCarbon_1_1Doctrine_1_1CarbonDoctrineType}{CarbonDoctrineType}}}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00015}00015\ \ \ \ \ use\ CarbonTypeConverter;}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00020}\mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeImmutableType_abc914bc6923f7f58af06ba759e1ecad3}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeImmutableType_abc914bc6923f7f58af06ba759e1ecad3}{convertToPHPValue}}(mixed\ \$value,\ AbstractPlatform\ \$platform):\ ?\mbox{\hyperlink{classCarbon_1_1CarbonImmutable}{CarbonImmutable}}}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>doConvertToPHPValue(\$value);}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00028}\mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeImmutableType_a0aeacf594fa95f660e26effad0e38f6a}{00028}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeImmutableType_a0aeacf594fa95f660e26effad0e38f6a}{getCarbonClassName}}():\ string}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ CarbonImmutable::class;}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DateTimeImmutableType_8php_source_l00032}00032\ \}}
+
+\end{DoxyCode}

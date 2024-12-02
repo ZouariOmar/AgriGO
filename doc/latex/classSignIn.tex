@@ -1,0 +1,99 @@
+\doxysection{Sign\+In Class Reference}
+\hypertarget{classSignIn}{}\label{classSignIn}\index{SignIn@{SignIn}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSignIn_a74f105fb149acf95721c0ab20c8ef5a9}{\+\_\+\+\_\+construct}} (\$identifier=null, \$password=null)
+\item 
+\mbox{\hyperlink{classSignIn_add744b04c76367c8677460bed4635e71}{sign\+In}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00186}{186}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSignIn_a74f105fb149acf95721c0ab20c8ef5a9}\label{classSignIn_a74f105fb149acf95721c0ab20c8ef5a9} 
+\index{SignIn@{SignIn}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!SignIn@{SignIn}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Sign\+In\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$identifier = {\ttfamily null},  }\item[{}]{\$password = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00191}{191}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00192\ \ \ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \$this-\/>identifier\ =\ \$identifier;}
+\DoxyCodeLine{00194\ \ \ \ \ \$this-\/>password\ =\ \$password;}
+\DoxyCodeLine{00195\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{00196\ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSignIn_add744b04c76367c8677460bed4635e71}\label{classSignIn_add744b04c76367c8677460bed4635e71} 
+\index{SignIn@{SignIn}!signIn@{signIn}}
+\index{signIn@{signIn}!SignIn@{SignIn}}
+\doxysubsubsection{\texorpdfstring{signIn()}{signIn()}}
+{\footnotesize\ttfamily Sign\+In\+::sign\+In (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Summary of sign\+In
+\begin{DoxyItemize}
+\item Main \doxylink{classSignIn}{Sign\+In} class func \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00203}{203}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00204\ \ \ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ session\_start();}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \$user\ =\ \$this-\/>is\_valid\_user();}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$user\ ===\ \textcolor{keyword}{null})\ \{\ \ \textcolor{comment}{//\ Check\ if\ user\ exists}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}User\ not\ found!"{}};}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \textcolor{comment}{//\ Verify\ if\ the\ user\ is\ suspended\ or\ not}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ is\_suspend(\$user[\textcolor{stringliteral}{'ID'}],\ \textcolor{stringliteral}{'Location:\ ../Views/login.php'});}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \textcolor{comment}{//\ Verify\ the\ client\ password\ and\ assign\ it\ to\ the\ login\ history}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ (\$this-\/>is\_pass(\$user[\textcolor{stringliteral}{'Password\_hash'}]))}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ ?\ \$this-\/>ass\_login\_history(\$user[\textcolor{stringliteral}{'ID'}],\ \textcolor{stringliteral}{'SUCCESS'})}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ :\ \$this-\/>ass\_login\_history(\$user[\textcolor{stringliteral}{'ID'}],\ \textcolor{stringliteral}{'FAILED'});}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \$user\_role\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classFetch}{Fetch}}();}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \$user\_role\ =\ \$user\_role-\/>fetch\_user\_role(\$user[\textcolor{stringliteral}{'ID'}]);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \textcolor{comment}{//\ Login\ successful\ -\/\ Set\ session\ variables}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'user\_id'}]\ =\ \$user[\textcolor{stringliteral}{'ID'}];}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'user\_role'}]\ =\ \$user\_role[\textcolor{stringliteral}{'Role\_ID'}];}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Login\ successful!"{}};}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{00230\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/app/\+Helpers/\mbox{\hyperlink{____include_____8php}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}\end{DoxyCompactItemize}

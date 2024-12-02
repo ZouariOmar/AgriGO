@@ -1,0 +1,62 @@
+\doxysection{database.\+php}
+\hypertarget{database_8php_source}{}\label{database_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/conf/database.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/conf/database.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00006}00006\ \textcolor{comment}{//?\ Using\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00007}00007\ use\ Dotenv\(\backslash\)Dotenv;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00008}00008\ use\ Dotenv\(\backslash\)Exception\(\backslash\)InvalidPathException;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00009}00009\ use\ Dotenv\(\backslash\)Exception\(\backslash\)ValidationException;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00011}\mbox{\hyperlink{classDatabase}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDatabase}{Database}}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00013}00013\ \ \ \textcolor{keyword}{private}\ \$host;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00014}00014\ \ \ \textcolor{keyword}{private}\ \$dbName;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00015}00015\ \ \ \textcolor{keyword}{private}\ \$username;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00016}00016\ \ \ \textcolor{keyword}{private}\ \$password;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00017}00017\ \ \ \textcolor{keyword}{private}\ \$pdo;}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00022}\mbox{\hyperlink{classDatabase_a2d6a8b6dda6f828184265bbbdd685149}{00022}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDatabase_a2d6a8b6dda6f828184265bbbdd685149}{\_\_construct}}(\$env\_path)}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00023}00023\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ \textcolor{comment}{//?\ Hold\ the\ .env\ locale\ file}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00025}00025\ \ \ \ \ \ \ \$dotenv\ =\ Dotenv::createImmutable(\$env\_path);\ \ \textcolor{comment}{//\ Navigate\ to\ the\ .env\ fil\ lvl}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00026}00026\ \ \ \ \ \ \ \$dotenv-\/>load();}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00027}00027\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (InvalidPathException\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ the\ specific\ error\ if\ .env\ file\ path\ is\ incorrect\ or\ file\ is\ missing}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00028}00028\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ .env\ file\ not\ found\ or\ incorrect\ path\ specified."{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00029}00029\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (ValidationException\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ validation\ errors\ (useful\ if\ you're\ validating\ required\ variables)}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00030}00030\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Validation\ Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00031}00031\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ any\ other\ general\ exceptions}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00032}00032\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//?\ Hold\ the\ DB\ data\ from\ the\ .env\ file}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00036}00036\ \ \ \ \ \$this-\/>host\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_HOST'}];}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00037}00037\ \ \ \ \ \$this-\/>dbName\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_NAME'}];}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00038}00038\ \ \ \ \ \$this-\/>username\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_USERNAME'}];}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00039}00039\ \ \ \ \ \$this-\/>password\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_PASSWORD'}];}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00042}00042\ \ \ \ \ \ \ \$this-\/>pdo\ =\ \textcolor{keyword}{new}\ PDO(\textcolor{stringliteral}{"{}mysql:host=\{\$this-\/>host\};dbname=\{\$this-\/>dbName\}"{}},\ \$this-\/>username,\ \$this-\/>password);}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00043}00043\ \ \ \ \ \ \ \$this-\/>pdo-\/>setAttribute(PDO::ATTR\_ERRMODE,\ PDO::ERRMODE\_EXCEPTION);}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00044}00044\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00045}00045\ \ \ \ \ \ \ die(\textcolor{stringliteral}{"{}Database\ connection\ failed:\ "{}}\ .\ \$e-\/>getMessage());}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00047}00047\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00055}\mbox{\hyperlink{classDatabase_a0612c1bf3270cad4754939c0e31b77a8}{00055}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDatabase_a0612c1bf3270cad4754939c0e31b77a8}{query}}(\$sql,\ \$params\ =\ [])}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00056}00056\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Prepare\ the\ query\ (for\ security)}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00058}00058\ \ \ \ \ \$stmt\ =\ \$this-\/>pdo-\/>prepare(\$sql);}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Attache\ the\ parameters\ with\ the\ query}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$params\ as\ \$key\ =>\ \$value)}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00062}00062\ \ \ \ \ \ \ \$stmt-\/>bindValue(\textcolor{stringliteral}{"{}:\$key"{}},\ \$value);}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00064}00064\ \ \ \ \ \$stmt-\/>execute();\ \ \textcolor{comment}{//\ Execute\ the\ statement}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Determine\ if\ the\ query\ is\ a\ SELECT\ statement}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ (stripos(\$sql,\ \textcolor{stringliteral}{'SELECT'})\ ===\ 0)\ ?\ \$stmt-\/>fetchAll(PDO::FETCH\_ASSOC)\ :\ \$stmt-\/>rowCount();\ \ \textcolor{comment}{//\ Return\ results\ for\ SELECT,\ else\ return\ affected\ rows\ for\ INSERT,\ UPDATE,\ DELETE}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00068}00068\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{database_8php_source_l00069}00069\ \}}
+
+\end{DoxyCode}

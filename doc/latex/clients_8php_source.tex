@@ -1,0 +1,467 @@
+\doxysection{clients.\+php}
+\hypertarget{clients_8php_source}{}\label{clients_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Views/clients.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Views/clients.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00002}00002\ \textcolor{comment}{//?\ Include\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00003}00003\ include\ \textcolor{stringliteral}{'../../../vendor/autoload.php'};\ \ \textcolor{comment}{//\ Load\ Composer\ autoload}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00004}00004\ include\ \textcolor{stringliteral}{'../Helpers/custom.php'};}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00006}00006\ \textcolor{comment}{//\ Fetch\ Sessions\ and\ clear\ them}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00007}00007\ session\_start();}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00008}00008\ \$status\ =\ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ ??\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00009}00009\ unset(\$\_SESSION[\textcolor{stringliteral}{'status'}]);}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00011}00011\ \textcolor{comment}{//\ Fetch\ the\ GET\ Request}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00012}00012\ \$admin\_id\ =\ \$\_GET[\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00014}00014\ \textcolor{comment}{//\ Verify\ if\ the\ user\ is\ suspended\ or\ not}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00015}00015\ is\_suspend(\$admin\_id,\ \textcolor{stringliteral}{'Location:\ login.php'});}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00017}00017\ \textcolor{comment}{//\ Fetching}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00018}00018\ \$fetch\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classFetch}{Fetch}}();}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00019}00019\ \$user\ =\ \$fetch-\/>fetch\_user(\$admin\_id);}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00020}00020\ \$clients\ =\ \$fetch-\/>\_\_fetch\_users(3);}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00021}00021\ \$user\_profile\ =\ \$fetch-\/>fetch\_user\_profile(\$admin\_id);}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00022}00022\ \$user\_profile\_image\ =\ \$fetch-\/>fetch\_user\_image(\$user\_profile[\textcolor{stringliteral}{'Image\_ID'}]);}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00023}00023\ ?>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00025}00025\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00026}00026\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}light-\/style\ layout-\/menu-\/fixed"{}}\ dir=\textcolor{stringliteral}{"{}ltr"{}}\ data-\/theme=\textcolor{stringliteral}{"{}theme-\/default"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00027}00027\ \ \ data-\/assets-\/path=\textcolor{stringliteral}{"{}../../public/assets/"{}}\ data-\/\textcolor{keyword}{template}=\textcolor{stringliteral}{"{}vertical-\/menu-\/template-\/free"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00029}00029\ <head>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00030}00030\ \ \ <meta\ charset=\textcolor{stringliteral}{"{}utf-\/8"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00031}00031\ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00032}00032\ \ \ \ \ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0,\ user-\/scalable=no,\ minimum-\/scale=1.0,\ maximum-\/scale=1.0"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00033}00033\ \ \ <meta\ name=\textcolor{stringliteral}{"{}description"{}}\ content=\textcolor{stringliteral}{"{}"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00034}00034\ \ \ <title>\ AGTN\ ||\ Dashboard\ </title>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00036}00036\ \ \ <!-\/-\/\ Favicon\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00037}00037\ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/png"{}}\ sizes=\textcolor{stringliteral}{"{}16x16"{}}\ href=\textcolor{stringliteral}{"{}../../public/assets/imgs/favicons/favicon-\/16x16.png"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00038}00038\ \ \ <!-\/-\/\ /\ Favicon\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00040}00040\ \ \ <!-\/-\/\ Fonts\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00041}00041\ \ \ <link\ rel=\textcolor{stringliteral}{"{}preconnect"{}}\ href=\textcolor{stringliteral}{"{}https://fonts.googleapis.com"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00042}00042\ \ \ <link\ rel=\textcolor{stringliteral}{"{}preconnect"{}}\ href=\textcolor{stringliteral}{"{}https://fonts.gstatic.com"{}}\ crossorigin\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00043}00043\ \ \ <link}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00044}00044\ \ \ \ \ href=\textcolor{stringliteral}{"{}https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700\&display=swap"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00045}00045\ \ \ \ \ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00046}00046\ \ \ <!-\/-\/\ /\ Fonts\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00048}00048\ \ \ <!-\/-\/\ Icons.\ Uncomment\ required\ icon\ fonts\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00049}00049\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../../vendor/fonts/boxicons.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00051}00051\ \ \ <!-\/-\/\ Core\ CSS\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00052}00052\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../../vendor/css/core.css"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}template-\/customizer-\/core-\/css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00053}00053\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../../vendor/css/theme-\/default.css"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}template-\/customizer-\/theme-\/css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00054}00054\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../public/css/demo.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00055}00055\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../public/css/sub\_btns.css"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00057}00057\ \ \ <!-\/-\/\ Vendors\ CSS\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00058}00058\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../../vendor/libs/perfect-\/scrollbar/perfect-\/scrollbar.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00059}00059\ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../../vendor/libs/apex-\/charts/apex-\/charts.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00061}00061\ \ \ <!-\/-\/\ Helpers\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00062}00062\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/js/helpers.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00064}00064\ \ \ <!-\/-\/!\ Template\ customizer\ \&\ Theme\ config\ files\ MUST\ be\ included\ after\ core\ stylesheets\ and\ helpers.js\ in\ the\ <head>\ section\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00065}00065\ \ \ <!-\/-\/?\ Config:\ \ Mandatory\ theme\ config\ file\ contain\ global\ vars\ \&\ \textcolor{keywordflow}{default}\ theme\ options,\ Set\ your\ preferred\ theme\ option\ in\ \textcolor{keyword}{this}\ file.\ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00066}00066\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../public/js/config.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00067}00067\ </head>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00069}00069\ <body>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00070}00070\ \ \ <!-\/-\/\ Layout\ wrapper\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00071}00071\ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/wrapper\ layout-\/content-\/navbar"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00072}00072\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/container"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00074}00074\ \ \ \ \ \ \ <!-\/-\/\ Menu\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00075}00075\ \ \ \ \ \ \ <aside\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}layout-\/menu"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/menu\ menu-\/vertical\ menu\ bg-\/menu-\/theme"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}app-\/brand\ demo"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}index.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}app-\/brand-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}app-\/brand-\/logo\ demo"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}../../public/assets/imgs/favicons/favicon-\/16x16.png"{}}\ width=\textcolor{stringliteral}{"{}60"{}}\ alt=\textcolor{stringliteral}{"{}logo.png"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ </span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}app-\/brand-\/text\ demo\ menu-\/text\ fw-\/bolder\ ms-\/2"{}}>AgriGO</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/menu-\/toggle\ menu-\/link\ text-\/large\ ms-\/auto\ d-\/block\ d-\/xl-\/none"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/chevron-\/left\ bx-\/sm\ align-\/middle"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00089}00089\ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/inner\ py-\/1"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Dashboard\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}dashboard.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/home-\/circle"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Analytics"{}}>Dashboard</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Dashboard\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Admino\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}index.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/layout"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Layouts"{}}>Admino</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Admino\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Pages\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/header\ small\ text-\/uppercase"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/header-\/text"{}}>Pages</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Account\ Settings\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link\ menu-\/toggle"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/dock-\/top"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Account\ Settings"{}}>Account\ Settings</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/sub"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}pages-\/account-\/settings-\/account.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Account"{}}>Account</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}pages-\/account-\/settings-\/notifications.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Notifications"{}}>Notifications</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}pages-\/account-\/settings-\/connections.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Connections"{}}>Connections</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Account\ Settings\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Users\ Settings\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item\ active"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link\ menu-\/toggle"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/dock-\/top"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Account\ Settings"{}}>Users\ Settings</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/sub"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}clients.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Account"{}}>Clients\ Table</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}farmers.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Notifications"{}}>Farmers\ Table</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}admins.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Connections"{}}>Admins\ Table</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Users\ Settings\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Authentications\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link\ menu-\/toggle"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/lock-\/open-\/alt"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Authentications"{}}>Authentications</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/sub"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}auth-\/login-\/basic.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Basic"{}}>Login</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}auth-\/register-\/basic.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Basic"{}}>Register</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}auth-\/forgot-\/password-\/basic.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Basic"{}}>Forgot\ Password</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Authentications\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Others\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link\ menu-\/toggle"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/cube-\/alt"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Misc"{}}>Others</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/sub"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}pages-\/misc-\/error.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Error"{}}>Error</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}pages-\/misc-\/under-\/maintenance.html"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Under\ Maintenance"{}}>Under\ Maintenance</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Others\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ MISC\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/inner\ py-\/1"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/header\ small\ text-\/uppercase"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/header-\/text"{}}>Misc</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ MISC\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Support\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://github.com/themeselection/sneat-\/html-\/admin-\/template-\/free/issues"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/support"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Support"{}}>Support</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Support\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Documentation\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://github.com/ZouariOmar/AgriGO/blob/main/README.md"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/link"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}menu-\/icon\ tf-\/icons\ bx\ bx-\/file"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ data-\/i18n=\textcolor{stringliteral}{"{}Documentation"{}}>Documentation</div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Documentation\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00240}00240\ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00241}00241\ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00242}00242\ \ \ \ \ \ \ </aside>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00243}00243\ \ \ \ \ \ \ <!-\/-\/\ /\ Menu\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00245}00245\ \ \ \ \ \ \ <!-\/-\/\ Layout\ container\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00246}00246\ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/page"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00247}00247\ \ \ \ \ \ \ \ \ <!-\/-\/\ Navbar\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00248}00248\ \ \ \ \ \ \ \ \ <nav}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/navbar\ container-\/xxl\ navbar\ navbar-\/expand-\/xl\ navbar-\/detached\ align-\/items-\/center\ bg-\/navbar-\/theme"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}layout-\/navbar"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/menu-\/toggle\ navbar-\/nav\ align-\/items-\/xl-\/center\ me-\/3\ me-\/xl-\/0\ d-\/xl-\/none"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/item\ nav-\/link\ px-\/0\ me-\/xl-\/4"{}}\ href=\textcolor{stringliteral}{"{}javascript:void(0)"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/menu\ bx-\/sm"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}navbar-\/nav-\/right\ d-\/flex\ align-\/items-\/center"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}navbar-\/collapse"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Search\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}navbar-\/nav\ align-\/items-\/center"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/item\ d-\/flex\ align-\/items-\/center"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/search\ fs-\/4\ lh-\/0"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}search"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}searchBar"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/control\ border-\/0\ shadow-\/none"{}}\ placeholder=\textcolor{stringliteral}{"{}Search..."{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aria-\/label=\textcolor{stringliteral}{"{}Search..."{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /Search\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}ms-\/auto\ me-\/4"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}button"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}cut"{}}><span>\ Download</span></button>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}button"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}copy"{}}></><span>\ Copy</span></button>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}button"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}paste"{}}><span>\ Paste</span></button>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}navbar-\/nav\ flex-\/row\ align-\/items-\/center\ "{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ User\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/item\ navbar-\/dropdown\ dropdown-\/user\ dropdown"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/link\ dropdown-\/toggle\ hide-\/arrow"{}}\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}\ data-\/bs-\/toggle=\textcolor{stringliteral}{"{}dropdown"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}avatar\ avatar-\/online"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ \$user\_profile\_image\ ?>"{}}\ alt\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}w-\/px-\/40\ h-\/40\ rounded-\/circle"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/menu\ dropdown-\/menu-\/end"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/item"{}}\ href=\textcolor{stringliteral}{"{}\#"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}d-\/flex"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}flex-\/shrink-\/0\ me-\/3"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}avatar\ avatar-\/online"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <img\ src=\textcolor{stringliteral}{"{}<?php\ echo\ \$user\_profile\_image\ ?>"{}}\ alt\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}w-\/px-\/40\ h-\/40\ rounded-\/circle"{}}\ />}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}flex-\/grow-\/1"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fw-\/semibold\ d-\/block"{}}><?php\ echo\ \$user[\textcolor{stringliteral}{'Username'}]\ ?></span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <small\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}text-\/muted"{}}>Admin</small>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/divider"{}}></div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/item"{}}\ href=\textcolor{stringliteral}{"{}\#"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/user\ me-\/2"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}align-\/middle"{}}>My\ Profile</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/item"{}}\ href=\textcolor{stringliteral}{"{}\#"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/cog\ me-\/2"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}align-\/middle"{}}>Settings</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/item"{}}\ href=\textcolor{stringliteral}{"{}\#"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}d-\/flex\ align-\/items-\/center\ align-\/middle"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}flex-\/shrink-\/0\ bx\ bx-\/credit-\/card\ me-\/2"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}flex-\/grow-\/1\ align-\/middle"{}}>Billing</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}flex-\/shrink-\/0\ badge\ badge-\/center\ rounded-\/pill\ bg-\/danger\ w-\/px-\/20\ h-\/px-\/20"{}}>4</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/divider"{}}></div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}dropdown-\/item"{}}\ href=\textcolor{stringliteral}{"{}../Controllers/setUsrStatus.php?admin\_id=<?php\ echo\ \$admin\_id\ ?>\&id=<?php\ echo\ \$admin\_id\ ?>\&status=INACTIVE"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/power-\/off\ me-\/2"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}align-\/middle"{}}>Log\ Out</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\//\ User\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00336}00336\ \ \ \ \ \ \ \ \ </nav>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00337}00337\ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Navbar\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00339}00339\ \ \ \ \ \ \ \ \ <!-\/-\/\ Content\ wrapper\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00340}00340\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}content-\/wrapper"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Content\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container-\/xxl\ flex-\/grow-\/1\ container-\/p-\/y"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ <h4\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fw-\/bold\ py-\/3\ mb-\/4"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}text-\/muted\ fw-\/light"{}}>Users\ Settings\ /</span>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clients}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ </h4>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}row"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}col-\/md-\/12"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav\ nav-\/pills\ flex-\/column\ flex-\/md-\/row\ mb-\/3"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/link\ active"{}}\ href=\textcolor{stringliteral}{"{}javascript:void(0);"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/user\ me-\/1"{}}></i>\ Clients</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/link"{}}\ href=\textcolor{stringliteral}{"{}farmers.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/user\ me-\/1"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Farmers</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <li\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/item"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}nav-\/link"{}}\ href=\textcolor{stringliteral}{"{}admins.php?id=<?php\ echo\ \$admin\_id\ ?>"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}bx\ bx-\/user\ me-\/1"{}}></i>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Admins</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </li>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Clients\ Table\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <ul\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}order-\/5"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}card\ col-\/lg\ order-\/4\ mb-\/4"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h5\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}card-\/header"{}}>Clients\ Table</h5>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}table-\/responsive\ text-\/nowrap"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <table\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}table\ table-\/hover"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <thead>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <tr>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>Username</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>Email</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>Profile\ Link</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>Created\ At</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>Update\ At</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>\mbox{\hyperlink{classStatus}{Status}}</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <th>Actions</th>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </tr>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </thead>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <tbody\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}table-\/border-\/bottom-\/0"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <?php\ users\_table(\$clients,\ \$admin\_id,\ 3);\ ?>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </tbody>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </table>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </ul>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\//\ Clients\ Table\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Content\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Footer\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ <footer\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}content-\/footer\ footer\ bg-\/footer-\/theme"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container-\/xxl\ d-\/flex\ flex-\/wrap\ justify-\/content-\/between\ py-\/2\ flex-\/md-\/row\ flex-\/column"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}mb-\/2\ mb-\/md-\/0"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ©}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ document.write(\textcolor{keyword}{new}\ Date().getFullYear());}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://github.com/ZouariOmar/AgriGO/blob/main/LICENSE"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}footer-\/link\ fw-\/bolder"{}}>Copyright</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://github.com/ZouariOmar/AgriGO/blob/main/LICENSE"{}}\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}footer-\/link\ me-\/4"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ target=\textcolor{stringliteral}{"{}\_blank"{}}>License</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://www.linkedin.com/in/zouari-\/omar-\/143239283"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}footer-\/link\ me-\/4"{}}>Linkedin</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://github.com/ZouariOmar/AgriGO/blob/main/README.md"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}footer-\/link\ me-\/4"{}}>Documentation</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://github.com/ZouariOmar/AgriGO/blob/main/README.md"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}footer-\/link\ me-\/4"{}}>Support</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ </footer>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ /\ Footer\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}content-\/backdrop\ fade"{}}></div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00421}00421\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00422}00422\ \ \ \ \ \ \ \ \ <!-\/-\/\ Content\ wrapper\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00423}00423\ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00424}00424\ \ \ \ \ \ \ <!-\/-\/\ /\ Layout\ page\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00425}00425\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00427}00427\ \ \ \ \ <!-\/-\/\ Overlay\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00428}00428\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}layout-\/overlay\ layout-\/menu-\/toggle"{}}></div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00429}00429\ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00430}00430\ \ \ <!-\/-\/\ /\ Layout\ wrapper\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00432}00432\ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}buy-\/now"{}}>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00433}00433\ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}https://themeselection.com/products/sneat-\/bootstrap-\/html-\/admin-\/template/"{}}\ target=\textcolor{stringliteral}{"{}\_blank"{}}}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00434}00434\ \ \ \ \ \ \ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}btn\ btn-\/danger\ btn-\/buy-\/now"{}}>New\ Event</a>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00435}00435\ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00437}00437\ \ \ <!-\/-\/\ Core\ JS\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00438}00438\ \ \ <!-\/-\/\ build:js\ assets/vendor/js/core.js\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00439}00439\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/libs/jquery/jquery.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00440}00440\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/libs/popper/popper.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00441}00441\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/js/bootstrap.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00442}00442\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/libs/perfect-\/scrollbar/perfect-\/scrollbar.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00444}00444\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/js/menu.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00445}00445\ \ \ <!-\/-\/\ endbuild\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00447}00447\ \ \ <!-\/-\/\ Vendors\ JS\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00448}00448\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../../vendor/libs/apex-\/charts/apexcharts.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00450}00450\ \ \ <!-\/-\/\ Main\ JS\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00451}00451\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../public/js/main.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00453}00453\ \ \ <!-\/-\/\ Page\ JS\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00454}00454\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../public/js/dashboards-\/analytics.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00455}00455\ \ \ <script\ src=\textcolor{stringliteral}{"{}../../public/js/search-\/bar.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00457}00457\ \ \ <!-\/-\/\ Place\ \textcolor{keyword}{this}\ tag\ in\ your\ head\ or\ just\ before\ your\ close\ body\ tag.\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00458}00458\ \ \ <script\ async\ defer\ src=\textcolor{stringliteral}{"{}https://buttons.github.io/buttons.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00459}00459\ </body>}
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{clients_8php_source_l00461}00461\ </html>}
+
+\end{DoxyCode}

@@ -1,0 +1,85 @@
+\doxysection{/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/vendor/nesbot/carbon/src/\+Carbon/\+Traits/\+Macro.\+php}
+\hypertarget{_2home_2zouari_omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2nesbot_2carbon_2src_2Carbon_2Traits_2Macro_8php-example}{}\label{_2home_2zouari_omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2nesbot_2carbon_2src_2Carbon_2Traits_2Macro_8php-example}Register a custom macro.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$userSettings\ =\ [}
+\DoxyCodeLine{\ \ \textcolor{stringliteral}{'locale'}\ =>\ \textcolor{stringliteral}{'pt'},}
+\DoxyCodeLine{\ \ \textcolor{stringliteral}{'timezone'}\ =>\ \textcolor{stringliteral}{'America/Sao\_Paulo'},}
+\DoxyCodeLine{];}
+\DoxyCodeLine{Carbon::macro(\textcolor{stringliteral}{'userFormat'},\ \textcolor{keyword}{function}\ ()\ use\ (\$userSettings)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_abcabadb9d4fc0e4fa30f654d839b925e}{copy}}()-\/>locale(\$userSettings[\textcolor{stringliteral}{'locale'}])-\/>tz(\$userSettings[\textcolor{stringliteral}{'timezone'}])-\/>calendar();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{echo\ Carbon::yesterday()-\/>hours(11)-\/>userFormat();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$name} & \\
+\hline
+object | callable & {\em \$macro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{<?php}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceCarbon_1_1Traits}{Carbon\(\backslash\)Traits}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{trait\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_a4dbf706ccbce30b34ff59b8b553dfb11}{Macro}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ use\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_a207b78e926a0ab853f96b34d9beb2981}{Mixin}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \$globalMacros\ =\ [];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \$globalGenericMacros\ =\ [];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ macro(\$name,\ \$macro)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ static::\$globalMacros[\$name]\ =\ \$macro;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ resetMacros()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ static::\$globalMacros\ =\ [];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ static::\$globalGenericMacros\ =\ [];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ genericMacro(\$macro,\ \$priority\ =\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(static::\$globalGenericMacros[\$priority]))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ static::\$globalGenericMacros[\$priority]\ =\ [];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ krsort(static::\$globalGenericMacros,\ SORT\_NUMERIC);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ static::\$globalGenericMacros[\$priority][]\ =\ \$macro;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ hasMacro(\$name)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isset(static::\$globalMacros[\$name]);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ getMacro(\$name)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ static::\$globalMacros[\$name]\ ??\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_a4b26da3e4b92109cbb912da877f7936c}{hasLocalMacro}}(\$name)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\$this-\/>localMacros\ \&\&\ isset(\$this-\/>localMacros[\$name]))\ ||\ static::hasMacro(\$name);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_af0d99db164bc2bfe5510b7755f85bc7f}{getLocalMacro}}(\$name)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\$this-\/>localMacros\ ??\ [])[\$name]\ ??\ static::getMacro(\$name);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

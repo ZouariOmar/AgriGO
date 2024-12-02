@@ -1,0 +1,222 @@
+\doxysection{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}
+\hypertarget{____include_____8php_source}{}\label{____include_____8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Helpers/\_\_include\_\_.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Helpers/\_\_include\_\_.php}}
+\mbox{\hyperlink{____include_____8php}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00011}00011\ \textcolor{comment}{//?\ Include\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00012}00012\ include\_once\ \textcolor{stringliteral}{'../../../vendor/autoload.php'};\ \ \textcolor{comment}{//\ Load\ Composer\ autoload}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00013}00013\ include\_once\ \textcolor{stringliteral}{'custom.php'};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00014}00014\ include\_once\ \textcolor{stringliteral}{"{}../../conf/database.php"{}};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00016}\mbox{\hyperlink{classStatus}{00016}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classStatus}{Status}}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00018}00018\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \$user\_id;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00019}00019\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \$admin\_id;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00020}00020\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \$status;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00021}00021\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \$redirection;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00022}00022\ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classDatabase}{Database}}\ \$db;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00023}00023\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \_\_construct(\$admin\_id\ =\ \textcolor{keyword}{null},\ \$user\_id\ =\ \textcolor{keyword}{null},\ \$status\ =\ \textcolor{stringliteral}{'ACTIVE'})}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00024}00024\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00025}00025\ \ \ \ \ \$this-\/>admin\_id\ =\ \$admin\_id;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00026}00026\ \ \ \ \ \$this-\/>user\_id\ =\ \$user\_id;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00027}00027\ \ \ \ \ \$this-\/>status\ =\ \$status;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00028}00028\ \ \ \ \ \$this-\/>redirection\ =\ (\$status\ !=\ \textcolor{stringliteral}{'INACTIVE'})\ ?\ \textcolor{stringliteral}{'Location:\ ../Views/dashboard.php?id='}\ .\ \$this-\/>admin\_id\ :\ \textcolor{stringliteral}{'Location:}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00029}00029\ \textcolor{stringliteral}{../Views/login.php'};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ session\ to\ manage\ status\ messages}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00031}00031\ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//*\ Connect\ to\ the\ DB}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00033}00033\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00034}00034\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00035}00035\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ set\_usr\_status()}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00036}00036\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00038}00038\ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ status\ in\ \`{}Suspend`\ status}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00039}00039\ \ \ \ \ \ \ \$stmt\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}UPDATE\ Usrs\ SET\ Status\ =\ :status\ WHERE\ ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}\ =>\ \$this-\/>user\_id,}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}\ =>\ \$this-\/>status}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00042}00042\ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00044}00044\ \ \ \ \ \ \ \textcolor{comment}{//*\ \#\#\#\ User\ successfully\ deleted\ from\ \`{}Usr`\ table\ (+\ other\ tables)\ \#\#\#}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00045}00045\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{'User\ has\ been\ successfully\ '}\ .\ \$this-\/>status\ .\ \textcolor{charliteral}{'!'};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00046}00046\ \ \ \ \ \ \ header(\$this-\/>redirection);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00047}00047\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00048}00048\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00049}00049\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00050}00050\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00051}00051\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00052}00052\ \ \ \ \ \ \ header(\$this-\/>redirection);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00053}00053\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00055}00055\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00056}00056\ \}\ \textcolor{comment}{//\ Status\ class}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00058}\mbox{\hyperlink{classFetch}{00058}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFetch}{Fetch}}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00060}00060\ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classDatabase}{Database}}\ \$db;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00061}00061\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \_\_construct()}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00062}00062\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00063}00063\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00064}00064\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00072}\mbox{\hyperlink{classFetch_a9e9fa4f98545f1e405c48e8b6bb9c419}{00072}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_a9e9fa4f98545f1e405c48e8b6bb9c419}{fetch\_user}}(\$user\_id)}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00073}00073\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00074}00074\ \ \ \ \ \$user\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Usrs\ WHERE\ ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00075}00075\ \ \ \ \ \ \ \textcolor{stringliteral}{'id'}\ =>\ \$user\_id}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00076}00076\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return}\ \$user[0];\ \ \textcolor{comment}{//\ Select\ the\ first\ (and\ only)\ result}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00078}00078\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00086}\mbox{\hyperlink{classFetch_aa57d7058291e52a3104daf28f87b9350}{00086}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_aa57d7058291e52a3104daf28f87b9350}{fetch\_user\_profile}}(\$user\_id)}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00087}00087\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00089}00089\ \ \ \ \ \ \ \textcolor{comment}{//\ Fetch\ the\ \`{}user\ profile`\ using\ \`{}user\_id`}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00090}00090\ \ \ \ \ \ \ \$user\_profile\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Usr\_Profile\ WHERE\ Usr\_ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'id'}\ =>\ \$user\_id}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00092}00092\ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00093}00093\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$user\_profile[0];\ \ \textcolor{comment}{//\ Return\ the\ first\ (and\ the\ only)\ result}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00094}00094\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00095}00095\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00096}00096\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00097}00097\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00098}00098\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00100}00100\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00108}\mbox{\hyperlink{classFetch_aa676a2c408729936a1ebc86b33ee5658}{00108}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_aa676a2c408729936a1ebc86b33ee5658}{fetch\_user\_role}}(\$user\_id)}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00109}00109\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00111}00111\ \ \ \ \ \ \ \$user\_role\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Usr\_Roles\ WHERE\ Usr\_ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'id'}\ =>\ \$user\_id}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00113}00113\ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00114}00114\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$user\_role[0];}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00115}00115\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00116}00116\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00117}00117\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00118}00118\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00120}00120\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00128}\mbox{\hyperlink{classFetch_a6c418702acf5ddfd966e526dcbe927b0}{00128}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_a6c418702acf5ddfd966e526dcbe927b0}{fetch\_user\_image}}(\$user\_image\_id)}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00129}00129\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00130}00130\ \ \ \ \ \$user\_profile\_image\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Images\ WHERE\ Image\_ID\ =\ :Image\_ID"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00131}00131\ \ \ \ \ \ \ \textcolor{stringliteral}{'Image\_ID'}\ =>\ \$user\_image\_id}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00132}00132\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{return}\ \$user\_profile\_image[0][\textcolor{stringliteral}{'Path'}]\ ??\ \textcolor{stringliteral}{'http://localhost/AgriGO/project/public/assets/default-\/user.png'};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00134}00134\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00142}\mbox{\hyperlink{classFetch_a8c2177bc9e2daeb0d1b6c75febf830d3}{00142}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_a8c2177bc9e2daeb0d1b6c75febf830d3}{fetch\_users\_number}}()}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00143}00143\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00144}00144\ \ \ \ \ \$users\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ }}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00145}00145\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SUM(CASE\ WHEN\ Role\_ID\ =\ 3\ THEN\ 1\ ELSE\ 0\ END)\ AS\ client\_count,}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00146}00146\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SUM(CASE\ WHEN\ Role\_ID\ =\ 4\ THEN\ 1\ ELSE\ 0\ END)\ AS\ farmer\_count,}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00147}00147\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SUM(CASE\ WHEN\ Role\_ID\ =\ 2\ THEN\ 1\ ELSE\ 0\ END)\ AS\ admin\_count}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00148}00148\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ FROM\ Usr\_Roles"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00149}00149\ \ \ \ \ \textcolor{keywordflow}{return}\ \$users[0];}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00150}00150\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00158}\mbox{\hyperlink{classFetch_a8eab4dbde004c92aad83ab9be42cdc28}{00158}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_a8eab4dbde004c92aad83ab9be42cdc28}{\_\_fetch\_users}}(\$user\_role\_id)}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00159}00159\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00160}00160\ \ \ \ \ \$\_users\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ U.*\ FROM\ Usrs\ AS\ U}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ JOIN\ Usr\_Roles\ AS\ UR\ ON\ U.ID\ =\ UR.Usr\_ID}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ WHERE\ UR.Role\_ID\ =\ :role"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00163}00163\ \ \ \ \ \ \ \textcolor{stringliteral}{'role'}\ =>\ \$user\_role\_id}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00164}00164\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{return}\ \$\_users;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00166}00166\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00174}\mbox{\hyperlink{classFetch_a1c7b230946168818f8be4dbcac705b46}{00174}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classFetch_a1c7b230946168818f8be4dbcac705b46}{count\_user\_by\_month}}(\$date)}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00175}00175\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00176}00176\ \ \ \ \ \$users\_count\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ }}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00177}00177\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ COUNT(*)\ AS\ UsersCount\ }}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ FROM\ Usrs}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ WHERE\ DATE\_FORMAT(Created\_at,\ '\%Y-\/\%m')\ =\ :date"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00180}00180\ \ \ \ \ \ \ \textcolor{stringliteral}{'date'}\ =>\ \$date}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00181}00181\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{return}\ \$users\_count[0][\textcolor{stringliteral}{'UsersCount'}]\ ??\ 0;\ \textcolor{comment}{//\ Default\ to\ 0\ if\ no\ rows}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00183}00183\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00184}00184\ \}\ \ \textcolor{comment}{//\ Fetch\ class}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00186}\mbox{\hyperlink{classSignIn}{00186}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSignIn}{SignIn}}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00187}00187\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00188}00188\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \$identifier;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00189}00189\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \$password;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00190}00190\ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classDatabase}{Database}}\ \$db;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00191}00191\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \_\_construct(\$identifier\ =\ \textcolor{keyword}{null},\ \$password\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00192}00192\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00193}00193\ \ \ \ \ \$this-\/>identifier\ =\ \$identifier;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00194}00194\ \ \ \ \ \$this-\/>password\ =\ \$password;}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00195}00195\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00196}00196\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00203}\mbox{\hyperlink{classSignIn_add744b04c76367c8677460bed4635e71}{00203}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classSignIn_add744b04c76367c8677460bed4635e71}{signIn}}()}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00204}00204\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00205}00205\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00206}00206\ \ \ \ \ \ \ session\_start();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00207}00207\ \ \ \ \ \ \ \$user\ =\ \$this-\/>is\_valid\_user();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00208}00208\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$user\ ===\ \textcolor{keyword}{null})\ \{\ \ \textcolor{comment}{//\ Check\ if\ user\ exists}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00209}00209\ \ \ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}User\ not\ found!"{}};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00210}00210\ \ \ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00211}00211\ \ \ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00212}00212\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00214}00214\ \ \ \ \ \ \ \textcolor{comment}{//\ Verify\ if\ the\ user\ is\ suspended\ or\ not}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00215}00215\ \ \ \ \ \ \ is\_suspend(\$user[\textcolor{stringliteral}{'ID'}],\ \textcolor{stringliteral}{'Location:\ ../Views/login.php'});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00217}00217\ \ \ \ \ \ \ \textcolor{comment}{//\ Verify\ the\ client\ password\ and\ assign\ it\ to\ the\ login\ history}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00218}00218\ \ \ \ \ \ \ (\$this-\/>is\_pass(\$user[\textcolor{stringliteral}{'Password\_hash'}]))}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00219}00219\ \ \ \ \ \ \ \ \ ?\ \$this-\/>ass\_login\_history(\$user[\textcolor{stringliteral}{'ID'}],\ \textcolor{stringliteral}{'SUCCESS'})}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00220}00220\ \ \ \ \ \ \ \ \ :\ \$this-\/>ass\_login\_history(\$user[\textcolor{stringliteral}{'ID'}],\ \textcolor{stringliteral}{'FAILED'});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00222}00222\ \ \ \ \ \ \ \$user\_role\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classFetch}{Fetch}}();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00223}00223\ \ \ \ \ \ \ \$user\_role\ =\ \$user\_role-\/>fetch\_user\_role(\$user[\textcolor{stringliteral}{'ID'}]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00225}00225\ \ \ \ \ \ \ \textcolor{comment}{//\ Login\ successful\ -\/\ Set\ session\ variables}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00226}00226\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'user\_id'}]\ =\ \$user[\textcolor{stringliteral}{'ID'}];}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00227}00227\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'user\_role'}]\ =\ \$user\_role[\textcolor{stringliteral}{'Role\_ID'}];}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00228}00228\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Login\ successful!"{}};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00229}00229\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00230}00230\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00231}00231\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00232}00232\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00233}00233\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00234}00234\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00235}00235\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00236}00236\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00244}00244\ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ is\_valid\_user()}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00245}00245\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00246}00246\ \ \ \ \ \$user\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{'SELECT\ *\ FROM\ Usrs\ WHERE\ Email\ =\ :identifier\ OR\ Username\ =\ :identifier'},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00247}00247\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}identifier"{}}\ =>\ \$this-\/>identifier}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00248}00248\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00249}00249\ \ \ \ \ \textcolor{keywordflow}{return}\ \$user[0]\ ??\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00250}00250\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00260}00260\ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ ass\_login\_history(\$user\_id\ =\ \textcolor{keyword}{null},\ \$status\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00261}00261\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00262}00262\ \ \ \ \ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}INSERT\ INTO\ Login\_History}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00263}00263\ \textcolor{stringliteral}{\ \ \ \ \ \ (Usr\_ID,\ IP\_Address,\ Usr\_Host,\ Server\_Address,\ Server\_Name,\ Server\_Protocol,\ Status)}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00264}00264\ \textcolor{stringliteral}{\ \ \ \ \ \ VALUES\ (:user\_id,\ :ip\_address,\ :user\_host,\ :server\_address,\ :server\_name,\ :server\_protocol,\ :status)"{}},\ [}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00265}00265\ \ \ \ \ \ \ \textcolor{stringliteral}{'user\_id'}\ =>\ \$user\_id,}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00266}00266\ \ \ \ \ \ \ \textcolor{stringliteral}{'ip\_address'}\ =>\ \$\_SERVER[\textcolor{stringliteral}{'REMOTE\_ADDR'}],}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00267}00267\ \ \ \ \ \ \ \textcolor{stringliteral}{'user\_host'}\ =>\ \$\_SERVER[\textcolor{stringliteral}{'REMOTE\_HOST'}],}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00268}00268\ \ \ \ \ \ \ \textcolor{stringliteral}{'server\_address'}\ =>\ \$\_SERVER[\textcolor{stringliteral}{'SERVER\_ADDR'}],}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00269}00269\ \ \ \ \ \ \ \textcolor{stringliteral}{'server\_name'}\ =>\ \$\_SERVER[\textcolor{stringliteral}{'SERVER\_NAME'}],}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00270}00270\ \ \ \ \ \ \ \textcolor{stringliteral}{'server\_protocol'}\ =>\ \$\_SERVER[\textcolor{stringliteral}{'SERVER\_PROTOCOL'}],}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00271}00271\ \ \ \ \ \ \ \textcolor{stringliteral}{'status'}\ =>\ \$status}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00272}00272\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00274}00274\ \ \ \ \ \textcolor{comment}{//\ Force\ exit\ in\ \`{}FAILED`\ status}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$status\ ===\ \textcolor{stringliteral}{'FAILED'})\ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00276}00276\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Invalid\ password!"{}};}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00277}00277\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00278}00278\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00279}00279\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00280}00280\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00288}00288\ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ is\_pass(\$valid\_hash\_password\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00289}00289\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00290}00290\ \ \ \ \ \textcolor{keywordflow}{return}\ password\_verify(\$this-\/>password,\ \$valid\_hash\_password);}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00291}00291\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{____include_____8php_source_l00292}00292\ \}\ \ \textcolor{comment}{//\ SignIn\ class}}
+
+\end{DoxyCode}

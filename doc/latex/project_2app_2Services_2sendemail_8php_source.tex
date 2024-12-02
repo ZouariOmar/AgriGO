@@ -1,0 +1,124 @@
+\doxysection{sendemail.\+php}
+\hypertarget{project_2app_2Services_2sendemail_8php_source}{}\label{project_2app_2Services_2sendemail_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Services/sendemail.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Services/sendemail.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00002}00002\ \textcolor{comment}{//?\ Include\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00003}00003\ require\ \textcolor{stringliteral}{'PHPMailer/src/Exception.php'};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00004}00004\ require\ \textcolor{stringliteral}{'PHPMailer/src/PHPMailer.php'};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00005}00005\ require\ \textcolor{stringliteral}{'PHPMailer/src/SMTP.php'};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00006}00006\ include\ \textcolor{stringliteral}{'../../../vendor/autoload.php'};\ \ \textcolor{comment}{//\ Load\ Composer's\ auto-\/loader}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00008}00008\ \textcolor{comment}{//?\ Using\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00009}00009\ use\ \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1PHPMailer}{PHPMailer\(\backslash\)PHPMailer\(\backslash\)PHPMailer}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00010}00010\ use\ \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1Exception}{PHPMailer\(\backslash\)PHPMailer\(\backslash\)Exception}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00011}00011\ use\ \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1SMTP}{PHPMailer\(\backslash\)PHPMailer\(\backslash\)SMTP}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00012}00012\ use\ \mbox{\hyperlink{classDotenv_1_1Dotenv}{Dotenv\(\backslash\)Dotenv}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00013}00013\ use\ \mbox{\hyperlink{classDotenv_1_1Exception_1_1InvalidPathException}{Dotenv\(\backslash\)Exception\(\backslash\)InvalidPathException}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00014}00014\ use\ \mbox{\hyperlink{classDotenv_1_1Exception_1_1ValidationException}{Dotenv\(\backslash\)Exception\(\backslash\)ValidationException}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00016}00016\ \textcolor{keywordflow}{try}\ \{\ \ \textcolor{comment}{//?\ Hold\ the\ .env\ locale\ file}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00017}00017\ \ \ \ \ \$dotenv\ =\ Dotenv::createImmutable(\textcolor{stringliteral}{'../../'});\ \ \textcolor{comment}{//\ Navigate\ to\ the\ .env\ fil\ lvl}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00018}00018\ \ \ \ \ \$dotenv-\/>load();}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00019}00019\ \}\ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{classDotenv_1_1Exception_1_1InvalidPathException}{InvalidPathException}}\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ the\ specific\ error\ if\ .env\ file\ path\ is\ incorrect\ or\ file\ is\ missing}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00020}00020\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ .env\ file\ not\ found\ or\ incorrect\ path\ specified."{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00021}00021\ \}\ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{classDotenv_1_1Exception_1_1ValidationException}{ValidationException}}\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ validation\ errors\ (useful\ if\ you're\ validating\ required\ variables)}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00022}00022\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Validation\ Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00023}00023\ \}\ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1Exception}{Exception}}\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ any\ other\ general\ exceptions}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00024}00024\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00027}00027\ \textcolor{comment}{//\ Define\ Host\ Info\ ||\ Who\ is\ sending\ emails?}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00028}00028\ define(\textcolor{stringliteral}{'HOST\_NAME'},\ \$\_ENV[\textcolor{stringliteral}{'HOST\_NAME'}]);}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00029}00029\ define(\textcolor{stringliteral}{'HOST\_EMAIL'},\ \$\_ENV[\textcolor{stringliteral}{'HOST\_EMAIL'}]);}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00031}00031\ \textcolor{comment}{//\ Define\ SMTP\ Credentials\ ||\ Gmail\ Information}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00032}00032\ define(\textcolor{stringliteral}{'SMTP\_EMAIL'},\ \$\_ENV[\textcolor{stringliteral}{'SMTP\_EMAIL'}]);}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00033}00033\ define(\textcolor{stringliteral}{'SMTP\_PASSWORD'},\ \$\_ENV[\textcolor{stringliteral}{'SMTP\_PASSWORD'}]);\ \textcolor{comment}{//\ read\ documentations}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00035}00035\ \textcolor{comment}{//\ Define\ Recipient\ Info\ ||\ Who\ will\ get\ this\ email?}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00036}00036\ define(\textcolor{stringliteral}{'RECIPIENT\_NAME'},\ \$\_ENV[\textcolor{stringliteral}{'RECIPIENT\_NAME'}]);}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00037}00037\ define(\textcolor{stringliteral}{'RECIPIENT\_EMAIL'},\ \$\_ENV[\textcolor{stringliteral}{'RECIPIENT\_EMAIL'}]);}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00039}00039\ \textcolor{comment}{//Create\ an\ instance;\ passing\ \`{}true`\ enables\ exceptions}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00040}00040\ \$mail\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacePHPMailer}{PHPMailer}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00042}00042\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//Server\ settings}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00044}00044\ \ \ \ \ \$mail-\/>SMTPDebug\ =\ SMTP::DEBUG\_SERVER;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ verbose\ debug\ output}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00045}00045\ \ \ \ \ \$mail-\/>isSMTP();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ using\ SMTP}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00046}00046\ \ \ \ \ \$mail-\/>Host\ =\ HOST\_EMAIL;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ SMTP\ server\ (Gmail's\ SMTP\ server\ )\ to\ send\ through}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00047}00047\ \ \ \ \ \$mail-\/>SMTPAuth\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ SMTP\ authentication}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00048}00048\ \ \ \ \ \$mail-\/>Username\ =\ SMTP\_EMAIL;\ \ \ \ \ \ \ \textcolor{comment}{//\ SMTP\ username}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00049}00049\ \ \ \ \ \$mail-\/>Password\ =\ SMTP\_PASSWORD;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SMTP\ password}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00050}00050\ \ \ \ \ \$mail-\/>SMTPSecure\ =\ PHPMailer::ENCRYPTION\_SMTPS;\ \ \textcolor{comment}{//\ Enable\ implicit\ TLS\ encryption}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00051}00051\ \ \ \ \ \$mail-\/>Port\ =\ 465;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TCP\ port\ to\ connect\ to;\ use\ 587\ if\ you\ have\ set\ \`{}SMTPSecure\ =\ PHPMailer::ENCRYPTION\_STARTTLS`}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//Content}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00054}00054\ \ \ \ \ \$name\ =\ isset(\$\_GET[\textcolor{stringliteral}{'name'}])\ ?\ preg\_replace(\textcolor{stringliteral}{"{}/[\string^\(\backslash\).\(\backslash\)-\/\(\backslash\)'\ a-\/zA-\/Z0-\/9]/"{}},\ \textcolor{stringliteral}{"{}"{}},\ \$\_GET[\textcolor{stringliteral}{'name'}])\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00055}00055\ \ \ \ \ \$senderEmail\ =\ isset(\$\_GET[\textcolor{stringliteral}{'email'}])\ ?\ (filter\_var(\$\_GET[\textcolor{stringliteral}{'email'}],\ FILTER\_VALIDATE\_EMAIL)\ ?\ \$\_GET[\textcolor{stringliteral}{'email'}]\ :\ \textcolor{stringliteral}{"{}"{}})\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00056}00056\ \ \ \ \ \$phone\ =\ isset(\$\_GET[\textcolor{stringliteral}{'phone'}])\ ?\ preg\_replace(\textcolor{stringliteral}{"{}/[\string^0-\/9\(\backslash\)+\(\backslash\)-\/\(\backslash\)(\(\backslash\))\(\backslash\)s]/"{}},\ \textcolor{stringliteral}{"{}"{}},\ \$\_GET[\textcolor{stringliteral}{'phone'}])\ :\ \textcolor{stringliteral}{"{}"{}};\ \ \textcolor{comment}{//\ Allows\ numbers,\ spaces,\ and\ common\ phone\ symbols}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00057}00057\ \ \ \ \ \$subject\ =\ isset(\$\_GET[\textcolor{stringliteral}{'subject'}])\ ?\ preg\_replace(\textcolor{stringliteral}{"{}/[\string^\(\backslash\).\(\backslash\)-\/\(\backslash\)'\ a-\/zA-\/Z0-\/9]/"{}},\ \textcolor{stringliteral}{"{}"{}},\ \$\_GET[\textcolor{stringliteral}{'subject'}])\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00058}00058\ \ \ \ \ \$website\ =\ isset(\$\_GET[\textcolor{stringliteral}{'website'}])\ ?\ (filter\_var(\$\_GET[\textcolor{stringliteral}{'website'}],\ FILTER\_VALIDATE\_URL)\ ?\ \$\_GET[\textcolor{stringliteral}{'website'}]\ :\ \textcolor{stringliteral}{"{}"{}})\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00059}00059\ \ \ \ \ \$message\ =\ isset(\$\_GET[\textcolor{stringliteral}{'message'}])\ ?\ preg\_replace(\textcolor{stringliteral}{"{}/(From:|To:|BCC:|CC:|Subject:|Content-\/Type:)/i"{}},\ \textcolor{stringliteral}{"{}"{}},\ \$\_GET[\textcolor{stringliteral}{'message'}])\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00060}00060\ \ \ \ \ \$message\ =\ htmlspecialchars(\$message,\ ENT\_QUOTES,\ \textcolor{stringliteral}{'UTF-\/8'});\ \ \textcolor{comment}{//\ Additional\ security\ when\ outputting\ or\ processing\ \$message:}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//Recipients}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00063}00063\ \ \ \ \ \$mail-\/>setFrom(\$senderEmail,\ \$name);}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00064}00064\ \ \ \ \ \$mail-\/>addAddress(RECIPIENT\_EMAIL,\ RECIPIENT\_NAME);\ \ \ \ \ \textcolor{comment}{//Add\ a\ recipient}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//Content}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00067}00067\ \ \ \ \ \$mail-\/>isHTML(\textcolor{keyword}{true});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Set\ email\ format\ to\ HTML}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00068}00068\ \ \ \ \ \$mail-\/>Subject\ =\ \textcolor{stringliteral}{'A\ contact\ request\ send\ by\ '}\ .\ \$name;}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00069}00069\ \ \ \ \ \$mail-\/>Body\ .=\ \textcolor{stringliteral}{'Name:\ '}\ .\ \$name\ .\ \textcolor{stringliteral}{"{}<br>"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00070}00070\ \ \ \ \ \$mail-\/>Body\ .=\ \textcolor{stringliteral}{'Email:\ '}\ .\ \$senderEmail\ .\ \textcolor{stringliteral}{"{}<br>"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00071}00071\ \ \ \ \ \$mail-\/>Body\ .=\ \textcolor{stringliteral}{'Phone:\ '}\ .\ \$phone\ .\ \textcolor{stringliteral}{"{}<br>"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00072}00072\ \ \ \ \ \$mail-\/>Body\ .=\ \textcolor{stringliteral}{'Subject:\ '}\ .\ \$subject\ .\ \textcolor{stringliteral}{"{}<br>"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00073}00073\ \ \ \ \ \$mail-\/>Body\ .=\ \textcolor{stringliteral}{'message:\ '}\ .\ \textcolor{stringliteral}{"{}<br>"{}}\ .\ \$message;}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00075}00075\ \ \ \ \ \$mail-\/>send();}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00076}00076\ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00078}00078\ \ \ \ \ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00080}00080\ \ \ \ \ <head>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}utf-\/8"{}}\ />}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ <meta\ http-\/equiv=\textcolor{stringliteral}{"{}X-\/UA-\/Compatible"{}}\ content=\textcolor{stringliteral}{"{}IE=edge,chrome=1"{}}\ />}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1"{}}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ <title></title>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ <link\ href=\textcolor{stringliteral}{'https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:700'}\ rel=\textcolor{stringliteral}{'stylesheet'}\ type=\textcolor{stringliteral}{'text/css'}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ <style>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ @\textcolor{keyword}{import}\ url(\textcolor{comment}{//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css);}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ @\textcolor{keyword}{import}\ url(\textcolor{comment}{//maxcdn.bootstrapcdn.com/font-\/awesome/4.2.0/css/font-\/awesome.min.css);}}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00089}00089\ \ \ \ \ \ \ \ \ </style>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}https://2-\/22-\/4-\/dot-\/lead-\/pages.appspot.com/static/lp918/min/default\_thank\_you.css"{}}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00091}00091\ \ \ \ \ \ \ \ \ <script\ src=\textcolor{stringliteral}{"{}https://2-\/22-\/4-\/dot-\/lead-\/pages.appspot.com/static/lp918/min/jquery-\/1.9.1.min.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00092}00092\ \ \ \ \ \ \ \ \ <script\ src=\textcolor{stringliteral}{"{}https://2-\/22-\/4-\/dot-\/lead-\/pages.appspot.com/static/lp918/min/html5shiv.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00093}00093\ \ \ \ \ </head>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00095}00095\ \ \ \ \ <body>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00096}00096\ \ \ \ \ \ \ \ \ <header\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}site-\/header"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}header"{}}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ <h1\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}site-\/header\_\_title"{}}\ data-\/lead-\/\textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}site-\/header-\/title"{}}>THANK\ YOU!</h1>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00098}00098\ \ \ \ \ \ \ \ \ </header>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ <main\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}main-\/content"{}}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ <i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/check\ main-\/content\_\_checkmark"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}checkmark"{}}></i>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ <p\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}main-\/content\_\_body"{}}\ data-\/lead-\/\textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}main-\/content-\/body"{}}>Thanks\ \textcolor{keywordflow}{for}\ contacting\ us.\ We\ will\ contact\ you\ ASAP!}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ </p>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ <p\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}main-\/content\_\_body"{}}>You\ will\ be\ redirected\ to\ the\ home\ page\ in\ <span\ id="{}countdown"{}>5</span>\ seconds...}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ </p>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ </main>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00106}00106\ \ \ \ \ \ \ \ \ <footer\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}site-\/footer"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}footer"{}}>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ <p\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}site-\/footer\_\_fineprint"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}fineprint"{}}>Copyright\ ©2024\ |\ All\ Rights\ Reserved</p>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00108}00108\ \ \ \ \ \ \ \ \ </footer>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00110}00110\ \ \ \ \ \ \ \ \ <script\ src=\textcolor{stringliteral}{"{}../../public/js/countdown.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00111}00111\ \ \ \ \ </body>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00113}00113\ \ \ \ \ </html>}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00115}00115\ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00116}00116\ \}\ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1Exception}{Exception}}\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00117}00117\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<div\ class='inner\ error'><p\ class='error'>Message\ could\ not\ be\ sent.\ Mailer\ Error:\ \{\$mail-\/>ErrorInfo\}</p></div><!-\/-\/\ /.inner\ -\/-\/>"{}};}
+\DoxyCodeLine{\Hypertarget{project_2app_2Services_2sendemail_8php_source_l00118}00118\ \}}
+
+\end{DoxyCode}

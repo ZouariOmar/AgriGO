@@ -1,0 +1,37 @@
+\doxysection{Rules.\+php}
+\hypertarget{French_2Rules_8php_source}{}\label{French_2Rules_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/Rules/French/Rules.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/Rules/French/Rules.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)French;}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00007}00007\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Patterns}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Patterns}};}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00008}00008\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Ruleset}};}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00009}00009\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Substitutions}};}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00010}00010\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformations}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Transformations}};}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00012}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Rules}{00012}}\ \textcolor{keyword}{final}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Rules}{Rules}}}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ getSingularRuleset():\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}}}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}}(}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformations}{Transformations}}(...\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Inflectible_a8afc0789268462b34c2684e8dbc8db23}{Inflectible::getSingular}}()),}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Patterns}{Patterns}}(...\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Uninflected_a6ef9649d9cc57a0a695c6def45acfc4b}{Uninflected::getSingular}}()),}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{Substitutions}}(...\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Inflectible_ac265f455d63f042219ee048d2b4a86c1}{Inflectible::getIrregular}}()))-\/>getFlippedSubstitutions()}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00020}00020\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ getPluralRuleset():\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}}}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}}(}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformations}{Transformations}}(...\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Inflectible_aeb39ec4b1fdfac8f6a597662fe49f76b}{Inflectible::getPlural}}()),}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Patterns}{Patterns}}(...\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Uninflected_a6db0d3fded321cff4f9252d09b37e47c}{Uninflected::getPlural}}()),}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitutions}{Substitutions}}(...\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1French_1_1Inflectible_ac265f455d63f042219ee048d2b4a86c1}{Inflectible::getIrregular}}())}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{French_2Rules_8php_source_l00031}00031\ \}}
+
+\end{DoxyCode}

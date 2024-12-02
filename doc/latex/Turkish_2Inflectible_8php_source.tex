@@ -1,0 +1,37 @@
+\doxysection{Inflectible.\+php}
+\hypertarget{Turkish_2Inflectible_8php_source}{}\label{Turkish_2Inflectible_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/Rules/Turkish/Inflectible.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/Rules/Turkish/Inflectible.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Turkish;}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00007}00007\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Pattern}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Pattern}};}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00008}00008\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitution}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Substitution}};}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00009}00009\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformation}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Transformation}};}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00010}00010\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Word}};}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00012}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible}{00012}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible}{Inflectible}}}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00015}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible_a1da8f956f68cac89195ac55120964e2d}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible_a1da8f956f68cac89195ac55120964e2d}{getSingular}}():\ iterable}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00017}00017\ \ \ \ \ \ \ \ \ yield\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformation}{Transformation}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Pattern}{Pattern}}(\textcolor{stringliteral}{'/l[ae]r\$/i'}),\ \textcolor{stringliteral}{''});}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00021}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible_aea54663483307594df97b55578d9c3e4}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible_aea54663483307594df97b55578d9c3e4}{getPlural}}():\ iterable}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00023}00023\ \ \ \ \ \ \ \ \ yield\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformation}{Transformation}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Pattern}{Pattern}}(\textcolor{stringliteral}{'/([eöiü][\string^aoıueöiü]\{0,6\})\$/u'}),\ \textcolor{stringliteral}{'\(\backslash\)1ler'});}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00024}00024\ \ \ \ \ \ \ \ \ yield\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Transformation}{Transformation}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Pattern}{Pattern}}(\textcolor{stringliteral}{'/([aoıu][\string^aoıueöiü]\{0,6\})\$/u'}),\ \textcolor{stringliteral}{'\(\backslash\)1lar'});}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00028}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible_a7abdc42d574d8554a61e5f01fe7e670b}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Turkish_1_1Inflectible_a7abdc42d574d8554a61e5f01fe7e670b}{getIrregular}}():\ iterable}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ yield\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitution}{Substitution}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Word}}(\textcolor{stringliteral}{'ben'}),\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Word}}(\textcolor{stringliteral}{'biz'}));}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ yield\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitution}{Substitution}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Word}}(\textcolor{stringliteral}{'sen'}),\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Word}}(\textcolor{stringliteral}{'siz'}));}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00032}00032\ \ \ \ \ \ \ \ \ yield\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Substitution}{Substitution}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Word}}(\textcolor{charliteral}{'o'}),\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Word}{Word}}(\textcolor{stringliteral}{'onlar'}));}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Turkish_2Inflectible_8php_source_l00034}00034\ \}}
+
+\end{DoxyCode}

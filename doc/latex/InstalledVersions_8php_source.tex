@@ -1,0 +1,245 @@
+\doxysection{Installed\+Versions.\+php}
+\hypertarget{InstalledVersions_8php_source}{}\label{InstalledVersions_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/composer/InstalledVersions.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/composer/InstalledVersions.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00003}00003\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00004}00004\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Composer.}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00005}00005\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00006}00006\ \textcolor{comment}{\ *\ (c)\ Nils\ Adermann\ <naderman@naderman.de>}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00007}00007\ \textcolor{comment}{\ *\ \ \ \ \ Jordi\ Boggiano\ <j.boggiano@seld.be>}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00009}00009\ \textcolor{comment}{\ *\ For\ the\ full\ copyright\ and\ license\ information,\ please\ view\ the\ LICENSE}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00010}00010\ \textcolor{comment}{\ *\ file\ that\ was\ distributed\ with\ this\ source\ code.}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00011}00011\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00013}00013\ \textcolor{keyword}{namespace\ }Composer;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00015}00015\ use\ \mbox{\hyperlink{classComposer_1_1Autoload_1_1ClassLoader}{Composer\(\backslash\)Autoload\(\backslash\)ClassLoader}};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00016}00016\ use\ Composer\(\backslash\)Semver\(\backslash\)VersionParser;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00027}\mbox{\hyperlink{classComposer_1_1InstalledVersions}{00027}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classComposer_1_1InstalledVersions}{InstalledVersions}}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \$installed;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \$canGetVendors;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \$installedByVendor\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00052}\mbox{\hyperlink{classComposer_1_1InstalledVersions_ad9f8096fa500b7685f28cc2bc367d4e0}{00052}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_ad9f8096fa500b7685f28cc2bc367d4e0}{getInstalledPackages}}()}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \$packages\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \$packages[]\ =\ array\_keys(\$installed[\textcolor{stringliteral}{'versions'}]);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (1\ ===\ \(\backslash\)count(\$packages))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$packages[0];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ array\_keys(array\_flip(\(\backslash\)call\_user\_func\_array(\textcolor{stringliteral}{'array\_merge'},\ \$packages)));}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00073}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a1168ea9986cb0118bbdbdb8eb702a8d7}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a1168ea9986cb0118bbdbdb8eb702a8d7}{getInstalledPackagesByType}}(\$type)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00075}00075\ \ \ \ \ \ \ \ \ \$packagesByType\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$installed[\textcolor{stringliteral}{'versions'}]\ as\ \$name\ =>\ \$package)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$package[\textcolor{stringliteral}{'type'}])\ \&\&\ \$package[\textcolor{stringliteral}{'type'}]\ ===\ \$type)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$packagesByType[]\ =\ \$name;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$packagesByType;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00097}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a7b54b7508f533fde240fbd93dc7c3102}{00097}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a7b54b7508f533fde240fbd93dc7c3102}{isInstalled}}(\$packageName,\ \$includeDevRequirements\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$includeDevRequirements\ ||\ !isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'dev\_requirement'}])\ ||\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'dev\_requirement'}]\ ===\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00120}\mbox{\hyperlink{classComposer_1_1InstalledVersions_af8730580d5b067b6f5cc7cb021f75e42}{00120}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_af8730580d5b067b6f5cc7cb021f75e42}{satisfies}}(VersionParser\ \$parser,\ \$packageName,\ \$constraint)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00121}00121\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00122}00122\ \ \ \ \ \ \ \ \ \$constraint\ =\ \$parser-\/>parseConstraints((\textcolor{keywordtype}{string})\ \$constraint);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00123}00123\ \ \ \ \ \ \ \ \ \$provided\ =\ \$parser-\/>parseConstraints(self::getVersionRanges(\$packageName));}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$provided-\/>matches(\$constraint);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00137}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a5ec06f72f3c0f66f7e906bb07507c331}{00137}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a5ec06f72f3c0f66f7e906bb07507c331}{getVersionRanges}}(\$packageName)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00138}00138\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \$ranges\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'pretty\_version'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$ranges[]\ =\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'pretty\_version'}];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (array\_key\_exists(\textcolor{stringliteral}{'aliases'},\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$ranges\ =\ array\_merge(\$ranges,\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'aliases'}]);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (array\_key\_exists(\textcolor{stringliteral}{'replaced'},\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$ranges\ =\ array\_merge(\$ranges,\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'replaced'}]);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (array\_key\_exists(\textcolor{stringliteral}{'provided'},\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$ranges\ =\ array\_merge(\$ranges,\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'provided'}]);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ implode(\textcolor{stringliteral}{'\ ||\ '},\ \$ranges);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ new\ \(\backslash\)OutOfBoundsException(\textcolor{stringliteral}{'Package\ "{}'}\ .\ \$packageName\ .\ \textcolor{stringliteral}{'"{}\ is\ not\ installed'});}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00168}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a013a3ba838cd2b9ec7a4f74c702961a6}{00168}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a013a3ba838cd2b9ec7a4f74c702961a6}{getVersion}}(\$packageName)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'version'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'version'}];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ new\ \(\backslash\)OutOfBoundsException(\textcolor{stringliteral}{'Package\ "{}'}\ .\ \$packageName\ .\ \textcolor{stringliteral}{'"{}\ is\ not\ installed'});}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00183}00183\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00189}\mbox{\hyperlink{classComposer_1_1InstalledVersions_ad9af2eb6ca51cb39be3857a865e37272}{00189}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_ad9af2eb6ca51cb39be3857a865e37272}{getPrettyVersion}}(\$packageName)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00190}00190\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'pretty\_version'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'pretty\_version'}];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00201}00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ new\ \(\backslash\)OutOfBoundsException(\textcolor{stringliteral}{'Package\ "{}'}\ .\ \$packageName\ .\ \textcolor{stringliteral}{'"{}\ is\ not\ installed'});}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00210}\mbox{\hyperlink{classComposer_1_1InstalledVersions_ad8e7b541baf674685362a7f4f8ddd15a}{00210}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_ad8e7b541baf674685362a7f4f8ddd15a}{getReference}}(\$packageName)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00211}00211\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'reference'}]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'reference'}];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00222}00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ new\ \(\backslash\)OutOfBoundsException(\textcolor{stringliteral}{'Package\ "{}'}\ .\ \$packageName\ .\ \textcolor{stringliteral}{'"{}\ is\ not\ installed'});}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00225}00225\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00231}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a1f8f65d06be84d265586988b9a6e66d4}{00231}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a1f8f65d06be84d265586988b9a6e66d4}{getInstallPath}}(\$packageName)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00232}00232\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00233}00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (self::getInstalled()\ as\ \$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isset(\$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'install\_path'}])\ ?\ \$installed[\textcolor{stringliteral}{'versions'}][\$packageName][\textcolor{stringliteral}{'install\_path'}]\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00239}00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ new\ \(\backslash\)OutOfBoundsException(\textcolor{stringliteral}{'Package\ "{}'}\ .\ \$packageName\ .\ \textcolor{stringliteral}{'"{}\ is\ not\ installed'});}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00242}00242\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00248}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a64f52ef97298466a0880737ac23d4c8a}{00248}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a64f52ef97298466a0880737ac23d4c8a}{getRootPackage}}()}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00249}00249\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00250}00250\ \ \ \ \ \ \ \ \ \$installed\ =\ self::getInstalled();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$installed[0][\textcolor{stringliteral}{'root'}];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00253}00253\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00262}\mbox{\hyperlink{classComposer_1_1InstalledVersions_a1fd2f2e9169766a9a1e937bdaf4b0368}{00262}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_a1fd2f2e9169766a9a1e937bdaf4b0368}{getRawData}}()}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00263}00263\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00264}00264\ \ \ \ \ \ \ \ \ @trigger\_error(\textcolor{stringliteral}{'getRawData\ only\ returns\ the\ first\ dataset\ loaded,\ which\ may\ not\ be\ what\ you\ expect.\ Use\ getAllRawData()\ instead\ which\ returns\ all\ datasets\ for\ all\ autoloaders\ present\ in\ the\ process.'},\ E\_USER\_DEPRECATED);}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{null}\ ===\ self::\$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ require\ the\ installed.php\ file\ if\ this\ file\ is\ loaded\ from\ its\ dumped\ location,}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ not\ from\ its\ source\ location\ in\ the\ composer/composer\ package,\ see\ https://github.com/composer/composer/issues/9937}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (substr(\_\_DIR\_\_,\ -\/8,\ 1)\ !==\ \textcolor{charliteral}{'C'})\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$installed\ =\ include\ \_\_DIR\_\_\ .\ \textcolor{stringliteral}{'/installed.php'};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$installed\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00274}00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self::\$installed;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00277}00277\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00285}\mbox{\hyperlink{classComposer_1_1InstalledVersions_ae14c7a691bd1ade3d2ec57eb24c88ac0}{00285}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_ae14c7a691bd1ade3d2ec57eb24c88ac0}{getAllRawData}}()}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00286}00286\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self::getInstalled();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00308}\mbox{\hyperlink{classComposer_1_1InstalledVersions_ad40c96bf7223486a1e6d077ea4582f87}{00308}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classComposer_1_1InstalledVersions_ad40c96bf7223486a1e6d077ea4582f87}{reload}}(\$data)}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00309}00309\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00310}00310\ \ \ \ \ \ \ \ \ self::\$installed\ =\ \$data;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00311}00311\ \ \ \ \ \ \ \ \ self::\$installedByVendor\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00312}00312\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00318}00318\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ getInstalled()}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00319}00319\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{null}\ ===\ self::\$canGetVendors)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ self::\$canGetVendors\ =\ method\_exists(\textcolor{stringliteral}{'Composer\(\backslash\)Autoload\(\backslash\)ClassLoader'},\ \textcolor{stringliteral}{'getRegisteredLoaders'});}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00322}00322\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00324}00324\ \ \ \ \ \ \ \ \ \$installed\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (self::\$canGetVendors)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (ClassLoader::getRegisteredLoaders()\ as\ \$vendorDir\ =>\ \$loader)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(self::\$installedByVendor[\$vendorDir]))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$installed[]\ =\ self::\$installedByVendor[\$vendorDir];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ elseif\ (is\_file(\$vendorDir.\textcolor{stringliteral}{'/composer/installed.php'}))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$required\ =\ require\ \$vendorDir.\textcolor{stringliteral}{'/composer/installed.php'};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$installed[]\ =\ self::\$installedByVendor[\$vendorDir]\ =\ \$required;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{null}\ ===\ self::\$installed\ \&\&\ strtr(\$vendorDir.\textcolor{stringliteral}{'/composer'},\ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \textcolor{charliteral}{'/'})\ ===\ strtr(\_\_DIR\_\_,\ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \textcolor{charliteral}{'/'}))\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$installed\ =\ \$installed[count(\$installed)\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00339}00339\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{null}\ ===\ self::\$installed)\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ require\ the\ installed.php\ file\ if\ this\ file\ is\ loaded\ from\ its\ dumped\ location,}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ not\ from\ its\ source\ location\ in\ the\ composer/composer\ package,\ see\ https://github.com/composer/composer/issues/9937}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (substr(\_\_DIR\_\_,\ -\/8,\ 1)\ !==\ \textcolor{charliteral}{'C'})\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$required\ =\ require\ \_\_DIR\_\_\ .\ \textcolor{stringliteral}{'/installed.php'};}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$installed\ =\ \$required;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$installed\ =\ array();}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00351}00351\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (self::\$installed\ !==\ array())\ \{}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \$installed[]\ =\ self::\$installed;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00355}00355\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$installed;}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00358}00358\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InstalledVersions_8php_source_l00359}00359\ \}}
+
+\end{DoxyCode}

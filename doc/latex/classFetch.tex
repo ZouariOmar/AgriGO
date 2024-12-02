@@ -1,0 +1,288 @@
+\doxysection{Fetch Class Reference}
+\hypertarget{classFetch}{}\label{classFetch}\index{Fetch@{Fetch}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFetch_a9e9fa4f98545f1e405c48e8b6bb9c419}{fetch\+\_\+user}} (\$user\+\_\+id)
+\item 
+\mbox{\hyperlink{classFetch_aa57d7058291e52a3104daf28f87b9350}{fetch\+\_\+user\+\_\+profile}} (\$user\+\_\+id)
+\item 
+\mbox{\hyperlink{classFetch_aa676a2c408729936a1ebc86b33ee5658}{fetch\+\_\+user\+\_\+role}} (\$user\+\_\+id)
+\item 
+\mbox{\hyperlink{classFetch_a6c418702acf5ddfd966e526dcbe927b0}{fetch\+\_\+user\+\_\+image}} (\$user\+\_\+image\+\_\+id)
+\item 
+\mbox{\hyperlink{classFetch_a8c2177bc9e2daeb0d1b6c75febf830d3}{fetch\+\_\+users\+\_\+number}} ()
+\item 
+\mbox{\hyperlink{classFetch_a8eab4dbde004c92aad83ab9be42cdc28}{\+\_\+\+\_\+fetch\+\_\+users}} (\$user\+\_\+role\+\_\+id)
+\item 
+\mbox{\hyperlink{classFetch_a1c7b230946168818f8be4dbcac705b46}{count\+\_\+user\+\_\+by\+\_\+month}} (\$date)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00058}{58}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classFetch_a3a5259769d7f731bb16391728037fa37}\label{classFetch_a3a5259769d7f731bb16391728037fa37} 
+\index{Fetch@{Fetch}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Fetch\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00061}{61}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{00064\ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFetch_a8eab4dbde004c92aad83ab9be42cdc28}\label{classFetch_a8eab4dbde004c92aad83ab9be42cdc28} 
+\index{Fetch@{Fetch}!\_\_fetch\_users@{\_\_fetch\_users}}
+\index{\_\_fetch\_users@{\_\_fetch\_users}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{\_\_fetch\_users()}{\_\_fetch\_users()}}
+{\footnotesize\ttfamily Fetch\+::\+\_\+\+\_\+fetch\+\_\+users (\begin{DoxyParamCaption}\item[{}]{\$user\+\_\+role\+\_\+id }\end{DoxyParamCaption})}
+
+Summary of \+\_\+\+\_\+fetch\+\_\+users
+\begin{DoxyItemize}
+\item \doxylink{classFetch}{Fetch} users that have a specific {\ttfamily user\+\_\+role\+\_\+id} 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+\_\+role\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00158}{158}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00159\ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \$\_users\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ U.*\ FROM\ Usrs\ AS\ U}}
+\DoxyCodeLine{00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ JOIN\ Usr\_Roles\ AS\ UR\ ON\ U.ID\ =\ UR.Usr\_ID}}
+\DoxyCodeLine{00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ WHERE\ UR.Role\_ID\ =\ :role"{}},\ [}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \textcolor{stringliteral}{'role'}\ =>\ \$user\_role\_id}
+\DoxyCodeLine{00164\ \ \ \ \ ]);}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{return}\ \$\_users;}
+\DoxyCodeLine{00166\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classFetch_a1c7b230946168818f8be4dbcac705b46}\label{classFetch_a1c7b230946168818f8be4dbcac705b46} 
+\index{Fetch@{Fetch}!count\_user\_by\_month@{count\_user\_by\_month}}
+\index{count\_user\_by\_month@{count\_user\_by\_month}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{count\_user\_by\_month()}{count\_user\_by\_month()}}
+{\footnotesize\ttfamily Fetch\+::count\+\_\+user\+\_\+by\+\_\+month (\begin{DoxyParamCaption}\item[{}]{\$date }\end{DoxyParamCaption})}
+
+Summary of count\+\_\+user\+\_\+by\+\_\+month
+\begin{DoxyItemize}
+\item Count user in specific month 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$date} & format(\textquotesingle{}Y-\/m\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00174}{174}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00175\ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \$users\_count\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ }}
+\DoxyCodeLine{00177\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ COUNT(*)\ AS\ UsersCount\ }}
+\DoxyCodeLine{00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ FROM\ Usrs}}
+\DoxyCodeLine{00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ WHERE\ DATE\_FORMAT(Created\_at,\ '\%Y-\/\%m')\ =\ :date"{}},\ [}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \textcolor{stringliteral}{'date'}\ =>\ \$date}
+\DoxyCodeLine{00181\ \ \ \ \ ]);}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordflow}{return}\ \$users\_count[0][\textcolor{stringliteral}{'UsersCount'}]\ ??\ 0;\ \textcolor{comment}{//\ Default\ to\ 0\ if\ no\ rows}}
+\DoxyCodeLine{00183\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classFetch_a9e9fa4f98545f1e405c48e8b6bb9c419}\label{classFetch_a9e9fa4f98545f1e405c48e8b6bb9c419} 
+\index{Fetch@{Fetch}!fetch\_user@{fetch\_user}}
+\index{fetch\_user@{fetch\_user}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{fetch\_user()}{fetch\_user()}}
+{\footnotesize\ttfamily Fetch\+::fetch\+\_\+user (\begin{DoxyParamCaption}\item[{}]{\$user\+\_\+id }\end{DoxyParamCaption})}
+
+Summary of fetch\+\_\+user
+\begin{DoxyItemize}
+\item \doxylink{classFetch}{Fetch} user from {\ttfamily Usr} table 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00072}{72}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \$user\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Usrs\ WHERE\ ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \textcolor{stringliteral}{'id'}\ =>\ \$user\_id}
+\DoxyCodeLine{00076\ \ \ \ \ ]);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ \$user[0];\ \ \textcolor{comment}{//\ Select\ the\ first\ (and\ only)\ result}}
+\DoxyCodeLine{00078\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classFetch_a6c418702acf5ddfd966e526dcbe927b0}\label{classFetch_a6c418702acf5ddfd966e526dcbe927b0} 
+\index{Fetch@{Fetch}!fetch\_user\_image@{fetch\_user\_image}}
+\index{fetch\_user\_image@{fetch\_user\_image}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{fetch\_user\_image()}{fetch\_user\_image()}}
+{\footnotesize\ttfamily Fetch\+::fetch\+\_\+user\+\_\+image (\begin{DoxyParamCaption}\item[{}]{\$user\+\_\+image\+\_\+id }\end{DoxyParamCaption})}
+
+Summary of fetch\+\_\+user\+\_\+image
+\begin{DoxyItemize}
+\item \doxylink{classFetch}{Fetch} User image Path 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+\_\+image\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00128}{128}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00129\ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \$user\_profile\_image\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Images\ WHERE\ Image\_ID\ =\ :Image\_ID"{}},\ [}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \textcolor{stringliteral}{'Image\_ID'}\ =>\ \$user\_image\_id}
+\DoxyCodeLine{00132\ \ \ \ \ ]);}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return}\ \$user\_profile\_image[0][\textcolor{stringliteral}{'Path'}]\ ??\ \textcolor{stringliteral}{'http://localhost/AgriGO/project/public/assets/default-\/user.png'};}
+\DoxyCodeLine{00134\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classFetch_aa57d7058291e52a3104daf28f87b9350}\label{classFetch_aa57d7058291e52a3104daf28f87b9350} 
+\index{Fetch@{Fetch}!fetch\_user\_profile@{fetch\_user\_profile}}
+\index{fetch\_user\_profile@{fetch\_user\_profile}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{fetch\_user\_profile()}{fetch\_user\_profile()}}
+{\footnotesize\ttfamily Fetch\+::fetch\+\_\+user\+\_\+profile (\begin{DoxyParamCaption}\item[{}]{\$user\+\_\+id }\end{DoxyParamCaption})}
+
+Summary of fetch\+\_\+user\+\_\+profile
+\begin{DoxyItemize}
+\item \doxylink{classFetch}{Fetch} user profile array 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00086}{86}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00087\ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{comment}{//\ Fetch\ the\ \`{}user\ profile`\ using\ \`{}user\_id`}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \$user\_profile\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Usr\_Profile\ WHERE\ Usr\_ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'id'}\ =>\ \$user\_id}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$user\_profile[0];\ \ \textcolor{comment}{//\ Return\ the\ first\ (and\ the\ only)\ result}}
+\DoxyCodeLine{00094\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classFetch_aa676a2c408729936a1ebc86b33ee5658}\label{classFetch_aa676a2c408729936a1ebc86b33ee5658} 
+\index{Fetch@{Fetch}!fetch\_user\_role@{fetch\_user\_role}}
+\index{fetch\_user\_role@{fetch\_user\_role}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{fetch\_user\_role()}{fetch\_user\_role()}}
+{\footnotesize\ttfamily Fetch\+::fetch\+\_\+user\+\_\+role (\begin{DoxyParamCaption}\item[{}]{\$user\+\_\+id }\end{DoxyParamCaption})}
+
+Summary of fetch\+\_\+users\+\_\+roles
+\begin{DoxyItemize}
+\item \doxylink{classFetch}{Fetch} user role using {\ttfamily user\+\_\+id} 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00108}{108}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \$user\_role\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ Usr\_Roles\ WHERE\ Usr\_ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'id'}\ =>\ \$user\_id}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$user\_role[0];}
+\DoxyCodeLine{00115\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classFetch_a8c2177bc9e2daeb0d1b6c75febf830d3}\label{classFetch_a8c2177bc9e2daeb0d1b6c75febf830d3} 
+\index{Fetch@{Fetch}!fetch\_users\_number@{fetch\_users\_number}}
+\index{fetch\_users\_number@{fetch\_users\_number}!Fetch@{Fetch}}
+\doxysubsubsection{\texorpdfstring{fetch\_users\_number()}{fetch\_users\_number()}}
+{\footnotesize\ttfamily Fetch\+::fetch\+\_\+users\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Summary of fetch\+\_\+users\+\_\+number
+\begin{DoxyItemize}
+\item \doxylink{classFetch}{Fetch} users number
+\item Access\+: \$users\+\_\+number\mbox{[}\textquotesingle{}client\+\_\+count\textquotesingle{}\mbox{]}, \$users\+\_\+number\mbox{[}\textquotesingle{}farmer\+\_\+count\textquotesingle{}\mbox{]}, \$admin\+\_\+count + \$farmer\+\_\+count \begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00142}{142}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \$users\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}SELECT\ }}
+\DoxyCodeLine{00145\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SUM(CASE\ WHEN\ Role\_ID\ =\ 3\ THEN\ 1\ ELSE\ 0\ END)\ AS\ client\_count,}}
+\DoxyCodeLine{00146\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SUM(CASE\ WHEN\ Role\_ID\ =\ 4\ THEN\ 1\ ELSE\ 0\ END)\ AS\ farmer\_count,}}
+\DoxyCodeLine{00147\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SUM(CASE\ WHEN\ Role\_ID\ =\ 2\ THEN\ 1\ ELSE\ 0\ END)\ AS\ admin\_count}}
+\DoxyCodeLine{00148\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ FROM\ Usr\_Roles"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordflow}{return}\ \$users[0];}
+\DoxyCodeLine{00150\ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/app/\+Helpers/\mbox{\hyperlink{____include_____8php}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}\end{DoxyCompactItemize}

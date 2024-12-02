@@ -12,8 +12,7 @@ session_start(); // Start the session to manage status messages
 
 try {
   // Prepare the sql commands
-  $sql_insert_user = "
-        INSERT INTO Usrs (Username, Email, Password_hash)
+  $sql_insert_user = "INSERT INTO Usrs (Username, Email, Password_hash)
         SELECT :username, :email, :password
         WHERE NOT EXISTS (
             SELECT 1 FROM Usrs WHERE Username = :username OR Email = :email

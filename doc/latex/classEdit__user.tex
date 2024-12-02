@@ -1,0 +1,95 @@
+\doxysection{Edit\+\_\+user Class Reference}
+\hypertarget{classEdit__user}{}\label{classEdit__user}\index{Edit\_user@{Edit\_user}}
+
+
+chmod 707 "{}/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/public/assets/uploads"{}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdit__user_a03b52531ab56e28932331863f739e6f4}{\+\_\+\+\_\+construct}} (\$user\+\_\+id=null, \$img=null)
+\item 
+\mbox{\hyperlink{classEdit__user_a9140eecf72778bd9b591ad5605b924ee}{update\+\_\+all}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+chmod 707 "{}/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/public/assets/uploads"{} 
+
+Definition at line \mbox{\hyperlink{editUsr_8php_source_l00008}{8}} of file \mbox{\hyperlink{editUsr_8php_source}{edit\+Usr.\+php}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEdit__user_a03b52531ab56e28932331863f739e6f4}\label{classEdit__user_a03b52531ab56e28932331863f739e6f4} 
+\index{Edit\_user@{Edit\_user}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!Edit\_user@{Edit\_user}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Edit\+\_\+user\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$user\+\_\+id = {\ttfamily null},  }\item[{}]{\$img = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Summary of \+\_\+\+\_\+construct 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+\_\+id} & \\
+\hline
+mixed & {\em \$img} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{editUsr_8php_source_l00020}{20}} of file \mbox{\hyperlink{editUsr_8php_source}{edit\+Usr.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \$this-\/>user\_id\ =\ \$user\_id;}
+\DoxyCodeLine{00023\ \ \ \ \ \$this-\/>img\ =\ \$img;}
+\DoxyCodeLine{00024\ \ \ \ \ \$this-\/>uploadDir\ =\ \textcolor{stringliteral}{'../../public/assets/uploads/'};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Connect\ to\ \`{}AgriGO`\ DB}}
+\DoxyCodeLine{00027\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{00028\ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEdit__user_a9140eecf72778bd9b591ad5605b924ee}\label{classEdit__user_a9140eecf72778bd9b591ad5605b924ee} 
+\index{Edit\_user@{Edit\_user}!update\_all@{update\_all}}
+\index{update\_all@{update\_all}!Edit\_user@{Edit\_user}}
+\doxysubsubsection{\texorpdfstring{update\_all()}{update\_all()}}
+{\footnotesize\ttfamily Edit\+\_\+user\+::update\+\_\+all (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Summary of update\+\_\+all
+\begin{DoxyItemize}
+\item Exec the update for all users tables \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{editUsr_8php_source_l00125}{125}} of file \mbox{\hyperlink{editUsr_8php_source}{edit\+Usr.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126\ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \$this-\/>update\_user();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \$this-\/>update\_user\_profile();}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Your\ Profile\ successfully\ Edit\ it!"{}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../Views/pages-\/account-\/settings-\/account.php?id='}\ .\ \$this-\/>user\_id);}
+\DoxyCodeLine{00132\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../Views/pages-\/account-\/settings-\/account.php?id='}\ .\ \$this-\/>user\_id);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/app/\+Controllers/edit\+Usr.\+php\end{DoxyCompactItemize}

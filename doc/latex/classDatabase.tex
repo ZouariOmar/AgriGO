@@ -1,0 +1,111 @@
+\doxysection{Database Class Reference}
+\hypertarget{classDatabase}{}\label{classDatabase}\index{Database@{Database}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDatabase_a2d6a8b6dda6f828184265bbbdd685149}{\+\_\+\+\_\+construct}} (\$env\+\_\+path)
+\begin{DoxyCompactList}\small\item\em \#\#\# Construct the \doxylink{classDatabase}{Database} object \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDatabase_a0612c1bf3270cad4754939c0e31b77a8}{query}} (\$sql, \$params=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \#\#\# \+Custom SQL query method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{database_8php_source_l00011}{11}} of file \mbox{\hyperlink{database_8php_source}{database.\+php}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDatabase_a2d6a8b6dda6f828184265bbbdd685149}\label{classDatabase_a2d6a8b6dda6f828184265bbbdd685149} 
+\index{Database@{Database}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Database\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$env\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+\#\#\# Construct the \doxylink{classDatabase}{Database} object 
+
+
+
+Definition at line \mbox{\hyperlink{database_8php_source_l00022}{22}} of file \mbox{\hyperlink{database_8php_source}{database.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ \textcolor{comment}{//?\ Hold\ the\ .env\ locale\ file}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \$dotenv\ =\ Dotenv::createImmutable(\$env\_path);\ \ \textcolor{comment}{//\ Navigate\ to\ the\ .env\ fil\ lvl}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \$dotenv-\/>load();}
+\DoxyCodeLine{00027\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (InvalidPathException\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ the\ specific\ error\ if\ .env\ file\ path\ is\ incorrect\ or\ file\ is\ missing}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ .env\ file\ not\ found\ or\ incorrect\ path\ specified."{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00029\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (ValidationException\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ validation\ errors\ (useful\ if\ you're\ validating\ required\ variables)}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Validation\ Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00031\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{\ \ \textcolor{comment}{//\ Catches\ any\ other\ general\ exceptions}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//?\ Hold\ the\ DB\ data\ from\ the\ .env\ file}}
+\DoxyCodeLine{00036\ \ \ \ \ \$this-\/>host\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_HOST'}];}
+\DoxyCodeLine{00037\ \ \ \ \ \$this-\/>dbName\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_NAME'}];}
+\DoxyCodeLine{00038\ \ \ \ \ \$this-\/>username\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_USERNAME'}];}
+\DoxyCodeLine{00039\ \ \ \ \ \$this-\/>password\ =\ \$\_ENV[\textcolor{stringliteral}{'DB\_PASSWORD'}];}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \$this-\/>pdo\ =\ \textcolor{keyword}{new}\ PDO(\textcolor{stringliteral}{"{}mysql:host=\{\$this-\/>host\};dbname=\{\$this-\/>dbName\}"{}},\ \$this-\/>username,\ \$this-\/>password);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \$this-\/>pdo-\/>setAttribute(PDO::ATTR\_ERRMODE,\ PDO::ERRMODE\_EXCEPTION);}
+\DoxyCodeLine{00044\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ die(\textcolor{stringliteral}{"{}Database\ connection\ failed:\ "{}}\ .\ \$e-\/>getMessage());}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDatabase_a0612c1bf3270cad4754939c0e31b77a8}\label{classDatabase_a0612c1bf3270cad4754939c0e31b77a8} 
+\index{Database@{Database}!query@{query}}
+\index{query@{query}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily Database\+::query (\begin{DoxyParamCaption}\item[{}]{\$sql,  }\item[{}]{\$params = {\ttfamily \mbox{[}\mbox{]}} }\end{DoxyParamCaption})}
+
+
+
+\#\#\# \+Custom SQL query method 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$sql} & \\
+\hline
+array & {\em \$params} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array\texorpdfstring{$\vert$}{|}int 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{database_8php_source_l00055}{55}} of file \mbox{\hyperlink{database_8php_source}{database.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Prepare\ the\ query\ (for\ security)}}
+\DoxyCodeLine{00058\ \ \ \ \ \$stmt\ =\ \$this-\/>pdo-\/>prepare(\$sql);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Attache\ the\ parameters\ with\ the\ query}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$params\ as\ \$key\ =>\ \$value)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \$stmt-\/>bindValue(\textcolor{stringliteral}{"{}:\$key"{}},\ \$value);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \$stmt-\/>execute();\ \ \textcolor{comment}{//\ Execute\ the\ statement}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Determine\ if\ the\ query\ is\ a\ SELECT\ statement}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ (stripos(\$sql,\ \textcolor{stringliteral}{'SELECT'})\ ===\ 0)\ ?\ \$stmt-\/>fetchAll(PDO::FETCH\_ASSOC)\ :\ \$stmt-\/>rowCount();\ \ \textcolor{comment}{//\ Return\ results\ for\ SELECT,\ else\ return\ affected\ rows\ for\ INSERT,\ UPDATE,\ DELETE}}
+\DoxyCodeLine{00068\ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/conf/database.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,722 @@
+\doxysection{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3 Class Reference}
+\hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3}{}\label{classPHPMailer_1_1PHPMailer_1_1POP3}\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a1a5462a218993658c91b6df0c39e641e}{authorise}} (\$host, \$port=false, \$timeout=false, \$username=\textquotesingle{}\textquotesingle{}, \$password=\textquotesingle{}\textquotesingle{}, \$debug\+\_\+level=0)
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_af5a0b40fc1b99e775ab620c6fc7f7184}{connect}} (\$host, \$port=false, \$tval=30)
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a515c66a5062e6616fc984ee4ac007fb3}{login}} (\$username=\textquotesingle{}\textquotesingle{}, \$password=\textquotesingle{}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a8696c83c33d33a5122b6482abc138c09}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a2a5174e828edb59523c92dbf7eae244b}{get\+Errors}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a19640d96aebdde899ccd721ab1299392}{pop\+Before\+Smtp}} ( \$host, \$port=false, \$timeout=false, \$username=\textquotesingle{}\textquotesingle{}, \$password=\textquotesingle{}\textquotesingle{}, \$debug\+\_\+level=0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_affdd38db9638306a2f7bc9f09b5f357e}{VERSION}} = \textquotesingle{}6.\+6.\+3\textquotesingle{}
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a04069d3b913f83ae71e6305d9b9d6f49}{DEFAULT\+\_\+\+PORT}} = 110
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a34baf6363387468a4b19c1f5419bc8d0}{DEFAULT\+\_\+\+TIMEOUT}} = 30
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_acb1d0c6e00cd32d1e054b63226dc3511}{\$do\+\_\+debug}} = self\+::\+DEBUG\+\_\+\+OFF
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a079d692eb4d22236b6e29dd7ffa3af42}{\$host}}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_ad64de7ae646279d832db5aa26a2cb038}{\$port}}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a3ebe63847c83626c94c17816b53718fe}{\$tval}}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_ad44b18a833acd0c008f89126d5cb1ff7}{\$username}}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a4088c5edb27dfc176b7b964dd44376f1}{\$password}}
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_aa250448fdb8ba74ce6f6900878c090fa}{LE}} = "{}\textbackslash{}r\textbackslash{}n"{}
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a72ebeefd63f5408d1ca2dccf4b2bdae2}{DEBUG\+\_\+\+OFF}} = 0
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a017aa1f975409e985225afc3004d646b}{DEBUG\+\_\+\+SERVER}} = 1
+\item 
+const \mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a5e73f92b69db8dffe9ed6618ca936ca2}{DEBUG\+\_\+\+CLIENT}} = 2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f}{get\+Response}} (\$size=128)
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a54dbb2064a673ed77dd5800772245daf}{send\+String}} (\$string)
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_ae4a9be487b6a6f56aee7e75d6904efbf}{check\+Response}} (\$string)
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64}{set\+Error}} (\$error)
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a003cbe69ab2bec569f2f526f781a898f}{catch\+Warning}} (\$errno, \$errstr, \$errfile, \$errline)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a10ba89166673bdcadbe60a3c55fd8f8e}{\$pop\+\_\+conn}}
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a316daf1dd734a645f5e0fd87a5fe5eb9}{\$connected}} = false
+\item 
+\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a82e89b1a2bd2aaeeee1b839fc56d8a96}{\$errors}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{namespacePHPMailer}{PHPMailer} POP-\/\+Before-\/\+SMTP Authentication Class. Specifically for \doxylink{namespacePHPMailer}{PHPMailer} to use for RFC1939 POP-\/before-\/\+SMTP authentication. 1) This class does not support APOP authentication. 2) Opening and closing lots of POP3 connections can be quite slow. If you need to send a batch of emails then just perform the authentication once at the start, and then loop through your mail sending script. Providing this process doesn\textquotesingle{}t take longer than the verification period lasts on your POP3 server, you should be fine. 3) This is really ancient technology; you should only need to use it to talk to very old systems. 4) This POP3 class is deliberately lightweight and incomplete, implementing just enough to do authentication. If you want a more complete class there are other POP3 classes for PHP available.
+
+\begin{DoxyAuthor}{Author}
+Richard Davey (original author) \href{mailto:rich@corephp.co.uk}{\texttt{ rich@corephp.\+co.\+uk}} 
+
+Marcus Bointon (Synchro/coolbru) \href{mailto:phpmailer@synchromedia.co.uk}{\texttt{ phpmailer@synchromedia.\+co.\+uk}} 
+
+Jim Jagielski (jimjag) \href{mailto:jimjag@gmail.com}{\texttt{ jimjag@gmail.\+com}} 
+
+Andy Prevost (codeworxtech) \href{mailto:codeworxtech@users.sourceforge.net}{\texttt{ codeworxtech@users.\+sourceforge.\+net}} 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00042}{42}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a1a5462a218993658c91b6df0c39e641e}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a1a5462a218993658c91b6df0c39e641e} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!authorise@{authorise}}
+\index{authorise@{authorise}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{authorise()}{authorise()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::authorise (\begin{DoxyParamCaption}\item[{}]{\$host,  }\item[{}]{\$port = {\ttfamily false},  }\item[{}]{\$timeout = {\ttfamily false},  }\item[{}]{\$username = {\ttfamily \textquotesingle{}\textquotesingle{}},  }\item[{}]{\$password = {\ttfamily \textquotesingle{}\textquotesingle{}},  }\item[{}]{\$debug\+\_\+level = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Authenticate with a POP3 server. A connect, login, disconnect sequence appropriate for POP-\/before SMTP authorisation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$host} & The hostname to connect to \\
+\hline
+int | bool & {\em \$port} & The port number to connect to \\
+\hline
+int | bool & {\em \$timeout} & The timeout value \\
+\hline
+string & {\em \$username} & \\
+\hline
+string & {\em \$password} & \\
+\hline
+int & {\em \$debug\+\_\+level} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00199}{199}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00200\ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \$this-\/>host\ =\ \$host;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{comment}{//If\ no\ port\ value\ provided,\ use\ default}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{false}\ ===\ \$port)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>port\ =\ static::DEFAULT\_PORT;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>port\ =\ (int)\ \$port;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{comment}{//If\ no\ timeout\ value\ provided,\ use\ default}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{false}\ ===\ \$timeout)\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>tval\ =\ static::DEFAULT\_TIMEOUT;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>tval\ =\ (int)\ \$timeout;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \$this-\/>do\_debug\ =\ \$debug\_level;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \$this-\/>username\ =\ \$username;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \$this-\/>password\ =\ \$password;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Reset\ the\ error\ log}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \$this-\/>errors\ =\ [];}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Connect}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \$result\ =\ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_af5a0b40fc1b99e775ab620c6fc7f7184}{connect}}(\$this-\/>host,\ \$this-\/>port,\ \$this-\/>tval);}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$result)\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \$login\_result\ =\ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a515c66a5062e6616fc984ee4ac007fb3}{login}}(\$this-\/>username,\ \$this-\/>password);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$login\_result)\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a8696c83c33d33a5122b6482abc138c09}{disconnect}}();}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{//We\ need\ to\ disconnect\ regardless\ of\ whether\ the\ login\ succeeded}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a8696c83c33d33a5122b6482abc138c09}{disconnect}}();}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a003cbe69ab2bec569f2f526f781a898f}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a003cbe69ab2bec569f2f526f781a898f} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!catchWarning@{catchWarning}}
+\index{catchWarning@{catchWarning}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{catchWarning()}{catchWarning()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::catch\+Warning (\begin{DoxyParamCaption}\item[{}]{\$errno,  }\item[{}]{\$errstr,  }\item[{}]{\$errfile,  }\item[{}]{\$errline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+POP3 connection error handler.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & \\
+\hline
+string & {\em \$errstr} & \\
+\hline
+string & {\em \$errfile} & \\
+\hline
+int & {\em \$errline} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00455}{455}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00456\ \ \ \ \ \{}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64}{setError}}(}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Connecting\ to\ the\ POP3\ server\ raised\ a\ PHP\ warning:'}\ .}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}errno:\ \$errno\ errstr:\ \$errstr;\ errfile:\ \$errfile;\ errline:\ \$errline"{}}}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00461\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_ae4a9be487b6a6f56aee7e75d6904efbf}\label{classPHPMailer_1_1PHPMailer_1_1POP3_ae4a9be487b6a6f56aee7e75d6904efbf} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!checkResponse@{checkResponse}}
+\index{checkResponse@{checkResponse}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{checkResponse()}{checkResponse()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::check\+Response (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Checks the POP3 server response. Looks for for +OK or -\/ERR.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$string} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00408}{408}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00409\ \ \ \ \ \{}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strpos(\$string,\ \textcolor{stringliteral}{'+OK'})\ !==\ 0)\ \{}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64}{setError}}(\textcolor{stringliteral}{"{}Server\ reported\ an\ error:\ \$string"{}});}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00417\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_af5a0b40fc1b99e775ab620c6fc7f7184}\label{classPHPMailer_1_1PHPMailer_1_1POP3_af5a0b40fc1b99e775ab620c6fc7f7184} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!connect@{connect}}
+\index{connect@{connect}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::connect (\begin{DoxyParamCaption}\item[{}]{\$host,  }\item[{}]{\$port = {\ttfamily false},  }\item[{}]{\$tval = {\ttfamily 30} }\end{DoxyParamCaption})}
+
+Connect to a POP3 server.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$host} & \\
+\hline
+int | bool & {\em \$port} & \\
+\hline
+int & {\em \$tval} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00244}{244}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00245\ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Are\ we\ already\ connected?}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>connected)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//On\ Windows\ this\ will\ raise\ a\ PHP\ Warning\ error\ if\ the\ hostname\ doesn't\ exist.}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Rather\ than\ suppress\ it\ with\ @fsockopen,\ capture\ it\ cleanly\ instead}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ set\_error\_handler([\$this,\ \textcolor{stringliteral}{'catchWarning'}]);}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{false}\ ===\ \$port)\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \$port\ =\ static::DEFAULT\_PORT;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Connect\ to\ the\ POP3\ server}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \$errno\ =\ 0;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \$errstr\ =\ \textcolor{stringliteral}{''};}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \$this-\/>pop\_conn\ =\ fsockopen(}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \$host,\ \textcolor{comment}{//POP3\ Host}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \$port,\ \textcolor{comment}{//Port\ \#}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \$errno,\ \textcolor{comment}{//Error\ Number}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \$errstr,\ \textcolor{comment}{//Error\ Message}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \$tval}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ );\ \textcolor{comment}{//Timeout\ (seconds)}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Restore\ the\ error\ handler}}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ restore\_error\_handler();}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Did\ we\ connect?}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{false}\ ===\ \$this-\/>pop\_conn)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//It\ would\ appear\ not...}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64}{setError}}(}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Failed\ to\ connect\ to\ server\ \$host\ on\ port\ \$port.\ errno:\ \$errno;\ errstr:\ \$errstr"{}}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Increase\ the\ stream\ time-\/out}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ stream\_set\_timeout(\$this-\/>pop\_conn,\ \$tval,\ 0);}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Get\ the\ POP3\ server\ response}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \$pop3\_response\ =\ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f}{getResponse}}();}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Check\ for\ the\ +OK}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_ae4a9be487b6a6f56aee7e75d6904efbf}{checkResponse}}(\$pop3\_response))\ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//The\ connection\ is\ established\ and\ the\ POP3\ server\ is\ talking}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>connected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00296\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a8696c83c33d33a5122b6482abc138c09}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a8696c83c33d33a5122b6482abc138c09} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnect from the POP3 server. 
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00338}{338}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00339\ \ \ \ \ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a54dbb2064a673ed77dd5800772245daf}{sendString}}(\textcolor{stringliteral}{'QUIT'});}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ RFC\ 1939\ shows\ POP3\ server\ sending\ a\ +OK\ response\ to\ the\ QUIT\ command.}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Try\ to\ get\ it.\ \ Ignore\ any\ failures\ here.}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f}{getResponse}}();}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Do\ nothing}}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{//The\ QUIT\ command\ may\ cause\ the\ daemon\ to\ exit,\ which\ will\ kill\ our\ connection}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{comment}{//So\ ignore\ errors\ here}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ @fclose(\$this-\/>pop\_conn);}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Do\ nothing}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clean\ up\ attributes.}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \$this-\/>connected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \$this-\/>pop\_conn\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00361\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a2a5174e828edb59523c92dbf7eae244b}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a2a5174e828edb59523c92dbf7eae244b} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!getErrors@{getErrors}}
+\index{getErrors@{getErrors}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{getErrors()}{getErrors()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::get\+Errors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get an array of error messages, if any.
+
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00442}{442}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00443\ \ \ \ \ \{}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>errors;}
+\DoxyCodeLine{00445\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!getResponse@{getResponse}}
+\index{getResponse@{getResponse}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{getResponse()}{getResponse()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::get\+Response (\begin{DoxyParamCaption}\item[{}]{\$size = {\ttfamily 128} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Get a response from the POP3 server.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$size} & The maximum number of bytes to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00370}{370}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00371\ \ \ \ \ \{}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \$response\ =\ fgets(\$this-\/>pop\_conn,\ \$size);}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>do\_debug\ >=\ self::DEBUG\_SERVER)\ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'Server\ -\/>\ Client:\ '},\ \$response;}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$response;}
+\DoxyCodeLine{00378\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a515c66a5062e6616fc984ee4ac007fb3}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a515c66a5062e6616fc984ee4ac007fb3} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!login@{login}}
+\index{login@{login}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::login (\begin{DoxyParamCaption}\item[{}]{\$username = {\ttfamily \textquotesingle{}\textquotesingle{}},  }\item[{}]{\$password = {\ttfamily \textquotesingle{}\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Log in to the POP3 server. Does not support APOP (RFC 2828, 4949).
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$username} & \\
+\hline
+string & {\em \$password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00307}{307}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00308\ \ \ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\$this-\/>connected)\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64}{setError}}(\textcolor{stringliteral}{'Not\ connected\ to\ POP3\ server'});}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\$username))\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \$username\ =\ \$this-\/>username;}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty(\$password))\ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \$password\ =\ \$this-\/>password;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Send\ the\ Username}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a54dbb2064a673ed77dd5800772245daf}{sendString}}(\textcolor{stringliteral}{"{}USER\ \$username"{}}\ .\ static::LE);}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \$pop3\_response\ =\ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f}{getResponse}}();}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_ae4a9be487b6a6f56aee7e75d6904efbf}{checkResponse}}(\$pop3\_response))\ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Send\ the\ Password}}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a54dbb2064a673ed77dd5800772245daf}{sendString}}(\textcolor{stringliteral}{"{}PASS\ \$password"{}}\ .\ static::LE);}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \$pop3\_response\ =\ \$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_a67a1f6155352068a4fbed66b782ff51f}{getResponse}}();}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>\mbox{\hyperlink{classPHPMailer_1_1PHPMailer_1_1POP3_ae4a9be487b6a6f56aee7e75d6904efbf}{checkResponse}}(\$pop3\_response))\ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00333\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a19640d96aebdde899ccd721ab1299392}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a19640d96aebdde899ccd721ab1299392} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!popBeforeSmtp@{popBeforeSmtp}}
+\index{popBeforeSmtp@{popBeforeSmtp}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{popBeforeSmtp()}{popBeforeSmtp()}}
+{\footnotesize\ttfamily static PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::pop\+Before\+Smtp (\begin{DoxyParamCaption}\item[{}]{\$host,  }\item[{}]{\$port = {\ttfamily false},  }\item[{}]{\$timeout = {\ttfamily false},  }\item[{}]{\$username = {\ttfamily \textquotesingle{}\textquotesingle{}},  }\item[{}]{\$password = {\ttfamily \textquotesingle{}\textquotesingle{}},  }\item[{}]{\$debug\+\_\+level = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Simple static wrapper for all-\/in-\/one POP before SMTP.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$host} & The hostname to connect to \\
+\hline
+int | bool & {\em \$port} & The port number to connect to \\
+\hline
+int | bool & {\em \$timeout} & The timeout value \\
+\hline
+string & {\em \$username} & \\
+\hline
+string & {\em \$password} & \\
+\hline
+int & {\em \$debug\+\_\+level} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00172}{172}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \$pop\ =\ \textcolor{keyword}{new}\ \textcolor{keyword}{self}();}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$pop-\/>authorise(\$host,\ \$port,\ \$timeout,\ \$username,\ \$password,\ \$debug\_level);}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a54dbb2064a673ed77dd5800772245daf}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a54dbb2064a673ed77dd5800772245daf} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!sendString@{sendString}}
+\index{sendString@{sendString}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{sendString()}{sendString()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::send\+String (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Send raw data to the POP3 server.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$string} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00387}{387}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00388\ \ \ \ \ \{}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>pop\_conn)\ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>do\_debug\ >=\ self::DEBUG\_CLIENT)\ \{\ \textcolor{comment}{//Show\ client\ messages\ when\ debug\ >=\ 2}}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'Client\ -\/>\ Server:\ '},\ \$string;}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fwrite(\$this-\/>pop\_conn,\ \$string,\ strlen(\$string));}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00398\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64}\label{classPHPMailer_1_1PHPMailer_1_1POP3_aa49f9f98124005fcd158cda54e129e64} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!setError@{setError}}
+\index{setError@{setError}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{setError()}{setError()}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::set\+Error (\begin{DoxyParamCaption}\item[{}]{\$error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Add an error to the internal error store. Also display debug output if it\textquotesingle{}s enabled.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$error} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00425}{425}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00426\ \ \ \ \ \{}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \$this-\/>errors[]\ =\ \$error;}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>do\_debug\ >=\ self::DEBUG\_SERVER)\ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'<pre>'};}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$this-\/>errors\ as\ \$e)\ \{}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print\_r(\$e);}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{'</pre>'};}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a316daf1dd734a645f5e0fd87a5fe5eb9}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a316daf1dd734a645f5e0fd87a5fe5eb9} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$connected@{\$connected}}
+\index{\$connected@{\$connected}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$connected}{\$connected}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$connected = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00124}{124}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_acb1d0c6e00cd32d1e054b63226dc3511}\label{classPHPMailer_1_1PHPMailer_1_1POP3_acb1d0c6e00cd32d1e054b63226dc3511} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$do\_debug@{\$do\_debug}}
+\index{\$do\_debug@{\$do\_debug}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$do\_debug}{\$do\_debug}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$do\+\_\+debug = self\+::\+DEBUG\+\_\+\+OFF}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00075}{75}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a82e89b1a2bd2aaeeee1b839fc56d8a96}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a82e89b1a2bd2aaeeee1b839fc56d8a96} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$errors@{\$errors}}
+\index{\$errors@{\$errors}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$errors}{\$errors}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$errors = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00131}{131}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a079d692eb4d22236b6e29dd7ffa3af42}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a079d692eb4d22236b6e29dd7ffa3af42} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$host@{\$host}}
+\index{\$host@{\$host}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$host}{\$host}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$host}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00082}{82}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a4088c5edb27dfc176b7b964dd44376f1}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a4088c5edb27dfc176b7b964dd44376f1} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$password@{\$password}}
+\index{\$password@{\$password}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$password}{\$password}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$password}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00110}{110}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a10ba89166673bdcadbe60a3c55fd8f8e}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a10ba89166673bdcadbe60a3c55fd8f8e} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$pop\_conn@{\$pop\_conn}}
+\index{\$pop\_conn@{\$pop\_conn}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$pop\_conn}{\$pop\_conn}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$pop\+\_\+conn\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00117}{117}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_ad64de7ae646279d832db5aa26a2cb038}\label{classPHPMailer_1_1PHPMailer_1_1POP3_ad64de7ae646279d832db5aa26a2cb038} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$port@{\$port}}
+\index{\$port@{\$port}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$port}{\$port}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$port}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00089}{89}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a3ebe63847c83626c94c17816b53718fe}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a3ebe63847c83626c94c17816b53718fe} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$tval@{\$tval}}
+\index{\$tval@{\$tval}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$tval}{\$tval}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$tval}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00096}{96}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_ad44b18a833acd0c008f89126d5cb1ff7}\label{classPHPMailer_1_1PHPMailer_1_1POP3_ad44b18a833acd0c008f89126d5cb1ff7} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!\$username@{\$username}}
+\index{\$username@{\$username}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{\$username}{\$username}}
+{\footnotesize\ttfamily PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\$username}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00103}{103}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a5e73f92b69db8dffe9ed6618ca936ca2}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a5e73f92b69db8dffe9ed6618ca936ca2} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!DEBUG\_CLIENT@{DEBUG\_CLIENT}}
+\index{DEBUG\_CLIENT@{DEBUG\_CLIENT}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_CLIENT}{DEBUG\_CLIENT}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+DEBUG\+\_\+\+CLIENT = 2}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00158}{158}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a72ebeefd63f5408d1ca2dccf4b2bdae2}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a72ebeefd63f5408d1ca2dccf4b2bdae2} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!DEBUG\_OFF@{DEBUG\_OFF}}
+\index{DEBUG\_OFF@{DEBUG\_OFF}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_OFF}{DEBUG\_OFF}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+DEBUG\+\_\+\+OFF = 0}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00143}{143}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a017aa1f975409e985225afc3004d646b}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a017aa1f975409e985225afc3004d646b} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!DEBUG\_SERVER@{DEBUG\_SERVER}}
+\index{DEBUG\_SERVER@{DEBUG\_SERVER}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_SERVER}{DEBUG\_SERVER}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+DEBUG\+\_\+\+SERVER = 1}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00151}{151}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a04069d3b913f83ae71e6305d9b9d6f49}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a04069d3b913f83ae71e6305d9b9d6f49} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!DEFAULT\_PORT@{DEFAULT\_PORT}}
+\index{DEFAULT\_PORT@{DEFAULT\_PORT}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_PORT}{DEFAULT\_PORT}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+DEFAULT\+\_\+\+PORT = 110}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00056}{56}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_a34baf6363387468a4b19c1f5419bc8d0}\label{classPHPMailer_1_1PHPMailer_1_1POP3_a34baf6363387468a4b19c1f5419bc8d0} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!DEFAULT\_TIMEOUT@{DEFAULT\_TIMEOUT}}
+\index{DEFAULT\_TIMEOUT@{DEFAULT\_TIMEOUT}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_TIMEOUT}{DEFAULT\_TIMEOUT}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+DEFAULT\+\_\+\+TIMEOUT = 30}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00063}{63}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_aa250448fdb8ba74ce6f6900878c090fa}\label{classPHPMailer_1_1PHPMailer_1_1POP3_aa250448fdb8ba74ce6f6900878c090fa} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!LE@{LE}}
+\index{LE@{LE}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{LE}{LE}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+LE = "{}\textbackslash{}r\textbackslash{}n"{}}
+
+Line break constant. 
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00136}{136}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+\Hypertarget{classPHPMailer_1_1PHPMailer_1_1POP3_affdd38db9638306a2f7bc9f09b5f357e}\label{classPHPMailer_1_1PHPMailer_1_1POP3_affdd38db9638306a2f7bc9f09b5f357e} 
+\index{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}!VERSION@{VERSION}}
+\index{VERSION@{VERSION}!PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3@{PHPMailer\textbackslash{}PHPMailer\textbackslash{}POP3}}
+\doxysubsubsection{\texorpdfstring{VERSION}{VERSION}}
+{\footnotesize\ttfamily const PHPMailer\textbackslash{}\+PHPMailer\textbackslash{}\+POP3\+::\+VERSION = \textquotesingle{}6.\+6.\+3\textquotesingle{}}
+
+
+
+Definition at line \mbox{\hyperlink{POP3_8php_source_l00049}{49}} of file \mbox{\hyperlink{POP3_8php_source}{POP3.\+php}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/app/\+Services/\+PHPMailer/src/POP3.\+php\end{DoxyCompactItemize}

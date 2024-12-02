@@ -1,0 +1,522 @@
+\chapter{README}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README}{}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README}\index{README@{README}}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md21}{}\doxysection{\texorpdfstring{Google APIs Client Library for PHP}{Google APIs Client Library for PHP}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md21}
+{\bfseries{NOTE}}\+: please check to see if the package you\textquotesingle{}d like to install is available in our list of \href{https://cloud.google.com/php/docs/reference}{\texttt{ Google cloud packages}} first, as these are the recommended libraries.
+
+
+\begin{DoxyDescription}
+\item[Reference Docs]\href{https://googleapis.github.io/google-api-php-client/}{\texttt{ https\+://googleapis.\+github.\+io/google-\/api-\/php-\/client/}} 
+\item[License]Apache 2.\+0 
+\end{DoxyDescription}
+
+The Google API Client Library enables you to work with Google APIs such as Gmail, Drive or You\+Tube on your server.
+
+These client libraries are officially supported by Google. However, the libraries are considered complete and are in maintenance mode. This means that we will address critical bugs and security issues but will not add any new features.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md22}{}\doxysubsection{\texorpdfstring{Google Cloud Platform}{Google Cloud Platform}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md22}
+For Google Cloud Platform APIs such as \href{https://github.com/googleapis/google-cloud-php-datastore}{\texttt{ Datastore}}, \href{https://github.com/googleapis/google-cloud-php-storage}{\texttt{ Cloud Storage}}, \href{https://github.com/googleapis/google-cloud-php-pubsub}{\texttt{ Pub/\+Sub}}, and \href{https://github.com/googleapis/google-cloud-php-compute}{\texttt{ Compute Engine}}, we recommend using the Google Cloud client libraries. For a complete list of supported Google Cloud client libraries, see \href{https://github.com/googleapis/google-cloud-php}{\texttt{ googleapis/google-\/cloud-\/php}}.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md23}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md23}
+
+\begin{DoxyItemize}
+\item \href{https://www.php.net/}{\texttt{ PHP 8.\+0 or higher}}
+\end{DoxyItemize}\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md24}{}\doxysubsection{\texorpdfstring{Developer Documentation}{Developer Documentation}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md24}
+The \href{docs/}{\texttt{ docs folder}} provides detailed guides for using this library.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md25}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md25}
+You can use {\bfseries{Composer}} or simply {\bfseries{Download the Release}}\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md26}{}\doxysubsubsection{\texorpdfstring{Composer}{Composer}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md26}
+The preferred method is via \href{https://getcomposer.org/}{\texttt{ composer}}. Follow the \href{https://getcomposer.org/doc/00-intro.md}{\texttt{ installation instructions}} if you do not already have composer installed.
+
+Once composer is installed, execute the following command in your project root to install this library\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{composer\ require\ google/apiclient:\string^2.15.0}
+
+\end{DoxyCode}
+
+
+If you\textquotesingle{}re facing a timeout error then either increase the timeout for composer by adding the env flag as {\ttfamily COMPOSER\+\_\+\+PROCESS\+\_\+\+TIMEOUT=600 composer install} or you can put this in the {\ttfamily config} section of the composer schema\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}config"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}process-\/timeout"{}:\ 600}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Finally, be sure to include the autoloader\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require\_once\ \textcolor{stringliteral}{'/path/to/your-\/project/vendor/autoload.php'};}
+
+\end{DoxyCode}
+
+
+This library relies on {\ttfamily google/apiclient-\/services}. That library provides up-\/to-\/date API wrappers for a large number of Google APIs. In order that users may make use of the latest API clients, this library does not pin to a specific version of {\ttfamily google/apiclient-\/services}. {\bfseries{In order to prevent the accidental installation of API wrappers with breaking changes}}, it is highly recommended that you pin to the \href{https://github.com/googleapis/google-api-php-client-services/releases}{\texttt{ latest version}} yourself prior to using this library in production.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md27}{}\doxyparagraph{\texorpdfstring{Cleaning up unused services}{Cleaning up unused services}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md27}
+There are over 200 Google API services. The chances are good that you will not want them all. In order to avoid shipping these dependencies with your code, you can run the {\ttfamily Google\textbackslash{}Task\textbackslash{}Composer\+::cleanup} task and specify the services you want to keep in {\ttfamily composer.\+json}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}require"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}google/apiclient"{}:\ "{}\string^2.15.0"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}scripts"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}pre-\/autoload-\/dump"{}:\ "{}Google\(\backslash\)\(\backslash\)Task\(\backslash\)\(\backslash\)Composer::cleanup"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}extra"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}google/apiclient-\/services"{}:\ ["{}Drive"{},\ "{}YouTube"{}]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This example will remove all services other than "{}\+Drive"{} and "{}\+You\+Tube"{} when {\ttfamily composer update} or a fresh {\ttfamily composer install} is run.
+
+{\bfseries{IMPORTANT}}\+: If you add any services back in {\ttfamily composer.\+json}, you will need to remove the {\ttfamily vendor/google/apiclient-\/services} directory explicitly for the change you made to have effect\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rm\ -\/r\ vendor/google/apiclient-\/services}
+\DoxyCodeLine{composer\ update}
+
+\end{DoxyCode}
+
+
+{\bfseries{NOTE}}\+: This command performs an exact match on the service name, so to keep {\ttfamily You\+Tube\+Reporting} and {\ttfamily You\+Tube\+Analytics} as well, you\textquotesingle{}d need to add each of them explicitly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}extra"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}google/apiclient-\/services"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}Drive"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}YouTube"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}YouTubeAnalytics"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}YouTubeReporting"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md28}{}\doxysubsubsection{\texorpdfstring{Download the Release}{Download the Release}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md28}
+If you prefer not to use composer, you can download the package in its entirety. The \href{https://github.com/googleapis/google-api-php-client/releases}{\texttt{ Releases}} page lists all stable versions. Download any file with the name {\ttfamily google-\/api-\/php-\/client-\/\mbox{[}RELEASE\+\_\+\+NAME\mbox{]}.zip} for a package including this library and its dependencies.
+
+Uncompress the zip file you download, and include the autoloader in your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require\_once\ \textcolor{stringliteral}{'/path/to/google-\/api-\/php-\/client/vendor/autoload.php'};}
+
+\end{DoxyCode}
+
+
+For additional installation and setup instructions, see \href{docs/}{\texttt{ the documentation}}.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md29}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md29}
+See the \mbox{[}{\ttfamily examples/}\mbox{]}(examples) directory for examples of the key client features. You can view them in your browser by running the php built-\/in web server.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ php\ -\/S\ localhost:8000\ -\/t\ examples/}
+
+\end{DoxyCode}
+
+
+And then browsing to the host and port you specified (in the above example, {\ttfamily \href{http://localhost:8000}{\texttt{ http\+://localhost\+:8000}}}).\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md30}{}\doxysubsubsection{\texorpdfstring{Basic Example}{Basic Example}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md30}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ include\ your\ composer\ dependencies}}
+\DoxyCodeLine{require\_once\ \textcolor{stringliteral}{'vendor/autoload.php'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{\$client-\/>setApplicationName(\textcolor{stringliteral}{"{}Client\_Library\_Examples"{}});}
+\DoxyCodeLine{\$client-\/>setDeveloperKey(\textcolor{stringliteral}{"{}YOUR\_APP\_KEY"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$service\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Books(\$client);}
+\DoxyCodeLine{\$query\ =\ \textcolor{stringliteral}{'Henry\ David\ Thoreau'};}
+\DoxyCodeLine{\$optParams\ =\ [}
+\DoxyCodeLine{\ \ \textcolor{stringliteral}{'filter'}\ =>\ \textcolor{stringliteral}{'free-\/ebooks'},}
+\DoxyCodeLine{];}
+\DoxyCodeLine{\$results\ =\ \$service-\/>volumes-\/>listVolumes(\$query,\ \$optParams);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (\$results-\/>getItems()\ as\ \$item)\ \{}
+\DoxyCodeLine{\ \ echo\ \$item[\textcolor{stringliteral}{'volumeInfo'}][\textcolor{stringliteral}{'title'}],\ \textcolor{stringliteral}{"{}<br\ />\ \(\backslash\)n"{}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md31}{}\doxysubsubsection{\texorpdfstring{Authentication with OAuth}{Authentication with OAuth}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md31}
+\begin{quote}
+An example of this can be seen in \href{examples/simple-file-upload.php}{\texttt{ {\ttfamily examples/simple-\/file-\/upload.\+php}}}. \end{quote}
+
+\begin{DoxyEnumerate}
+\item Follow the instructions to \href{docs/oauth-web.md\#create-authorization-credentials}{\texttt{ Create Web Application Credentials}}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Download the JSON credentials
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Set the path to these credentials using {\ttfamily Google\textbackslash{}Client\+::set\+Auth\+Config}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{\$client-\/>setAuthConfig(\textcolor{stringliteral}{'/path/to/client\_credentials.json'});}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Set the scopes required for the API you are going to call
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$client-\/>addScope(Google\(\backslash\)Service\(\backslash\)Drive::DRIVE);}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Set your application\textquotesingle{}s redirect URI
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Your\ redirect\ URI\ can\ be\ any\ registered\ URI,\ but\ in\ this\ example}}
+\DoxyCodeLine{\textcolor{comment}{//\ we\ redirect\ back\ to\ this\ same\ page}}
+\DoxyCodeLine{\$redirect\_uri\ =\ \textcolor{stringliteral}{'http://'}\ .\ \$\_SERVER[\textcolor{stringliteral}{'HTTP\_HOST'}]\ .\ \$\_SERVER[\textcolor{stringliteral}{'PHP\_SELF'}];}
+\DoxyCodeLine{\$client-\/>setRedirectUri(\$redirect\_uri);}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item In the script handling the redirect URI, exchange the authorization code for an access token\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (isset(\$\_GET[\textcolor{stringliteral}{'code'}]))\ \{}
+\DoxyCodeLine{\ \ \ \ \$token\ =\ \$client-\/>fetchAccessTokenWithAuthCode(\$\_GET[\textcolor{stringliteral}{'code'}]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md32}{}\doxysubsubsection{\texorpdfstring{Authentication with Service Accounts}{Authentication with Service Accounts}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md32}
+\begin{quote}
+An example of this can be seen in \href{examples/service-account.php}{\texttt{ {\ttfamily examples/service-\/account.\+php}}}. \end{quote}
+Some APIs (such as the \href{https://developers.google.com/youtube/v3/}{\texttt{ You\+Tube Data API}}) do not support service accounts. Check with the specific API documentation if API calls return unexpected 401 or 403 errors.
+
+
+\begin{DoxyEnumerate}
+\item Follow the instructions to \href{docs/oauth-server.md\#creating-a-service-account}{\texttt{ Create a Service Account}}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Download the JSON credentials
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Set the path to these credentials using the {\ttfamily GOOGLE\+\_\+\+APPLICATION\+\_\+\+CREDENTIALS} environment variable\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{putenv(\textcolor{stringliteral}{'GOOGLE\_APPLICATION\_CREDENTIALS=/path/to/service-\/account.json'});}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Tell the Google client to use your service account credentials to authenticate\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{\$client-\/>useApplicationDefaultCredentials();}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Set the scopes required for the API you are going to call
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$client-\/>addScope(Google\(\backslash\)Service\(\backslash\)Drive::DRIVE);}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item If you have delegated domain-\/wide access to the service account and you want to impersonate a user account, specify the email address of the user account using the method set\+Subject\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$client-\/>setSubject(\$user\_to\_impersonate);}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md33}{}\doxyparagraph{\texorpdfstring{How to use a specific JSON key}{How to use a specific JSON key}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md33}
+If you want to a specific JSON key instead of using {\ttfamily GOOGLE\+\_\+\+APPLICATION\+\_\+\+CREDENTIALS} environment variable, you can do this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$jsonKey\ =\ [}
+\DoxyCodeLine{\ \ \ \textcolor{stringliteral}{'type'}\ =>\ \textcolor{stringliteral}{'service\_account'},}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{\$client-\/>setAuthConfig(\$jsonKey);}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md34}{}\doxysubsubsection{\texorpdfstring{Making Requests}{Making Requests}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md34}
+The classes used to call the API in \href{https://github.com/googleapis/google-api-php-client-services}{\texttt{ google-\/api-\/php-\/client-\/services}} are autogenerated. They map directly to the JSON requests and responses found in the \href{https://developers.google.com/apis-explorer/\#p/}{\texttt{ APIs Explorer}}.
+
+A JSON request to the \href{https://developers.google.com/apis-explorer/\#p/datastore/v1beta3/datastore.projects.runQuery}{\texttt{ Datastore API}} would look like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{POST\ https://datastore.googleapis.com/v1beta3/projects/YOUR\_PROJECT\_ID:runQuery?key=YOUR\_API\_KEY}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}query"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}kind"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}name"{}:\ "{}Book"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}order"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}property"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}name"{}:\ "{}title"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}direction"{}:\ "{}descending"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}limit"{}:\ 10}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Using this library, the same call would look something like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ the\ datastore\ service\ class}}
+\DoxyCodeLine{\$datastore\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore(\$client);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ build\ the\ query\ -\/\ this\ maps\ directly\ to\ the\ JSON}}
+\DoxyCodeLine{\$query\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\(\backslash\)Query([}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{'kind'}\ =>\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'name'}\ =>\ \textcolor{stringliteral}{'Book'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{'order'}\ =>\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{'property'}\ =>\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'name'}\ =>\ \textcolor{stringliteral}{'title'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{'direction'}\ =>\ \textcolor{stringliteral}{'descending'},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{'limit'}\ =>\ 10,}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ build\ the\ request\ and\ response}}
+\DoxyCodeLine{\$request\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\(\backslash\)RunQueryRequest([\textcolor{stringliteral}{'query'}\ =>\ \$query]);}
+\DoxyCodeLine{\$response\ =\ \$datastore-\/>projects-\/>runQuery(\textcolor{stringliteral}{'YOUR\_DATASET\_ID'},\ \$request);}
+
+\end{DoxyCode}
+
+
+However, as each property of the JSON API has a corresponding generated class, the above code could also be written like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ the\ datastore\ service\ class}}
+\DoxyCodeLine{\$datastore\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore(\$client);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ build\ the\ query}}
+\DoxyCodeLine{\$request\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\_RunQueryRequest();}
+\DoxyCodeLine{\$query\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\(\backslash\)Query();}
+\DoxyCodeLine{\textcolor{comment}{//\ \ \ -\/\ set\ the\ order}}
+\DoxyCodeLine{\$order\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\_PropertyOrder();}
+\DoxyCodeLine{\$order-\/>setDirection(\textcolor{stringliteral}{'descending'});}
+\DoxyCodeLine{\$property\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\(\backslash\)PropertyReference();}
+\DoxyCodeLine{\$property-\/>setName(\textcolor{stringliteral}{'title'});}
+\DoxyCodeLine{\$order-\/>setProperty(\$property);}
+\DoxyCodeLine{\$query-\/>setOrder([\$order]);}
+\DoxyCodeLine{\textcolor{comment}{//\ \ \ -\/\ set\ the\ kinds}}
+\DoxyCodeLine{\$kind\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Service\(\backslash\)Datastore\(\backslash\)KindExpression();}
+\DoxyCodeLine{\$kind-\/>setName(\textcolor{stringliteral}{'Book'});}
+\DoxyCodeLine{\$query-\/>setKinds([\$kind]);}
+\DoxyCodeLine{\textcolor{comment}{//\ \ \ -\/\ set\ the\ limit}}
+\DoxyCodeLine{\$query-\/>setLimit(10);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ add\ the\ query\ to\ the\ request\ and\ make\ the\ request}}
+\DoxyCodeLine{\$request-\/>setQuery(\$query);}
+\DoxyCodeLine{\$response\ =\ \$datastore-\/>projects-\/>runQuery(\textcolor{stringliteral}{'YOUR\_DATASET\_ID'},\ \$request);}
+
+\end{DoxyCode}
+
+
+The method used is a matter of preference, but {\itshape it will be very difficult to use this library without first understanding the JSON syntax for the API}, so it is recommended to look at the \href{https://developers.google.com/apis-explorer/\#p/}{\texttt{ APIs Explorer}} before using any of the services here.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md35}{}\doxysubsubsection{\texorpdfstring{Making HTTP Requests Directly}{Making HTTP Requests Directly}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md35}
+If Google Authentication is desired for external applications, or a Google API is not available yet in this library, HTTP requests can be made directly.
+
+If you are installing this client only to authenticate your own HTTP client requests, you should use \href{https://github.com/googleapis/google-auth-library-php\#call-the-apis}{\texttt{ {\ttfamily google/auth}}} instead.
+
+The {\ttfamily authorize} method returns an authorized \href{http://docs.guzzlephp.org/}{\texttt{ Guzzle Client}}, so any request made using the client will contain the corresponding authorization.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ the\ Google\ client}}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$client-\/>useApplicationDefaultCredentials();}
+\DoxyCodeLine{\$client-\/>addScope(Google\(\backslash\)Service\(\backslash\)Plus::PLUS\_ME);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ returns\ a\ Guzzle\ HTTP\ Client}}
+\DoxyCodeLine{\$httpClient\ =\ \$client-\/>authorize();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ make\ an\ HTTP\ request}}
+\DoxyCodeLine{\$response\ =\ \$httpClient-\/>get(\textcolor{stringliteral}{'https://www.googleapis.com/plus/v1/people/me'});}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md36}{}\doxysubsubsection{\texorpdfstring{Caching}{Caching}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md36}
+It is recommended to use another caching library to improve performance. This can be done by passing a \href{https://www.php-fig.org/psr/psr-6/}{\texttt{ PSR-\/6}} compatible library to the client\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{use\ League\(\backslash\)Flysystem\(\backslash\)Adapter\(\backslash\)Local;}
+\DoxyCodeLine{use\ League\(\backslash\)Flysystem\(\backslash\)Filesystem;}
+\DoxyCodeLine{use\ Cache\(\backslash\)Adapter\(\backslash\)Filesystem\(\backslash\)FilesystemCachePool;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$filesystemAdapter\ =\ \textcolor{keyword}{new}\ Local(\_\_DIR\_\_.\textcolor{charliteral}{'/'});}
+\DoxyCodeLine{\$filesystem\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ Filesystem(\$filesystemAdapter);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$cache\ =\ \textcolor{keyword}{new}\ FilesystemCachePool(\$filesystem);}
+\DoxyCodeLine{\$client-\/>setCache(\$cache);}
+
+\end{DoxyCode}
+
+
+In this example we use \href{http://www.php-cache.com/}{\texttt{ PHP Cache}}. Add this to your project with composer\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{composer\ require\ cache/filesystem-\/adapter}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md37}{}\doxysubsubsection{\texorpdfstring{Updating Tokens}{Updating Tokens}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md37}
+When using \href{https://developers.google.com/identity/protocols/OAuth2InstalledApp\#offline}{\texttt{ Refresh Tokens}} or \href{https://developers.google.com/identity/protocols/OAuth2ServiceAccount\#overview}{\texttt{ Service Account Credentials}}, it may be useful to perform some action when a new access token is granted. To do this, pass a callable to the {\ttfamily set\+Token\+Callback} method on the client\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$logger\ =\ \textcolor{keyword}{new}\ Monolog\(\backslash\)Logger();}
+\DoxyCodeLine{\$tokenCallback\ =\ \textcolor{keyword}{function}\ (\$cacheKey,\ \$accessToken)\ use\ (\$logger)\ \{}
+\DoxyCodeLine{\ \ \$logger-\/>debug(sprintf(\textcolor{stringliteral}{'new\ access\ token\ received\ at\ cache\ key\ \%s'},\ \$cacheKey));}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\$client-\/>setTokenCallback(\$tokenCallback);}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md38}{}\doxysubsubsection{\texorpdfstring{Debugging Your HTTP Request using Charles}{Debugging Your HTTP Request using Charles}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md38}
+It is often very useful to debug your API calls by viewing the raw HTTP request. This library supports the use of \href{https://www.charlesproxy.com/documentation/getting-started/}{\texttt{ Charles Web Proxy}}. Download and run Charles, and then capture all HTTP traffic through Charles with the following code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ FOR\ DEBUGGING\ ONLY}}
+\DoxyCodeLine{\$httpClient\ =\ \textcolor{keyword}{new}\ GuzzleHttp\(\backslash\)Client([}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{'proxy'}\ =>\ \textcolor{stringliteral}{'localhost:8888'},\ \textcolor{comment}{//\ by\ default,\ Charles\ runs\ on\ localhost\ port\ 8888}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{'verify'}\ =>\ \textcolor{keyword}{false},\ \textcolor{comment}{//\ otherwise\ HTTPS\ requests\ will\ fail.}}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{\$client-\/>setHttpClient(\$httpClient);}
+
+\end{DoxyCode}
+
+
+Now all calls made by this library will appear in the Charles UI.
+
+One additional step is required in Charles to view SSL requests. Go to {\bfseries{Charles \texorpdfstring{$>$}{>} Proxy \texorpdfstring{$>$}{>} SSL Proxying Settings}} and add the domain you\textquotesingle{}d like captured. In the case of the Google APIs, this is usually {\ttfamily \texorpdfstring{$\ast$}{*}.googleapis.\+com}.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md39}{}\doxysubsubsection{\texorpdfstring{Controlling HTTP Client Configuration Directly}{Controlling HTTP Client Configuration Directly}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md39}
+Google API Client uses \href{http://docs.guzzlephp.org/}{\texttt{ Guzzle}} as its default HTTP client. That means that you can control your HTTP requests in the same manner you would for any application using Guzzle.
+
+Let\textquotesingle{}s say, for instance, we wished to apply a referrer to each request.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{use\ GuzzleHttp\(\backslash\)Client;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$httpClient\ =\ \textcolor{keyword}{new}\ Client([}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{'headers'}\ =>\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{'referer'}\ =>\ \textcolor{stringliteral}{'mysite.com'}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$client\ =\ \textcolor{keyword}{new}\ Google\(\backslash\)Client();}
+\DoxyCodeLine{\$client-\/>setHttpClient(\$httpClient);}
+
+\end{DoxyCode}
+
+
+Other Guzzle features such as \href{http://docs.guzzlephp.org/en/stable/handlers-and-middleware.html}{\texttt{ Handlers and Middleware}} offer even more control.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md40}{}\doxysubsubsection{\texorpdfstring{Partial Consent and Granted Scopes}{Partial Consent and Granted Scopes}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md40}
+When using OAuth2 3LO (e.\+g. you\textquotesingle{}re a client requesting credentials from a 3rd party, such as in the \href{examples/simple-file-upload.php}{\texttt{ simple file upload example}}), you may want to take advantage of Partial Consent.
+
+To allow clients to only grant certain scopes in the OAuth2 screen, pass the querystring parameter for {\ttfamily enable\+\_\+serial\+\_\+consent} when generating the authorization URL\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$authUrl\ =\ \$client-\/>createAuthUrl(\$scope,\ [\textcolor{stringliteral}{'enable\_serial\_consent'}\ =>\ \textcolor{stringliteral}{'true'}]);}
+
+\end{DoxyCode}
+
+
+Once the flow is completed, you can see which scopes were granted by calling {\ttfamily get\+Granted\+Scope} on the OAuth2 object\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Space-\/separated\ string\ of\ granted\ scopes\ if\ it\ exists,\ otherwise\ null.}}
+\DoxyCodeLine{echo\ \$client-\/>getOAuth2Service()-\/>getGrantedScope();}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md41}{}\doxysubsubsection{\texorpdfstring{Service Specific Examples}{Service Specific Examples}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md41}
+You\+Tube\+: \href{https://github.com/youtube/api-samples/tree/master/php}{\texttt{ https\+://github.\+com/youtube/api-\/samples/tree/master/php}}\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md42}{}\doxysubsection{\texorpdfstring{How Do I Contribute?}{How Do I Contribute?}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md42}
+Please see the contributing page for more information. In particular, we love pull requests -\/ but please make sure to sign the contributor license agreement.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md43}{}\doxysubsection{\texorpdfstring{Frequently Asked Questions}{Frequently Asked Questions}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md43}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md44}{}\doxysubsubsection{\texorpdfstring{What do I do if something isn\textquotesingle{}t working?}{What do I do if something isn't working?}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md44}
+For support with the library the best place to ask is via the google-\/api-\/php-\/client tag on Stack\+Overflow\+: \href{https://stackoverflow.com/questions/tagged/google-api-php-client}{\texttt{ https\+://stackoverflow.\+com/questions/tagged/google-\/api-\/php-\/client}}
+
+If there is a specific bug with the library, please \href{https://github.com/googleapis/google-api-php-client/issues}{\texttt{ file an issue}} in the Git\+Hub issues tracker, including an example of the failing code and any specific errors retrieved. Feature requests can also be filed, as long as they are core library requests, and not-\/\+API specific\+: for those, refer to the documentation for the individual APIs for the best place to file requests. Please try to provide a clear statement of the problem that the feature would address.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md45}{}\doxysubsubsection{\texorpdfstring{I want an example of X!}{I want an example of X!}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md45}
+If X is a feature of the library, file away! If X is an example of using a specific service, the best place to go is to the teams for those specific APIs -\/ our preference is to link to their examples rather than add them to the library, as they can then pin to specific versions of the library. If you have any examples for other APIs, let us know and we will happily add a link to the README above!\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md46}{}\doxysubsubsection{\texorpdfstring{Why do some Google\textbackslash{}\+Service classes have weird names?}{Why do some Google\textbackslash{}Service classes have weird names?}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md46}
+The \+\_\+\+Google\textbackslash{}\+Service\+\_\+ classes are generally automatically generated from the API discovery documents\+: \href{https://developers.google.com/discovery/}{\texttt{ https\+://developers.\+google.\+com/discovery/}}. Sometimes new features are added to APIs with unusual names, which can cause some unexpected or non-\/standard style naming in the PHP classes.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md47}{}\doxysubsubsection{\texorpdfstring{How do I deal with non-\/\+JSON response types?}{How do I deal with non-JSON response types?}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md47}
+Some services return XML or similar by default, rather than JSON, which is what the library supports. You can request a JSON response by adding an \textquotesingle{}alt\textquotesingle{} argument to optional params that is normally the last argument to a method call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$opt\_params\ =\ array(}
+\DoxyCodeLine{\ \ \textcolor{stringliteral}{'alt'}\ =>\ \textcolor{stringliteral}{"{}json"{}}}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md48}{}\doxysubsubsection{\texorpdfstring{How do I set a field to null?}{How do I set a field to null?}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md48}
+The library strips out nulls from the objects sent to the Google APIs as it is the default value of all of the uninitialized properties. To work around this, set the field you want to null to {\ttfamily Google\textbackslash{}Model\+::\+NULL\+\_\+\+VALUE}. This is a placeholder that will be replaced with a true null when sent over the wire.\hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md49}{}\doxysubsection{\texorpdfstring{Code Quality}{Code Quality}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md49}
+Run the PHPUnit tests with PHPUnit. You can configure an API key and token in Base\+Test.\+php to run all calls, but this will require some setup on the Google Developer Console. \begin{DoxyVerb}phpunit tests/
+\end{DoxyVerb}
+ \hypertarget{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md50}{}\doxysubsubsection{\texorpdfstring{Coding Style}{Coding Style}}\label{md__2home_2zouari__omar_2Documents_2Daily_2Projects_2AgriGO_2project_2app_2Services_2README_autotoc_md50}
+To check for coding style violations, run
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vendor/bin/phpcs\ src\ -\/-\/standard=style/ruleset.xml\ -\/np}
+
+\end{DoxyCode}
+
+
+To automatically fix (fixable) coding style violations, run
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vendor/bin/phpcbf\ src\ -\/-\/standard=style/ruleset.xml}
+
+\end{DoxyCode}
+ 

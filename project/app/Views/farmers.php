@@ -1,7 +1,7 @@
 <?php
 //? Include declaration part
 include '../../../vendor/autoload.php';  // Load Composer autoload
-include '../components/custom.php';
+include '../Helpers/custom.php';
 
 // Fetch Sessions and clear them
 session_start();
@@ -137,11 +137,11 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           </li>
           <!-- / Account Settings -->
 
-          <!-- Users Settings -->
+          <!-- Users Management -->
           <li class="menu-item active">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div data-i18n="Account Settings">Users Settings</div>
+              <div data-i18n="Account Settings">Users Management</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
@@ -161,7 +161,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
               </li>
             </ul>
           </li>
-          <!-- / Users Settings -->
+          <!-- / Users Management -->
 
           <!-- Authentications -->
           <li class="menu-item">
@@ -324,7 +324,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
                     <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="auth-login-basic.html">
+                    <a class="dropdown-item" href="../Controllers/setUsrStatus.php?admin_id=<?php echo $admin_id ?>&id=<?php echo $admin_id ?>&status=INACTIVE">
                       <i class="bx bx-power-off me-2"></i>
                       <span class="align-middle">Log Out</span>
                     </a>
@@ -342,7 +342,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light">Users Settings /</span>
+              <span class="text-muted fw-light">Users Management /</span>
               Farmers Table
             </h4>
             <div class="row">

@@ -1,0 +1,457 @@
+\doxysection{/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/vendor/nesbot/carbon/src/\+Carbon/\+Traits/\+Comparison.\+php}
+\hypertarget{_2home_2zouari_omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2nesbot_2carbon_2src_2Carbon_2Traits_2Comparison_8php-example}{}\label{_2home_2zouari_omar_2Documents_2Daily_2Projects_2AgriGO_2vendor_2nesbot_2carbon_2src_2Carbon_2Traits_2Comparison_8php-example}Determines if the instance is equal to another
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Carbon::parse(\textcolor{stringliteral}{'2018-\/07-\/25\ 12:45:16'})-\/>eq(\textcolor{stringliteral}{'2018-\/07-\/25\ 12:45:16'});\ \textcolor{comment}{//\ true}}
+\DoxyCodeLine{Carbon::parse(\textcolor{stringliteral}{'2018-\/07-\/25\ 12:45:16'})-\/>eq(Carbon::parse(\textcolor{stringliteral}{'2018-\/07-\/25\ 12:45:16'}));\ \textcolor{comment}{//\ true}}
+\DoxyCodeLine{Carbon::parse(\textcolor{stringliteral}{'2018-\/07-\/25\ 12:45:16'})-\/>eq(\textcolor{stringliteral}{'2018-\/07-\/25\ 12:45:17'});\ \textcolor{comment}{//\ false}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\textbackslash{}\+Carbon\textbackslash{}\+Carbon | \textbackslash{}\+Date\+Time\+Interface | mixed & {\em \$date} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+equal\+To()
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+bool
+\end{DoxyReturn}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{<?php}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceCarbon_1_1Traits}{Carbon\(\backslash\)Traits}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{use\ BadMethodCallException;}
+\DoxyCodeLine{use\ \mbox{\hyperlink{interfaceCarbon_1_1CarbonInterface}{Carbon\(\backslash\)CarbonInterface}};}
+\DoxyCodeLine{use\ \mbox{\hyperlink{classCarbon_1_1Exceptions_1_1BadComparisonUnitException}{Carbon\(\backslash\)Exceptions\(\backslash\)BadComparisonUnitException}};}
+\DoxyCodeLine{use\ InvalidArgumentException;}
+\DoxyCodeLine{}
+\DoxyCodeLine{trait\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_a9b3c495266cbfacded7a56db62793e63}{Comparison}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{protected}\ \$endOfTime\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{protected}\ \$startOfTime\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ eq(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>equalTo(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ equalTo(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageNull(\$date);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageBoolean(\$date);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ ==\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ ne(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>notEqualTo(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ notEqualTo(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\$this-\/>equalTo(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ gt(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>greaterThan(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ greaterThan(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageNull(\$date);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageBoolean(\$date);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ >\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isAfter(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>greaterThan(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ gte(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>greaterThanOrEqualTo(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ greaterThanOrEqualTo(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageNull(\$date);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageBoolean(\$date);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ >=\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ lt(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>lessThan(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ lessThan(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageNull(\$date);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageBoolean(\$date);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ <\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isBefore(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>lessThan(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ lte(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>lessThanOrEqualTo(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ lessThanOrEqualTo(\$date):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageNull(\$date);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$this-\/>discourageBoolean(\$date);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ <=\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ between(\$date1,\ \$date2,\ \$equal\ =\ \textcolor{keyword}{true}):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$date1\ =\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$date2\ =\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$date1-\/>greaterThan(\$date2))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ [\$date1,\ \$date2]\ =\ [\$date2,\ \$date1];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$equal)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ >=\ \$date1\ \&\&\ \$this\ <=\ \$date2;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this\ >\ \$date1\ \&\&\ \$this\ <\ \$date2;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ betweenIncluded(\$date1,\ \$date2):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>between(\$date1,\ \$date2,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ betweenExcluded(\$date1,\ \$date2):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>between(\$date1,\ \$date2,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isBetween(\$date1,\ \$date2,\ \$equal\ =\ \textcolor{keyword}{true}):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>between(\$date1,\ \$date2,\ \$equal);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isWeekday()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\$this-\/>isWeekend();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isWeekend()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ \(\backslash\)in\_array(\$this-\/>dayOfWeek,\ static::\$weekendDays,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isYesterday()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>toDateString()\ ===\ static::yesterday(\$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a9c3544531985f357e6bfc389c5c35141}{getTimezone}}())-\/>toDateString();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isToday()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>toDateString()\ ===\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a13db423d82c5c51d85a7e5bf2cffbf74}{nowWithSameTz}}()-\/>toDateString();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isTomorrow()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>toDateString()\ ===\ static::tomorrow(\$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a9c3544531985f357e6bfc389c5c35141}{getTimezone}}())-\/>toDateString();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isFuture()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>greaterThan(\$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a13db423d82c5c51d85a7e5bf2cffbf74}{nowWithSameTz}}());}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isPast()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>lessThan(\$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a13db423d82c5c51d85a7e5bf2cffbf74}{nowWithSameTz}}());}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isLeapYear()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\textcolor{charliteral}{'L'})\ ===\ \textcolor{charliteral}{'1'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isLongYear()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ static::create(\$this-\/>year,\ 12,\ 28,\ 0,\ 0,\ 0,\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a918e75ea681debca600353cc26021a72}{tz}})-\/>weekOfYear\ ===\ 53;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isLongIsoYear()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ static::create(\$this-\/>isoWeekYear,\ 12,\ 28,\ 0,\ 0,\ 0,\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a918e75ea681debca600353cc26021a72}{tz}})-\/>weekOfYear\ ===\ 53;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isSameAs(\$format,\ \$date\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\$format)\ ===\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date)-\/>rawFormat(\$format);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isSameUnit(\$unit,\ \$date\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$units\ =\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'year'}\ =>\ \textcolor{charliteral}{'Y'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'week'}\ =>\ \textcolor{stringliteral}{'o-\/W'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'day'}\ =>\ \textcolor{stringliteral}{'Y-\/m-\/d'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'hour'}\ =>\ \textcolor{stringliteral}{'Y-\/m-\/d\ H'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'minute'}\ =>\ \textcolor{stringliteral}{'Y-\/m-\/d\ H:i'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'second'}\ =>\ \textcolor{stringliteral}{'Y-\/m-\/d\ H:i:s'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'micro'}\ =>\ \textcolor{stringliteral}{'Y-\/m-\/d\ H:i:s.u'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @call\ isSameUnit}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'microsecond'}\ =>\ \textcolor{stringliteral}{'Y-\/m-\/d\ H:i:s.u'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$units[\$unit]))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isSameAs(\$units[\$unit],\ \$date);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isset(\$this-\/>\$unit))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date)-\/>\$unit\ ===\ \$this-\/>\$unit;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$this-\/>localStrictModeEnabled\ ??\ static::isStrictModeEnabled())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ BadComparisonUnitException(\$unit);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isCurrentUnit(\$unit)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>\{\textcolor{stringliteral}{'isSame'}.ucfirst(\$unit)\}();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isSameQuarter(\$date\ =\ \textcolor{keyword}{null},\ \$ofSameYear\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$date\ =\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_a34f2af1a57b319fdc228c93d8ce005b3}{resolveCarbon}}(\$date);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>quarter\ ===\ \$date-\/>quarter\ \&\&\ (!\$ofSameYear\ ||\ \$this-\/>isSameYear(\$date));}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isSameMonth(\$date\ =\ \textcolor{keyword}{null},\ \$ofSameYear\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isSameAs(\$ofSameYear\ ?\ \textcolor{stringliteral}{'Y-\/m'}\ :\ \textcolor{stringliteral}{'m'},\ \$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isDayOfWeek(\$dayOfWeek)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\(\backslash\)is\_string(\$dayOfWeek)\ \&\&\ \(\backslash\)defined(\$constant\ =\ static::class.\textcolor{stringliteral}{'::'}.strtoupper(\$dayOfWeek)))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \$dayOfWeek\ =\ \(\backslash\)constant(\$constant);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>dayOfWeek\ ===\ \$dayOfWeek;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isBirthday(\$date\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isSameAs(\textcolor{stringliteral}{'md'},\ \$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isLastOfMonth()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>day\ ===\ \$this-\/>daysInMonth;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isStartOfDay(\$checkMicroseconds\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*\ @var\ CarbonInterface\ \$this\ */}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$checkMicroseconds}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ?\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\textcolor{stringliteral}{'H:i:s.u'})\ ===\ \textcolor{stringliteral}{'00:00:00.000000'}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ :\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\textcolor{stringliteral}{'H:i:s'})\ ===\ \textcolor{stringliteral}{'00:00:00'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isEndOfDay(\$checkMicroseconds\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*\ @var\ CarbonInterface\ \$this\ */}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$checkMicroseconds}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ?\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\textcolor{stringliteral}{'H:i:s.u'})\ ===\ \textcolor{stringliteral}{'23:59:59.999999'}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ :\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\textcolor{stringliteral}{'H:i:s'})\ ===\ \textcolor{stringliteral}{'23:59:59'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isMidnight()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isStartOfDay();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ isMidday()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*\ @var\ CarbonInterface\ \$this\ */}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_ac43267de15de861088281b9d3c20ad06}{rawFormat}}(\textcolor{stringliteral}{'G:i:s'})\ ===\ static::\$midDayAt.\textcolor{stringliteral}{':00:00'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ hasFormat(\$date,\ \$format)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ createFromFormat()\ is\ known\ to\ handle\ edge\ cases\ silently.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ E.g.\ "{}1975-\/5-\/1"{}\ (Y-\/n-\/j)\ will\ still\ be\ parsed\ correctly\ when\ "{}Y-\/m-\/d"{}\ is\ supplied\ as\ the\ format.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ ensure\ we're\ really\ testing\ against\ our\ desired\ format,\ perform\ an\ additional\ regex\ validation.}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self::matchFormatPattern((\textcolor{keywordtype}{string})\ \$date,\ preg\_quote((\textcolor{keywordtype}{string})\ \$format,\ \textcolor{charliteral}{'/'}),\ static::\$regexFormats);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ hasFormatWithModifiers(\$date,\ \$format):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self::matchFormatPattern((\textcolor{keywordtype}{string})\ \$date,\ (\textcolor{keywordtype}{string})\ \$format,\ array\_merge(static::\$regexFormats,\ static::\$regexFormatModifiers));}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ canBeCreatedFromFormat(\$date,\ \$format)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Try\ to\ create\ a\ DateTime\ object.\ Throws\ an\ InvalidArgumentException\ if\ the\ provided\ time\ string}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ doesn't\ match\ the\ format\ in\ any\ way.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!static::rawCreateFromFormat(\$format,\ \$date))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (InvalidArgumentException\ \$e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ static::hasFormatWithModifiers(\$date,\ \$format);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ is(\textcolor{keywordtype}{string}\ \$tester)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$tester\ =\ trim(\$tester);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\string^\(\backslash\)d+\$/'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>year\ ===\ (int)\ \$tester;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\string^(?:Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|Aug|August|Sep|September|Oct|October|Nov|November|Dec|December)\$/i'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isSameMonth(static::parse(\$tester),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\string^\(\backslash\)d\{3,\}-\/\(\backslash\)d\{1,2\}\$/'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isSameMonth(static::parse(\$tester));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\string^\(\backslash\)d\{1,2\}-\/\(\backslash\)d\{1,2\}\$/'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>isSameDay(static::parse(\$this-\/>year.\textcolor{charliteral}{'-\/'}.\$tester));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$modifier\ =\ preg\_replace(\textcolor{stringliteral}{'/(\(\backslash\)d)h\$/i'},\ \textcolor{stringliteral}{'\$1:00'},\ \$tester);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*\ @var\ CarbonInterface\ \$max\ */}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$median\ =\ static::parse(\textcolor{stringliteral}{'5555-\/06-\/15\ 12:30:30.555555'})-\/>modify(\$modifier);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$current\ =\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_aefe3b1b4613b9a851b97826a2d1cc35e}{avoidMutation}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*\ @var\ CarbonInterface\ \$other\ */}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$other\ =\ \$this-\/>\mbox{\hyperlink{namespaceCarbon_1_1Traits_aefe3b1b4613b9a851b97826a2d1cc35e}{avoidMutation}}()-\/>modify(\$modifier);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$current-\/>eq(\$other))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\(\backslash\)d:\(\backslash\)d\{1,2\}:\(\backslash\)d\{1,2\}\$/'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$current-\/>startOfSecond()-\/>eq(\$other);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\(\backslash\)d:\(\backslash\)d\{1,2\}\$/'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$current-\/>startOfMinute()-\/>eq(\$other);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(\textcolor{stringliteral}{'/\(\backslash\)d(?:h|am|pm)\$/'},\ \$tester))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$current-\/>startOfHour()-\/>eq(\$other);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (preg\_match(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'/\string^(?:january|february|march|april|may|june|july|august|september|october|november|december)(?:\(\backslash\)s+\(\backslash\)d+)?\$/i'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \$tester}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$current-\/>startOfMonth()-\/>eq(\$other-\/>startOfMonth());}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$units\ =\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'month'}\ =>\ [1,\ \textcolor{stringliteral}{'year'}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'day'}\ =>\ [1,\ \textcolor{stringliteral}{'month'}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'hour'}\ =>\ [0,\ \textcolor{stringliteral}{'day'}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'minute'}\ =>\ [0,\ \textcolor{stringliteral}{'hour'}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'second'}\ =>\ [0,\ \textcolor{stringliteral}{'minute'}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'microsecond'}\ =>\ [0,\ \textcolor{stringliteral}{'second'}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$units\ as\ \$unit\ =>\ [\$minimum,\ \$startUnit])\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$minimum\ ===\ \$median-\/>\$unit)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$current\ =\ \$current-\/>startOf(\$startUnit);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$current-\/>eq(\$other);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ matchFormatPattern(\textcolor{keywordtype}{string}\ \$date,\ \textcolor{keywordtype}{string}\ \$format,\ array\ \$replacements):\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Preg\ quote,\ but\ remove\ escaped\ backslashes\ since\ we'll\ deal\ with\ escaped\ characters\ in\ the\ format\ string.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$regex\ =\ str\_replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)'},\ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \$format);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Replace\ not-\/escaped\ letters}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$regex\ =\ preg\_replace\_callback(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'/(?<!\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\))((?:\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\{2\})*)(['}.implode(\textcolor{stringliteral}{''},\ array\_keys(\$replacements)).\textcolor{stringliteral}{'])/'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{function}\ (\$match)\ use\ (\$replacements)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$match[1].strtr(\$match[2],\ \$replacements);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \$regex}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Replace\ escaped\ letters\ by\ the\ letter\ itself}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$regex\ =\ preg\_replace(\textcolor{stringliteral}{'/(?<!\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\))((?:\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\{2\})*)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)(\(\backslash\)w)/'},\ \textcolor{stringliteral}{'\$1\$2'},\ \$regex);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Escape\ not\ escaped\ slashes}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$regex\ =\ preg\_replace(\textcolor{stringliteral}{'\#(?<!\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\))((?:\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\{2\})*)/\#'},\ \textcolor{stringliteral}{'\$1\(\backslash\)\(\backslash\)/'},\ \$regex);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{bool})\ @preg\_match(\textcolor{stringliteral}{'/\string^'}.\$regex.\textcolor{stringliteral}{'\$/'},\ \$date);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_a3901c9acd8ada0bf87071147c7fb3587}{isStartOfTime}}():\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>startOfTime\ ??\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{namespaceCarbon_1_1Traits_a1863ce5a796db318e097bdca1b9d1e85}{isEndOfTime}}():\ bool}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>endOfTime\ ??\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ discourageNull(\$value):\ void}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$value\ ===\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ @trigger\_error(\textcolor{stringliteral}{"{}Since\ 2.61.0,\ it's\ deprecated\ to\ compare\ a\ date\ to\ null,\ meaning\ of\ such\ comparison\ is\ ambiguous\ and\ will\ no\ longer\ be\ possible\ in\ 3.0.0,\ you\ should\ explicitly\ pass\ 'now'\ or\ make\ an\ other\ check\ to\ eliminate\ null\ values."{}},\ \(\backslash\)E\_USER\_DEPRECATED);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ discourageBoolean(\$value):\ void}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\(\backslash\)is\_bool(\$value))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ @trigger\_error(\textcolor{stringliteral}{"{}Since\ 2.61.0,\ it's\ deprecated\ to\ compare\ a\ date\ to\ true\ or\ false,\ meaning\ of\ such\ comparison\ is\ ambiguous\ and\ will\ no\ longer\ be\ possible\ in\ 3.0.0,\ you\ should\ explicitly\ pass\ 'now'\ or\ make\ an\ other\ check\ to\ eliminate\ boolean\ values."{}},\ \(\backslash\)E\_USER\_DEPRECATED);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

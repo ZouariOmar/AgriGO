@@ -1,0 +1,86 @@
+\doxysection{Status Class Reference}
+\hypertarget{classStatus}{}\label{classStatus}\index{Status@{Status}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classStatus_aa9ec0790c6b220245927c7ff10b6ee1f}{\+\_\+\+\_\+construct}} (\$admin\+\_\+id=null, \$user\+\_\+id=null, \$status=\textquotesingle{}ACTIVE\textquotesingle{})
+\item 
+\mbox{\hyperlink{classStatus_a13f67c2a7eb03506779531134869d48d}{set\+\_\+usr\+\_\+status}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00016}{16}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classStatus_aa9ec0790c6b220245927c7ff10b6ee1f}\label{classStatus_aa9ec0790c6b220245927c7ff10b6ee1f} 
+\index{Status@{Status}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Status\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$admin\+\_\+id = {\ttfamily null},  }\item[{}]{\$user\+\_\+id = {\ttfamily null},  }\item[{}]{\$status = {\ttfamily \textquotesingle{}ACTIVE\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00023}{23}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \$this-\/>admin\_id\ =\ \$admin\_id;}
+\DoxyCodeLine{00026\ \ \ \ \ \$this-\/>user\_id\ =\ \$user\_id;}
+\DoxyCodeLine{00027\ \ \ \ \ \$this-\/>status\ =\ \$status;}
+\DoxyCodeLine{00028\ \ \ \ \ \$this-\/>redirection\ =\ (\$status\ !=\ \textcolor{stringliteral}{'INACTIVE'})\ ?\ \textcolor{stringliteral}{'Location:\ ../Views/dashboard.php?id='}\ .\ \$this-\/>admin\_id\ :\ \textcolor{stringliteral}{'Location:}}
+\DoxyCodeLine{00029\ \textcolor{stringliteral}{../Views/login.php'};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ session\ to\ manage\ status\ messages}}
+\DoxyCodeLine{00031\ \ \ \ \ session\_start();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//*\ Connect\ to\ the\ DB}}
+\DoxyCodeLine{00033\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{00034\ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classStatus_a13f67c2a7eb03506779531134869d48d}\label{classStatus_a13f67c2a7eb03506779531134869d48d} 
+\index{Status@{Status}!set\_usr\_status@{set\_usr\_status}}
+\index{set\_usr\_status@{set\_usr\_status}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{set\_usr\_status()}{set\_usr\_status()}}
+{\footnotesize\ttfamily Status\+::set\+\_\+usr\+\_\+status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{____include_____8php_source_l00035}{35}} of file \mbox{\hyperlink{____include_____8php_source}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ status\ in\ \`{}Suspend`\ status}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \$stmt\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}UPDATE\ Usrs\ SET\ Status\ =\ :status\ WHERE\ ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}\ =>\ \$this-\/>user\_id,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status"{}}\ =>\ \$this-\/>status}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \textcolor{comment}{//*\ \#\#\#\ User\ successfully\ deleted\ from\ \`{}Usr`\ table\ (+\ other\ tables)\ \#\#\#}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{'User\ has\ been\ successfully\ '}\ .\ \$this-\/>status\ .\ \textcolor{charliteral}{'!'};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ header(\$this-\/>redirection);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00048\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ header(\$this-\/>redirection);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/zouari\+\_\+omar/\+Documents/\+Daily/\+Projects/\+Agri\+GO/project/app/\+Helpers/\mbox{\hyperlink{____include_____8php}{\+\_\+\+\_\+include\+\_\+\+\_\+.\+php}}\end{DoxyCompactItemize}

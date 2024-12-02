@@ -1,0 +1,44 @@
+\doxysection{OTP.\+php}
+\hypertarget{OTP_8php_source}{}\label{OTP_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Services/OTP.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Services/OTP.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00001}00001\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00002}00002\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00004}00004\ <head>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00005}00005\ \ \ \ \ <!-\/-\/\ Required\ meta\ tags\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00006}00006\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}utf-\/8"{}}\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00007}00007\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1"{}}\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00009}00009\ \ \ \ \ <!-\/-\/\ Font\ Awesome\ Icons\ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00010}00010\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}https://cdnjs.cloudflare.com/ajax/libs/font-\/awesome/5.15.1/css/all.min.css"{}}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00011}00011\ \ \ \ \ \ \ \ \ integrity=\textcolor{stringliteral}{"{}sha512-\/+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="{}}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00012}00012\ \ \ \ \ \ \ \ \ crossorigin=\textcolor{stringliteral}{"{}anonymous"{}}\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00014}00014\ \ \ \ \ <!-\/-\/\ Google\ Fonts\ \ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00015}00015\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}preconnect"{}}\ href=\textcolor{stringliteral}{"{}https://fonts.googleapis.com"{}}\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00016}00016\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}preconnect"{}}\ href=\textcolor{stringliteral}{"{}https://fonts.gstatic.com"{}}\ crossorigin\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00017}00017\ \ \ \ \ <link\ href=\textcolor{stringliteral}{"{}https://fonts.googleapis.com/css2?family=Poppins\&display=swap"{}}\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00018}00018\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../public/css/OTP.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00019}00019\ \ \ \ \ <title>AgriGO\ || Forgot\ Password</title>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00020}00020\ </head>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00022}00022\ <body>}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00023}00023\ \ \ \ \ <form\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}card"{}}\ action=\textcolor{stringliteral}{"{}sendemail.php"{}}post\textcolor{stringliteral}{"{}>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <p\ class="{}}lock-\/icon\textcolor{stringliteral}{"{}><i\ class="{}}fas\ fa-\/lock\textcolor{stringliteral}{"{}>\ </i></p>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <h2>Forgot\ Password?</h2>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <p>You\ can\ reset\ your\ Password\ here</p>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <div\ class="{}}email-\/input-\/container\textcolor{stringliteral}{"{}>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <span\ class="{}}email-\/icon\textcolor{stringliteral}{"{}>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <i\ class="{}}fa\ fa-\/envelope\textcolor{stringliteral}{"{}></i>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Replace\ with\ an\ icon\ library\ of\ your\ choice\ -\/-\/>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ </span>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ <input\ type="{}}email\textcolor{stringliteral}{"{}\ name="{}}recipient\_email\textcolor{stringliteral}{"{}\ placeholder="{}}Enter\ your\ email\textcolor{stringliteral}{"{}\ class="{}}email-\/input\textcolor{stringliteral}{"{}\ />}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ </div>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ <button>Send\ My\ Password</button>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ </form>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00036}00036\ \textcolor{stringliteral}{</body>}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00037}00037\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{OTP_8php_source_l00038}00038\ \textcolor{stringliteral}{</html>}}
+
+\end{DoxyCode}

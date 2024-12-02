@@ -1,0 +1,122 @@
+\doxysection{Carbon\+Type\+Converter.\+php}
+\hypertarget{CarbonTypeConverter_8php_source}{}\label{CarbonTypeConverter_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/carbonphp/carbon-\/doctrine-\/types/src/Carbon/Doctrine/CarbonTypeConverter.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/carbonphp/carbon-\/doctrine-\/types/src/Carbon/Doctrine/CarbonTypeConverter.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }Carbon\(\backslash\)Doctrine;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00007}00007\ use\ \mbox{\hyperlink{classCarbon_1_1Carbon}{Carbon\(\backslash\)Carbon}};}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00008}00008\ use\ \mbox{\hyperlink{interfaceCarbon_1_1CarbonInterface}{Carbon\(\backslash\)CarbonInterface}};}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00009}00009\ use\ DateTimeInterface;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00010}00010\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Platforms\(\backslash\)AbstractPlatform;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00011}00011\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Platforms\(\backslash\)DB2Platform;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00012}00012\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Platforms\(\backslash\)OraclePlatform;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00013}00013\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Platforms\(\backslash\)SQLitePlatform;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00014}00014\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Platforms\(\backslash\)SQLServerPlatform;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00015}00015\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Types\(\backslash\)Exception\(\backslash\)InvalidType;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00016}00016\ use\ Doctrine\(\backslash\)DBAL\(\backslash\)Types\(\backslash\)Exception\(\backslash\)ValueNotConvertible;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00017}00017\ use\ Exception;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00022}00022\ trait\ CarbonTypeConverter}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \$external\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ getCarbonClassName():\ string}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Carbon::class;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ getSQLDeclaration(array\ \$fieldDeclaration,\ AbstractPlatform\ \$platform):\ string}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \$precision\ =\ min(}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \$fieldDeclaration[\textcolor{stringliteral}{'precision'}]\ ??\ \mbox{\hyperlink{classCarbon_1_1Doctrine_1_1DateTimeDefaultPrecision_aa7d37c463d146a4f2dc837c554d6aa57}{DateTimeDefaultPrecision::get}}(),}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>getMaximumPrecision(\$platform),}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \$type\ =\ parent::getSQLDeclaration(\$fieldDeclaration,\ \$platform);}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\$precision)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$type;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\_contains(\$type,\ \textcolor{charliteral}{'('}))\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ preg\_replace(\textcolor{stringliteral}{'/\(\backslash\)(\(\backslash\)d+\(\backslash\))/'},\ \textcolor{stringliteral}{"{}(\$precision)"{}},\ \$type);}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ [\$before,\ \$after]\ =\ explode(\textcolor{charliteral}{'\ '},\ \textcolor{stringliteral}{"{}\$type\ "{}});}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ trim(\textcolor{stringliteral}{"{}\$before(\$precision)\ \$after"{}});}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ convertToDatabaseValue(\$value,\ AbstractPlatform\ \$platform):\ ?string}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$value\ ===\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$value\ instanceof\ DateTimeInterface)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$value-\/>format(\textcolor{stringliteral}{'Y-\/m-\/d\ H:i:s.u'});}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ InvalidType::new(}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \$value,}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ static::class,}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{'null'},\ \textcolor{stringliteral}{'DateTime'},\ \textcolor{stringliteral}{'Carbon'}]}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ doConvertToPHPValue(mixed\ \$value)}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \$class\ =\ \$this-\/>getCarbonClassName();}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$value\ ===\ \textcolor{keyword}{null}\ ||\ is\_a(\$value,\ \$class))\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$value\ instanceof\ DateTimeInterface)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$class::instance(\$value);}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00094}00094\ \ \ \ \ \ \ \ \ \$date\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00095}00095\ \ \ \ \ \ \ \ \ \$error\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \$date\ =\ \$class::parse(\$value);}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$exception)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \$error\ =\ \$exception;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\$date)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ ValueNotConvertible::new(}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$value,}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ static::class,}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Y-\/m-\/d\ H:i:s.u\ or\ any\ format\ supported\ by\ '}.\$class.\textcolor{stringliteral}{'::parse()'},}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$error}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$date;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ getMaximumPrecision(AbstractPlatform\ \$platform):\ int}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00116}00116\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ instanceof\ DB2Platform)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 12;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00119}00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ instanceof\ OraclePlatform)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 9;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$platform\ instanceof\ SQLServerPlatform\ ||\ \$platform\ instanceof\ SQLitePlatform)\ \{}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 3;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00127}00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 6;}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CarbonTypeConverter_8php_source_l00131}00131\ \}}
+
+\end{DoxyCode}

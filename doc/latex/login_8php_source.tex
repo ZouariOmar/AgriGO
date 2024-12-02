@@ -1,0 +1,124 @@
+\doxysection{login.\+php}
+\hypertarget{login_8php_source}{}\label{login_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Views/login.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Views/login.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00002}00002\ \textcolor{comment}{//?\ Include\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00003}00003\ include\ \textcolor{stringliteral}{'../Helpers/custom.php'};}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00005}00005\ session\_start();}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00006}00006\ \$status\ =\ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ ??\ \textcolor{keyword}{null};\ \ \ \ \ \ \textcolor{comment}{//\ Fetch\ the\ \`{}status`\ session}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00007}00007\ \$user\_id\ =\ \$\_SESSION[\textcolor{stringliteral}{'user\_id'}]\ ??\ \textcolor{keyword}{null};\ \ \ \ \textcolor{comment}{//\ Fetch\ the\ \`{}user\_id`\ session}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00008}00008\ \$user\_role\ =\ \$\_SESSION[\textcolor{stringliteral}{'user\_role'}]\ ??\ \textcolor{keyword}{null};\ \ \textcolor{comment}{//\ Fetch\ the\ \`{}user\_role`\ session}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00009}00009\ unset(\$\_SESSION[\textcolor{stringliteral}{'status'}],\ \$\_SESSION[\textcolor{stringliteral}{'user\_id'}],\ \$\_SESSION[\textcolor{stringliteral}{'user\_role'}]);}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00010}00010\ ?>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00012}00012\ <!DOCTYPE\ html>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00013}00013\ <html\ lang=\textcolor{stringliteral}{"{}en"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00015}00015\ <head>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00016}00016\ \ \ \ \ <meta\ charset=\textcolor{stringliteral}{"{}UTF-\/8"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00017}00017\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}viewport"{}}\ content=\textcolor{stringliteral}{"{}width=device-\/width,\ initial-\/scale=1.0"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00018}00018\ \ \ \ \ <meta\ name=\textcolor{stringliteral}{"{}description"{}}\ content=\textcolor{stringliteral}{"{}AgriGO\ 2.0\ Website"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00019}00019\ \ \ \ \ <title>AGNT\ ||\ Login</title>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00021}00021\ \ \ \ \ <!-\/-\/\ Favicons\ Icons\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00022}00022\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}apple-\/touch-\/icon"{}}\ sizes=\textcolor{stringliteral}{"{}180x180"{}}\ href=\textcolor{stringliteral}{"{}../../public/assets/imgs/favicons/apple-\/touch-\/icon.png"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00023}00023\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/png"{}}\ sizes=\textcolor{stringliteral}{"{}32x32"{}}\ href=\textcolor{stringliteral}{"{}../../public/assets/imgs/favicons/favicon-\/32x32.png"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00024}00024\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}icon"{}}\ type=\textcolor{stringliteral}{"{}image/png"{}}\ sizes=\textcolor{stringliteral}{"{}16x16"{}}\ href=\textcolor{stringliteral}{"{}../../public/assets/imgs/favicons/favicon-\/16x16.png"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00025}00025\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}manifest"{}}\ href=\textcolor{stringliteral}{"{}../../publicassets/imgs/favicons/site.webmanifest"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00027}00027\ \ \ \ \ <!-\/-\/\ Login\ css\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00028}00028\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}../../public/css/login.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00029}00029\ \ \ \ \ <link\ rel=\textcolor{stringliteral}{"{}stylesheet"{}}\ href=\textcolor{stringliteral}{"{}https://cdnjs.cloudflare.com/ajax/libs/font-\/awesome/4.7.0/css/font-\/awesome.min.css"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00030}00030\ </head>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00032}00032\ <body>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00033}00033\ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}container"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/container\ sign-\/up-\/container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Start\ signUp\ form-\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ <form\ onsubmit=\textcolor{stringliteral}{"{}return\ validateSignUpForm();"{}}\ action=\textcolor{stringliteral}{"{}../../app/Controllers/addUsr.php"{}}\ method=\textcolor{stringliteral}{"{}post"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h1>Create\ Account</h1>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}social-\/container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}\#"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/facebook"{}}></i></a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}\#"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/google"{}}></i></a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}\#"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/linkedin"{}}></i></a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span>or\ use\ your\ email\ \textcolor{keywordflow}{for}\ registration</span>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}username"{}}\ name=\textcolor{stringliteral}{"{}username"{}}\ type=\textcolor{stringliteral}{"{}text"{}}\ placeholder=\textcolor{stringliteral}{"{}Username"{}}\ title=\textcolor{stringliteral}{"{}Enter\ Your\ Username"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}email"{}}\ name=\textcolor{stringliteral}{"{}email"{}}\ type=\textcolor{stringliteral}{"{}email"{}}\ placeholder=\textcolor{stringliteral}{"{}Email"{}}\ title=\textcolor{stringliteral}{"{}Enter\ Your\ Email"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}password1"{}}\ name=\textcolor{stringliteral}{"{}password"{}}\ type=\textcolor{stringliteral}{"{}password"{}}\ placeholder=\textcolor{stringliteral}{"{}Password"{}}\ title=\textcolor{stringliteral}{"{}Enter\ Your\ Password"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}checkboxes"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <label\ \textcolor{keywordflow}{for}=\textcolor{stringliteral}{"{}checker"{}}>Are\ You\ a\ Farmer\ ?</label>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ type=\textcolor{stringliteral}{"{}checkbox"{}}\ name=\textcolor{stringliteral}{"{}checker"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}checker"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button>Sign\ Up</button>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}signUpError"{}}\ style=\textcolor{stringliteral}{"{}color:\ red"{}}></p>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ End\ signUp\ form-\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00055}00055\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}form-\/container\ sign-\/in-\/container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ Start\ signIn\ form-\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ <form\ onsubmit=\textcolor{stringliteral}{"{}return\ validateSignInForm();"{}}\ action=\textcolor{stringliteral}{"{}../../app/Middleware/signIn.php"{}}\ method=\textcolor{stringliteral}{"{}post"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h1>Sign\ in</h1>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}social-\/container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}\#"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/facebook"{}}></i></a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}\#"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/google"{}}></i></a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}\#"{}}><i\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}fa\ fa-\/linkedin"{}}></i></a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <span>or\ use\ your\ account</span>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}identifier"{}}\ name=\textcolor{stringliteral}{"{}identifier"{}}\ type=\textcolor{stringliteral}{"{}text"{}}\ placeholder=\textcolor{stringliteral}{"{}Email\ or\ Username"{}}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ title=\textcolor{stringliteral}{"{}Enter\ Your\ Email\ Or\ Username"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <input\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}password2"{}}\ name=\textcolor{stringliteral}{"{}password"{}}\ type=\textcolor{stringliteral}{"{}password"{}}\ placeholder=\textcolor{stringliteral}{"{}Password"{}}\ title=\textcolor{stringliteral}{"{}Enter\ Your\ Password"{}}\ />}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <a\ href=\textcolor{stringliteral}{"{}../Services/OTP.php"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}forgetPass"{}}>Forot\ your\ password?</a>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button>Sign\ In</button>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}signInError"{}}\ style=\textcolor{stringliteral}{"{}color:\ red"{}}></p>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ </form>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ <!-\/-\/\ End\ signIn\ form-\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00074}00074\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00075}00075\ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}overlay-\/container"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}overlay"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}overlay-\/panel\ overlay-\/right"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h1>Welcome\ Back!</h1>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ To\ keep\ connected\ with\ us\ please\ login\ with\ your\ personal\ info}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </p>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}ghost"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}signUp"{}}>Sign\ Up</button>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <div\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}overlay-\/panel\ overlay-\/left"{}}>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <h1>Hello,\ Friend!</h1>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <p>Enter\ your\ personal\ details\ and\ start\ journey\ with\ us</p>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <button\ \textcolor{keyword}{class}=\textcolor{stringliteral}{"{}ghost"{}}\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}signIn"{}}>Sign\ In</button>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00090}00090\ \ \ \ \ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00091}00091\ \ \ \ \ </div>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00093}00093\ \ \ \ \ <?php}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$status\ ===\ \textcolor{stringliteral}{"{}User\ not\ found!"{}}):}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00095}00095\ \ \ \ \ \ \ \ \ alert(\textcolor{stringliteral}{"{}alert"{}},\ \textcolor{stringliteral}{"{}User\ not\ found!"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00096}00096\ \ \ \ \ elseif\ (\$status\ ===\ \textcolor{stringliteral}{"{}Invalid\ password!"{}}):}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00097}00097\ \ \ \ \ \ \ \ \ alert(\textcolor{stringliteral}{"{}alert"{}},\ \textcolor{stringliteral}{"{}Invalid\ password!"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00098}00098\ \ \ \ \ elseif\ (\$status\ ===\ \textcolor{stringliteral}{"{}Username\ or\ email\ already\ used!"{}}):}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00099}00099\ \ \ \ \ \ \ \ \ alert(\textcolor{stringliteral}{"{}alert"{}},\ \textcolor{stringliteral}{"{}Username\ or\ email\ already\ used!"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00100}00100\ \ \ \ \ elseif\ (\$status\ ===\ \textcolor{stringliteral}{"{}Login\ successful!"{}}):}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00101}00101\ \ \ \ \ \ \ \ \ alert(\textcolor{stringliteral}{"{}alert\ success"{}},\ \textcolor{stringliteral}{"{}Login\ successful!"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00102}00102\ \ \ \ \ \ \ \ \ \$redirectUrl\ =\ (\$user\_role\ !=\ 2)}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ ?\ \textcolor{stringliteral}{"{}../../public/html/contact.html?id=\$user\_id"{}}\ \ \ \textcolor{comment}{//\ Redirect\ to\ the\ home}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}dashboard.php?id=\$user\_id"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Redirect\ to\ the\ admin\_dashboard}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00105}00105\ \ \ \ \ \ \ \ \ redirect(\$redirectUrl,\ 2000);}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00106}00106\ \ \ \ \ elseif\ (\$status\ ===\ \textcolor{stringliteral}{"{}Registration\ has\ been\ successful!"{}}):}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00107}00107\ \ \ \ \ \ \ \ \ alert(\textcolor{stringliteral}{"{}alert\ success"{}},\ \textcolor{stringliteral}{"{}Registration\ has\ been\ successful!"{}});}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00108}00108\ \ \ \ \ \ \ \ \ redirect(\textcolor{stringliteral}{"{}Location:\ welcome.php?id=\$user\_id"{}},\ 2000);\ \ \textcolor{comment}{//\ Redirect\ to\ the\ welcome\ page}}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00109}00109\ \ \ \ \ elseif\ (\$status):}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00110}00110\ \ \ \ \ \ \ \ \ alert(\textcolor{stringliteral}{"{}alert"{}},\ \$status);}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00111}00111\ \ \ \ \ endif;}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00112}00112\ \ \ \ \ ?>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00114}00114\ \ \ \ \ <!-\/-\/\ Login\ js\ -\/-\/>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00115}00115\ \ \ \ \ <script\ src=\textcolor{stringliteral}{"{}../../public/js/login.js"{}}></script>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00116}00116\ </body>}
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{login_8php_source_l00118}00118\ </html>}
+
+\end{DoxyCode}

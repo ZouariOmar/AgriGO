@@ -1,0 +1,58 @@
+\doxysection{Inflector\+Factory.\+php}
+\hypertarget{InflectorFactory_8php_source}{}\label{InflectorFactory_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/InflectorFactory.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/InflectorFactory.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }Doctrine\(\backslash\)Inflector;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00007}00007\ use\ Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)English;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00008}00008\ use\ Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)French;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00009}00009\ use\ Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)NorwegianBokmal;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00010}00010\ use\ Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Portuguese;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00011}00011\ use\ Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Spanish;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00012}00012\ use\ Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Turkish;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00013}00013\ use\ InvalidArgumentException;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00015}00015\ use\ \textcolor{keyword}{function}\ sprintf;}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00017}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1InflectorFactory}{00017}}\ \textcolor{keyword}{final}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1InflectorFactory}{InflectorFactory}}}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ create():\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1LanguageInflectorFactory}{LanguageInflectorFactory}}}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self::createForLanguage(Language::ENGLISH);}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ createForLanguage(\textcolor{keywordtype}{string}\ \$language):\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1LanguageInflectorFactory}{LanguageInflectorFactory}}}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\$language)\ \{}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Language::ENGLISH:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ English\(\backslash\)InflectorFactory();}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Language::FRENCH:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ French\(\backslash\)InflectorFactory();}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Language::NORWEGIAN\_BOKMAL:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ NorwegianBokmal\(\backslash\)InflectorFactory();}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Language::PORTUGUESE:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ Portuguese\(\backslash\)InflectorFactory();}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Language::SPANISH:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ Spanish\(\backslash\)InflectorFactory();}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Language::TURKISH:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ Turkish\(\backslash\)InflectorFactory();}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidArgumentException(sprintf(}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Language\ "{}\%s"{}\ is\ not\ supported.'},}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$language}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ));}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{InflectorFactory_8php_source_l00052}00052\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,75 @@
+\doxysection{add\+Usr.\+php}
+\hypertarget{addUsr_8php_source}{}\label{addUsr_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Controllers/addUsr.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Controllers/addUsr.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00002}00002\ \textcolor{comment}{//*\ NOTE:\ We\ Hash\ the\ password\ securely\ using\ password\_hash\ (Bcrypt)\ @ZouariOmar}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00004}00004\ \textcolor{comment}{//?\ Include\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00005}00005\ include\ \textcolor{stringliteral}{'../../../vendor/autoload.php'};\ \ \textcolor{comment}{//\ Load\ Composer\ autoload\ (for\ .env)}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00006}00006\ include\ \textcolor{stringliteral}{"{}../../conf/database.php"{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00008}00008\ \textcolor{comment}{//*\ Connect\ to\ the\ DB}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00009}00009\ \$db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00011}00011\ session\_start();\ \textcolor{comment}{//\ Start\ the\ session\ to\ manage\ status\ messages}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00013}00013\ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00014}00014\ \ \ \textcolor{comment}{//\ Prepare\ the\ sql\ commands}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00015}00015\ \ \ \$sql\_insert\_user\ =\ \textcolor{stringliteral}{"{}INSERT\ INTO\ Usrs\ (Username,\ Email,\ Password\_hash)}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ SELECT\ :username,\ :email,\ :password}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ WHERE\ NOT\ EXISTS\ (}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ SELECT\ 1\ FROM\ Usrs\ WHERE\ Username\ =\ :username\ OR\ Email\ =\ :email}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ "{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00022}00022\ \ \ \textcolor{comment}{//\ Lance\ the\ query}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00023}00023\ \ \ \$user\ =\ \$db-\/>query(\$sql\_insert\_user,\ [}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00024}00024\ \ \ \ \ \textcolor{stringliteral}{"{}username"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'username'}],}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00025}00025\ \ \ \ \ \textcolor{stringliteral}{"{}email"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'email'}],}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00026}00026\ \ \ \ \ \textcolor{stringliteral}{"{}password"{}}\ =>\ password\_hash(\$\_POST[\textcolor{stringliteral}{'password'}],\ PASSWORD\_BCRYPT)}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00027}00027\ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00029}00029\ \ \ \textcolor{keywordflow}{if}\ (empty(\$user))\ \{}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00030}00030\ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Username\ or\ email\ already\ used!"{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00031}00031\ \ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00032}00032\ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00033}00033\ \ \ \}\ \ \textcolor{comment}{//*\ \#\#\#\ User\ successfully\ added\ to\ the\ \`{}Usr`\ table\ \ \#\#\#}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00035}00035\ \ \ \textcolor{comment}{//\ Get\ the\ \`{}ID`\ of\ the\ added\ user\ (SELECT\ action)}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00036}00036\ \ \ \$user\_id\ =\ \$db-\/>query(\textcolor{stringliteral}{'SELECT\ LAST\_INSERT\_ID()\ AS\ id\ LIMIT\ 1'})[0][\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00038}00038\ \ \ \textcolor{comment}{//\ Get\ \`{}Role\_ID`\ from\ \`{}Roles`\ table\ for\ user\ id\ (SELECT\ action)}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00039}00039\ \ \ \$role\ =\ (\$\_POST[\textcolor{stringliteral}{'checker'}]\ ===\ \textcolor{stringliteral}{'on'})\ ?\ \textcolor{stringliteral}{'FARMER'}\ :\ \textcolor{stringliteral}{'CLIENT'};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00040}00040\ \ \ \$sql\_get\_role\_id\ =\ \textcolor{stringliteral}{"{}SELECT\ Role\_ID\ FROM\ Roles\ WHERE\ Role\_Name\ =\ :role"{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00041}00041\ \ \ \$role\_id\ =\ \$db-\/>query(\$sql\_get\_role\_id,\ [}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00042}00042\ \ \ \ \ \textcolor{stringliteral}{'role'}\ =>\ \$role}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00043}00043\ \ \ ])[0][\textcolor{stringliteral}{'Role\_ID'}];}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00045}00045\ \ \ \textcolor{comment}{//\ Assign\ role\ to\ user\ in\ \`{}Usr\_Roles`\ table\ (INSERT\ action)}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00046}00046\ \ \ \$sql\_assign\_role\ =\ \textcolor{stringliteral}{"{}INSERT\ INTO\ Usr\_Roles\ (Usr\_ID,\ Role\_ID)\ VALUES\ (:user\_id,\ :role\_id)"{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00047}00047\ \ \ \$db-\/>query(\$sql\_assign\_role,\ [}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00048}00048\ \ \ \ \ \textcolor{stringliteral}{'user\_id'}\ =>\ \$user\_id,}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00049}00049\ \ \ \ \ \textcolor{stringliteral}{'role\_id'}\ =>\ \$role\_id}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00050}00050\ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00052}00052\ \ \ \textcolor{comment}{//\ Assign\ profile\ to\ user\ in\ \`{}Usr\_Profile`\ table\ (INSERT\ action)}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00053}00053\ \ \ \$sql\_assign\_user\_profile\ =\ \textcolor{stringliteral}{"{}INSERT\ INTO\ Usr\_Profile\ (Usr\_ID)\ VALUES\ (:user\_id)"{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00054}00054\ \ \ \$db-\/>query(\$sql\_assign\_user\_profile,\ [}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00055}00055\ \ \ \ \ \textcolor{stringliteral}{'user\_id'}\ =>\ \$user\_id}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00056}00056\ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00058}00058\ \ \ \textcolor{comment}{//\ Registration\ successful\ -\/\ Set\ session\ variables}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00059}00059\ \ \ \$\_SESSION[\textcolor{stringliteral}{'user\_id'}]\ =\ \$user\_id;}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00060}00060\ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Registration\ has\ been\ successful!"{}};}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00061}00061\ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/welcome.php"{}});}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00062}00062\ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00063}00063\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00064}00064\ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00065}00065\ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00066}00066\ \ \ header(\textcolor{stringliteral}{"{}Location:\ ../Views/login.php"{}});}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00067}00067\ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{addUsr_8php_source_l00069}00069\ ?>}
+
+\end{DoxyCode}

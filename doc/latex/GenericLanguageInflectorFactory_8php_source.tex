@@ -1,0 +1,70 @@
+\doxysection{Generic\+Language\+Inflector\+Factory.\+php}
+\hypertarget{GenericLanguageInflectorFactory_8php_source}{}\label{GenericLanguageInflectorFactory_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/GenericLanguageInflectorFactory.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/vendor/doctrine/inflector/lib/Doctrine/Inflector/GenericLanguageInflectorFactory.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00003}00003\ declare(strict\_types=1);}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00005}00005\ \textcolor{keyword}{namespace\ }Doctrine\(\backslash\)Inflector;}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00007}00007\ use\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Doctrine\(\backslash\)Inflector\(\backslash\)Rules\(\backslash\)Ruleset}};}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00009}00009\ use\ \textcolor{keyword}{function}\ array\_unshift;}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00011}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory}{00011}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory}{GenericLanguageInflectorFactory}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1LanguageInflectorFactory}{LanguageInflectorFactory}}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ \$singularRulesets\ =\ [];}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{private}\ \$pluralRulesets\ =\ [];}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{final}\ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \_\_construct()}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00021}00021\ \ \ \ \ \ \ \ \ \$this-\/>singularRulesets[]\ =\ \$this-\/>getSingularRuleset();}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00022}00022\ \ \ \ \ \ \ \ \ \$this-\/>pluralRulesets[]\ \ \ =\ \$this-\/>getPluralRuleset();}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00025}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory_ab6a58aa63dbca7369ff0fadcc79127f1}{00025}}\ \ \ \ \ \textcolor{keyword}{final}\ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory_ab6a58aa63dbca7369ff0fadcc79127f1}{build}}():\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Inflector}{Inflector}}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Inflector}{Inflector}}(}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1CachedWordInflector}{CachedWordInflector}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1RulesetInflector}{RulesetInflector}}(}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ...\$this-\/>singularRulesets}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ )),}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1CachedWordInflector}{CachedWordInflector}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1RulesetInflector}{RulesetInflector}}(}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ...\$this-\/>pluralRulesets}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ ))}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00034}00034\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00037}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory_abef3227bca38cb50e49a82ecbbb5e672}{00037}}\ \ \ \ \ \textcolor{keyword}{final}\ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory_abef3227bca38cb50e49a82ecbbb5e672}{withSingularRules}}(?\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}}\ \$singularRules,\ \textcolor{keywordtype}{bool}\ \$reset\ =\ \textcolor{keyword}{false}):\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1LanguageInflectorFactory}{LanguageInflectorFactory}}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$reset)\ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>singularRulesets\ =\ [];}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$singularRules\ instanceof\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}})\ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ array\_unshift(\$this-\/>singularRulesets,\ \$singularRules);}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00050}\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory_adc67e5725528d0457fa48a98ee8433e7}{00050}}\ \ \ \ \ \textcolor{keyword}{final}\ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1GenericLanguageInflectorFactory_adc67e5725528d0457fa48a98ee8433e7}{withPluralRules}}(?\mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}}\ \$pluralRules,\ \textcolor{keywordtype}{bool}\ \$reset\ =\ \textcolor{keyword}{false}):\ \mbox{\hyperlink{interfaceDoctrine_1_1Inflector_1_1LanguageInflectorFactory}{LanguageInflectorFactory}}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$reset)\ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>pluralRulesets\ =\ [];}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$pluralRules\ instanceof\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}})\ \{}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ array\_unshift(\$this-\/>pluralRulesets,\ \$pluralRules);}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{abstract}\ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ getSingularRuleset():\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}};}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{abstract}\ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ getPluralRuleset():\ \mbox{\hyperlink{classDoctrine_1_1Inflector_1_1Rules_1_1Ruleset}{Ruleset}};}
+\DoxyCodeLine{\Hypertarget{GenericLanguageInflectorFactory_8php_source_l00066}00066\ \}}
+
+\end{DoxyCode}

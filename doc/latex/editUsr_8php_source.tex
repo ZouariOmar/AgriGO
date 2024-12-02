@@ -1,0 +1,126 @@
+\doxysection{edit\+Usr.\+php}
+\hypertarget{editUsr_8php_source}{}\label{editUsr_8php_source}\index{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Controllers/editUsr.php@{/home/zouari\_omar/Documents/Daily/Projects/AgriGO/project/app/Controllers/editUsr.php}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00004}00004\ \textcolor{comment}{//?\ Include\ declaration\ part}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00005}00005\ include\_once\ \textcolor{stringliteral}{'../../../vendor/autoload.php'};\ \ \textcolor{comment}{//\ Load\ Composer\ autoload}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00006}00006\ include\_once\ \textcolor{stringliteral}{"{}../../conf/database.php"{}};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00008}\mbox{\hyperlink{classEdit__user}{00008}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEdit__user}{Edit\_user}}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00010}00010\ \ \ \textcolor{keyword}{private}\ \$user\_id;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00011}00011\ \ \ \textcolor{keyword}{private}\ \$img;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00012}00012\ \ \ \textcolor{keyword}{private}\ \$uploadDir;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00013}00013\ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classDatabase}{Database}}\ \$db;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00020}\mbox{\hyperlink{classEdit__user_a03b52531ab56e28932331863f739e6f4}{00020}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classEdit__user_a03b52531ab56e28932331863f739e6f4}{\_\_construct}}(\$user\_id\ =\ \textcolor{keyword}{null},\ \$img\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00021}00021\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00022}00022\ \ \ \ \ \$this-\/>user\_id\ =\ \$user\_id;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00023}00023\ \ \ \ \ \$this-\/>img\ =\ \$img;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00024}00024\ \ \ \ \ \$this-\/>uploadDir\ =\ \textcolor{stringliteral}{'../../public/assets/uploads/'};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Connect\ to\ \`{}AgriGO`\ DB}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00027}00027\ \ \ \ \ \$this-\/>db\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDatabase}{Database}}(\textcolor{stringliteral}{'../../'});}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00028}00028\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00035}00035\ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ update\_user\_image()}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00036}00036\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00037}00037\ \ \ \ \ \$uploadPath\ =\ \$this-\/>uploadDir\ .\ basename(\$this-\/>img[\textcolor{stringliteral}{'name'}]);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Attempt\ to\ move\ the\ uploaded\ file\ to\ the\ desired\ directory}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!move\_uploaded\_file(\$this-\/>img[\textcolor{stringliteral}{'tmp\_name'}],\ \$uploadPath))\ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00041}00041\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Failed\ to\ upload\ the\ image.\ Please\ try\ again."{}};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00042}00042\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ image\ type}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00046}00046\ \ \ \ \ \$type\ =\ \$this-\/>img[\textcolor{stringliteral}{'type'}];}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ Insert\ image\ details\ into\ the\ database}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00049}00049\ \ \ \ \ \$this-\/>db-\/>query(\textcolor{stringliteral}{'INSERT\ INTO\ Images\ (Name,\ Path,\ Type)\ VALUES\ (:name,\ :path,\ :type)'},\ [}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00050}00050\ \ \ \ \ \ \ \textcolor{stringliteral}{'name'}\ =>\ \$this-\/>img[\textcolor{stringliteral}{'name'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00051}00051\ \ \ \ \ \ \ \textcolor{stringliteral}{'path'}\ =>\ \$uploadPath,}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00052}00052\ \ \ \ \ \ \ \textcolor{stringliteral}{'type'}\ =>\ \$type}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00053}00053\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Retrieve\ the\ last\ inserted\ ID}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00056}00056\ \ \ \ \ \$imageId\ =\ \$this-\/>db-\/>query(\textcolor{stringliteral}{'SELECT\ LAST\_INSERT\_ID()\ AS\ id\ LIMIT\ 1'})[0][\textcolor{stringliteral}{'id'}];}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Return\ the\ Image\_ID\ if\ insertion\ is\ successful,\ or\ null\ if\ it\ fails}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ \$imageId\ ?:\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00060}00060\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00067}00067\ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ update\_user()}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00068}00068\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ update\ for\ the\ \`{}Usr`\ table}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00070}00070\ \ \ \ \ \$this-\/>db-\/>query(\textcolor{stringliteral}{"{}UPDATE\ Usrs\ SET\ Email\ =\ :Email\ WHERE\ ID\ =\ :id"{}},\ [}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00071}00071\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Email"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'email'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00072}00072\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}\ =>\ \$this-\/>user\_id}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00073}00073\ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00074}00074\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00081}00081\ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{function}\ update\_user\_profile()}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00082}00082\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00083}00083\ \ \ \ \ \$img\_id\ =\ \$this-\/>update\_user\_image();}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Base\ SQL\ and\ parameters}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00086}00086\ \ \ \ \ \$sql\ =\ \textcolor{stringliteral}{"{}UPDATE\ Usr\_Profile\ SET\ }}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ First\_Name\ =\ :First\_Name,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ Last\_Name\ =\ :Last\_Name,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ Tel\ =\ :Tel,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ Sex\ =\ :Sex,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ State\ =\ :State,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ Address\ =\ :Address,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ Zip\_Code\ =\ :Zip\_Code,}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ About\ =\ :About"{}};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00096}00096\ \ \ \ \ \$params\ =\ [}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00097}00097\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}First\_Name"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'firstName'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00098}00098\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Last\_Name"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'lastName'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00099}00099\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Tel"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'tel'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00100}00100\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Sex"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'sex'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00101}00101\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}State"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'state'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00102}00102\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Address"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'address'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00103}00103\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Zip\_Code"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'zipCode'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00104}00104\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}About"{}}\ =>\ \$\_POST[\textcolor{stringliteral}{'about'}],}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00105}00105\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}\ =>\ \$this-\/>user\_id}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00106}00106\ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Include\ Image\_ID\ only\ if\ it's\ not\ \`{}null`}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$img\_id\ !==\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00110}00110\ \ \ \ \ \ \ \$sql\ .=\ \textcolor{stringliteral}{"{},\ Image\_ID\ =\ :Image\_ID"{}};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00111}00111\ \ \ \ \ \ \ \$params[\textcolor{stringliteral}{"{}Image\_ID"{}}]\ =\ \$img\_id;}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00114}00114\ \ \ \ \ \$sql\ .=\ \textcolor{stringliteral}{"{}\ WHERE\ Usr\_ID\ =\ :id"{}};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ query}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00117}00117\ \ \ \ \ \$this-\/>db-\/>query(\$sql,\ \$params);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00118}00118\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00125}\mbox{\hyperlink{classEdit__user_a9140eecf72778bd9b591ad5605b924ee}{00125}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{classEdit__user_a9140eecf72778bd9b591ad5605b924ee}{update\_all}}()}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00126}00126\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00128}00128\ \ \ \ \ \ \ \$this-\/>update\_user();}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00129}00129\ \ \ \ \ \ \ \$this-\/>update\_user\_profile();}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00130}00130\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}Your\ Profile\ successfully\ Edit\ it!"{}};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00131}00131\ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../Views/pages-\/account-\/settings-\/account.php?id='}\ .\ \$this-\/>user\_id);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00132}00132\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (PDOException\ \$e)\ \{}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00133}00133\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ any\ unexpected\ errors}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00134}00134\ \ \ \ \ \ \ \$\_SESSION[\textcolor{stringliteral}{'status'}]\ =\ \textcolor{stringliteral}{"{}An\ unexpected\ error\ occurred:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00135}00135\ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}Error:\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00136}00136\ \ \ \ \ \ \ header(\textcolor{stringliteral}{'Location:\ ../Views/pages-\/account-\/settings-\/account.php?id='}\ .\ \$this-\/>user\_id);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00137}00137\ \ \ \ \ \ \ exit();}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00139}00139\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00140}00140\ \}\ \ \textcolor{comment}{//\ Edit\_user\ class}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00142}00142\ session\_start();\ \textcolor{comment}{//\ Start\ the\ session\ to\ manage\ status\ messages}}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00143}00143\ \$user\_id\ =\ \$\_SESSION[\textcolor{stringliteral}{'id'}]\ ??\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00144}00144\ unset(\$\_SESSION[\textcolor{stringliteral}{'id'}]);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00145}00145\ \$editUsr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classEdit__user}{Edit\_user}}(\$user\_id,\ \$\_FILES[\textcolor{stringliteral}{'image'}]);}
+\DoxyCodeLine{\Hypertarget{editUsr_8php_source_l00146}00146\ \$editUsr-\/>update\_all();}
+
+\end{DoxyCode}
