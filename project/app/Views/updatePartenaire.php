@@ -1,33 +1,32 @@
 <?php
-include "../Models/Partenaire.php";
-include "../Controllers/PartenaireController.php";
-$Partenaire = null;
+include "../Model/partner.php";
+include "../Controller/partnerController.php";
+
+$partner = null;
 $error = "";
 // create an instance of the controller
-$PartenaireController = new PartenaireController();
+$partnerController = new partnerController();
 
-//utiliser la fonction isset() pour vérifier si les clés name, email et telephone existe avant d'y accéder
+// Vérification des clés avant traitement
 if (
-    isset($_POST["name"])  && isset($_POST["email"]) && isset($_POST["telephone"])
+    isset($_POST["name"])  && isset($_POST["email"]) && isset($_POST["number"])
 ) {
-    //utiliser la fonction empty() pour vérifier si les clés name, email et telephone posséde des valeurs
     if (
-        !empty($_POST["name"])  && !empty($_POST["email"]) && !empty($_POST["telephone"])
+        !empty($_POST["name"])  && !empty($_POST["email"]) && !empty($_POST["number"])
     ) {
-        // créer un objet à partir des nouvelles valeurs passées pour mettre à jour le Partenaire choisi
-        $Partenaire = new Partenaire(
+        // Créer un objet partenaire avec les nouvelles données
+        $partner = new partner(
             null,
             $_POST['name'],
             $_POST['email'],
-            $_POST['telephone'],
+            $_POST['number'],
         );
-        // appelle de la fonction updatePartenaire
-        $PartenaireController->updatePartenaire($Partenaire, $_POST['id']);
-        // une fois l'update est faite une redirection vers la page liste des Partenaires sera faite
-        header('Location:PartenaireList.php');
-    } else
-        // message en cas de manque d'information
-        $error = "Missing information";
+        // Mise à jour des données du partenaire
+        $partnerController->updatepartner($partner, $_POST['id_partner']);
+        header('Location:partnerList.php'); // Redirection vers la liste des partenaires
+    } else {
+        $error = "Missing information"; // Message en cas de données manquantes
+    }
 }
 ?>
 
@@ -37,38 +36,37 @@ if (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/style-1.css">
+    <title>Update Partner</title>
 </head>
 
 <body>
 
     <?php
-    // $_POST['id'] récupérer à partir du form relative au bouton update dans la page PartenaireList
-    if (isset($_POST['id'])) {
-        //récupération du produit à mettre à jour par son ID
-        $Partenaire = $PartenaireController->getPartenaireById($_POST['id']);
+    if (isset($_POST['id_partner'])) {
+        $partner = $partnerController->getpartnerById($_POST['id_partner']);
     ?>
-        <!-- remplir le vormulaire par les données du produits à mettre à jour -->
-        <form id="Partenaire" action="" method="POST">
-            <label for="id">ID Partenaire:</label>
-            <!-- remplir chaque input par la valeur adéquate dans l'attribut value  -->
-            <input class="form-control form-control-user" type="text" id="id" name="id" readonly value="<?php echo $_POST['id'] ?>"><br>
+        <!-- Formulaire pré-rempli avec les données actuelles du partenaire -->
+        <form id="partner" action="" method="POST">
+            <label for="id_partner">ID Partner:</label>
+            <input class="form-control form-control-user" type="text" id="id_partner" name="id_partner" readonly value="<?php echo $_POST['id_partner']; ?>"><br>
 
-            <label for="id">Partenaire Name </label>
-            <!-- remplir chaque input par la valeur adéquate dans l'attribut value  -->
+            <label for="name">Partner Name:</label>
+            <input class="form-control form-control-user" type="text" id="name" name="name" value="<?php echo $partner['name']; ?>"><br>
 
-            <input class="form-control form-control-user" type="text" id="name" name="name" value="<?php echo $Partenaire['name'] ?>"><br>
-            <label for="title">email</label>
-            <input class="form-control form-control-user" type="text" id="email" name="email" value="<?php echo $Partenaire['email'] ?>"><br>
-            <label for="title">telephone</label>
-            <input class="form-control form-control-user" type="text" id="telephone" name="telephone" value="<?php echo $Partenaire['telephone'] ?>"><br>
-            <input type="submit" value="save">
+            <label for="email">Email:</label>
+            <input class="form-control form-control-user" type="text" id="email" name="email" value="<?php echo $partner['email']; ?>"><br>
+
+            <label for="number">Number:</label>
+            <input class="form-control form-control-user" type="text" id="number" name="number" value="<?php echo $partner['number']; ?>"><br>
+
+            <input type="submit" value="Save">
         </form>
     <?php
     }
     ?>
 
-
+    <script src="../public/js/script-1.js" defer></script>
 
 </body>
 

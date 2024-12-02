@@ -1,17 +1,17 @@
 <?php
 
-class Partenaire{
-    private $id;
+class partner{
+    private $id_partner;
     private $name;
     private $email;
-    private $telephone;
+    private $number;
 
 
-    public function __construct($id,$name,$email,$telephone) {
-        $this->id=$id;
+    public function __construct($id_partner,$name,$email,$number) {
+        $this->id_partner=$id_partner;
         $this->name = $name;
         $this->email = $email;
-        $this->telephone = $telephone;
+        $this->number = $number;
 
     }
 
@@ -56,21 +56,21 @@ class Partenaire{
     }
 
     /**
-     * Get the value of telephone
+     * Get the value of number
      */ 
-    public function gettelephone()
+    public function getnumber()
     {
-        return $this->telephone;
+        return $this->number;
     }
 
     /**
-     * Set the value of telephone
+     * Set the value of number
      *
      * @return  self
      */ 
-    public function settelephone($telephone)
+    public function setnumber($number)
     {
-        $this->telephone = $telephone;
+        $this->number = $number;
 
         return $this;
     }

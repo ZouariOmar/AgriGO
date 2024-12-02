@@ -27,21 +27,23 @@ SET time_zone = "+00:00";
 -- Table structure for table `test`
 --
 
-CREATE TABLE Partenaire (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    telephone VARCHAR(15)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-COMMIT;
+CREATE TABLE `partner` (
+    `id_partner` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255),
+    `email` VARCHAR(255),
+    `number` VARCHAR(50),
+    `contract_id` INT,  -- Nouvelle colonne
+    FOREIGN KEY (`contract_id`) REFERENCES `contract`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
 
 
-CREATE TABLE Offre (
-    id_offre INT AUTO_INCREMENT PRIMARY KEY,
+
+CREATE TABLE contract (
+    idINT AUTO_INCREMENT PRIMARY KEY,
     titre VARCHAR(100) NOT NULL,
     description TEXT,
     date_creation DATE DEFAULT CURRENT_DATE,
-    id_partenaire INT,
+    date_fin DATE DEFAULT CURRENT_DATE,
     FOREIGN KEY (id_partenaire) REFERENCES Partenaire(id_partenaire)
 );
 

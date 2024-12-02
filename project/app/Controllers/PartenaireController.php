@@ -1,12 +1,12 @@
 <?php
-require "../../conf/config.php";
+require(__DIR__ . '/../conf/config.php');
 
-class PartenaireController
+class partnerController
 {
-    // select all Partenaire list
-    public function PartenaireList()
+    // select all partner list
+    public function partnerList()
     {
-        $sql = "SELECT * FROM Partenaire";
+        $sql = "SELECT * FROM partner";
         $conn = config::getConnexion();
 
         try {
@@ -16,60 +16,60 @@ class PartenaireController
             die('Erreur: ' . $e->getMessage());
         }
     }
-    //select one Partenaire by id
-    function getPartenaireById($id)
+    //select one partner by id
+    function getpartnerById($id_partner)
     {
-        $sql = "SELECT * from Partenaire where id = $id";
+        $sql = "SELECT * from partner where id_partner = $id_partner";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
             $query->execute();
 
-            $Partenaire = $query->fetch();
-            return $Partenaire;
+            $partner = $query->fetch();
+            return $partner;
         } catch (Exception $e) {
             die('Error: ' . $e->getMessage());
         }
     }
 
-    // add new Partenaire
-    public function addPartenaire($Partenaire)
+    // add new partner
+    public function addpartner($partner)
     {
-        $sql = "INSERT INTO Partenaire (id,name,email,telephone)
-        VALUES (NULL,:name,:email,:telephone)";
+        $sql = "INSERT INTO partner (id_partner,name,email,number)
+        VALUES (NULL,:name,:email,:number)";
         $conn = config::getConnexion();
 
         try {
             $query = $conn->prepare($sql);
             $query->execute([
-                'name' => $Partenaire->getName(),
-                'email' => $Partenaire->getemail(),
-                'telephone' => $Partenaire->gettelephone()
+                'name' => $partner->getName(),
+                'email' => $partner->getemail(),
+                'number' => $partner->getnumber()
 
             ]);
-            echo "Partenaire inserted succcefully";
+            echo "partner inserted succcefully";
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
         }
     }
 
-    function updatePartenaire($Partenaire, $id)
+    function updatepartner($partner, $id_partner)
     {
         $db = config::getConnexion();
 
         $query = $db->prepare(
-            'UPDATE Partenaire SET 
+            'UPDATE partner SET 
                 name = :name,
                 email = :email,
-                telephone = :telephone
-            WHERE id = :id'
+                number = :number
+            WHERE id_partner = :id_partner'
         );
         try {
             $query->execute([
-                'id' => $id,
-                'name' => $Partenaire->getName(),
-                'email' => $Partenaire->getemail(),
-                'telephone' => $Partenaire->gettelephone(),
+                'id_partner' => $id_partner,
+                'name' => $partner->getName(),
+                'email' => $partner->getemail(),
+                'number' => $partner->getnumber(),
             ]);
 
             echo $query->rowCount() . " records UPDATED successfully <br>";
@@ -81,17 +81,31 @@ class PartenaireController
 
 
 
-    // delete one Partenaire by id
-    public function deletePartenaire($id)
+    // delete one partner by id
+    public function deletepartner($id_partner)
     {
-        $sql = "DELETE FROM Partenaire WHERE id=:id";
+        $sql = "DELETE FROM partner WHERE id_partner=:id_partner";
         $conn = config::getConnexion();
         $req = $conn->prepare($sql);
-        $req->bindValue(':id', $id);
+        $req->bindValue(':id_partner', $id_partner);
         try {
             $req->execute();
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
         }
     }
+    // Recherche des partenaires
+    public function searchPartner($keyword)
+    {
+        $sql = "SELECT * FROM partner WHERE name LIKE :keyword OR email LIKE :keyword OR number LIKE :keyword";
+        $conn = config::getConnexion();
+        try {
+            $query = $conn->prepare($sql);
+            $query->execute(['keyword' => '%' . $keyword . '%']);
+            return $query->fetchAll(); // Retourne les résultats sous forme de tableau
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
 }
