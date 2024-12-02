@@ -1,7 +1,6 @@
 <?php
 //? Include declaration part
 include '../../../vendor/autoload.php';  // Load Composer autoload
-include '../../conf/database.php';
 include '../components/custom.php';
 
 // Fetch Sessions and clear them
@@ -15,20 +14,12 @@ $admin_id = $_GET['id'];
 // Verify if the user is suspended or not
 is_suspend($admin_id, 'Location: login.php');
 
-//* Connect to the DB
-$db = new Database('../../');
-
-// Select with role
-$sql = "SELECT U.* FROM Usrs AS U
-				JOIN Usr_Roles AS UR ON U.ID = UR.Usr_ID
-    		WHERE UR.Role_ID = :role
-";
-
-// Fetch admins
-$admins = $db->query($sql, [
-  'role' => 2
-]);
-
+// Fetching
+$fetch = new Fetch();
+$user = $fetch->fetch_user($admin_id);
+$admins = $fetch->__fetch_users(2);
+$user_profile = $fetch->fetch_user_profile($admin_id);
+$user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +52,10 @@ $admins = $db->query($sql, [
   <link rel="stylesheet" href="../../../vendor/css/core.css" class="template-customizer-core-css" />
   <link rel="stylesheet" href="../../../vendor/css/theme-default.css" class="template-customizer-theme-css" />
   <link rel="stylesheet" href="../../public/css/demo.css" />
+  <link rel="stylesheet" href="../../public/css/sub_btns.css">
 
   <!-- Vendors CSS -->
   <link rel="stylesheet" href="../../../vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
   <link rel="stylesheet" href="../../../vendor/libs/apex-charts/apex-charts.css" />
 
   <!-- Helpers -->
@@ -254,7 +245,6 @@ $admins = $db->query($sql, [
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-
         <nav
           class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
           id="layout-navbar">
@@ -269,18 +259,24 @@ $admins = $db->query($sql, [
             <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
+                <input type="search" id="searchBar" class="form-control border-0 shadow-none" placeholder="Search..."
                   aria-label="Search..." />
               </div>
             </div>
             <!-- /Search -->
 
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <div class="ms-auto me-4">
+              <button class="button" id="cut"><span> Download</span></button>
+              <button class="button" id="copy"></><span> Copy</span></button>
+              <button class="button" id="paste"><span> Paste</span></button>
+            </div>
+
+            <ul class="navbar-nav flex-row align-items-center ">
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="../../public/assets/default-user.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="<?php echo $user_profile_image ?>" alt class="w-px-40 h-40 rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -289,12 +285,11 @@ $admins = $db->query($sql, [
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
-                            <img src="../../public/assets/default-user.png" alt
-                              class="w-px-40 h-auto rounded-circle" />
+                            <img src="<?php echo $user_profile_image ?>" alt class="w-px-40 h-40 rounded-circle" />
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block">John Doe</span>
+                          <span class="fw-semibold d-block"><?php echo $user['Username'] ?></span>
                           <small class="text-muted">Admin</small>
                         </div>
                       </div>
@@ -339,7 +334,6 @@ $admins = $db->query($sql, [
             </ul>
           </div>
         </nav>
-
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -354,8 +348,8 @@ $admins = $db->query($sql, [
               <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                   <li class="nav-item">
-                    <a class="nav-link" href="clients.php?id=<?php echo $admin_id ?>"><i
-                        class="bx bx-user me-1"></i> Clients</a>
+                    <a class="nav-link" href="clients.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
+                      Clients</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="farmers.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
@@ -384,7 +378,7 @@ $admins = $db->query($sql, [
                         </tr>
                       </thead>
                       <tbody class="table-border-bottom-0">
-                        <?php users_table($admins, $admin_id); ?>
+                        <?php users_table($admins, $admin_id, 2); ?>
                       </tbody>
                     </table>
                   </div>
@@ -435,8 +429,7 @@ $admins = $db->query($sql, [
   <!-- / Layout wrapper -->
 
   <div class="buy-now">
-    <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
-      class="btn btn-danger btn-buy-now">New Event</a>
+    <a href="#" target="_blank" class="btn btn-danger btn-buy-now">New Event</a>
   </div>
 
   <!-- Core JS -->
@@ -454,9 +447,7 @@ $admins = $db->query($sql, [
 
   <!-- Main JS -->
   <script src="../../public/js/main.js"></script>
-
-  <!-- Page JS -->
-  <script src="../../public/js/dashboards-analytics.js"></script>
+  <script src="../../public/js/search-bar.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

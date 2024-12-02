@@ -18,31 +18,32 @@ is_suspend($admin_id, 'Location: login.php');
 //* Connect to the DB
 $db = new Database('../../');
 
-// Fetch the `user profile` using `id`
-$user_profile = $db->query("SELECT * FROM Usr_Profile WHERE Usr_ID = :id", [
-	'id' => $admin_id
-]);
-$user_profile = $user_profile[0];  // Select the first (and only) result
+// Fetching
+$fetch = new Fetch();
+$user = $fetch->fetch_user($admin_id);
+$user_profile = $fetch->fetch_user_profile($admin_id);
+$user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
+$users_number = $fetch->fetch_users_number();
 
-// Fetch the `usr image` profile using `image id`
-$user_profile_image = $db->query("SELECT * FROM Images WHERE Image_ID = :Image_ID", [
-	'Image_ID' => $user_profile['Image_ID']
-]);
-$user_profile_image = $user_profile_image[0]['Path'] ?? '<?php echo $user_profile_image ?>';  // Select the first (and only) result
-
-// Retrieve the number of users
-$result = $db->query("SELECT 
-        SUM(CASE WHEN Role_ID = 3 THEN 1 ELSE 0 END) AS client_count,
-        SUM(CASE WHEN Role_ID = 4 THEN 1 ELSE 0 END) AS farmer_count,
-        SUM(CASE WHEN Role_ID = 2 THEN 1 ELSE 0 END) AS admin_count
-    FROM Usr_Roles
-");
-
-// Retrieve users counts
-$client_count = $result[0]['client_count'] ?? 0;
-$farmer_count = $result[0]['farmer_count'] ?? 0;
-$admin_count = $result[0]['admin_count'] ?? 0;
+// Retrieve users counts by 'role'
+$client_count = $users_number['client_count'] ?? 0;
+$farmer_count = $users_number['farmer_count'] ?? 0;
+$admin_count = $users_number['admin_count'] ?? 0;
 $total_count = $admin_count + $farmer_count + $client_count;
+
+// Retrieve users counts by 'Account creation month'
+$users_in_jan = $fetch->count_user_by_month('2024-01');
+$users_in_feb = $fetch->count_user_by_month('2024-02');
+$users_in_mar = $fetch->count_user_by_month('2024-03');
+$users_in_apr = $fetch->count_user_by_month('2024-04');
+$users_in_may = $fetch->count_user_by_month('2024-05');
+$users_in_jun = $fetch->count_user_by_month('2024-06');
+$users_in_jul = $fetch->count_user_by_month('2024-07');
+$users_in_aug = $fetch->count_user_by_month('2024-08');
+$users_in_sep = $fetch->count_user_by_month('2024-09');
+$users_in_oct = $fetch->count_user_by_month('2024-10');
+$users_in_nov = $fetch->count_user_by_month('2024-11');
+$users_in_dec = $fetch->count_user_by_month('2024-12');
 ?>
 
 <!DOCTYPE html>
@@ -75,11 +76,11 @@ $total_count = $admin_count + $farmer_count + $client_count;
 	<link rel="stylesheet" href="../../../vendor/css/core.css" class="template-customizer-core-css" />
 	<link rel="stylesheet" href="../../../vendor/css/theme-default.css" class="template-customizer-theme-css" />
 	<link rel="stylesheet" href="../../public/css/demo.css" />
+	<link rel="stylesheet" href="../../public/css/sub_btns.css">
 
 	<!-- Vendors CSS -->
 	<link rel="stylesheet" href="../../../vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 	<link rel="stylesheet" href="../../../vendor/libs/apex-charts/apex-charts.css" />
-	<link rel="stylesheet" href="../../public/css/sub_btns.css">
 
 	<!-- Helpers -->
 	<script src="../../../vendor/js/helpers.js"></script>
@@ -268,7 +269,6 @@ $total_count = $admin_count + $farmer_count + $client_count;
 			<!-- Layout container -->
 			<div class="layout-page">
 				<!-- Navbar -->
-
 				<nav
 					class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
 					id="layout-navbar">
@@ -313,7 +313,7 @@ $total_count = $admin_count + $farmer_count + $client_count;
 													</div>
 												</div>
 												<div class="flex-grow-1">
-													<span class="fw-semibold d-block">John Doe</span>
+													<span class="fw-semibold d-block"><?php echo $user['Username'] ?></span>
 													<small class="text-muted">Admin</small>
 												</div>
 											</div>
@@ -711,6 +711,32 @@ $total_count = $admin_count + $farmer_count + $client_count;
 													</div>
 												</div>
 												<div id="incomeChart"></div>
+												<input id="admins_count" type="number" value="<?php echo $admin_count ?>"
+													style="display: none;" />
+												<input id="users_in_jan" type="number" value="<?php echo $users_in_jan ?>"
+													style="display: none;" />
+												<input id="users_in_feb" type="number" value="<?php echo $users_in_feb ?>"
+													style="display: none;" />
+												<input id="users_in_mar" type="number" value="<?php echo $users_in_mar ?>"
+													style="display: none;" />
+												<input id="users_in_apr" type="number" value="<?php echo $users_in_apr ?>"
+													style="display: none;" />
+												<input id="users_in_may" type="number" value="<?php echo $users_in_may ?>"
+													style="display: none;" />
+												<input id="users_in_jun" type="number" value="<?php echo $users_in_jun ?>"
+													style="display: none;" />
+												<input id="users_in_jul" type="number" value="<?php echo $users_in_jul ?>"
+													style="display: none;" />
+												<input id="users_in_aug" type="number" value="<?php echo $users_in_aug ?>"
+													style="display: none;" />
+												<input id="users_in_sep" type="number" value="<?php echo $users_in_sep ?>"
+													style="display: none;" />
+												<input id="users_in_oct" type="number" value="<?php echo $users_in_oct ?>"
+													style="display: none;" />
+												<input id="users_in_nov" type="number" value="<?php echo $users_in_nov ?>"
+													style="display: none;" />
+												<input id="users_in_dec" type="number" value="<?php echo $users_in_dec ?>"
+													style="display: none;" />
 												<div class="d-flex justify-content-center pt-4 gap-2">
 													<div class="flex-shrink-0">
 														<div id="expensesOfWeek"></div>

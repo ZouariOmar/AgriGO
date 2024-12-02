@@ -77,3 +77,9 @@
 	font-family: FontAwesome;
 	content: "\f0ea";
 }
+
+/* For the search bar highlighting */
+.highlight {
+	background-color: yellow;
+	font-weight: bold;
+}

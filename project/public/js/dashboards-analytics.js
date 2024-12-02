@@ -525,11 +525,38 @@
 
 	// Income Chart - Area chart
 	// --------------------------------------------------------------------
+	const users_in_jan = document.getElementById("users_in_jan").value || 0;
+	const users_in_feb = document.getElementById("users_in_feb").value || 0;
+	const users_in_mar = document.getElementById("users_in_mar").value || 0;
+	const users_in_apr = document.getElementById("users_in_apr").value || 0;
+	const users_in_may = document.getElementById("users_in_may").value || 0;
+	const users_in_jun = document.getElementById("users_in_jun").value || 0;
+	const users_in_jul = document.getElementById("users_in_jul").value || 0;
+	const users_in_aug = document.getElementById("users_in_aug").value || 0;
+	const users_in_sep = document.getElementById("users_in_sep").value || 0;
+	const users_in_oct = document.getElementById("users_in_oct").value || 0;
+	const users_in_nov = document.getElementById("users_in_nov").value || 0;
+	const users_in_dec = document.getElementById("users_in_dec").value || 0;
 	const incomeChartEl = document.querySelector("#incomeChart"),
 		incomeChartConfig = {
 			series: [
 				{
-					data: [24, 21, 30, 22, 42, 26, 35, 50, 40, 10, 18, 28, 40, 0],
+					data: [
+						"",
+						users_in_jan,
+						users_in_feb,
+						users_in_mar,
+						users_in_apr,
+						users_in_may,
+						users_in_jun,
+						users_in_jul,
+						users_in_aug,
+						users_in_sep,
+						users_in_oct,
+						users_in_nov,
+						users_in_dec,
+						"",
+					],
 				},
 			],
 			chart: {
@@ -607,7 +634,7 @@
 					"Oct",
 					"Nov",
 					"Dec",
-					""
+					"",
 				],
 				axisBorder: {
 					show: false,
@@ -627,9 +654,9 @@
 				labels: {
 					show: false,
 				},
-				min: 10,
-				max: 50,
-				tickAmount: 5,
+				min: 0,
+				max: 10,
+				tickAmount: 10,
 			},
 		};
 	if (typeof incomeChartEl !== undefined && incomeChartEl !== null) {

@@ -16,21 +16,10 @@ $_SESSION['id'] = $id;
 //* Connect to the DB
 $db = new Database('../../');
 
-// Fetch with the user id
-$user = $db->query("SELECT * FROM Usrs WHERE ID = :id", [
-	'id' => $id
-]);
-$user = $user[0];  // Select the first (and only) result
-$user_profile = $db->query("SELECT * FROM Usr_Profile WHERE Usr_ID = :id", [
-	'id' => $id
-]);
-$user_profile = $user_profile[0];  // Select the first (and only) result
-
-// Fetch the usr image profile
-$user_profile_image = $db->query("SELECT * FROM Images WHERE Image_ID = :Image_ID", [
-	'Image_ID' => $user_profile['Image_ID']
-]);
-$user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/default-user.png';  // Select the first (and only) result
+$fetch = new Fetch();
+$user = $fetch->fetch_user($id);
+$user_profile = $fetch->fetch_user_profile($id);
+$user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +49,7 @@ $user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/def
 	<link rel="stylesheet" href="../../../vendor/css/core.css" class="template-customizer-core-css" />
 	<link rel="stylesheet" href="../../../vendor/css/theme-default.css" class="template-customizer-theme-css" />
 	<link rel="stylesheet" href="../../public/css/demo.css" />
+	<link rel="stylesheet" href="../../public/css/sub_btns.css">
 
 	<!-- Vendors CSS -->
 	<link rel="stylesheet" href="../../../vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -253,7 +243,6 @@ $user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/def
 			<!-- Layout container -->
 			<div class="layout-page">
 				<!-- Navbar -->
-
 				<nav
 					class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
 					id="layout-navbar">
@@ -274,7 +263,13 @@ $user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/def
 						</div>
 						<!-- /Search -->
 
-						<ul class="navbar-nav flex-row align-items-center ms-auto">
+						<div class="ms-auto me-4">
+							<button class="button" id="cut"><span> Download</span></button>
+							<button class="button" id="copy"></><span> Copy</span></button>
+							<button class="button" id="paste"><span> Paste</span></button>
+						</div>
+
+						<ul class="navbar-nav flex-row align-items-center ">
 							<!-- User -->
 							<li class="nav-item navbar-dropdown dropdown-user dropdown">
 								<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -292,7 +287,7 @@ $user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/def
 													</div>
 												</div>
 												<div class="flex-grow-1">
-													<span class="fw-semibold d-block">John Doe</span>
+													<span class="fw-semibold d-block"><?php echo $user['Username'] ?></span>
 													<small class="text-muted">Admin</small>
 												</div>
 											</div>
@@ -527,7 +522,8 @@ $user_profile_image = $user_profile_image[0]['Path'] ?? '../../public/assets/def
 											<label class="form-check-label" for="accountActivation">I confirm my account
 												deactivation</label>
 										</div>
-										<a href="../Controllers/setUsrStatus.php?admin_id=<?php $admin_id ?>&id=<?php $admin_id ?>&status=SUSPENDED">
+										<a
+											href="../Controllers/setUsrStatus.php?admin_id=<?php $admin_id ?>&id=<?php $admin_id ?>&status=SUSPENDED">
 											<input value="Deactivate Account" type="submit" class="btn btn-danger deactivate-account"
 												id="accountDeactivate" disabled>
 											</input>
