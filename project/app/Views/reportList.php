@@ -149,7 +149,7 @@ $list = $reportC->reportList($category);
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="../../../templates/gardnma-package-files/1_gardnma-html-files/contact.html">Contact <span class="line"></span></a>
+                                                    <a href="reportList.php">Report <span class="line"></span></a>
                                                 </li>
                                             </ul>
                                         </div>

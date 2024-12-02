@@ -17,30 +17,29 @@ $adminlist = $adminreportC->reportList();
 
 <body>
     <!-- Title section -->
-    <h1>Reports Dashboard</h1>
+    <h1 class="reports-title">Reports Dashboard</h1>
     
     <!-- Table to display reports -->
-    <table>
+    <table class="reports-table">
         <thead>
             <tr>
-                <th>Report ID</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th class="reports-table-header">Report ID</th>
+                <th class="reports-table-header">Status</th>
+                <th class="reports-table-header">Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
             foreach ($adminlist as $report) {
                 ?>
-                <tr>
-                    <td><?= htmlspecialchars($report['StatRapportID']); ?></td>
-                    <td><?= htmlspecialchars($report['ST']); ?></td>
-                    <td>
-                        <form method="POST" action="adminupdateReport.php">
-                            <input type="submit" name="update" value="Update">
+                <tr class="reports-table-row">
+                    <td class="reports-table-cell"><?= htmlspecialchars($report['StatRapportID']); ?></td>
+                    <td class="reports-table-cell"><?= htmlspecialchars($report['ST']); ?></td>
+                    <td class="reports-table-cell reports-actions">
+                        <form method="POST" action="adminupdateReport.php" class="reports-update-form">
+                            <input type="submit" name="update" value="Update" class="reports-update-button">
                             <input type="hidden" value="<?= htmlspecialchars($report['Stat_ID']); ?>" name="id">
                         </form>
-                        
                     </td>
                 </tr>
                 <?php
@@ -48,6 +47,4 @@ $adminlist = $adminreportC->reportList();
             ?>
         </tbody>
     </table>
-</body>
-
-</html>
+</body
