@@ -38,11 +38,7 @@ COMMIT;
 -- My Tables aziz
 CREATE TABLE categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(255) NOT NULL,
-  type ENUM('job', 'produce', 'lending') NOT NULL,
-  date_in DATE NOT NULL,
-  date_out DATE NOT NULL,
-  Qnt INT NOT NULL
+  type ENUM('job', 'produce', 'lending') NOT NULL
 
 );
 

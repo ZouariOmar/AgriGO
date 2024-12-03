@@ -1,288 +1,367 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer une Nouvelle Offre</title>
-      <!-- the head -->
-    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
-    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
-    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
-    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
-    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/thm-icons/style.css"/>
-    <link rel="stylesheet" href="assets/vendors/slick-slider/slick.css">
-    <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css"/>
-    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css"/>
-        
-        
-    <!-- loop -->
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
 
-</head>
-<body>
-    <div class="loader-wrap">
-        <div class="preloader">
-            <div class="preloader-close">x</div>
-            <div id="handle-preloader" class="handle-preloader">
-                <div class="animation-preloader">
-                    <div class="spinner"></div>
-                    <div class="txt-loading">
-                        <span data-text-preloader="A" class="letters-loading">
-                                    A
-                        </span>
-                                <span data-text-preloader="G" class="letters-loading">
-                                    G
-                        </span>
-                        <span data-text-preloader="R" class="letters-loading">
-                                    R
-                        </span>
-                        <span data-text-preloader="I" class="letters-loading">
-                                    I
-                        </span>
-                        <span data-text-preloader="G" class="letters-loading">
-                                    G
-                        </span>
-                                <span data-text-preloader="O" class="letters-loading">
-                                    O
-                        </span>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" href="images/favicon.png"/>
+        <title>MediStore</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css"/> 
+        <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css"/>
+                <!-- the head -->
+                <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+        <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+        <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+        <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+        <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+        <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+        <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+        <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+        <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+        <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+        <link rel="stylesheet" href="assets/vendors/slick-slider/slick.css">
+        <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
+        <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
+
+
+        <!-- loop -->
+        <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+        <!-- template styles -->
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+        <link rel="stylesheet" href="assets/css/style-2.css" />
+        <!-- js scripts -->
+        <!-- the stoping loop -->
+        <script src="assets/vendors/timepicker/timePicker.js"></script>
+        <!-- Template js -->
+        <script src="assets/js/custom.js"></script>
+        <!-- the 2nd temp -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/custom copy.js"></script>
+    </head>
+    <body>
+
+        <!-- Start Preloader -->
+        <!-- <div class="loader-wrap">
+            <div class="preloader">
+                <div class="preloader-close">x</div>
+                <div id="handle-preloader" class="handle-preloader">
+                    <div class="animation-preloader">
+                        <div class="spinner"></div>
+                        <div class="txt-loading">
+                            <span data-text-preloader="A" class="letters-loading">
+                                            A
+                            </span>
+                            <span data-text-preloader="G" class="letters-loading">
+                                            G
+                            </span>
+                            <span data-text-preloader="R" class="letters-loading">
+                                            R
+                            </span>
+                            <span data-text-preloader="I" class="letters-loading">
+                                            I
+                            </span>
+                            <span data-text-preloader="G" class="letters-loading">
+                                            G
+                            </span>
+                            <span data-text-preloader="O" class="letters-loading">
+                                            O
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>   
-        </div>
-    </div>
+            </div>
+        </div> -->
+    <!-- End Preloader -->
 
+    <!-- head -->
+    <div class="page-wrapper">
+        <!--Start Main Header Two-->
+        <header class="main-header main-header-one main-header-two">
+            <!--Start Main Header Two Top-->
+            <div class="main-header-two__top">
+                <div class="auto-container">
+                    <div class="main-header-two__top-inner">
+                        <div class="main-header-two__top-left">
+                            <ul class="main-header-two__top-contact-info">
+                                <li>
+                                    <div class="inner">
+                                        <div class="icon-box">
+                                            <span class="icon-back-in-time"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Delivery time</p>
+                                            <h6>Mon-Sun:8:00-22:00</h6>
+                                        </div>
+                                    </div>
+                                </li>
 
+                                <li>
+                                    <div class="inner">
+                                        <div class="icon-box">
+                                            <span class="icon-phone-call-1"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Call anytime </p>
+                                            <h6><a href="tel:980009630">+216 78 909 876</a></h6>
+                                        </div>
+                                    </div>
+                                </li>
 
+                                <li>
+                                    <div class="inner">
+                                        <div class="icon-box">
+                                            <span class="icon-message"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Send email </p>
+                                            <h6><a href="mailto:AgriGO@email.com">AgriGO@company.com</a></h6>
+                                        </div>
+                                    </div>
+                                </li>
 
-            <!-- head -->
-            <header class="main-header main-header-one">
-                    <!--Start Main Header One Top-->
-                    <div class="main-header-one__top">
-                        <div class="auto-container">
-                            <div class="main-header-one__top-inner">
+                                <li>
+                                    <div class="inner">
+                                        <div class="icon-box">
+                                            <span class="icon-placeholder"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p> 37 St Nahj Haj</p>
+                                            <h6>Ariana, Tunis</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-                                <div class="main-header-one__top-left">
-                                    <ul class="main-header__contact-info">
-                                        <li>
-                                            <div class="inner">
-                                                <div class="icon-box">
-                                                    <span class="icon-time"></span>
-                                                </div>
-                                                <div class="text-box">
-                                                    <p>Mon to Sat: 09:00 am to 05:00 pm</p>
-                                                </div>
-                                            </div>
-                                        </li>
+                        <div class="main-header-two__top-social-links">
+                            <div class="title-box">
+                                <h4>Follow Now</h4>
+                            </div>
 
-                                        <li>
-                                            <div class="inner">
-                                                <div class="icon-box">
-                                                    <span class="icon-email"></span>
-                                                </div>
-                                                <div class="text-box">
-                                                    <p><a href="mailto:yourmail@email.com">AgriGOHelp@gmail.com</a></p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <ul class="social-links">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Main Header Two Top-->
 
-
-                                <div class="main-header-one__top-right">
-                                    <div class="main-header-one__top-menu">
-                                        <ul class="main-header-one__top-menu-list">
-                                            <li><a href="#">Our Faqs </a></li>
-                                            <li><a href="#">Pricing </a></li>
-                                            <li><a href="#">Contact </a></li>
-                                        </ul>
+            <!--Start Main Header One Bottom-->
+            <div class="main-header-one__bottom">
+                <div class="main-header-two__bottom-bg"
+                    style="background-image: url(assets/images/shapes/main-header-v2-bg.png);"></div>
+                <div class="main-header-one__bottom-inner">
+                    <nav class="main-menu main-menu-one">
+                        <div class="main-menu__wrapper clearfix">
+                            <div class="auto-container">
+                                <div class="main-menu__wrapper-inner">
+                                    <div class="main-header-one__bottom-left">
+                                        <div class="logo-box-one">
+                                            <a href="index.html">
+                                                <img src="assets/images/resources/logo-2.png" alt="Awesome Logo"
+                                                    title="">
+                                            </a>
+                                        </div>
                                     </div>
 
-                                    <ul class="main-header-one__top-social-links">
-                                        <li><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                                        <li><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
+                                    <div class="main-header-one__bottom-middle">
+                                        <div class="main-menu-box">
+                                            <a href="#" class="mobile-nav__toggler">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+
+                                            <ul class="main-menu__list">
+                                                <li class="dropdown current">
+                                                    <a href="index.html">Home <span class="line"></span></a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="index.html">Home One</a>
+                                                        </li>
+                                                        <li><a href="index-2.html">Home Two</a></li>
+                                                        <li><a href="Store.php">Store</a></li>
+                                                        <li class="dropdown">
+                                                            <a href="#">Header Styles</a>
+                                                            <ul>
+                                                                <li><a href="index.html">Header One</a></li>
+                                                                <li><a href="index-2.html">Header Two</a></li>
+                                                                <li><a href="index-3.html">Header Three</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li>
+                                                    <a href="about.html">About <span class="line"></span></a>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Services <span class="line"></span></a>
+                                                    <ul>
+                                                        <li><a href="services.html">Services</a></li>
+                                                        <li><a href="arbor-management.html">Arbor Management</a>
+                                                        </li>
+                                                        <li><a href="garden-management.html">Garden Management</a>
+                                                        </li>
+                                                        <li><a href="nursery.html">Nursery & Tree Farm</a>
+                                                        </li>
+                                                        <li><a href="trimming.html">Trimming & Pruning</a>
+                                                        </li>
+                                                        <li><a href="weeds-control.html">Pests & Weeds Control</a>
+                                                        </li>
+                                                        <li><a href="flowers-garden.html">Fruits & Flowers Garden</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Pages <span class="line"></span></a>
+                                                    <ul>
+                                                        <li><a href="team.html">Team</a></li>
+                                                        <li><a href="team-details.html">Team Details</a></li>
+                                                        <li><a href="portfolio-1.html">Portfolio 01</a></li>
+                                                        <li><a href="portfolio-2.html">Portfolio 02</a>
+                                                        <li><a href="faq.html">Faq</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#">Blog <span class="line"></span></a>
+                                                    <ul>
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="blog-grid.html">Blog Grid</a></li>
+                                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="contact.html">Contact <span class="line"></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="main-header-one__bottom-right">
+                                        <div class="header-search-box">
+                                            <a href="#" class="main-menu__search search-toggler icon-magnifying-glass">
+                                            </a>
+                                        </div>
+                                        <div class="main-header-one__bottom-right-btn">
+                                            <a href="contact.html">Book Appointment</a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Main Header One Top-->
-                    <div class="main-header-one__bottom">
-                        <div class="main-header-one__bottom-inner">
-                            <nav class="main-menu main-menu-one">
-                                <div class="main-menu__wrapper clearfix">
-                                    <div class="auto-container">
-                                        <div class="main-menu__wrapper-inner">
-                                            <div class="main-header-one__bottom-left">
-                                                <div class="logo-box-one">
-                                                    <a href="index.html">
-                                                        <img src="assets/images/resources/logo-1.png" alt="Awesome Logo"
-                                                            title="">
-                                                    </a>
-                                                </div>
+                    </nav>
+                </div>
+            </div>
+            <!--End Main Header Two Bottom-->
+        </header>
+        <!--End Main Header Two-->
+
+
+
+
+         
+                    <div class="col-sm-9" id="content">            <div class="breadcrumbs">
+                            <a href="home.html"><i class="fa fa-home"></i></a>
+                            <a href="#">Add Offer</a>
+                        </div>
+                        <h1>Need Help?</h1>
+                        <p> <small><strong class="define_note"></strong></small>If you need any help or have any question 
+                            <a href="login.html">click here</a>.</p>
+                        <div class="form-horizontal">
+                            <div class="contentText">  
+                                <fieldset id="account">
+                                    <h1>Add Your offre here</h1>
+                                    <form method="post" action="fo/HCO.php" id="offerForm">
+                                        <div class="form-group required">
+                                            <label for="input-firstname" class="col-sm-2 control-label">Titre</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre de l'offre" required>
+                                                <div id="titreError" class="error-message"></div>
                                             </div>
-
-                                            <div class="main-header-one__bottom-middle">
-                                                <div class="main-menu-box">
-                                                    <a href="#" class="mobile-nav__toggler">
-                                                        <i class="fa fa-bars"></i>
-                                                    </a>
-
-                                                    <ul class="main-menu__list">
-                                                        <li class="dropdown current">
-                                                            <a href="index.html">Home <span class="line"></span></a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="index.html">Home One</a>
-                                                                </li>
-                                                                <li><a href="index-2.html">Home Two</a></li>
-                                                                <li><a href="Store.php">Store</a></li>
-                                                                <li class="dropdown">
-                                                                    <a href="#">Header Styles</a>
-                                                                    <ul>
-                                                                        <li><a href="index.html">Header One</a></li>
-                                                                        <li><a href="index-2.html">Header Two</a></li>
-                                                                        <li><a href="index-3.html">Header Three</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-
-                                                        <li>
-                                                            <a href="about.html">About <span class="line"></span></a>
-                                                        </li>
-
-                                                        <li class="dropdown">
-                                                            <a href="#">Services <span class="line"></span></a>
-                                                            <ul>
-                                                                <li><a href="services.html">Services</a></li>
-                                                                <li><a href="arbor-management.html">Arbor Management</a>
-                                                                </li>
-                                                                <li><a href="garden-management.html">Garden Management</a>
-                                                                </li>
-                                                                <li><a href="nursery.html">Nursery & Tree Farm</a>
-                                                                </li>
-                                                                <li><a href="trimming.html">Trimming & Pruning</a>
-                                                                </li>
-                                                                <li><a href="weeds-control.html">Pests & Weeds Control</a>
-                                                                </li>
-                                                                <li><a href="flowers-garden.html">Fruits & Flowers Garden</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-
-                                                        <li class="dropdown">
-                                                            <a href="#">Pages <span class="line"></span></a>
-                                                            <ul>
-                                                                <li><a href="team.html">Team</a></li>
-                                                                <li><a href="team-details.html">Team Details</a></li>
-                                                                <li><a href="portfolio-1.html">Portfolio 01</a></li>
-                                                                <li><a href="portfolio-2.html">Portfolio 02</a>
-                                                                <li><a href="faq.html">Faq</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-
-                                                        <li class="dropdown">
-                                                            <a href="#">Blog <span class="line"></span></a>
-                                                            <ul>
-                                                                <li><a href="blog.html">Blog</a></li>
-                                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="contact.html">Contact <span class="line"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <div class="main-header-one__bottom-right">
-                                                <div class="header-search-box">
-                                                    <a href="#" class="main-menu__search search-toggler icon-magnifying-glass">
-                                                    </a>
-                                                </div>
-                                                <div class="main-header-one__bottom-right-btn">
-                                                    <a href="contact.html">Get A Quote</a>
-                                                </div>
-
-                                                <div class="contact-box">
-                                                    <div class="icon">
-                                                        <span class="icon-chatting"></span>
-                                                    </div>
-                                                    <div class="text">
-                                                        <p>Call Anytime</p>
-                                                        <a href="tel:926668880000">92 666 888 0000</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
-                                    </div>
-                                </div>
-                            </nav>
+                                        <div class="form-group required">
+                                            <label for="input-lastname" class="col-sm-2 control-label">Price</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="prix" name="prix" step="0.10" placeholder="Prix de l'offre" required>
+                                                <div id="prixError" class="error-message"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label for="input-email" class="col-sm-2 control-label">Telephone</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="telephone" name="telephone" placeholder="+216 ** *** ***" required>
+                                                <div id="telephoneError" class="error-message"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label for="input-telephone" class="col-sm-2 control-label">Localisation</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="localisation" name="localisation" placeholder="Localisation de l'offre" required>
+                                                <div id="localisationError" class="error-message"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-fax" class="col-sm-2 control-label">E-mail</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Adresse email" required>
+                                                <div id="emailError" class="error-message"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-fax" class="col-sm-2 control-label">Image</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="image" name="image" placeholder="URL de l'image" required>
+                                                <div id="imageError" class="error-message"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-fax" class="col-sm-2 control-label">Details</label>
+                                            <div class="col-sm-10">
+                                                <textarea id="detail" name="detail" rows="4" placeholder="Détails de l'offre" required></textarea>
+                                                <div id="detailError" class="error-message"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-fax" class="col-sm-2 control-label">Details</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" id="categorie_id" name="categorie_id" placeholder="ID de la catégorie" required>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary reg_button">Créer l'offre</button>
+                                    </form>
+                                </fieldset>
+
+                            </div>
                         </div>
                     </div>
-                    <!--End Main Header One Bottom-->
-            </header>
-            <!--End Main Header One-->
+                </div>
+            </div>
+        </div>
 
-                        
-                    <div class="container">
-                        <h1>Créer une Nouvelle Offre</h1>
-                        <form method="post" action="fo/HCO.php" id="offerForm">
-                            <label for="titre">Titre :</label>
-                            <input type="text" id="titre" name="titre" placeholder="Titre de l'offre" required>
-                            <div id="titreError" class="error-message"></div>
-
-                            <label for="prix">Prix :</label>
-                            <input type="number" id="prix" name="prix" step="0.10" placeholder="Prix de l'offre" required>
-                            <div id="prixError" class="error-message"></div>
-
-                            <input type="hidden" id="telephone" name="telephone" value="+216 56 678 345">
-
-                            <label for="localisation">Localisation :</label>
-                            <input type="text" id="localisation" name="localisation" placeholder="Localisation de l'offre" required>
-                            <div id="localisationError" class="error-message"></div>
-
-                            <input type="hidden" id="email" name="email" value="SDFGH@DFGH.com">
-
-                            <label for="image">URL de l'image :</label>
-                            <input type="text" id="image" name="image" placeholder="URL de l'image" required>
-                            <div id="imageError" class="error-message"></div>
-
-                            <label for="detail">Détail :</label>
-                            <textarea id="detail" name="detail" rows="4" placeholder="Détails de l'offre" required></textarea>
-                            <div id="detailError" class="error-message"></div>
-
-                            <input type="hidden" id="categorie_id" name="categorie_id" value="1">
-
-                            <button type="submit">Créer l'offre</button>
-                        </form>
-                        <div class="footer">
-                            <p>Veuillez vérifier les informations avant de soumettre.</p>
-                        </div>
-                    </div>
 
 
         <!--Start Footer One -->
-    <footer class="footer-one">
+        <footer class="footer-one">
             <div class="footer-one__bg" style="background-image: url(assets/images/shapes/footer-v1-shape3.png);"></div>
             <div class="shape1 float-bob-y"><img src="assets/images/shapes/footer-v1-shape1.png" alt="#"></div>
             <div class="shape2 float-bob-y"><img src="assets/images/shapes/footer-v1-shape2.png" alt="#"></div>
@@ -418,9 +497,10 @@
                 </div>
             </div>
 
-    </footer>
+        </footer>
         <!--End Footer One-->
-    
+
+
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -451,15 +531,8 @@
     <script src="assets/vendors/slick-slider/slick.js"></script>
     <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
     <script src="assets/vendors/progress-bar/knob.js"></script>
+    <script src="assets/js/off.js"></script>
 
 
-    <!-- the stoping loop -->
-    <script src="assets/vendors/timepicker/timePicker.js"></script>
-    <!-- Template js -->
-    <script src="assets/js/custom.js"></script>
-
-
-    <!-- controle de saisie -->
-    <!-- <script src="assets/js/off.js"></script> -->
 </body>
-</html>
+</html> 
