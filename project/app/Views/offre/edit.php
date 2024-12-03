@@ -138,7 +138,7 @@ $categorie_id = isset($_POST['categorie_id']) ? htmlspecialchars($_POST['categor
             <div id="detailError" class="error-message"></div>
 
             <label for="categorie_id">ID de la catégorie :</label>
-            <input type="number" id="categorie_id" name="categorie_id" value="<?php echo $categorie_id; ?>" required>
+            <input type="number" id="categorie_id" name="categorie_id" placeholder="1/13/14" value="<?php echo $categorie_id; ?>" required>
 
             <button type="submit">Mettre à jour l'offre</button>
         </form>

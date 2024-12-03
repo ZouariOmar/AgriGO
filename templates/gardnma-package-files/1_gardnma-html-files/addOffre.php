@@ -23,10 +23,10 @@
     <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
     <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
     <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+    <link rel="stylesheet" href="assets/vendors/thm-icons/style.css"/>
     <link rel="stylesheet" href="assets/vendors/slick-slider/slick.css">
-    <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
-    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
+    <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css"/>
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css"/>
         
         
     <!-- loop -->
@@ -34,36 +34,36 @@
 
 </head>
 <body>
-      <div class="loader-wrap">
-                <div class="preloader">
-                    <div class="preloader-close">x</div>
-                    <div id="handle-preloader" class="handle-preloader">
-                        <div class="animation-preloader">
-                            <div class="spinner"></div>
-                            <div class="txt-loading">
-                                <span data-text-preloader="A" class="letters-loading">
+    <div class="loader-wrap">
+        <div class="preloader">
+            <div class="preloader-close">x</div>
+            <div id="handle-preloader" class="handle-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                    <div class="txt-loading">
+                        <span data-text-preloader="A" class="letters-loading">
                                     A
-                                </span>
+                        </span>
                                 <span data-text-preloader="G" class="letters-loading">
                                     G
-                                </span>
-                                <span data-text-preloader="R" class="letters-loading">
+                        </span>
+                        <span data-text-preloader="R" class="letters-loading">
                                     R
-                                </span>
-                                <span data-text-preloader="I" class="letters-loading">
+                        </span>
+                        <span data-text-preloader="I" class="letters-loading">
                                     I
-                                </span>
-                                <span data-text-preloader="G" class="letters-loading">
+                        </span>
+                        <span data-text-preloader="G" class="letters-loading">
                                     G
-                                </span>
+                        </span>
                                 <span data-text-preloader="O" class="letters-loading">
                                     O
-                                </span>
-                            </div>
-                        </div>
+                        </span>
                     </div>
                 </div>
-            </div>
+            </div>   
+        </div>
+    </div>
 
 
 
@@ -243,41 +243,42 @@
             </header>
             <!--End Main Header One-->
 
-                        <div class="container">
-                            <h1>Créer une Nouvelle Offre</h1>
-                            <form method="post" action="fo/HCO.php" id="offerForm">
-                                <label for="titre">Titre :</label>
-                                <input type="text" id="titre" name="titre" placeholder="Titre de l'offre" required>
-                                <div id="titreError" class="error-message"></div>
+                        
+                    <div class="container">
+                        <h1>Créer une Nouvelle Offre</h1>
+                        <form method="post" action="fo/HCO.php" id="offerForm">
+                            <label for="titre">Titre :</label>
+                            <input type="text" id="titre" name="titre" placeholder="Titre de l'offre" required>
+                            <div id="titreError" class="error-message"></div>
 
-                                <label for="prix">Prix :</label>
-                                <input type="number" id="prix" name="prix" step="0.01" placeholder="Prix de l'offre" required>
-                                <div id="prixError" class="error-message"></div>
+                            <label for="prix">Prix :</label>
+                            <input type="number" id="prix" name="prix" step="0.10" placeholder="Prix de l'offre" required>
+                            <div id="prixError" class="error-message"></div>
 
-                                <input type="hidden" id="telephone" name="telephone" value="+216 56 678 345">
+                            <input type="hidden" id="telephone" name="telephone" value="+216 56 678 345">
 
-                                <label for="localisation">Localisation :</label>
-                                <input type="text" id="localisation" name="localisation" placeholder="Localisation de l'offre" required>
-                                <div id="localisationError" class="error-message"></div>
+                            <label for="localisation">Localisation :</label>
+                            <input type="text" id="localisation" name="localisation" placeholder="Localisation de l'offre" required>
+                            <div id="localisationError" class="error-message"></div>
 
-                                <input type="hidden" id="email" name="email" value="SDFGH@DFGH.com">
+                            <input type="hidden" id="email" name="email" value="SDFGH@DFGH.com">
 
-                                <label for="image">URL de l'image :</label>
-                                <input type="text" id="image" name="image" placeholder="URL de l'image" required>
-                                <div id="imageError" class="error-message"></div>
+                            <label for="image">URL de l'image :</label>
+                            <input type="text" id="image" name="image" placeholder="URL de l'image" required>
+                            <div id="imageError" class="error-message"></div>
 
-                                <label for="detail">Détail :</label>
-                                <textarea id="detail" name="detail" rows="4" placeholder="Détails de l'offre" required></textarea>
-                                <div id="detailError" class="error-message"></div>
+                            <label for="detail">Détail :</label>
+                            <textarea id="detail" name="detail" rows="4" placeholder="Détails de l'offre" required></textarea>
+                            <div id="detailError" class="error-message"></div>
 
-                                <input type="hidden" id="categorie_id" name="categorie_id" value="1">
+                            <input type="hidden" id="categorie_id" name="categorie_id" value="1">
 
-                                <button type="submit">Créer l'offre</button>
-                            </form>
-                            <div class="footer">
-                                <p>Veuillez vérifier les informations avant de soumettre.</p>
-                            </div>
+                            <button type="submit">Créer l'offre</button>
+                        </form>
+                        <div class="footer">
+                            <p>Veuillez vérifier les informations avant de soumettre.</p>
                         </div>
+                    </div>
 
 
         <!--Start Footer One -->
@@ -458,7 +459,7 @@
     <script src="assets/js/custom.js"></script>
 
 
-
-    <script src="assets/js/off.js"></script>
+    <!-- controle de saisie -->
+    <!-- <script src="assets/js/off.js"></script> -->
 </body>
 </html>

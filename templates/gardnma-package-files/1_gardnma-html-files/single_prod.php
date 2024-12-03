@@ -135,8 +135,8 @@ if (isset($_POST['offre_id'])) {
                                             <span class="icon-back-in-time"></span>
                                         </div>
                                         <div class="text-box">
-                                            <p>Opening time</p>
-                                            <h6>Mon-Fri:9.00-19:00</h6>
+                                            <p>Delivery time</p>
+                                            <h6>Mon-Sun:8:00-22:00</h6>
                                         </div>
                                     </div>
                                 </li>
@@ -148,7 +148,7 @@ if (isset($_POST['offre_id'])) {
                                         </div>
                                         <div class="text-box">
                                             <p>Call anytime </p>
-                                            <h6><a href="tel:980009630">+ 98 (000) - 9630</a></h6>
+                                            <h6><a href="tel:980009630">+216 78 909 876</a></h6>
                                         </div>
                                     </div>
                                 </li>
@@ -160,7 +160,7 @@ if (isset($_POST['offre_id'])) {
                                         </div>
                                         <div class="text-box">
                                             <p>Send email </p>
-                                            <h6><a href="mailto:yourmail@email.com">info@company.com</a></h6>
+                                            <h6><a href="mailto:AgriGO@email.com">AgriGO@company.com</a></h6>
                                         </div>
                                     </div>
                                 </li>
@@ -171,8 +171,8 @@ if (isset($_POST['offre_id'])) {
                                             <span class="icon-placeholder"></span>
                                         </div>
                                         <div class="text-box">
-                                            <p>380 St Kilda Road</p>
-                                            <h6>Melbourne, Australia</h6>
+                                            <p> 37 St Nahj Haj</p>
+                                            <h6>Ariana, Tunis</h6>
                                         </div>
                                     </div>
                                 </li>

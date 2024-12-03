@@ -59,12 +59,12 @@
         <link rel="stylesheet" href="assets/css/responsive.css" />
         <link rel="stylesheet" href="assets/css/style-2.css" />
         <!-- js scripts -->
-         <!-- the stoping loop -->
+        <!-- the stoping loop -->
         <script src="assets/vendors/timepicker/timePicker.js"></script>
         <!-- Template js -->
         <script src="assets/js/custom.js"></script>
         <!-- search script -->
-        <script src="assets/js/search.js"></script>
+        <!-- <script src="assets/js/search.js"></script> -->
 
     </head>
     <body>
@@ -118,7 +118,7 @@
                                             <span class="icon-time"></span>
                                         </div>
                                         <div class="text-box">
-                                            <p>Mon to Sat: 09:00 am to 05:00 pm</p>
+                                            <p>Mon to Sun: 08:00 am to 10:00 pm</p>
                                         </div>
                                     </div>
                                 </li>
@@ -129,7 +129,7 @@
                                             <span class="icon-email"></span>
                                         </div>
                                         <div class="text-box">
-                                            <p><a href="mailto:yourmail@email.com">needhelp@company.com</a></p>
+                                            <p><a href="mailto:yourmail@email.com">AgriGOhelp@company.com</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -350,13 +350,9 @@
                                         <div id="collapseOne" class="panel-collapse collapse in">
                                             <div class="panel-body">
                                                 <div class="infoBoxContents">
-                                                    <a href="Prod.html">Category One</a>&nbsp;(94)<br />
-                                                    <a href="Prod.html">Category Two</a>&nbsp;(9)<br />
-                                                    <a href="Prod.html">Category Three</a>&nbsp;(5)<br />
-                                                    <a href="Prod.html">Category Four</a>&nbsp;(6)<br />
-                                                    <a href="Prod.html">Category Five</a>&nbsp;(94)<br />
-                                                    <a href="Prod.html">Category Six</a>&nbsp;(94)<br />
-                                                    <a href="Prod.html">Category Seven</a>
+                                                    <a href="Prod.html">Product</a>&nbsp;(8)<br />
+                                                    <a href="Prod.html">Lending</a>&nbsp;(9)<br />
+                                                    <a href="Prod.html">Job</a>&nbsp;(5)<br />
                                                 </div>
                                             </div>
                                         </div>
@@ -398,12 +394,15 @@
                                         <?php
 
                                             include '../../../project/app/Controllers/Offre_Controller.php';
+                                            // include_once __DIR__ . 'fo/cont.php';
 
                                             try {
                                                 $offrecontroller = new OffreController();
                                                 $offres = $offrecontroller->readAllOffres();
+                                                // $categorieController = new CategorieController();
+                                                // $categories = $categorieController->readAllCategories();
                                                 
-                                                if ($offres) {
+                                                if ($offres ) {
                                                     foreach ($offres as $offre) {
                                                         echo '
                                                         <form method="post" action="single_prod.php">
@@ -450,6 +449,15 @@
                                                             </div>
                                                         </form>';
                                                     }
+                                                    // foreach ($categories as $category) {
+                                                    //     echo'
+                                                    //     <li class="li_product_desc">
+                                                    //         <div class="caption">
+                                                    //             <p> Type: </p>
+                                                    //             <p>' . htmlspecialchars($category['type']) . '</p>
+                                                    //         </div>
+                                                    //     </li>';
+                                                    // }    
                                                 } else {
                                                     echo "<p class='error-message'>No offers available at the moment.</p>";
                                                 }
@@ -614,7 +622,7 @@
         </footer>
         <!--End Footer One-->
 
-        <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>

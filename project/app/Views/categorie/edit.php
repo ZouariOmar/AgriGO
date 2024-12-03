@@ -105,21 +105,9 @@ $Qnt = isset($_POST['Qnt']) ? htmlspecialchars($_POST['Qnt']) : '';
         <form method="post" action="../../forms/handlerUpdate.php" id="categoryForm">
             <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
 
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
-
             <label for="type">Type :</label>
             <input type="text" id="type" name="type" value="<?php echo $type; ?>" placeholder="job, lending, ou produce" required>
             <div id="typeError" class="error-message"></div>
-
-            <label for="date_in">Date de sortie deliv :</label>
-            <input type="date" id="date_in" name="date_in" value="<?php echo $date_in; ?>">
-
-            <label for="date_out">Date d'entrée deliv :</label>
-            <input type="date" id="date_out" name="date_out" value="<?php echo $date_out; ?>">
-
-            <label for="Qnt">Quantité :</label>
-            <input type="number" id="Qnt" name="Qnt" value="<?php echo $Qnt; ?>">
 
             <button type="submit">Mettre à jour la catégorie</button>
         </form>

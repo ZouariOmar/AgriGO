@@ -92,22 +92,10 @@
     <div class="container">
         <h1>Créer une Nouvelle Catégorie</h1>
         <form method="post" action="../../forms/handleCreation.php" id="categoryForm">
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" placeholder="Nom de la catégorie" required>
 
             <label for="type">Type :</label>
             <input type="text" id="type" name="type" placeholder="job, lending, ou produce" required>
             <div id="typeError" class="error-message"></div>
-
-            <label for="date_in">Date de sortie deliv :</label>
-            <input type="date" id="date_in" name="date_in">
-
-            <label for="date_out">Date d'entrée deliv :</label>
-            <input type="date" id="date_out" name="date_out">
-            <div id="dateError" class="error-message"></div>
-
-            <label for="Qnt">Quantité :</label>
-            <input type="number" id="Qnt" name="Qnt">
 
             <button type="submit">Créer la catégorie</button>
         </form>
