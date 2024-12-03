@@ -25,7 +25,7 @@ document.getElementById("searchBar").addEventListener("input", function () {
 			created_at.includes(searchTerm) ||
 			updated_at.includes(searchTerm)
 		) {
-			row.style.display = ""; // Show row
+			row.style.display = "";  // Show row
 
 			// Highlight matching text in each relevant cell
 			highlightText(usernameCell, searchTerm);
@@ -33,7 +33,7 @@ document.getElementById("searchBar").addEventListener("input", function () {
 			highlightText(createdAtCell, searchTerm);
 			highlightText(updatedAtCell, searchTerm);
 			highlightText(statusCell, searchTerm);
-		} else row.style.display = "none"; // Hide row
+		} else row.style.display = "none";  // Hide row
 	});
 });
 
