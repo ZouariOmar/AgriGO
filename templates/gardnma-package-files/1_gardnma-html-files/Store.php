@@ -392,72 +392,64 @@
                                     <div class="row margin-top product-layout_width">
                                         <!-- new add ons offre -->
                                         <?php
-
                                             include '../../../project/app/Controllers/Offre_Controller.php';
-                                            // include_once __DIR__ . 'fo/cont.php';
 
                                             try {
                                                 $offrecontroller = new OffreController();
                                                 $offres = $offrecontroller->readAllOffres();
-                                                // $categorieController = new CategorieController();
-                                                // $categories = $categorieController->readAllCategories();
-                                                
-                                                if ($offres ) {
+
+                                                if ($offres) {
+                                                    $i = 0;
+                                                    echo '<div class="row">';
                                                     foreach ($offres as $offre) {
+                                                        if ($i % 3 == 0 && $i > 0) {
+                                                            echo '</div><div class="row">';
+                                                        }
                                                         echo '
-                                                        <form method="post" action="single_prod.php">
-                                                            <div class="product-layout col-md-4 col-sm-6 col-xs-12">
-                                                                <div class="product-thumb-height">
-                                                                    <div class="product-thumb transition">
-                                                                        <ul>
-                                                                            <li class="li_product_title">
-                                                                                <div class="product_title">
-                                                                                    <a href="single-prod.html">' . htmlspecialchars($offre['titre']) . '</a>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="li_product_image">
-                                                                                <div class="image">
-                                                                                    <a href="single-prod.html">
-                                                                                        <img src=' . htmlspecialchars($offre['image']) . ' class="img-responsive" width="200" height="200" />
-                                                                                    </a>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="li_product_price">
-                                                                                <span class="old_price1"></span>
-                                                                                <span class="new_price1">' . number_format($offre['prix'], 2) . 'dt</span>
-                                                                                <span class="saving1"></span>
-                                                                            </li>
-                                                                            <li class="li_product_desc">
-                                                                                <div class="caption">
-                                                                                    <p> Details:</p>
-                                                                                    <p>' . htmlspecialchars(substr($offre['detail'], 0, 100)) . '...</p>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="li_product_desc">
-                                                                                <div class="caption">
-                                                                                    <p> Localisation: </p>
-                                                                                    <p>' . htmlspecialchars($offre['localisation']) . '</p>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="li_product_buy_button">
-                                                                                <button type="submit" class="btn btn-default">Buy Now</button>
-                                                                                <input type="hidden" name="offre_id" value="' . $offre['id'] . '">
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
+                                                        <form method="post" action="single_prod.php" class="col-md-4 col-sm-6 col-xs-12">
+                                                            <div class="product-thumb-height">
+                                                                <div class="product-thumb transition">
+                                                                    <ul>
+                                                                        <li class="li_product_title">
+                                                                            <div class="product_title">
+                                                                                <a href="single-prod.html">' . htmlspecialchars($offre['titre']) . '</a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="li_product_image">
+                                                                            <div class="image">
+                                                                                <a href="single-prod.html">
+                                                                                    <img src=' . htmlspecialchars($offre['image']) . ' class="img-responsive" width="200" height="200" />
+                                                                                </a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="li_product_price">
+                                                                            <span class="old_price1"></span>
+                                                                            <span class="new_price1">' . number_format($offre['prix'], 2) . 'dt</span>
+                                                                            <span class="saving1"></span>
+                                                                        </li>
+                                                                        <li class="li_product_desc">
+                                                                            <div class="caption">
+                                                                                <p> Details:</p>
+                                                                                <p>' . htmlspecialchars(substr($offre['detail'], 0, 100)) . '...</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="li_product_desc">
+                                                                            <div class="caption">
+                                                                                <p> Localisation: </p>
+                                                                                <p>' . htmlspecialchars($offre['localisation']) . '</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="li_product_buy_button">
+                                                                            <button type="submit" class="btn btn-default">Buy Now</button>
+                                                                            <input type="hidden" name="offre_id" value="' . $offre['id'] . '">
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                         </form>';
+                                                        $i++;
                                                     }
-                                                    // foreach ($categories as $category) {
-                                                    //     echo'
-                                                    //     <li class="li_product_desc">
-                                                    //         <div class="caption">
-                                                    //             <p> Type: </p>
-                                                    //             <p>' . htmlspecialchars($category['type']) . '</p>
-                                                    //         </div>
-                                                    //     </li>';
-                                                    // }    
+                                                    echo '</div>';
                                                 } else {
                                                     echo "<p class='error-message'>No offers available at the moment.</p>";
                                                 }

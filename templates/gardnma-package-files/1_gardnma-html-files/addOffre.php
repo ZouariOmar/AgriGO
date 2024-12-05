@@ -342,9 +342,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="input-fax" class="col-sm-2 control-label">Details</label>
+                                            <label for="input-type" class="col-sm-2 control-label">Type</label>
                                             <div class="col-sm-10">
-                                                <input type="number" id="categorie_id" name="categorie_id" placeholder="ID de la catégorie" required>
+                                            <select id="categorie_id" name="categorie_id" required>
+                                                <option value="">Select Type</option>
+                                                <option value="1">Job</option>
+                                                <option value="2">Lending</option>
+                                                <option value="3">Produce</option>
+                                            </select>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary reg_button">Créer l'offre</button>
