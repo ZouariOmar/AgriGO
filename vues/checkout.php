@@ -10,32 +10,27 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // For error handling
 } catch (PDOException $e) {
-    // Handle any errors during connection
     die("Connection failed: " . $e->getMessage());
 }
 
-$titre = "Checkout Page"; 
+$titre = "Checkout Page";
 
-// Fetch usr_id from the 'commande' table
-$sql = "SELECT usr_id FROM commande ";  // Fetch one usr_id from the 'commande' table
+$sql = "SELECT usr_id FROM commande ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
-// Get the usr_id
-$usr_id = $stmt->fetchColumn(); // Fetch the first column of the first row
+$usr_id = $stmt->fetchColumn();
 
-// Optional: Handle case when no usr_id is found
 if ($usr_id === false) {
-    $usr_id = 'Utilisateur non trouvé'; // If no usr_id is found
+    $usr_id = 'Utilisateur non trouvé';
 }
 
 $identifiant = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'id indisponible';
 ?>
 
 <?php ob_start(); ?>
-<!-- HTML content starts here -->
 <div class="container site">
-    <h1 class="text-logo"><span class="glyphicon glyphicon-grain"></span> Checkout <span class="glyphicon glyphicon-grain"></span></h1>  
+    <h1 class="text-logo"><span class="glyphicon glyphicon-grain"></span> Checkout <span class="glyphicon glyphicon-grain"></span></h1>
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="active"><a href="/AgriGo/index.php">Nos produits</a></li>
@@ -45,43 +40,51 @@ $identifiant = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'id indispon
         <div id="contenu">
             <div class="caption">
                 <h4 class="nom">Resume de votre commande</h4>
-                <form id="checkoutForm">
-                    <!-- ID Utilisateur Field (Fetched from database) -->
+                <form id="checkoutForm" novalidate>
                     <div class="form-group">
+                        <small id="userIdError" class="text-danger"></small>
                         <label for="user_id">ID Utilisateur</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" value="<?= $usr_id ?>" required>
+                        <input type="text" class="form-control" id="user_id" name="user_id" value="<?= $usr_id ?>" readonly>
                     </div>
                     <div class="form-group">
+                        <small id="articleIdError" class="text-danger"></small>
                         <label for="article_id">ID Article</label>
-                        <input value="<?= $identifiant; ?>" type="text" class="form-control" id="article_id" name="article_id" required>
+                        <input value="<?= $identifiant; ?>" type="text" class="form-control" id="article_id" name="article_id">
                     </div>
                     <div class="form-group">
+                        <small id="shippingAddressError" class="text-danger"></small>
                         <label for="shippingAddress">Adresse de livraison</label>
-                        <textarea class="form-control" name="shippingAddress" id="shippingAddress" required></textarea>
+                        <textarea class="form-control" name="shippingAddress" id="shippingAddress"></textarea>
                     </div>
                     <div class="form-group">
+                        <small id="paymentMethodError" class="text-danger"></small>
                         <label for="paymentMethod">Methode de paiement</label>
-                        <select class="form-control" name="paymentMethod" id="paymentMethod" required>
+                        <select class="form-control" name="paymentMethod" id="paymentMethod">
+                            <option value="">-- Selectionnez une option --</option>
                             <option value="creditCard">Carte de credit</option>
                             <option value="paypal">PayPal</option>
                             <option value="bankTransfer">Virement bancaire</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <small id="locationError" class="text-danger"></small>
                         <label for="location">Lieu de depart</label>
-                        <input type="text" class="form-control" id="location" name="location" required>
+                        <input type="text" class="form-control" id="location" name="location">
                     </div>
                     <div class="form-group">
+                        <small id="dateDepartError" class="text-danger"></small>
                         <label for="date_depart">Date de depart</label>
-                        <input type="date" class="form-control" id="date_depart" name="date_depart" required>
+                        <input type="date" class="form-control" id="date_depart" name="date_depart">
                     </div>
                     <div class="form-group">
+                        <small id="dateArriveeError" class="text-danger"></small>
                         <label for="date_arrivee">Date d'arrivee</label>
-                        <input type="date" class="form-control" id="date_arrivee" name="date_arrivee" required>
+                        <input type="date" class="form-control" id="date_arrivee" name="date_arrivee">
                     </div>
                     <div class="form-group">
+                        <small id="emailError" class="text-danger"></small>
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email">
                     </div>
                     <button type="submit" class="btn btn-success btn-lg btn-block" style="margin-top: 20px;">
                         <span class="glyphicon glyphicon-check"></span> Confirmer la commande
@@ -96,68 +99,89 @@ $identifiant = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'id indispon
 <script>
     document.getElementById("checkoutForm").addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent default form submission
-        console.log("Form submitted!");  // Debugging line
+
+        // Clear previous error messages
+        document.querySelectorAll(".text-danger").forEach(function (errorElement) {
+            errorElement.textContent = "";
+        });
 
         // Collect form data
-        const email = document.getElementById("email").value.trim();
+        const articleId = document.getElementById("article_id").value.trim();
         const shippingAddress = document.getElementById("shippingAddress").value.trim();
+        const paymentMethod = document.getElementById("paymentMethod").value.trim();
         const location = document.getElementById("location").value.trim();
-        const date_depart = document.getElementById("date_depart").value;
-        const date_arrivee = document.getElementById("date_arrivee").value;
+        const dateDepart = document.getElementById("date_depart").value;
+        const dateArrivee = document.getElementById("date_arrivee").value;
+        const email = document.getElementById("email").value.trim();
 
-        // Skip validation temporarily for debugging
-        // console.log(email, shippingAddress, location, date_depart, date_arrivee);
+        let isValid = true;
 
-        // Generate the PDF (without validation for now)
-        const nom = document.getElementById("nom") ? document.getElementById("nom").value : "N/A";  // Check if nom exists
-        const user_id = document.getElementById("user_id").value;
-        const article_id = document.getElementById("article_id").value;
+        // Validate Article ID
+        if (!articleId) {
+            document.getElementById("articleIdError").textContent = "Veuillez entrer l'ID de l'article.";
+            isValid = false;
+        }
 
+        // Validate Shipping Address
+        if (!shippingAddress) {
+            document.getElementById("shippingAddressError").textContent = "Veuillez entrer une adresse de livraison.";
+            isValid = false;
+        }
+
+        // Validate Payment Method
+        if (!paymentMethod) {
+            document.getElementById("paymentMethodError").textContent = "Veuillez selectionner une methode de paiement.";
+            isValid = false;
+        }
+
+        // Validate Location
+        if (!location) {
+            document.getElementById("locationError").textContent = "Veuillez entrer un lieu de depart.";
+            isValid = false;
+        }
+
+        // Validate Dates
+        if (!dateDepart) {
+            document.getElementById("dateDepartError").textContent = "Veuillez entrer une date de depart.";
+            isValid = false;
+        }
+
+        if (!dateArrivee || new Date(dateArrivee) <= new Date(dateDepart)) {
+            document.getElementById("dateArriveeError").textContent = "La date d'arrivee doit etre posterieure à la date de depart.";
+            isValid = false;
+        }
+
+        // Validate Email
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById("emailError").textContent = "Veuillez entrer une adresse email valide.";
+            isValid = false;
+        }
+
+        if (!isValid) return; // Stop submission if there are validation errors
+
+        // Generate PDF using jsPDF
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
-        doc.setFontSize(18);
-        doc.text("Résumé de la commande", 10, 20);
+        doc.text("Resume de la commande", 10, 10);
+        doc.text(`ID Utilisateur: ${document.getElementById("user_id").value}`, 10, 20);
+        doc.text(`ID Article: ${articleId}`, 10, 30);
+        doc.text(`Adresse de livraison: ${shippingAddress}`, 10, 40);
+        doc.text(`Methode de paiement: ${paymentMethod}`, 10, 50);
+        doc.text(`Lieu de depart: ${location}`, 10, 60);
+        doc.text(`Date de depart: ${dateDepart}`, 10, 70);
+        doc.text(`Date d'arrivee: ${dateArrivee}`, 10, 80);
+        doc.text(`Email: ${email}`, 10, 90);
 
-        doc.setFontSize(12);
-        doc.text(`ID Utilisateur: ${user_id}`, 10, 40);
-        doc.text(`ID Article: ${article_id}`, 10, 50);
-        doc.text(`Adresse de livraison: ${shippingAddress}`, 10, 60);
-        doc.text(`Methode de paiement: ${document.getElementById("paymentMethod").value}`, 10, 70);
-        doc.text(`Lieu de depart: ${location}`, 10, 80);
-        doc.text(`Date de depart: ${date_depart}`, 10, 90);
-        doc.text(`Date d'arrivee: ${date_arrivee}`, 10, 100);
-        doc.text(`Email: ${email}`, 10, 110);
-
-        doc.save("commande.pdf");  // Save the file
-        console.log("PDF generated");  // Debugging line
+        doc.save("commande.pdf");
     });
 </script>
-
-<!-- Custom Stylesheet -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <style>
-    .container.site {
-        margin-top: 30px;
-    }
-    .text-logo {
-        font-family: 'Arial', sans-serif;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .form-control {
-        margin-bottom: 15px;
-    }
-    .btn {
-        margin-top: 20px;
-    }
-    .caption {
-        background-color: #f8f9fa;
-        padding: 20px;
-        border-radius: 10px;
-    }
-    .form-group {
-        margin-bottom: 20px;
+    .text-danger {
+        font-size: 0.875em;
+        margin-bottom: 5px;
+        display: block;
     }
 </style>
 
