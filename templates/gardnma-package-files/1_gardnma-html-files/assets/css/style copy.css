@@ -1880,6 +1880,20 @@ and (max-device-width: 991px) {
 
 
 
+/* Set the size of the map */
+.map {
+    height: 300px;
+    width: 100%;
+}
+/* Style the input field */
+.pac-input {
+    margin-top: 10px;
+    width: 300px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+
 
 
 

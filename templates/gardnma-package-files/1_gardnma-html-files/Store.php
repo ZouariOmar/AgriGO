@@ -64,7 +64,7 @@
         <!-- Template js -->
         <script src="assets/js/custom.js"></script>
         <!-- search script -->
-        <!-- <script src="assets/js/search.js"></script> -->
+        <script src="assets/js/search.js"></script>
 
     </head>
     <body>
@@ -263,7 +263,7 @@
                                             </div>
                                             <div class="text">
                                                 <p>Call Anytime</p>
-                                                <a href="tel:926668880000">92 666 888 0000</a>
+                                                <a href="tel:926668880000">+216 26 789 544</a>
                                             </div>
                                         </div>
                                     </div>
@@ -318,7 +318,7 @@
                             <div class="input-group">
                                 <input type="text" placeholder="Search Here" class="form-control input-lg" id="inputGroup"/>
                                 <span class="input-group-addon">
-                                    <a href="#" style="color:white  ">Search</a>
+                                    <a href="#" style="color:white ">Search</a>
                                 </span>
                             </div>
                         </div>
@@ -437,6 +437,26 @@
                                                                             <div class="caption">
                                                                                 <p> Localisation: </p>
                                                                                 <p>' . htmlspecialchars($offre['localisation']) . '</p>
+                                                                            </div>
+                                                                        </li>
+                                                                         <li class="li_product_desc">
+                                                                            <div class="caption">
+                                                                                <p> Type: </p>
+                                                                                <p>' ;
+                                                                                switch ($offre['categorie_id']) {
+                                                                                    case 1:
+                                                                                        echo 'Job';
+                                                                                        break;
+                                                                                    case 2:
+                                                                                        echo 'Lending';
+                                                                                        break;
+                                                                                    case 3:
+                                                                                        echo 'Produce';
+                                                                                        break;
+                                                                                    default:
+                                                                                        echo 'Unknown';
+                                                                                }
+                                                                                echo '</p>
                                                                             </div>
                                                                         </li>
                                                                         <li class="li_product_buy_button">

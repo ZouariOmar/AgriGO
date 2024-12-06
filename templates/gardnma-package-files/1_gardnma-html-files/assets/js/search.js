@@ -1,19 +1,35 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('inputGroup');
+    const searchButton = document.querySelector('#search_manu .input-group-addon a');
+    const offerContainer = document.querySelector('.product-layout_width');
 
-    $('#inputGroup').on('input', function() {
-      var searchQuery = $(this).val().toLowerCase();
-  
-      $('.product-layout').hide();
-  
-      $('.product-layout').each(function() {
-        var productTitle = $(this).find('.product_title a').text().toLowerCase();
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const offerForms = offerContainer.querySelectorAll('form');
 
-  
-        if (
-          productTitle.includes(searchQuery)
-        ) {
-          $(this).show();
-        }
-      });
+        offerForms.forEach(form => {
+            const title = form.querySelector('.product_title a').textContent.toLowerCase();
+            if (title.includes(searchTerm)) {
+                form.style.display = '';
+            } else {
+                form.style.display = 'none';
+            }
+        });
+    }
+
+    // Perform search when the search button is clicked
+    searchButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        performSearch();
     });
-  });
+
+    // Perform search when Enter key is pressed in the search input
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // Optional: Perform search as the user types (real-time filtering)
+    searchInput.addEventListener('input', performSearch);
+});

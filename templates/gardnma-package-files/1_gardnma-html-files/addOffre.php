@@ -33,6 +33,21 @@
         <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
         <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
 
+        <style>
+            /* Set the size of the map */
+            #map {
+                height: 300px;
+                width: 100%;
+            }
+            /* Style the input field */
+            #pac-input {
+                margin-top: 10px;
+                width: 300px;
+                padding: 5px;
+                font-size: 14px;
+            }
+        </style>
+
 
         <!-- loop -->
         <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
@@ -49,6 +64,8 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/custom copy.js"></script>
+        <!-- the geoloc -->
+        <script src="assets/js/goe.js"></script>
     </head>
     <body>
 
@@ -355,6 +372,13 @@
                                         <button type="submit" class="btn btn-primary reg_button">Créer l'offre</button>
                                     </form>
                                 </fieldset>
+                                <input id="pac-input" type="text" placeholder="Search for a place">
+                                <div id="map"></div>
+                                            <!-- Load the Google Maps JavaScript API with the Places library -->
+                                        
+                                <script async defer
+                                                src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyeYasnD_lrhV0y7QH7eE-n84BT-ZG7jp2z&libraries=geometry,places&callback=initMap">
+                                </script>
 
                             </div>
                         </div>

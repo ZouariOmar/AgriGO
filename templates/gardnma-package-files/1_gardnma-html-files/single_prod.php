@@ -68,6 +68,22 @@ if (isset($_POST['offre_id'])) {
         <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
 
 
+        <style>
+            /* Set the size of the map */
+            #map {
+                height: 100px;
+                width: 100px;
+            }
+            /* Style the input field */
+            #pac-input {
+                margin-top: 10px;
+                width: 300px;
+                padding: 5px;
+                font-size: 14px;
+            }
+        </style>
+
+
 
 
         <!-- loop -->
@@ -81,6 +97,8 @@ if (isset($_POST['offre_id'])) {
         <script src="assets/vendors/timepicker/timePicker.js"></script>
         <!-- Template js -->
         <script src="assets/js/custom.js"></script>
+        <!-- the geoloc -->
+        <script src="assets/js/goe.js"></script>
 
 
     </head>
@@ -327,6 +345,13 @@ if (isset($_POST['offre_id'])) {
         </div>
 
         <div id="site_content">
+            <input id="pac-input" type="text" placeholder="Search for a place">
+            <div id="map"></div>
+            <!-- Load the Google Maps JavaScript API with the Places library -->
+                                        
+            <script async defer
+                src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyeYasnD_lrhV0y7QH7eE-n84BT-ZG7jp2z&libraries=geometry,places&callback=initMap">
+            </script>
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-4 col-xs-12 left_sidebar1">
@@ -428,19 +453,25 @@ if (isset($_POST['offre_id'])) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <ul class="nav nav-tabs">
-                                    <li class=""><a data-toggle="tab" href="#tab-description" aria-expanded="false">Description</a></li>
-                                    <li class="active"><a data-toggle="tab" href="#tab-review" aria-expanded="true">Reviews (0)</a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-description" aria-expanded="true">Description</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#tab-review" aria-expanded="false">Reviews (0)</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="tab-description" class="tab-pane">
                                         <div class="row ">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur metus leo, dignissim vitae bibendum et, pretium id nulla. Nulla laoreet dapibus cursus. Sed rhoncus bibendum neque non varius. Sed cursus ex id imperdiet tincidunt. Vestibulum vel lacus vel lectus vulputate condimentum pharetra ac mauris. Vivamus dictum justo in est maximus, a pretium neque sodales.</p>
+                                            <input id="pac-input" type="text" placeholder="Search for a place">
+                                            <div id="map"></div>
+                                            <!-- Load the Google Maps JavaScript API with the Places library -->
+                                        
+                                            <script async defer
+                                                src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyeYasnD_lrhV0y7QH7eE-n84BT-ZG7jp2z&libraries=geometry,places&callback=initMap">
+                                            </script>
                                         </div>
                                     </div>
                                     <div id="tab-review" class="tab-pane active">
                                         <form id="form-review" class="form-horizontal">
 
-                                            <h2>Write a review</h2>
+                                            <!-- <h2>Write a review</h2>
                                             <div class="form-group required">
                                                 <div class="col-sm-12">
                                                     <label for="input-name" class="control-label">Your Name</label>
@@ -467,7 +498,14 @@ if (isset($_POST['offre_id'])) {
                                                     <input type="radio" value="4" name="rating">
                                                     &nbsp;
                                                     <input type="radio" value="5" name="rating">
-                                                    &nbsp;Good</div>
+                                                    &nbsp;Good</div> -->
+                                                    <input id="pac-input" type="text" placeholder="Search for a place">
+                                                    <div id="map"></div>
+                                                    <!-- Load the Google Maps JavaScript API with the Places library -->
+                                        
+                                                    <script async defer
+                                                        src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyeYasnD_lrhV0y7QH7eE-n84BT-ZG7jp2z&libraries=geometry,places&callback=initMap">
+                                                    </script>
                                             </div>
                                             <div class="buttons clearfix">
                                                 <div class="pull-right">
