@@ -99,6 +99,9 @@ if (isset($_POST['offre_id'])) {
         <script src="assets/js/custom.js"></script>
         <!-- the geoloc -->
         <script src="assets/js/goe.js"></script>
+        <!-- qrcode lib -->
+        <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
 
 
     </head>
@@ -345,13 +348,6 @@ if (isset($_POST['offre_id'])) {
         </div>
 
         <div id="site_content">
-            <input id="pac-input" type="text" placeholder="Search for a place">
-            <div id="map"></div>
-            <!-- Load the Google Maps JavaScript API with the Places library -->
-                                        
-            <script async defer
-                src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyeYasnD_lrhV0y7QH7eE-n84BT-ZG7jp2z&libraries=geometry,places&callback=initMap">
-            </script>
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-4 col-xs-12 left_sidebar1">
@@ -432,6 +428,8 @@ if (isset($_POST['offre_id'])) {
                                     <div class="form-group">
                                         <label for="input-quantity" class="control-label">Qty</label>
                                         <input type="text" class="form-control" id="input-quantity" size="2" value="1" name="quantity">
+                                        <!-- qrcode -->
+                                        <div id="qrcode"></div>
 
                                         <br>
                                         <a class="btn btn-primary btn-lg btn-block reg_button" href="cart.html"><i class="fa fa-shopping-cart"></i> BUY NOW!</a>
@@ -786,7 +784,44 @@ if (isset($_POST['offre_id'])) {
 
         </footer>
         <!--End Footer One-->
-    
+        
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const offerData = {
+                    titre: <?php echo json_encode($offre['titre']); ?>,
+                    prix: <?php echo json_encode($offre['prix']); ?> + "DT",
+                    detail: <?php echo json_encode($offre['detail']); ?>,
+                    localisation: <?php echo json_encode($offre['localisation']); ?>,
+                    categorie_id: <?php echo json_encode($offre['categorie_id']); ?>
+                };
+
+                function getCategoryType(categorie_id) {
+                    switch (categorie_id) {
+                        case 1:
+                            return 'job';
+                        case 2:
+                            return 'lending';
+                        case 3:
+                            return 'produce';
+                        default:
+                            return 'unknown';
+                    }
+                }
+
+                const categoryType = getCategoryType(offerData.categorie_id);
+
+                const qrString = `titre:${offerData.titre}\nprix:${offerData.prix}\ndetail:${offerData.detail}\nlocalisation:${offerData.localisation}\ntype:${categoryType}`;
+
+                const qr = qrcode(0, 'M');
+                qr.addData(qrString);
+                qr.make();
+
+                document.getElementById('qrcode').innerHTML = qr.createImgTag(5);
+            });
+        </script>
+
     
     
     
