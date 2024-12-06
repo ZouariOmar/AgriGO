@@ -20,19 +20,21 @@
 </head>
 
 <body>
-	<form class="card" action="sendemail.php"post">
-		<p class="lock-icon"><i class="fas fa-lock"> </i></p>
-		<h2>Forgot Password?</h2>
-		<p>You can reset your Password here</p>
-		<div class="email-input-container">
-			<span class="email-icon">
-				<i class="fa fa-envelope"></i>
-				<!-- Replace with an icon library of your choice -->
-			</span>
-			<input type="email" name="recipient_email" placeholder="Enter your email" class="email-input" />
-		</div>
-		<button>Send My Password</button>
-	</form>
+	<main>
+		<form class="card" action="sendemail.php" post">
+			<p class="lock-icon"><i class="fas fa-lock"> </i></p>
+			<h2>Forgot Password?</h2>
+			<p>You can reset your Password here</p>
+			<div class="email-input-container">
+				<span class="email-icon">
+					<i class="fa fa-envelope"></i>
+					<!-- Replace with an icon library of your choice -->
+				</span>
+				<input type="email" name="recipient_email" placeholder="Enter your email" class="email-input" />
+			</div>
+			<button>Send My Password</button>
+		</form>
+	</main>
 </body>
 
 </html>

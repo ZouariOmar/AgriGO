@@ -61,7 +61,7 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 					<a href="#"><i class="fa fa-facebook"></i></a>
 					<a href="#"><i class="fa fa-google"></i></a>
 					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="../../public/html/face_id_login.html"><i class="fa fa-id-badge"></i></a>
+					<a href="../Services/face_id_login.php"><i class="fa fa-id-badge"></i></a>
 				</div>
 				<span>or use your account</span>
 				<input id="identifier" name="identifier" type="text" placeholder="Email or Username"

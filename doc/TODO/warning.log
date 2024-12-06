@@ -1,0 +1,4 @@
+! If someone have my face img, so he can enter to my account with face recognition sys (face-api)
+> We need 2FA (email code) with face recognition sys
+! But if i have more than 1 detected img result (2 brothers situation)
+> We need other input verification (username/email) with face recognition sys

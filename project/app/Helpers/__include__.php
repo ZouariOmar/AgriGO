@@ -78,6 +78,20 @@ class Fetch
   }
 
   /**
+   * Summary of fetch_user_fi
+   * * Fetch user from identifier
+   * @param int $identifier
+   * @return mixed
+   */
+  public function fetch_user_fi($identifier)
+  {
+    $user = $this->db->query("SELECT * FROM Usrs WHERE Username = :identifier OR Email = :identifier", [
+      'identifier' => $identifier
+    ]);
+    return $user[0];  // Select the first (and only) result
+  }
+
+  /**
    * Summary of fetch_user_profile
    * * Fetch user profile array
    * @param int $user_id
@@ -257,7 +271,7 @@ class SignIn
    * @param string $status
    * @return void
    */
-  private function ass_login_history($user_id = null, $status = null)
+  public function ass_login_history($user_id = null, $status = null)
   {
     $this->db->query("INSERT INTO Login_History
       (Usr_ID, IP_Address, Usr_Host, Server_Address, Server_Name, Server_Protocol, Status)
@@ -270,9 +284,6 @@ class SignIn
       'server_protocol' => $_SERVER['SERVER_PROTOCOL'],
       'status' => $status
     ]);
-
-    echo $user_id . '<br>';
-    echo $status;
 
     // Force exit in `FAILED` status
     if ($status === 'FAILED') {
