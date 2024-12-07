@@ -8,7 +8,7 @@
 <?php include '../include/nav.php' ?>
 <div class="container py-2">
     <h2>Liste des produits</h2>
-    <a href="../models/ajouter_produit.php" class="btn btn-primary">Ajouter produit</a>
+    <a href="../controllers/ajouter_produit.php" class="btn btn-primary">Ajouter produit</a>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -41,7 +41,7 @@
                 <td><img class="img-fluid" width="90" src="../upload/produit/<?= $produit->image ?>" alt="<?= $produit->libelle ?>"></td>
                 <td>
                     <a class="btn btn-primary" href="../models/modifier_produit.php?id=<?php echo $produit->id ?>">Modifier</a>
-                    <a class="btn btn-danger" href="../models/supprimer_produit.php?id=<?php echo $produit->id ?>" onclick="return confirm('Voulez vous vraiment supprimer le produit <?php echo $produit->libelle?> ?')">Supprimer</a>
+                    <a class="btn btn-danger" href="../controllers/supprimer_produit.php?id=<?php echo $produit->id ?>" onclick="return confirm('Voulez vous vraiment supprimer le produit <?php echo $produit->libelle?> ?')">Supprimer</a>
                 </td>
             </tr>
             <?php

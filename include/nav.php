@@ -52,6 +52,6 @@ if (isset($_SESSION['utilisateur'])) {
                 ?>
             </ul>
         </div>
-        <a class="btn float-end" href="../front/"><i class="fa-solid fa-cart-shopping"></i> Site front</a>
+        <a class="btn float-end" href="../views front/"><i class="fa-solid fa-cart-shopping"></i> Site front</a>
     </div>
 </nav>

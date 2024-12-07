@@ -8,7 +8,7 @@
 <?php include '../include/nav.php' ?>
 <div class="container py-2">
     <h2>Liste des catégories</h2>
-    <a href="../models/ajouter_categorie.php" class="btn btn-primary">Ajouter catégorie</a>
+    <a href="../controllers/ajouter_categorie.php" class="btn btn-primary">Ajouter catégorie</a>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -36,7 +36,7 @@
                 <td><?php echo $categorie['date_creation'] ?></td>
                 <td>
                     <a href="../models/modifier_categorie.php?id=<?php echo $categorie['id'] ?>" class="btn btn-primary">Modifier</a>
-                    <a href="../models/supprimer_categorie.php?id=<?php echo $categorie['id'] ?>" onclick="return confirm('Voulez vous vraiment supprimer la catégorie <?php echo $categorie['libelle'] ?>');" class="btn btn-danger">Supprimer</a>
+                    <a href="../controllers/supprimer_categorie.php?id=<?php echo $categorie['id'] ?>" onclick="return confirm('Voulez vous vraiment supprimer la catégorie <?php echo $categorie['libelle'] ?>');" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
             <?php

@@ -24,7 +24,7 @@ $produit = $sqlState->fetch(PDO::FETCH_ASSOC);
             </div>
             <div class="col-md-6">
                 <?php
-                $discount = $produit['discount'];
+                //$discount = $produit['discount'];
                 $prix = $produit['prix'];
                 ?>
                 <div class="d-flex align-items-center">
