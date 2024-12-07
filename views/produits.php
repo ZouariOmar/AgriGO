@@ -17,8 +17,8 @@
                 <th>Prix</th>
                
                 <th>Catégorie</th>
+                <th>Date de creation</th>
                 <th>Image</th>
-                <th>Date de création</th>
                 <th>Opérations</th>
             </tr>
         </thead>
