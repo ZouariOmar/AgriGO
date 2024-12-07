@@ -25,7 +25,7 @@
             return $prix - (($prix * $discount) / 100);
         }
         ?>
-        <a class="btn float-end" href="../"><i class="fa-solid fa-screwdriver-wrench"></i> Backoffice</a>
+        <a class="btn float-end" href="../"><i class="fa-solid fa-screwdriver-wrench"></i> Admin Panel</a>
         <a class="btn float-end" href="panier.php"><i class="fa-solid fa-cart-shopping"></i> Panier
             (<?php echo $productCount; ?>)</a>
     </div>

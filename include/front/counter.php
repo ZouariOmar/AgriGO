@@ -37,10 +37,7 @@
                 </button>
             <?php endif; ?>
         </form>
-    <?php else: ?>
-        <!-- Warning for unauthenticated users -->
-        <div class="alert alert-warning" role="alert">
-            Vous devez être connecté pour acheter ce produit <strong><a href="../connexion.php">Connexion</a></strong>
-        </div>
+    
+      
     <?php endif; ?>
 </div>

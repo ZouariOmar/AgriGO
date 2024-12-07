@@ -1,10 +1,5 @@
 <?php
 session_start();
-$connecte = false;
-if (isset($_SESSION['utilisateur'])) {
-    $connecte = true;
-}
-
 ?>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -24,8 +19,8 @@ if (isset($_SESSION['utilisateur'])) {
                 </li>
                
                 <?php
-                if ($connecte) {
-                    ?>
+                
+                    //?>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($currentPage == '/AgriGo/categories.php') echo 'active' ?>"
                            aria-current="page" href=" ../AgriGo/views/categories.php"><i
@@ -44,11 +39,11 @@ if (isset($_SESSION['utilisateur'])) {
                     
 
                     <?php
-                } else {
+              
                     ?>
                     
                     <?php
-                }
+                
                 ?>
             </ul>
         </div>
