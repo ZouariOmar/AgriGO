@@ -118,34 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="message">
             <?php echo $message; ?>
         </div>
-        <form method="POST" action="">
-            <label for="titre">Titre:</label>
-            <input type="text" id="titre" name="titre" required>
-
-            <label for="prix">Prix:</label>
-            <input type="number" id="prix" name="prix" step="0.01" required>
-
-            <label for="telephone">Téléphone:</label>
-            <input type="tel" id="telephone" name="telephone" required>
-
-            <label for="localisation">Localisation:</label>
-            <input type="text" id="localisation" name="localisation" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="image">Image URL:</label>
-            <input type="url" id="image" name="image" required>
-
-            <label for="detail">Détail:</label>
-            <textarea id="detail" name="detail" rows="4" required></textarea>
-
-            <label for="categorie_id">ID de la catégorie:</label>
-            <input type="number" id="categorie_id" name="categorie_id" required>
-
-            <input type="submit" value="Créer l'offre" class="button">
-        </form>
-        <a href="../Views/offre/index.php" class="button">Retour à la page d'accueil</a>
+        <a href="../Views/sneat-1.0.0/html/MOindex.php" class="button">Retour à la page d'accueil</a>
     </div>
 </body>
 </html>

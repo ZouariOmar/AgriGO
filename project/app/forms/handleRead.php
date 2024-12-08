@@ -25,11 +25,11 @@ try {
 
             //Sup and UPD buttons
             echo "<td>";
-            echo "<form method='post' action='../../forms/handlerDelete.php' style='display:inline;'>";
+            echo "<form method='post' action='../../../forms/handlerDelete.php' style='display:inline;'>";
             echo "<input type='hidden' name='id' value='" . $category['id'] . "'>";
             echo "<button type='submit' class='action-btn delete-btn'>Supprimer</button>";
             echo "</form>";
-            echo "<form method='post' action='edit.php' style='display:inline;'>";
+            echo "<form method='post' action='MCedit.php' style='display:inline;'>";
             echo "<input type='hidden' name='id' value='" . htmlspecialchars($category['id']) . "'>";
             echo "<input type='hidden' name='type' value='" . htmlspecialchars($category['type']) . "'>";
             echo "<button type='submit' class='action-btn edit-btn'>Mettre à jour</button>";

@@ -417,6 +417,24 @@ if (isset($_POST['offre_id'])) {
                                     </div>
                                     <li>Localisation:</li>
                                     <li><?php echo $offre['localisation']?></li>
+                                    <li>Type:</li>
+                                    <li>
+                                    <?php
+                                        switch ($offre['categorie_id']) {
+                                            case 1:
+                                                echo 'Job';
+                                                break;
+                                            case 2:
+                                                echo 'Lending';
+                                                break;
+                                            case 3:
+                                                echo 'Produce';
+                                                break;
+                                            default:
+                                                echo 'Unknown';
+                                        }
+                                    ?>
+                                    </li>
                                 </ul>
 
                                 <div id="product">

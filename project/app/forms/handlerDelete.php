@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="message">
             <?php echo $message; ?>
         </div>
-        <a href="../Views/categorie/index.php" class="button">Retour à la page d'accueil</a>
+        <a href="../Views/sneat-1.0.0/html/MCindex.php" class="button">Retour à la page d'accueil</a>
     </div>
 </body>
 </html>
