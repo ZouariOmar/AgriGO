@@ -17,7 +17,7 @@
             <button onclick="return false;" class="btn btn-primary mx-2 counter-moins">-</button>
             
             <!-- Hidden product ID -->
-            <input type="hidden" name="id" value="<?php echo $idProduit; ?>">
+            <input type="Hidden" name="id" value="<?php echo $idProduit; ?>">
             
             <!-- Quantity input -->
             <input class="form-control" value="<?php echo $qty; ?>" type="number" name="qty" id="qty" max="99">
@@ -37,7 +37,10 @@
                 </button>
             <?php endif; ?>
         </form>
-    
-      
+    <?php else: ?>
+        <!-- Warning for unauthenticated users -->
+        <div class="alert alert-warning" role="alert">
+            Vous devez être connecté pour acheter ce produit <strong><a href="../connexion.php">Connexion</a></strong>
+        </div>
     <?php endif; ?>
 </div>

@@ -11,7 +11,7 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>#ID</th>
+            <th>REF</th>
             <th>Client</th>
             <th>Total</th>
             <th>Date</th>
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         <?php
-        require_once '../config/database.php';
+        require_once '../include/database.php';
         $commandes = $pdo->query('SELECT commande.*,utilisateur.login as "login" FROM commande INNER JOIN utilisateur ON commande.id_client = utilisateur.id ORDER BY commande.date_creation DESC')->fetchAll(PDO::FETCH_ASSOC);
         foreach ($commandes as $commande) {
             ?>
@@ -29,7 +29,7 @@
                 <td><?php echo $commande['login'] ?></td>
                 <td><?php echo $commande['total'] ?> <i class="fa fa-solid fa-dollar"></i></td>
                 <td><?php echo $commande['date_creation'] ?></td>
-                <td><a class="btn btn-primary btn-sm" href="../models/commande.php?id=<?php echo $commande['id']?>">Afficher détails</a></td>
+                <td><a class="btn btn-primary btn-sm" href="commande.php?id=<?php echo $commande['id']?>">Afficher détails</a></td>
             </tr>
             <?php
         }

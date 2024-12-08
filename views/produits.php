@@ -1,55 +1,57 @@
+<?php
+// Include database connection
+require_once 'config/database.php';
+
+// Query the products from the database
+$query = "SELECT produit.*, categorie.libelle as 'categorie_libelle' FROM produit INNER JOIN categorie ON produit.id_categorie = categorie.id";
+$products = $pdo->query($query)->fetchAll(PDO::FETCH_OBJ);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include '../include/head.php' ?>
-    <title>Liste des produits</title>
+    <?php include 'include/head.php' ?>
+    <title>Product List</title>
 </head>
 <body>
-<?php include '../include/nav.php' ?>
-<div class="container py-2">
-    <h2>Liste des produits</h2>
-    <a href="../controllers/ajouter_produit.php" class="btn btn-primary">Ajouter produit</a>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>#ID</th>
-                <th>Libelle</th>
-                <th>Prix</th>
-               
-                <th>Catégorie</th>
-                <th>Date de creation</th>
-                <th>Image</th>
-                <th>Opérations</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        require_once '../config/database.php';
-        $categories = $pdo->query("SELECT produit.*,categorie.libelle as 'categorie_libelle' FROM produit INNER JOIN categorie ON produit.id_categorie = categorie.id")->fetchAll(PDO::FETCH_OBJ);
-        foreach ($categories as $produit){
-            $prix = $produit->prix;
-            
-            $prixFinale = $prix ;
-            ?>
-            <tr>
-                <td><?= $produit->id ?></td>
-                <td><?= $produit->libelle ?></td>
-                <td><?= $prix ?> <i class="fa fa-solid fa-dollar"></i></td>
-                
-                <td><?= $produit->categorie_libelle ?></td>
-                <td><?= $produit->date_creation ?></td>
-                <td><img class="img-fluid" width="90" src="../upload/produit/<?= $produit->image ?>" alt="<?= $produit->libelle ?>"></td>
-                <td>
-                    <a class="btn btn-primary" href="../models/modifier_produit.php?id=<?php echo $produit->id ?>">Modifier</a>
-                    <a class="btn btn-danger" href="../controllers/supprimer_produit.php?id=<?php echo $produit->id ?>" onclick="return confirm('Voulez vous vraiment supprimer le produit <?php echo $produit->libelle?> ?')">Supprimer</a>
-                </td>
-            </tr>
-            <?php
-        }
-        ?>
-        </tbody>
-    </table>
-</div>
+    <?php include 'include/nav.php' ?>
+    
+    <div class="container py-2">
+        <h2>Product List</h2>
+        
+        <a href="views/ajouter_produit.php" class="btn btn-primary">Add Product</a>
+        
+        <table class="table table-striped table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Creation Date</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($products as $product): ?>
+                    <tr>
+                        <td><?= $product->id ?></td>
+                        <td><?= $product->libelle ?></td>
+                        <td><?= $product->prix ?> <i class="fa fa-solid fa-dollar"></i></td>
+                        <td><?= $product->categorie_libelle ?></td>
+                        <td><?= $product->date_creation ?></td>
+                        <td><img class="img-fluid" width="90" src="upload/produit/<?= $product->image ?>" alt="<?= $product->libelle ?>"></td>
+                        <td>
+                            <a class="btn btn-primary" href="views/modifier_produit.php?id=<?= $product->id ?>">Edit</a>
+                            <a class="btn btn-danger" href="views/supprimer_produit.php?id=<?= $product->id ?>" onclick="return confirm('Are you sure you want to delete the product <?= $product->libelle ?>?')">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
+    
 </body>
 </html>
