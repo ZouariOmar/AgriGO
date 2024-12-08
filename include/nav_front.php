@@ -20,10 +20,6 @@
             $productCount = isset($_SESSION['panier'][$idUtilisateur]) ? count($_SESSION['panier'][$idUtilisateur]) : 0;
         }
 
-        function calculerRemise($prix, $discount)
-        {
-            return $prix - (($prix * $discount) / 100);
-        }
         ?>
         <a class="btn float-end" href="../"><i class="fa-solid fa-screwdriver-wrench"></i> Backoffice</a>
         <a class="btn float-end" href="panier.php"><i class="fa-solid fa-cart-shopping"></i> Panier

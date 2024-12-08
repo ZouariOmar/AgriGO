@@ -24,12 +24,12 @@ session_start();
                     ?>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($currentPage == '/mon projet/categories.php') echo 'active' ?>"
-                           aria-current="page" href=" /mon projet/views/categories.php"><i
+                           aria-current="page" href=" /AgriGo/views/categories.php"><i
                                     class="fa-brands fa-dropbox"></i> Liste des catégories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($currentPage == '/mon projet/produits.php') echo 'active' ?>"
-                           aria-current="page" href="/views/produits.php"><i class="fa-solid fa-tag"></i>
+                           aria-current="page" href="../views/produits.php"><i class="fa-solid fa-tag"></i>
                             Liste des produits</a>
                     </li>
                     <li class="nav-item">
