@@ -230,6 +230,7 @@ $list = $reportC->reportList($category);
                         <input type="hidden" value="<?= htmlspecialchars($report['Report_ID']); ?>" name="id">
                     </form>
                     <a href="deleteReport.php?id=<?= htmlspecialchars($report['Report_ID']); ?>" class="report-delete-link">Delete</a>
+                    <a href="viewResponses.php?reportid=<?= htmlspecialchars($report['Report_ID']); ?>" class="report-view-responses-link">View Responses</a>
                 </td>
             </tr>
             <?php

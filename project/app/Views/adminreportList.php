@@ -40,6 +40,10 @@ $adminlist = $adminreportC->reportList();
                             <input type="submit" name="update" value="Update" class="reports-update-button">
                             <input type="hidden" value="<?= htmlspecialchars($report['Stat_ID']); ?>" name="id">
                         </form>
+                        <form method="GET" action="addResponse.php" class="reports-response-form">
+                            <input type="hidden" name="reportid" value="<?= htmlspecialchars($report['StatRapportID']); ?>">
+                            <input type="submit" value="Add Response" class="reports-response-button">
+                        </form>
                     </td>
                 </tr>
                 <?php
@@ -47,4 +51,5 @@ $adminlist = $adminreportC->reportList();
             ?>
         </tbody>
     </table>
-</body
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Title styling */
+.responses-title {
+    text-align: center;
+    color: #28a745;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Table styling */
+.responses-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header styling */
+.responses-table-header {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Table data cell styling */
+.responses-table-cell {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Alternate row coloring */
+.responses-table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Table row hover effect */
+.responses-table-row:hover {
+    background-color: #e2f9e1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .responses-table {
+        font-size: 12px;
+    }
+}

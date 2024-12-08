@@ -101,30 +101,45 @@ body {
 }
 
 /* Form button styling within table */
-.report-update-button {
-    background-color: #28a745;
-    color: white;
+.report-update-button,
+.report-delete-link,
+.report-view-responses-link {
+    display: inline-block;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.report-update-button {
+    background-color: #28a745;
+    color: white;
 }
 
 .report-update-button:hover {
     background-color: #218838;
 }
 
-/* Delete link styling */
 .report-delete-link {
-    color: #dc3545;
-    text-decoration: none;
-    font-weight: bold;
+    background-color: #dc3545;
+    color: white;
 }
 
 .report-delete-link:hover {
-    text-decoration: underline;
+    background-color: #c82333;
+}
+
+.report-view-responses-link {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.report-view-responses-link:hover {
+    background-color: #138496;
 }
 
 /* Responsive design */

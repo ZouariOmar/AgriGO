@@ -1,7 +1,7 @@
 <?php
 
-include "../Models/adminreport.php";  
-include "../Controllers/adminreportController.php";  
+include "../Models/adminReport.php";
+include "../Controllers/adminReportController.php";
 
 ob_start(); // Make sure no output is sent before headers
 
@@ -20,31 +20,32 @@ if (isset($_POST['id']) || isset($_GET['id'])) {
     if (!$adminreport) {
         die("Error: Report not found.");
     }
+
 } else {
     die("Error: ID not provided.");
 }
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve and sanitize input values
-    $status = isset($_POST['ST']) ? trim($_POST['ST']) : '';
-    $report_id = isset($_POST['id']) ? trim($_POST['id']) : '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['StatRapportID'], $_POST['ST'])) {
+    if (!empty($_GET['StatRapportID']) && !empty($_POST['ST'])) {
+        // Use the retrieved 'sta' value
 
-    // Log values for debugging
-    error_log("Form Submission: Status = '" . $status . "', ID = '" . $report_id . "'");
+        // Create the report object
+        $adminreport = new adminreport(
+            null,
+            null,
+            $_POST['ST']
+        );
 
-    // Check if the Status and ID fields are populated
-    if (!empty($status) && !empty($report_id)) {
-        // Attempt to update the report status
-        if ($adminreportC->updateReportStatus($report_id, $status)) {
+        // Attempt to update the report
+        if ($adminreportC->updateReportStatus($report, $_GET['id'])) {
             header('Location: adminreportList.php');
-            exit;
+            exit; 
         } else {
             $error = "Update failed. Please check the update function.";
         }
     } else {
-        $error = "Error: Status and ID fields are required.";
-        error_log($error);
+        $error = "Error: All fields are required.";
     }
 }
 
