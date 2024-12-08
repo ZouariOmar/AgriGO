@@ -1877,14 +1877,6 @@ and (max-device-width: 991px) {
     margin-bottom: 20px;
     overflow: auto;
 }
-
-
-
-/* Set the size of the map */
-.map {
-    height: 300px;
-    width: 100%;
-}
 /* Style the input field */
 .pac-input {
     margin-top: 10px;
