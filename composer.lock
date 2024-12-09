@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea142aea38a1fdc7e8750a16fe9581bf",
+    "content-hash": "1e600b4eb84af113e67eb2199b8cb9b9",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -231,16 +231,16 @@
         },
         {
             "name": "google/apiclient",
-            "version": "v2.18.0",
+            "version": "v2.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "846f149c9f879449145326dad99ef00bf1d879f3"
+                "reference": "3f6cb1a970fe2d210823a79de8d5dbae405a9616"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/846f149c9f879449145326dad99ef00bf1d879f3",
-                "reference": "846f149c9f879449145326dad99ef00bf1d879f3",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/3f6cb1a970fe2d210823a79de8d5dbae405a9616",
+                "reference": "3f6cb1a970fe2d210823a79de8d5dbae405a9616",
                 "shasum": ""
             },
             "require": {
@@ -294,9 +294,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client/issues",
-                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.18.0"
+                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.18.1"
             },
-            "time": "2024-10-16T21:58:58+00:00"
+            "time": "2024-11-24T13:21:03+00:00"
         },
         {
             "name": "google/apiclient-services",

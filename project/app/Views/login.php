@@ -2,6 +2,23 @@
 //? Include declaration part
 include '../Helpers/custom.php';
 
+//? Using declaration part
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
+use Dotenv\Exception\ValidationException;
+
+
+try {  //? Hold the .env locale file
+	$dotenv = Dotenv::createImmutable('../../');  // Navigate to the .env fil lvl
+	$dotenv->load();
+} catch (InvalidPathException $e) {  // Catches the specific error if .env file path is incorrect or file is missing
+	echo "Error: .env file not found or incorrect path specified." . $e->getMessage();
+} catch (ValidationException $e) {  // Catches validation errors (useful if you're validating required variables)
+	echo "Validation Error: " . $e->getMessage();
+} catch (Exception $e) {  // Catches any other general exceptions
+	echo "An unexpected error occurred: " . $e->getMessage();
+}
+
 session_start();
 $status = $_SESSION['status'] ?? null;      // Fetch the `status` session
 $user_id = $_SESSION['user_id'] ?? null;    // Fetch the `user_id` session
@@ -27,6 +44,8 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 	<!-- Login css -->
 	<link rel="stylesheet" href="../../public/css/login.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -36,7 +55,7 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 			<form onsubmit="return validateSignUpForm();" action="../../app/Controllers/addUsr.php" method="post">
 				<h1>Create Account</h1>
 				<div class="social-container">
-					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#" onclick="acc"><i class="fa fa-facebook"></i></a>
 					<a href="#"><i class="fa fa-google"></i></a>
 					<a href="#"><i class="fa fa-linkedin"></i></a>
 				</div>
@@ -59,7 +78,9 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-google"></i></a>
+					<a href="#" id="google-signin-btn" class="google-signin-btn" title="Sign in with Google">
+						<i class="fa fa-google"></i>
+					</a>
 					<a href="#"><i class="fa fa-linkedin"></i></a>
 					<a href="../Services/face_id_login.php"><i class="fa fa-id-badge"></i></a>
 				</div>
@@ -113,6 +134,46 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 	?>
 
 	<!-- Login js -->
+	<script>
+		document.getElementById('google-signin-btn').addEventListener('click', function (event) {
+			event.preventDefault(); // Prevent default link behavior
+
+			// Initialize Google Sign-In
+			google.accounts.id.initialize({
+				client_id: '<?php echo $_ENV['CLIENT_ID']; ?>', // Replace with your client ID
+				callback: handleCredentialResponse
+			});
+
+			// Prompt the Google Sign-In dialog
+			google.accounts.id.prompt();
+		});
+
+		// Handle the response
+		function handleCredentialResponse(response) {
+			if (response.credential) {
+				console.log('Encoded JWT ID token received:', response.credential);
+
+				// Send the token to your backend for validation
+				fetch('../Controllers/AuthController.php', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ idToken: response.credential })
+				})
+					.then(res => res.json()) // Parse the response as JSON
+					.then(data => {
+						console.log('Backend response data:', data); //! Debug log the backend response
+
+						// Redirect the user
+						(data.success) ? window.location.href = '../../public/html/contact.html' : alert('Authentication failed: ' + data.message);
+					})
+					.catch(err => {
+						console.error('Error during authentication:', err);
+					});
+			}
+		}
+	</script>
+
+
 	<script src="../../public/js/login.js"></script>
 </body>
 

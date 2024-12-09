@@ -11,7 +11,7 @@
 
 main {
 	color: white;
-	display: flex;
+	display: grid;
 	align-items: center;
 	justify-content: center;
 	padding: 15rem 0;

@@ -14,7 +14,7 @@ $user = $exec->fetch_user_fi($_POST['identifier']);
 
 session_start();
 if (empty($user)) {
-  $_SESSION['status'] = "Error: Can't find the identifier!";
+  $_SESSION['status'] = "Identifier Not Found: The specified identifier could not be located. Please verify and try again.";
   header('Location: ../Services/face_id_login.php');
   exit();
 }

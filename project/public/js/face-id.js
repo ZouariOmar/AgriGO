@@ -19,21 +19,27 @@ async function main() {
 	await processReferenceImage();
 	startVideo();
 
-	const smile = await is_smile(); // Await the result of is_smile()
+	const smile = await is_smile();
+	const surprised = await is_surprised();
 	const headLeft = await is_headLeft();
 	const headRight = await is_headRight();
 
 	// Wait 1 second before starting the comparison
-	if (smile && headLeft && headRight)
-		setTimeout(compareLiveWithReference, 1000); // Main face check
-	else
+	if (smile && headLeft && headRight && surprised) {
+		const { speak } = await import("./text-to-speech.js");
+		console.log("last detection in progress...");
+		guide.textContent = "last detection in progress...";
+		speak("Stay Normal please."); // TTS func
+		setTimeout(compareLiveWithReference, 5000); // Main face check
+	} else
 		alert(
 			"No valid conditions met. Please smile and turn your head left and right."
 		);
 }
-//main().catch((err) => console.error("Error in main function:", err));
 
-// Function to load models
+/**
+ * @brief Function to load models
+ */
 async function loadModels() {
 	try {
 		await faceapi.nets.tinyFaceDetector.loadFromUri("../../models");
@@ -103,16 +109,6 @@ async function compareLiveWithReference() {
 		return;
 	}
 
-	const canvas = faceapi.createCanvasFromMedia(video);
-	document.body.append(canvas); // Append canvas to the body (or use a specific element)
-
-	// Ensure the canvas matches video dimensions
-	const displaySize = {
-		width: video.videoWidth,
-		height: video.videoHeight,
-	};
-	faceapi.matchDimensions(canvas, displaySize); // Match canvas dimensions with video dimensions
-
 	// Delay the detection and comparison
 	setTimeout(async () => {
 		const detection = await faceapi
@@ -132,30 +128,12 @@ async function compareLiveWithReference() {
 		const bestMatch = faceMatcher.findBestMatch(detection.descriptor);
 		console.log("Comparison result:", bestMatch.toString());
 
-		// Resize detections to match video dimensions
-		const resizedDetections = faceapi.resizeResults(detection, displaySize);
-
-		// Clear the canvas before redrawing
-		const ctx = canvas.getContext("2d");
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-		// Draw detections, landmarks, and face expressions
-		faceapi.draw.drawDetections(canvas, resizedDetections);
-		faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-		faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-		const box = resizedDetections.detection.box;
-		const drawBox = new faceapi.draw.DrawBox(box, {
-			label: Math.round(detection.age) + " year old " + detection.gender,
-		});
-		drawBox.draw(canvas);
-
 		// Alert if there is a match or not based on the distance threshold
 		if (bestMatch.distance <= 0.6) {
 			const userId = document.getElementById("userId").value;
 			window.location.href =
 				"http://localhost/AgriGO/project/app/Middleware/face-signIn.php?id=" +
 				userId;
-
 			alert(`Matched with ref img. Confidence: ${bestMatch.distance}`);
 		} else alert("No match found.");
 	}, 1000); // Wait for 1 second before detection (adjust as needed)
@@ -190,6 +168,39 @@ async function is_smile() {
 			// Detect smile based on happiness expression score (Consider smiling if happiness score > 0.5)
 			const smileDetected = detection.expressions.happy > 0.5;
 			resolve(smileDetected); // Resolve with the result of smile detection
+		}, 5000); // Delay the detection by 5s
+	});
+}
+
+/**
+ * Detect user mouth opened
+ * @returns
+ */
+async function is_surprised() {
+	const { speak } = await import("./text-to-speech.js");
+	// Return a promise that resolves after the timeout
+	console.log("Mouth detection in progress...");
+	guide.textContent = "Mouth detection in progress...";
+	speak("Open your mouth please."); // TTS func
+	return new Promise((resolve, reject) => {
+		setTimeout(async () => {
+			const detection = await faceapi
+				.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
+				.withFaceLandmarks()
+				.withFaceDescriptor()
+				.withFaceExpressions()
+				.withAgeAndGender();
+
+			// Check if a face is detected
+			if (!detection) {
+				alert("No face detected in the video.");
+				reject("No face detected"); // Reject the promise with an error message
+				return;
+			}
+
+			// Detect mouth based on surprised expression score (Consider mouth opened if surprised score > 0.5)
+			const mouthDetected = detection.expressions.surprised > 0.5;
+			resolve(mouthDetected); // Resolve with the result of mouth detection
 		}, 5000); // Delay the detection by 5s
 	});
 }
