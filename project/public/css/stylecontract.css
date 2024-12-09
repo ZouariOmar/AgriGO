@@ -1,0 +1,338 @@
+/* Variables de couleurs pour le mode clair */
+:root {
+    --background-color: #f8f9fa; /* Couleur de fond */
+    --text-color: #212529; /* Couleur du texte */
+    --header-color: #343a40; /* En-têtes */
+    --table-header-bg: #6c757d; /* Fond des en-têtes de table */
+    --table-row-bg: #ffffff; /* Fond des lignes de table */
+    --table-row-hover-bg: #e9ecef; /* Fond des lignes au survol */
+    --button-bg: #007bff; /* Couleur des boutons */
+    --button-hover-bg: #0056b3; /* Couleur des boutons au survol */
+    --link-color: #007bff; /* Couleur des liens */
+    --link-hover-color: #0056b3; /* Couleur des liens au survol */
+    --border-color: #dee2e6; /* Couleur des bordures */
+}
+
+/* Variables de couleurs pour le mode sombre */
+body.dark-mode {
+    --background-color: #212529;
+    --text-color: #f8f9fa;
+    --header-color: #f8f9fa;
+    --table-header-bg: #343a40;
+    --table-row-bg: #495057;
+    --table-row-hover-bg: #6c757d;
+    --button-bg: #6c757d;
+    --button-hover-bg: #495057;
+    --link-color: #17a2b8;
+    --link-hover-color: #138496;
+    --border-color: #495057;
+}
+
+/* Corps de page */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Titres */
+h1 {
+    color: var(--header-color);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Formulaire de recherche */
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--button-bg);
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+form a {
+    margin-left: 10px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+form a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: var(--table-row-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: var(--table-header-bg);
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--table-row-bg);
+}
+
+tbody tr:hover {
+    background-color: var(--table-row-hover-bg);
+}
+
+/* Liens et boutons dans la table */
+table a {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s;
+}
+
+table a:hover {
+    color: var(--link-hover-color);
+}
+
+button {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Bouton Ajouter */
+a.add-button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+a.add-button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Style des boutons modernes */
+button,
+a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Couleurs des boutons */
+a[href*="add"], button[name="add"] {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+a[href*="clear"], button[name="clear"] {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+a[href*="delete"], button[name="delete"] {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* Effets au survol */
+button:hover,
+a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+a[href*="add"]:hover, button[name="add"]:hover {
+    background-color: #218838;
+}
+
+a[href*="clear"]:hover, button[name="clear"]:hover {
+    background-color: #0056b3;
+}
+
+a[href*="delete"]:hover, button[name="delete"]:hover {
+    background-color: #bd2130;
+}
+
+/* Styles pour la pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+}
+
+.pagination a.active {
+    background-color: #0056b3;
+    font-weight: bold;
+}
+
+.pagination a:disabled {
+    background-color: #dcdcdc;
+    color: #999;
+}
+/* Filtrage par statut - Style plus moderne */
+.filter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Style du select (dropdown) */
+.filter-form select {
+    padding: 12px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+    width: 220px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+/* Effet au survol et au focus du select */
+.filter-form select:hover,
+.filter-form select:focus {
+    border-color: var(--button-bg);
+    background-color: var(--table-row-hover-bg);
+    outline: none;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton de filtrage */
+.filter-form button {
+    padding: 12px 20px;
+    border: none;
+    background-color: var(--button-bg);
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 160px;
+}
+
+/* Effet au survol du bouton de filtrage */
+.filter-form button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Effet au focus du bouton */
+.filter-form button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+}
+
+/* Animation de filtrage (pour un effet dynamique) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Styles pour les options du select */
+.filter-form select option {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Mise en page responsive */
+@media (max-width: 768px) {
+    .filter-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-form select,
+    .filter-form button {
+        width: 100%;
+    }
+}
+
+
