@@ -1,19 +1,70 @@
 <?php
-require(__DIR__ . '/../conf/config.php');
+require_once __DIR__ . '/../conf/config.php';
 
 class contractController
 {
-    // Liste de tous les contrats
-    public function contractList()
+    // select all contract list with pagination and filtering by date_fin
+    public function contractList($page = 1, $limit = 5, $statusFilter = '')
     {
-        $sql = "SELECT * FROM contract";
+        $start = ($page - 1) * $limit;  // Calculer le point de départ de la page
+        
+        // Si un filtre par date_fin est fourni, on l'ajoute à la requête SQL
+        $sql = "SELECT * FROM contract WHERE 1";
+        
+        // Ajouter le filtre par status si présent
+        if ($statusFilter != '') {
+            $sql .= " AND date_fin = :statusFilter";
+        }
+        
+        $sql .= " LIMIT :start, :limit";  // Pagination
+
         $conn = config::getConnexion();
 
         try {
-            $liste = $conn->query($sql);
-            return $liste;
+            $query = $conn->prepare($sql);
+
+            // Si un filtre est présent, on le lie
+            if ($statusFilter != '') {
+                $query->bindValue(':statusFilter', $statusFilter);
+            }
+
+            // Lier les paramètres de pagination
+            $query->bindValue(':start', $start, PDO::PARAM_INT);
+            $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+
+            $query->execute();
+            
+            return $query->fetchAll(); // Retourne les contracts pour la page demandée
         } catch (Exception $e) {
-            die('Erreur lors de la récupération des contrats : ' . $e->getMessage());
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+    // Obtenir le nombre total de contracts pour calculer la pagination (avec le filtrage par date_fin)
+    public function getTotalcontracts($statusFilter = '')
+    {
+        $sql = "SELECT COUNT(*) AS total FROM contract WHERE 1";
+
+        // Ajouter le filtre par date_fin si présent
+        if ($statusFilter != '') {
+            $sql .= " AND date_fin = :statusFilter";
+        }
+
+        $conn = config::getConnexion();
+
+        try {
+            $query = $conn->prepare($sql);
+            
+            // Lier le filtre si nécessaire
+            if ($statusFilter != '') {
+                $query->bindValue(':statusFilter', $statusFilter);
+            }
+
+            $query->execute();
+            $result = $query->fetch();
+            return $result['total'];  // Retourne le nombre total de contracts
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
 
@@ -35,24 +86,25 @@ class contractController
     // Ajouter un nouveau contrat
     public function addcontract($contract)
     {
-        $sql = "INSERT INTO contract (titre, description, date_creation, date_fin)
-                VALUES (:titre, :description, :date_creation, :date_fin)";
+        $sql = "INSERT INTO contract (titre, description, date_creation, date_fin, contract_id)
+                VALUES (:titre, :description, :date_creation, :date_fin, :contract_id)";
         $conn = config::getConnexion();
-
+    
         try {
             $query = $conn->prepare($sql);
             $query->execute([
                 'titre' => $contract->gettitre(),
                 'description' => $contract->getdescription(),
                 'date_creation' => $contract->getdate_creation(),
-                'date_fin' => $contract->getdate_fin()
+                'date_fin' => $contract->getdate_fin(),
+                'contract_id' => $contract->getcontractId() // Utilisation du contract_id
             ]);
             echo "Contrat ajouté avec succès.";
         } catch (Exception $e) {
             die('Erreur lors de l\'ajout du contrat : ' . $e->getMessage());
         }
     }
-
+    
     // Mettre à jour un contrat
     function updatecontract($contract, $id)
     {
@@ -93,6 +145,70 @@ class contractController
             echo "Contrat supprimé avec succès.";
         } catch (Exception $e) {
             die('Erreur lors de la suppression du contrat : ' . $e->getMessage());
+        }
+    }
+
+    // Recherche des contracts avec pagination et filtrage par date_fin
+    public function searchContract($keyword, $page = 1, $limit = 5, $statusFilter = '')
+    {
+        $start = ($page - 1) * $limit;  // Calculer le point de départ de la page
+        
+        $sql = "SELECT * FROM Contract WHERE (titre LIKE :keyword OR description LIKE :keyword OR date_creation LIKE :keyword OR date_fin LIKE :keyword)";
+
+        // Ajouter le filtre par date_fin si nécessaire
+        if ($statusFilter != '') {
+            $sql .= " AND date_fin = :statusFilter";
+        }
+
+        $sql .= " LIMIT :start, :limit";  // Pagination
+        
+        $conn = config::getConnexion();
+
+        try {
+            $query = $conn->prepare($sql);
+            $query->bindValue(':keyword', '%' . $keyword . '%');
+            
+            // Lier le filtre de date_fin si nécessaire
+            if ($statusFilter != '') {
+                $query->bindValue(':statusFilter', $statusFilter);
+            }
+
+            // Lier les paramètres de pagination
+            $query->bindValue(':start', $start, PDO::PARAM_INT);
+            $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $query->execute();
+
+            return $query->fetchAll();  // Retourne les résultats paginés
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+    // Obtenir le nombre total de contracts pour la recherche (avec filtrage par date_fin)
+    public function getTotalSearchResults($keyword, $statusFilter = '')
+    {
+        $sql = "SELECT COUNT(*) AS total FROM contract WHERE (titre LIKE :keyword OR description LIKE :keyword OR date_creation LIKE :keyword OR date_fin LIKE :keyword)";
+
+        // Ajouter le filtre par date_fin si nécessaire
+        if ($statusFilter != '') {
+            $sql .= " AND date_fin = :statusFilter";
+        }
+
+        $conn = config::getConnexion();
+
+        try {
+            $query = $conn->prepare($sql);
+            $query->execute(['keyword' => '%' . $keyword . '%']);
+            
+            // Lier le filtre de date_fin si nécessaire
+            if ($statusFilter != '') {
+                $query->bindValue(':statusFilter', $statusFilter);
+            }
+
+            $result = $query->fetch();
+            return $result['total'];  // Retourne le nombre total de résultats de recherche
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
 }

@@ -1,12 +1,25 @@
 <?php
-
 include "../Controller/partnerController.php";
 $partnerC = new partnerController();
 
-// Gérer les résultats de recherche ou afficher la liste complète
-$partners = isset($_GET['search']) && !empty($_GET['search'])
-    ? $partnerC->searchPartner($_GET['search'])
-    : $partnerC->partnerList();
+// Nombre de résultats par page
+$resultsPerPage = 5;
+
+// Page actuelle
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Récupération des filtres
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+$statusFilter = isset($_GET['status']) ? $_GET['status'] : '';
+
+// Calcul du point de départ de la pagination
+$startFrom = ($currentPage - 1) * $resultsPerPage;
+
+// Récupérer la liste des partenaires avec pagination et filtrage par statut
+$partners = $partnerC->partnerListWithPagination($startFrom, $resultsPerPage, $searchTerm, $statusFilter);
+
+// Récupérer les informations de pagination
+$paginationInfo = $partnerC->getPaginationInfo($currentPage, $resultsPerPage, $searchTerm, $statusFilter);
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +28,32 @@ $partners = isset($_GET['search']) && !empty($_GET['search'])
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/stylepartner.css">
     <title>Partner List</title>
 </head>
 
 <body>
     <h1>Partner Management</h1>
+    <div style="text-align: right; margin: 10px;">
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </div>
 
-    <!-- Formulaire de recherche -->
+    <!-- Formulaire de recherche par nom, email, ou numéro -->
     <form method="get" action="">
         <input type="text" name="search" placeholder="Search partners..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" required>
         <button type="submit">Search</button>
         <a href="partnerList.php">Clear Search</a>
+    </form>
+
+    <!-- Formulaire de filtrage par statut -->
+    <form method="get" action="">
+        <select name="status">
+            <option value="">All Statuses</option>
+            <option value="active" <?= ($statusFilter == 'active') ? 'selected' : '' ?>>Active</option>
+            <option value="inactive" <?= ($statusFilter == 'inactive') ? 'selected' : '' ?>>Inactive</option>
+        </select>
+        <button type="submit">Filter</button>
+        <a href="partnerList.php">Clear Filter</a>
     </form>
 
     <!-- Tableau des résultats -->
@@ -37,6 +64,7 @@ $partners = isset($_GET['search']) && !empty($_GET['search'])
                 <th>Name</th>
                 <th>Email</th>
                 <th>Number</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -48,6 +76,7 @@ $partners = isset($_GET['search']) && !empty($_GET['search'])
                         <td><?= htmlspecialchars($partner['name']) ?></td>
                         <td><?= htmlspecialchars($partner['email']) ?></td>
                         <td><?= htmlspecialchars($partner['number']) ?></td>
+                        <td><?= htmlspecialchars($partner['status']) ?></td>
                         <td>
                             <!-- Boutons Update et Delete -->
                             <form method="POST" action="updatepartner.php" style="display:inline;">
@@ -60,16 +89,31 @@ $partners = isset($_GET['search']) && !empty($_GET['search'])
                 <?php }
             } else { ?>
                 <tr>
-                    <td colspan="5">No results found</td>
+                    <td colspan="6">No results found</td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 
+    <!-- Pagination -->
+    <div class="pagination">
+        <?php if ($paginationInfo['prevPage'] < $currentPage) { ?>
+            <a href="?page=<?= $paginationInfo['prevPage'] ?>&search=<?= $searchTerm ?>&status=<?= $statusFilter ?>">Previous</a>
+        <?php } ?>
+        
+        <?php for ($i = 1; $i <= $paginationInfo['totalPages']; $i++) { ?>
+            <a href="?page=<?= $i ?>&search=<?= $searchTerm ?>&status=<?= $statusFilter ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+        <?php } ?>
+
+        <?php if ($paginationInfo['nextPage'] > $currentPage) { ?>
+            <a href="?page=<?= $paginationInfo['nextPage'] ?>&search=<?= $searchTerm ?>&status=<?= $statusFilter ?>">Next</a>
+        <?php } ?>
+    </div>
+
     <!-- Bouton pour ajouter un partenaire -->
     <a href="addpartner.php">Add New Partner</a>
 
-    <script src="../public/js/script.js"></script>
+    <script src="../public/js/scriptpartner.js"></script>
 </body>
 
 </html>
