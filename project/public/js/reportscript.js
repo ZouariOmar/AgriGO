@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("reportForm");
 
   // List of bad words
-  const badWords = ["badword1", "badword2", "badword3", "fuck", "shit", "bitch"]; // Add more bad words as needed
+  const badWords = ["fuck", "shit", "bitch","asshole","damn","motherfucker","cunt","whore","nigga","bastard"]; // Add more bad words as needed
 
   // Function to create and display error messages
   function showError(input, message) {
