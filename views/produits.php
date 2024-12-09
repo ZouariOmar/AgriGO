@@ -28,7 +28,6 @@ $products = $pdo->query($query)->fetchAll(PDO::FETCH_OBJ);
                     <th>Name</th>
                     <th>Price</th>
                     <th>Category</th>
-                    <th>Creation Date</th>
                     <th>Image</th>
                     <th>Actions</th>
                 </tr>
@@ -40,8 +39,7 @@ $products = $pdo->query($query)->fetchAll(PDO::FETCH_OBJ);
                         <td><?= $product->libelle ?></td>
                         <td><?= $product->prix ?> <i class="fa fa-solid fa-dollar"></i></td>
                         <td><?= $product->categorie_libelle ?></td>
-                        <td><?= $product->date_creation ?></td>
-                        <td><img class="img-fluid" width="90" src="upload/produit/<?= $product->image ?>" alt="<?= $product->libelle ?>"></td>
+                        <td><img class="img-fluid" width="90" src="../upload/produit/<?= $product->image ?>" alt="<?= $product->libelle ?>"></td>
                         <td>
                             <a class="btn btn-primary" href="../views/modifier_produit.php?id=<?= $product->id ?>">Edit</a>
                             <a class="btn btn-danger" href="../views/supprimer_produit.php?id=<?= $product->id ?>" onclick="return confirm('Are you sure you want to delete the product <?= $product->libelle ?>?')">Delete</a>

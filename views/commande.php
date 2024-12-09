@@ -22,7 +22,7 @@ $commande = $sqlState->fetch(PDO::FETCH_ASSOC);
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>#ID</th>
+            <th>REF</th>
             <th>Client</th>
             <th>Total</th>
             <th>Date</th>
