@@ -382,7 +382,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
                                         <button type="submit" class="btn btn-primary reg_button">Créer l'offre</button>
                                         <div class="breadcrumbs">
-                                            <a href="../Store.php"><i class="fa fa-home"></i></a>
+                                            <a href="../Store.php"><i class="fa-regular fa-cart-shopping"></i></a>
                                             <a href="../Store.php">Return To Store</a>
                                         </div>
                                         

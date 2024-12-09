@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('email');
     const imageInput = document.getElementById('image');
     const detailInput = document.getElementById('detail');
+    const typeInput = document.getElementById('categorie_id');
+
 
     const errorMessages = {
         titre: document.getElementById('titreError'),
@@ -17,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         localisation: document.getElementById('localisationError'),
         email: document.getElementById('emailError'),
         image: document.getElementById('imageError'),
-        detail: document.getElementById('detailError')
+        detail: document.getElementById('detailError'),
+        type: document.getElementById('typeError')
     };
 
     const validLocations = [
@@ -79,11 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
         errorMessages.detail.style.display = isValid ? 'none' : 'block';
         return isValid;
     }
+    function validateType() {
+        const isValid = typeInput.value !== "0";
+        errorMessages.type.textContent = isValid ? '' : 'Veuillez sélectionner un type.';
+        errorMessages.type.style.display = isValid ? 'none' : 'block';
+        return isValid;
+    }
 
     function validateForm() {
         const isValid = validateTitle() && validatePrice() && validatePhone() &&
                         validateLocation() && validateEmail() && validateImage() &&
-                        validateDetail();
+                        validateDetail() && validateType();
         submitButton.disabled = !isValid;
         return isValid;
     }
@@ -95,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     emailInput.addEventListener('input', validateForm);
     imageInput.addEventListener('input', validateForm);
     detailInput.addEventListener('input', validateForm);
+    typeInput.addEventListener('change', validateForm);
 
     form.addEventListener('submit', function(event) {
         if (!validateForm()) {

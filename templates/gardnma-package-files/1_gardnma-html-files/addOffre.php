@@ -9,8 +9,8 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css"/> 
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css"/>
-                <!-- the head -->
-                <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+        <!-- the head -->
+        <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
         <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
         <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
         <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
@@ -33,20 +33,6 @@
         <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
         <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
 
-        <style>
-            /* Set the size of the map */
-            #map {
-                height: 300px;
-                width: 100%;
-            }
-            /* Style the input field */
-            #pac-input {
-                margin-top: 10px;
-                width: 300px;
-                padding: 5px;
-                font-size: 14px;
-            }
-        </style>
 
 
         <!-- loop -->
@@ -64,8 +50,6 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/custom copy.js"></script>
-        <!-- the geoloc -->
-        <script src="assets/js/goe.js"></script>
     </head>
     <body>
 
@@ -298,8 +282,8 @@
 
          
                     <div class="col-sm-9" id="content">            <div class="breadcrumbs">
-                            <a href="home.html"><i class="fa fa-home"></i></a>
-                            <a href="#">Add Offer</a>
+                            <a href="index.html"><i class="fa fa-home"></i></a>
+                            <a href="existOff.php">Your Offers</a>
                         </div>
                         <h1>Need Help?</h1>
                         <p> <small><strong class="define_note"></strong></small>If you need any help or have any question 
@@ -347,7 +331,7 @@
                                         <div class="form-group">
                                             <label for="input-fax" class="col-sm-2 control-label">Image</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="image" name="image" placeholder="URL de l'image" required>
+                                                <input type="text" class="form-control" id="image" name="image" placeholder="Image" required>
                                                 <div id="imageError" class="error-message"></div>
                                             </div>
                                         </div>
@@ -372,14 +356,6 @@
                                         <button type="submit" class="btn btn-primary reg_button">Créer l'offre</button>
                                     </form>
                                 </fieldset>
-                                <input id="pac-input" type="text" placeholder="Search for a place">
-                                <div id="map"></div>
-                                            <!-- Load the Google Maps JavaScript API with the Places library -->
-                                        
-                                <script async defer
-                                                src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyeYasnD_lrhV0y7QH7eE-n84BT-ZG7jp2z&libraries=geometry,places&callback=initMap">
-                                </script>
-
                             </div>
                         </div>
                     </div>
