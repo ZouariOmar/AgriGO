@@ -34,6 +34,7 @@ if (isset($_POST["subject"]) && isset($_POST["category"]) && isset($_POST["descr
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Form</title>
   <link rel="stylesheet" href="../../public/css/reportstyle.css">
+  <script src="../../public/js/reportscript.js"></script>
 </head>
 <body>
   <div class="form-container">
@@ -62,6 +63,5 @@ if (isset($_POST["subject"]) && isset($_POST["category"]) && isset($_POST["descr
       <button type="submit">Submit Report</button>
     </form>
   </div>
-  <script src="../../public/js/reportscript.js"></script>
 </body>
 </html>

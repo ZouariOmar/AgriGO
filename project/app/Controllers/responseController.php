@@ -22,9 +22,9 @@ class responseController
         
     }
 
-    function getReportById($id)
+    function getResponseById($id)
     {
-        $sql = "SELECT * from Responses where ResponseID = $id";
+        $sql = "SELECT * FROM Responses WHERE ResponseID = $id";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -58,55 +58,53 @@ class responseController
     }
     
 
-    function updateReport($report, $id)
-    {
-        $db = config::getConnexion();
 
-        $query = $db->prepare(
-            'UPDATE rapports SET 
-                category = :category,
-                subject = :subject,
-                description = :description,
-                sta = :sta
-            WHERE Report_ID = :id'
-        );
-
-        try {
-            $query->execute([
-                'category' => $report->getCategory(),
-                'subject' => $report->getSubject(),
-                'description' => $report->getDescription(),
-                'sta' => "RECIEVED",
-                'id' => $id  
-            ]);
-
-            // Check if the query was successful
-            if ($query->rowCount() > 0) {
-                return true; // Success
-            } else {
-                return false; // No rows were updated
+        // Other methods...
+    
+        public function updateResponse($response, $id)
+        {
+            $db = config::getConnexion();
+    
+            $query = $db->prepare(
+                'UPDATE Responses SET 
+                    Response = :response
+                WHERE ResponseID = :id'
+            );
+    
+            try {
+                $query->execute([
+                    'response' => $response->getResponse(),
+                    'id' => $id  
+                ]);
+    
+                // Check if the query was successful
+                if ($query->rowCount() > 0) {
+                    return true; // Success
+                } else {
+                    return false; // No rows affected
+                }
+            } catch (Exception $e) {
+                die('Erreur: ' . $e->getMessage());
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
+        }
+
+
+
+
+
+public function deleteResponse($id)
+    {
+        $sql = "DELETE FROM responses WHERE ResponseID = :id";
+        $conn = config::getConnexion();
+        $req = $conn->prepare($sql);
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        try {
+            $req->execute();
+            echo "Response with ID $id has been successfully deleted.<br>";
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
 
 
-
-
-
-    public function deleteReport($id)
-{
-    $sql = "DELETE FROM rapports WHERE Report_ID = :id";
-    $conn = config::getConnexion();
-    $req = $conn->prepare($sql);
-    $req->bindValue(':id', $id);
-    try {
-        $req->execute();
-        echo "Report with ID $id has been successfully deleted.<br>";
-    } catch (Exception $e) {
-        die('Erreur: ' . $e->getMessage());
-    }
-}
 }

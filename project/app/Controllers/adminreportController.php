@@ -66,40 +66,28 @@ class adminreportController
             return false; // Explicitly return false on failure
         }
     }
+    
 
-    function updateReportStatus($report, $id)
+    // Method to update the status of a report
+    public function updateReportStatus($reportId, $status)
     {
-        $db = config::getConnexion();
-
-        $query = $db->prepare(
-            'UPDATE rapportstat SET 
-                StatRapportID = :SRID,
-                ST = :stat
-            WHERE StatID = :id'
-        );
-
+        $conn = config::getConnexion();
+        $sql = "UPDATE rapportstat SET ST = :status WHERE StatRapportID = :reportid";
+        $sql1 = "UPDATE rapports SET sta = :status WHERE Report_ID = :reportid";
         try {
-
-            // Execute the query
+            $query = $conn->prepare($sql);
             $query->execute([
-                'SRID' => $report->getStatRapportID(),
-                'stat' => $report->getST(),
-                'id' => $id
+                'status' => $status,
+                'reportid' => $reportId
             ]);
-
-
-            if ($query->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            error_log("PDO Exception: " . $e->getMessage());
-            return false;
+            $query1 = $conn->prepare($sql1);
+            $query1->execute([
+                'status' => $status,
+                'reportid' => $reportId
+            ]);
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
         }
     }
-
-
-
 
 }

@@ -29,8 +29,6 @@ if (isset($_POST["response"])) {
         } else {
             echo "Error: Unable to add response.";
         }
-    } else {
-        echo "Error: All fields are required.";
     }
 }
 ?>
@@ -41,6 +39,7 @@ if (isset($_POST["response"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Response</title>
     <link rel="stylesheet" href="../../public/css/addresponsestyle.css"> <!-- Link to the updated CSS file -->
+    <script src="../../public/js/addresponse.js" defer></script> <!-- Link to the JavaScript file -->
 </head>
 <body>
     <h1>Add Response</h1>
@@ -48,7 +47,7 @@ if (isset($_POST["response"])) {
         <input type="hidden" id="reportid" name="reportid" value="<?php echo htmlspecialchars($reportid); ?>">
 
         <label for="response">Response :</label>
-        <textarea id="response" name="response" rows="4" required></textarea><br>
+        <textarea id="response" name="response" rows="4" ></textarea><br>
 
         <button type="submit">Add Response</button>
     </form>
