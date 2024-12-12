@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $libelle = $_POST['libelle'];
     $prix = $_POST['prix'];
     $id_categorie = $_POST['id_categorie'];
+    $description = $_POST['description']; // New field
     $image = $_FILES['image']['name'];
     
     // Upload the image file
@@ -19,13 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
     // Insert the product into the database
-    $query = "INSERT INTO produit (libelle, prix, id_categorie, image) VALUES (:libelle, :prix, :id_categorie, :image)";
+    $query = "INSERT INTO produit (libelle, prix, id_categorie, description, image) VALUES (:libelle, :prix, :id_categorie, :description, :image)";
     $stmt = $pdo->prepare($query);
     
     // Bind parameters
     $stmt->bindParam(':libelle', $libelle);
     $stmt->bindParam(':prix', $prix);
     $stmt->bindParam(':id_categorie', $id_categorie);
+    $stmt->bindParam(':description', $description); // Bind description
     $stmt->bindParam(':image', $image);
     
     if ($stmt->execute()) {
@@ -74,6 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </select>
             </div>
 
+            <!-- New Description Field -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            </div>
+
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
                 <input type="file" class="form-control" id="image" name="image" required>
@@ -82,7 +90,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
     </div>
-
-   
 </body>
 </html>

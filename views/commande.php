@@ -1,22 +1,36 @@
 <?php
 require_once '../include/database.php';
-$idCommande = $_GET['id'];
-$sqlState = $pdo->prepare('SELECT commande.*,utilisateur.login as "login" FROM commande 
-            INNER JOIN utilisateur ON commande.id_client = utilisateur.id 
-                                               WHERE commande.id = ?
-                                               ORDER BY commande.date_creation DESC');
-$sqlState->execute([$idCommande]);
-$commande = $sqlState->fetch(PDO::FETCH_ASSOC);
+require_once '../controllers/CommandeController.php';
 
+// Get the ID from the query string
+$idCommande = isset($_GET['id']) ? $_GET['id'] : null;
+
+if (!$idCommande) {
+    die("Error: Commande ID not specified.");
+}
+
+// Instantiate controller
+$controller = new CommandeController($pdo);
+
+// Fetch the specific commande details
+$commande = $controller->showCommandeDetails($idCommande);
+
+// Fetch ligne_commande details
+$sqlStateLigneCommandes = $pdo->prepare('SELECT ligne_commande.*, produit.libelle, produit.image 
+                                         FROM ligne_commande
+                                         INNER JOIN produit ON ligne_commande.id_produit = produit.id
+                                         WHERE id_commande = ?');
+$sqlStateLigneCommandes->execute([$idCommande]);
+$lignesCommandes = $sqlStateLigneCommandes->fetchAll(PDO::FETCH_OBJ);
 ?>
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include '../include/head.php' ?>
-    <title>Commande | Numéro <?= $commande['id'] ?> </title>
+    <?php include '../include/head.php'; ?>
+    <title>Commande | Numéro <?= htmlspecialchars($commande['id']); ?> </title>
 </head>
 <body>
-<?php include '../include/nav.php' ?>
+<?php include '../include/nav.php'; ?>
 <div class="container py-2">
     <h2>Détails Commandes</h2>
     <table class="table table-striped table-hover">
@@ -30,31 +44,19 @@ $commande = $sqlState->fetch(PDO::FETCH_ASSOC);
         </tr>
         </thead>
         <tbody>
-        <?php
-        $sqlStateLigneCommandes = $pdo->prepare('SELECT ligne_commande.*,produit.libelle,produit.image from ligne_commande
-                                                        INNER JOIN produit ON ligne_commande.id_produit = produit.id
-                                                        WHERE id_commande = ?
-                                                        ');
-        $sqlStateLigneCommandes->execute([$idCommande]);
-        $lignesCommandes = $sqlStateLigneCommandes->fetchAll(PDO::FETCH_OBJ);
-        ?>
         <tr>
-            <td><?php echo $commande['id'] ?></td>
-            <td><?php echo $commande['login'] ?></td>
-            <td><?php echo $commande['total'] ?> <i class="fa fa-solid fa-dollar"></i></td>
-            <td><?php echo $commande['date_creation'] ?></td>
+            <td><?= htmlspecialchars($commande['id']); ?></td>
+            <td><?= htmlspecialchars($commande['login']); ?></td>
+            <td><?= htmlspecialchars($commande['total']); ?> <i class="fa fa-solid fa-dollar"></i></td>
+            <td><?= htmlspecialchars($commande['date_creation']); ?></td>
             <td>
-                <?php if ($commande['valide'] == 0) : ?>
-                    <a class="btn btn-success btn-sm" href="valider_commande.php?id=<?= $commande['id']?>&etat=1">Valider la commande</a>
+                <?php if ($commande['valide'] == 0): ?>
+                    <a class="btn btn-success btn-sm" href="valider_commande.php?id=<?= $commande['id']; ?>&etat=1">Valider la commande</a>
                 <?php else: ?>
-                    <a class="btn btn-danger btn-sm" href="valider_commande.php?id=<?= $commande['id']?>&etat=0">Annuler la commande</a>
+                    <a class="btn btn-danger btn-sm" href="valider_commande.php?id=<?= $commande['id']; ?>&etat=0">Annuler la commande</a>
                 <?php endif; ?>
             </td>
-            <td>
-            </td>
         </tr>
-        <?php
-        ?>
         </tbody>
     </table>
     <hr>
@@ -70,18 +72,17 @@ $commande = $sqlState->fetch(PDO::FETCH_ASSOC);
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($lignesCommandes as $lignesCommande) : ?>
+        <?php foreach ($lignesCommandes as $ligne): ?>
             <tr>
-                <td><?php echo $lignesCommande->id ?></td>
-                <td><?php echo $lignesCommande->libelle ?></td>
-                <td><?php echo $lignesCommande->prix ?> <i class="fa fa-solid fa-dollar"></i></td>
-                <td>x <?php echo $lignesCommande->quantite ?></td>
-                <td><?php echo $lignesCommande->total ?> <i class="fa fa-solid fa-dollar"></i></td>
+                <td><?= htmlspecialchars($ligne->id); ?></td>
+                <td><?= htmlspecialchars($ligne->libelle); ?></td>
+                <td><?= htmlspecialchars($ligne->prix); ?> <i class="fa fa-solid fa-dollar"></i></td>
+                <td>x <?= htmlspecialchars($ligne->quantite); ?></td>
+                <td><?= htmlspecialchars($ligne->total); ?> <i class="fa fa-solid fa-dollar"></i></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>
