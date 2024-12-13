@@ -3,9 +3,21 @@ include '../../../Controllers/Offre_Controller.php';
 
 try {
     $offrecontroller = new OffreController();
-    $offres = $offrecontroller->readAllOffres();
+
+
+    // Pagination logic
+    $offresPerPage = 5;
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $offresPerPage;
+
+    // Get total number of offers
+    $totalOffres = $offrecontroller->getTotalOffres();
+    $totalPages = ceil($totalOffres / $offresPerPage);
+
+    // Get offers for current page
+    $offres = $offrecontroller->readOffresWithPagination($offresPerPage, $offset);
     
-    if ($offres) {
+    if ($offres && count($offres) > 0) {
         echo "<div class='table-container'>";
         echo "<table class='styled-table'>";
         echo "<thead><tr>";
@@ -43,13 +55,32 @@ try {
             echo "</form>";
             echo "</td>";
             echo "</tr>";
-            echo "</tr>";
         }
         echo "</tbody></table></div>";
+
+
+        echo "<div class='pagination' style='text-align: center; margin-top: 20px;'>";
+        if ($page > 1) {
+            echo "<a href='?page=" . ($page - 1) . "' style='display: inline-block; padding: 8px 16px; margin: 0 4px; background-color: #e8f5e9; color: #2e7d32; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;' onmouseover='this.style.backgroundColor=\"#c8e6c9\"' onmouseout='this.style.backgroundColor=\"#e8f5e9\"'>Précédent</a> ";
+        }
+        
+        for ($i = 1; $i <= $totalPages; $i++) {
+            if ($i == $page) {
+                echo "<span style='display: inline-block; padding: 8px 16px; margin: 0 4px; background-color: #4caf50; color: white; border-radius: 4px;'>$i</span> ";
+            } else {
+                echo "<a href='?page=$i' style='display: inline-block; padding: 8px 16px; margin: 0 4px; background-color: #e8f5e9; color: #2e7d32; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;' onmouseover='this.style.backgroundColor=\"#c8e6c9\"' onmouseout='this.style.backgroundColor=\"#e8f5e9\"'>$i</a> ";
+            }
+        }
+        
+        if ($page < $totalPages) {
+            echo "<a href='?page=" . ($page + 1) . "' style='display: inline-block; padding: 8px 16px; margin: 0 4px; background-color: #e8f5e9; color: #2e7d32; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;' onmouseover='this.style.backgroundColor=\"#c8e6c9\"' onmouseout='this.style.backgroundColor=\"#e8f5e9\"'>Suivant</a>";
+        }
+        echo "</div><br>";
     } else {
-        echo "<p class='error-message'>Error retrieving data or no categories found.</p>";
+        echo "<p class='error-message'>Aucune offre trouvée.</p>";
     }
 } catch (Exception $e) {
-    die('<p class="error-message">ACAB  ' . $e->getMessage() . '</p>');
+    die('<p class="error-message">Erreur: ' . $e->getMessage() . '</p>');
 }
 ?>
+

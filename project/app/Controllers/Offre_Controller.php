@@ -57,7 +57,7 @@ class OffreController
             if ($stmt->execute()) {
                 return true;
             } else {
-                // Debugging: Output database error info
+
                 error_log(print_r($stmt->errorInfo(), true));
                 return false;
             }
@@ -102,6 +102,31 @@ class OffreController
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Error updating offer: " . $e->getMessage());
+            return false;
+        }
+    }
+    public function getTotalOffres() {
+        $sql = "SELECT COUNT(*) as total FROM offres";
+        try {
+            $stmt = $this->db->query($sql);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row['total'];
+        } catch (PDOException $e) {
+            error_log("Error getting total offers: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function readOffresWithPagination($limit, $offset) {
+        $sql = "SELECT * FROM offres LIMIT :limit OFFSET :offset";
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error reading offers with pagination: " . $e->getMessage());
             return false;
         }
     }
