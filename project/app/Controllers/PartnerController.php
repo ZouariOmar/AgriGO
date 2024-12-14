@@ -24,39 +24,46 @@ class partnerController {
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             ':name' => $partner->getName(),
-            ':email' => $partner->getEmail(),
-            ':number' => $partner->getNumber(),
-            ':status' => $partner->getStatus(),
+            ':email' => $partner->getemail(),
+            ':number' => $partner->getnumber(),
+            ':status' => $partner->getstatus(),
         ]);
     }
 
     public function getPartnerById($id) {
-        $conn = config::getConnexion();
-        $sql = "SELECT * FROM partner WHERE id_partner = :id";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetch();
+        
+        $sql = "SELECT * FROM partner WHERE id_partner = :id_partner ";
+        $db = config::getConnexion();
+        try{
+            $query = $db->prepare($sql);
+            $query->bindValue(':id_partner', $id, PDO::PARAM_INT);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $e) {
+            die('Erreur lors de la récupération du partenaire : ' . $e->getMessage());
+        }
     }
 
-    public function updatepartner($partner, $id_partner)
-{
-    $conn = config::getConnexion();
-    $sql = "UPDATE partner SET name = :name, email = :email, number = :number, status = :status WHERE id_partner = :id_partner";
-    
-    try {
-        $query = $conn->prepare($sql);
-        $query->execute([
-            'id_partner' => $id_partner,
-            'name' => $partner->getName(),
-            'email' => $partner->getEmail(),
-            'number' => $partner->getNumber(),
-            'status' => $partner->getStatus()
-        ]);
-        echo $query->rowCount() . " partenaire(s) mis à jour avec succès.";
-    } catch (PDOException $e) {
-        echo 'Erreur lors de la mise à jour du partenaire : ' . $e->getMessage();
+    public function updatepartner($partner, $id_partner) {
+        $conn = config::getConnexion();
+        $sql = "UPDATE partner SET name = :name, email = :email, number = :number, status = :status WHERE id_partner = :id_partner";
+        
+        try {
+            echo "Updating partner: " . $partner->getName() . ", " . $id_partner;
+            $query = $conn->prepare($sql);
+            $query->execute([
+                'id_partner' => $id_partner,
+                'name' => $partner->getName(),
+                'email' => $partner->getEmail(),
+                'number' => $partner->getNumber(),
+                'status' => $partner->getStatus()
+            ]);
+            echo $query->rowCount() . " partenaire(s) mis à jour avec succès.";
+        } catch (PDOException $e) {
+            echo 'Erreur lors de la mise à jour du partenaire : ' . $e->getMessage();
+        }
     }
-}
+    
 
 
     public function partnerListWithPagination($startFrom, $resultsPerPage, $searchTerm = '', $statusFilter = '') {
@@ -119,10 +126,10 @@ class partnerController {
     // Supprimer un partnenaire
     public function deletepartner($id)
     {
-        $sql = "DELETE FROM contract WHERE id = :id";
+        $sql = "DELETE FROM partner WHERE id_partner = :id_partner";
         $conn = config::getConnexion();
         $req = $conn->prepare($sql);
-        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':id_partner', $id, PDO::PARAM_INT);
         try {
             $req->execute();
             echo "partenaire supprimé avec succès.";

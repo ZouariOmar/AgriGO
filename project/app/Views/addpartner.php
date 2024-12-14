@@ -1,4 +1,5 @@
 <?php
+include "../Models/partner.php";
 include "../Controllers/partnerController.php";
 $partnerC = new partnerController();
 

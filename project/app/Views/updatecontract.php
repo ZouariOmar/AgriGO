@@ -25,7 +25,6 @@ if (
             $_POST['date_fin'],
             $_POST['partner_id']  // Utiliser partner_id
         );
-        
         // Appeler la méthode pour mettre à jour le contrat
         $contractController->updateContract($contract, $_POST['id']);
         header('Location:contractList.php'); // Rediriger vers la liste des contrats

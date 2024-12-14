@@ -158,7 +158,6 @@ class contractController
 }
 
     
-// Mettre à jour un contrat, y compris le partner_id
 // Exemple de la méthode updateContract
 public function updateContract($contract, $id)
 {
