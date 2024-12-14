@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 09, 2024 at 08:49 AM
--- Server version: 11.4.3-MariaDB-1
--- PHP Version: 8.2.24
+-- Host: 127.0.0.1
+-- Generation Time: Dec 14, 2024 at 11:22 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,35 +18,81 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `AgriGO`
+-- Database: `agrigo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `test`
+-- Table structure for table `contract`
+--
+
+CREATE TABLE `contract` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `date_creation` date NOT NULL,
+  `date_fin` date NOT NULL,
+  `partner_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `partner`
 --
 
 CREATE TABLE `partner` (
-    `id_partner` INT AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(255),
-    `email` VARCHAR(255),
-    `number` VARCHAR(50),
-    `contract_id` INT,  -- Nouvelle colonne
-    FOREIGN KEY (`contract_id`) REFERENCES `contract`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-);
+  `id_partner` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `number` varchar(20) NOT NULL,
+  `status` enum('active','inactive') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Indexes for dumped tables
+--
 
+--
+-- Indexes for table `contract`
+--
+ALTER TABLE `contract`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `partner_id` (`partner_id`);
 
-CREATE TABLE contract (
-    idINT AUTO_INCREMENT PRIMARY KEY,
-    titre VARCHAR(100) NOT NULL,
-    description TEXT,
-    date_creation DATE DEFAULT CURRENT_DATE,
-    date_fin DATE DEFAULT CURRENT_DATE,
-    FOREIGN KEY (id_partenaire) REFERENCES Partenaire(id_partenaire)
-);
+--
+-- Indexes for table `partner`
+--
+ALTER TABLE `partner`
+  ADD PRIMARY KEY (`id_partner`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contract`
+--
+ALTER TABLE `contract`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `partner`
+--
+ALTER TABLE `partner`
+  MODIFY `id_partner` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `contract`
+--
+ALTER TABLE `contract`
+  ADD CONSTRAINT `contract_ibfk_1` FOREIGN KEY (`partner_id`) REFERENCES `partner` (`id_partner`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
