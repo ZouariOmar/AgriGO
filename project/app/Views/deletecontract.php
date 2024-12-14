@@ -1,5 +1,5 @@
 <?php
-include '../Controller/contractController.php';
+include '../Controllers/contractController.php';
 $contractC = new contractController();
 
 // récupérer l'id passé dans l'URL en utilisant la methode par défaut $_GET["id"]

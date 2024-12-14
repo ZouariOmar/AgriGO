@@ -1,6 +1,6 @@
 <?php
-include "../Model/partner.php";
-include "../Controller/partnerController.php";
+include "../Models/partner.php";
+include "../Controllers/partnerController.php";
 
 $partner = null;
 $error = "";

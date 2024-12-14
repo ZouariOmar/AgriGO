@@ -1,5 +1,5 @@
 <?php
-include "../Controller/partnerController.php";
+include "../Controllers/partnerController.php";
 $partnerC = new partnerController();
 
 // Nombre de résultats par page

@@ -1,6 +1,6 @@
 <?php
-include "../Model/contract.php";
-include "../Controller/contractController.php";
+include "../Models/contract.php";
+include "../Controllers/contractController.php";
 
 // Initialisation du contrôleur des contrats
 $contractController = new contractController();

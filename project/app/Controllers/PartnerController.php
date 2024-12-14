@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../conf/config.php';
+include '../../conf/config.php';
 
 class partnerController
 {

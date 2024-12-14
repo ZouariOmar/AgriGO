@@ -1,5 +1,5 @@
 <?php
-include '../Controller/partnerController.php';
+include '../Controllers/partnerController.php';
 $partnerC = new partnerController();
 
 // récupérer l'id passé dans l'URL en utilisant la methode par défaut $_GET["id_partner"]

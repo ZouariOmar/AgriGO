@@ -1,101 +1,79 @@
 <?php
-
-class contract{
-    private $id;
+class Contract
+{
+    private $id_contract;
     private $titre;
     private $description;
     private $date_creation;
     private $date_fin;
+    private $id_partner;
 
-
-    public function __construct($id,$titre,$description,$date_creation,$date_fin) {
-        $this->id=$id;
+    // Constructeur
+    public function __construct($id_contract, $titre, $description, $date_creation, $date_fin, $id_partner)
+    {
+        $this->id_contract = $id_contract;
         $this->titre = $titre;
         $this->description = $description;
         $this->date_creation = $date_creation;
         $this->date_fin = $date_fin;
-
+        $this->id_partner = $id_partner;
     }
 
-    /**
-     * Get the value of titre
-     */ 
-    public function gettitre()
+    // Getters
+    public function getIdContract()
+    {
+        return $this->id_contract;
+    }
+
+    public function getTitre()
     {
         return $this->titre;
     }
 
-    /**
-     * Set the value of titre
-     *
-     * @return  self
-     */ 
-    public function settitre($titre)
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of description
-     */ 
-    public function getdescription()
+    public function getDescription()
     {
         return $this->description;
     }
 
-    /**
-     * Set the value of description
-     *
-     * @return  self
-     */ 
-    public function setdescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of date_creation
-     */ 
-    public function getdate_creation()
+    public function getDateCreation()
     {
         return $this->date_creation;
     }
 
-    /**
-     * Set the value of date_creation
-     *
-     * @return  self
-     */ 
-    public function setdate_creation($date_creation)
-    {
-        $this->date_creation = $date_creation;
-
-        return $this;
-    }
-
-        /**
-     * Get the value of date_fin
-     */ 
-    public function getdate_fin()
+    public function getDateFin()
     {
         return $this->date_fin;
     }
 
-    /**
-     * Set the value of date_fin
-     *
-     * @return  self
-     */ 
-    public function setdate_fin($date_fin)
+    public function getIdPartner()
+    {
+        return $this->id_partner;
+    }
+
+    // Setters
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    public function setDateFin($date_fin)
     {
         $this->date_fin = $date_fin;
+    }
 
-        return $this;
+    public function setIdPartner($id_partner)
+    {
+        $this->id_partner = $id_partner;
     }
 }
-
 ?>

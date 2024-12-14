@@ -5,14 +5,15 @@ class partner{
     private $name;
     private $email;
     private $number;
+    private $status;
 
 
-    public function __construct($id_partner,$name,$email,$number) {
+    public function __construct($id_partner,$name,$email,$number,$status) {
         $this->id_partner=$id_partner;
         $this->name = $name;
         $this->email = $email;
         $this->number = $number;
-
+        $this->status = $status;
     }
 
     /**
@@ -71,6 +72,25 @@ class partner{
     public function setnumber($number)
     {
         $this->number = $number;
+
+        return $this;
+    }
+    /**
+     * Get the value of status
+     */ 
+    public function getstatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setstatus($status)
+    {
+        $this->status = $status;
 
         return $this;
     }
