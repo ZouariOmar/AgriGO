@@ -1,5 +1,5 @@
 <?php
-include '../../conf/config.php';
+include_once '../../conf/config.php';
 
 class contractController
 {
@@ -39,6 +39,59 @@ class contractController
             die('Erreur: ' . $e->getMessage());
         }
     }
+    public function contractListWithPagination($startFrom, $resultsPerPage, $dateFinFilter = '')
+    {
+        $sql = "SELECT * FROM contract WHERE 1";
+        
+        // Ajout du filtre de date_fin si présent
+        if ($dateFinFilter != '') {
+            $sql .= " AND date_fin = :dateFinFilter";
+        }
+    
+        // Pagination
+        $sql .= " LIMIT :startFrom, :resultsPerPage";
+    
+        $conn = config::getConnexion();
+    
+        try {
+            $query = $conn->prepare($sql);
+    
+            // Si un filtre par date_fin est appliqué
+            if ($dateFinFilter != '') {
+                $query->bindValue(':dateFinFilter', $dateFinFilter);
+            }
+    
+            // Lier les valeurs pour la pagination
+            $query->bindValue(':startFrom', $startFrom, PDO::PARAM_INT);
+            $query->bindValue(':resultsPerPage', $resultsPerPage, PDO::PARAM_INT);
+    
+            $query->execute();
+    
+            return $query->fetchAll();  // Retourne la liste des contrats
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+    public function getPaginationInfo($currentPage, $resultsPerPage, $dateFinFilter = '')
+{
+    // Calcul du nombre total de contrats
+    $totalContracts = $this->getTotalContracts($dateFinFilter);
+    
+    // Calcul du nombre total de pages
+    $totalPages = ceil($totalContracts / $resultsPerPage);
+    
+    // Calcul des pages précédente et suivante
+    $prevPage = $currentPage > 1 ? $currentPage - 1 : 1;
+    $nextPage = $currentPage < $totalPages ? $currentPage + 1 : $totalPages;
+
+    // Retourner les informations de pagination
+    return [
+        'totalPages' => $totalPages,
+        'prevPage' => $prevPage,
+        'nextPage' => $nextPage,
+    ];
+}
+
 
     // Obtenir le nombre total de contrats pour calculer la pagination (avec le filtrage par date_fin)
     public function getTotalContracts($dateFinFilter = '')
@@ -83,34 +136,34 @@ class contractController
         }
     }
 
-    // Ajouter un nouveau contrat
     public function addContract($contract)
-    {
-        $sql = "INSERT INTO contract (titre, description, date_creation, date_fin, partner_id)
-                VALUES (:titre, :description, :date_creation, :date_fin, :partner_id)";
-        $conn = config::getConnexion();
-    
-        try {
-            $query = $conn->prepare($sql);
-            $query->execute([
-                'titre' => $contract->gettitre(),
-                'description' => $contract->getdescription(),
-                'date_creation' => $contract->getdate_creation(),
-                'date_fin' => $contract->getdate_fin(),
-                'partner_id' => $contract->getpartnerId() // Utilisation de partner_id
-            ]);
-            echo "Contrat ajouté avec succès.";
-        } catch (Exception $e) {
-            die('Erreur lors de l\'ajout du contrat : ' . $e->getMessage());
-        }
+{
+    $sql = "INSERT INTO contract (titre, description, date_creation, date_fin, partner_id)
+            VALUES (:titre, :description, :date_creation, :date_fin, :partner_id)";
+    $conn = config::getConnexion();
+
+    try {
+        $query = $conn->prepare($sql);
+        $query->execute([
+            'titre' => $contract->gettitre(),
+            'description' => $contract->getdescription(),
+            'date_creation' => $contract->getdate_creation(),
+            'date_fin' => $contract->getdate_fin(),
+            'partner_id' => $contract->getpartnerId()
+        ]);
+        echo "Contrat ajouté avec succès.";
+    } catch (Exception $e) {
+        die('Erreur lors de l\'ajout du contrat : ' . $e->getMessage());
     }
+}
+
     
 // Mettre à jour un contrat, y compris le partner_id
-function updateContract($contract, $id)
+// Exemple de la méthode updateContract
+public function updateContract($contract, $id)
 {
     $db = config::getConnexion();
 
-    // Correction de la requête SQL (suppression du commentaire)
     $sql = 'UPDATE contract SET 
                 titre = :titre,
                 description = :description,
@@ -127,7 +180,7 @@ function updateContract($contract, $id)
             'description' => $contract->getdescription(),
             'date_creation' => $contract->getdate_creation(),
             'date_fin' => $contract->getdate_fin(),
-            'partner_id' => $contract->getpartnerId()  // Assurez-vous que ce getter existe
+            'partner_id' => $contract->getpartnerId()
         ]);
 
         echo $query->rowCount() . " contrat(s) mis à jour avec succès.";
@@ -135,6 +188,7 @@ function updateContract($contract, $id)
         echo 'Erreur lors de la mise à jour du contrat : ' . $e->getMessage();
     }
 }
+
 
     // Supprimer un contrat
     public function deleteContract($id)

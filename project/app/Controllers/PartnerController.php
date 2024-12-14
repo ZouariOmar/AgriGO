@@ -1,7 +1,23 @@
 <?php
-include '../../conf/config.php';
+include_once '../../conf/config.php';
 
 class partnerController {
+    public function partnerList()
+    {
+        // Connexion à la base de données
+        $conn = config::getConnexion();
+
+        // Requête pour obtenir la liste des partenaires
+        $sql = "SELECT * FROM partner";
+
+        try {
+            $query = $conn->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();  // Retourne tous les partenaires
+        } catch (Exception $e) {
+            die('Erreur lors de la récupération des partenaires : ' . $e->getMessage());
+        }
+    }
     public function addPartner($partner) {
         $conn = config::getConnexion();
         $sql = "INSERT INTO partner (name, email, number, status) VALUES (:name, :email, :number, :status)";
@@ -99,5 +115,19 @@ class partnerController {
             'nextPage' => min($currentPage + 1, $totalPages),
             'totalPages' => $totalPages
         ];
+    }
+    // Supprimer un partnenaire
+    public function deletepartner($id)
+    {
+        $sql = "DELETE FROM contract WHERE id = :id";
+        $conn = config::getConnexion();
+        $req = $conn->prepare($sql);
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        try {
+            $req->execute();
+            echo "partenaire supprimé avec succès.";
+        } catch (Exception $e) {
+            die('Erreur lors de la suppression du partenaire : ' . $e->getMessage());
+        }
     }
 }

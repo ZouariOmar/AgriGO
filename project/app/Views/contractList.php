@@ -47,7 +47,6 @@ $paginationInfo = $contractC->getPaginationInfo($currentPage, $resultsPerPage, $
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Partner</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Start Date</th>
@@ -59,18 +58,17 @@ $paginationInfo = $contractC->getPaginationInfo($currentPage, $resultsPerPage, $
             <?php if (!empty($contracts)) {
                 foreach ($contracts as $contract) { ?>
                     <tr>
-                        <td><?= htmlspecialchars($contract['id_contract']) ?></td>
-                        <td><?= htmlspecialchars($contract['partner_name']) ?></td>
-                        <td><?= htmlspecialchars($contract['title']) ?></td>
+                        <td><?= htmlspecialchars($contract['id']) ?></td>
+                        <td><?= htmlspecialchars($contract['titre']) ?></td>
                         <td><?= htmlspecialchars($contract['description']) ?></td>
                         <td><?= htmlspecialchars($contract['date_creation']) ?></td>
                         <td><?= htmlspecialchars($contract['date_fin']) ?></td>
                         <td>
                             <form method="POST" action="updatecontract.php" style="display:inline;">
-                                <input type="hidden" value="<?= $contract['id_contract'] ?>" name="id_contract">
+                                <input type="hidden" value="<?= $contract['id'] ?>" name="id">
                                 <button type="submit" name="update">Update</button>
                             </form>
-                            <a href="deletecontract.php?id_contract=<?= $contract['id_contract'] ?>" onclick="return confirm('Are you sure you want to delete this contract?')">Delete</a>
+                            <a href="deletecontract.php?id=<?= $contract['id'] ?>" onclick="return confirm('Are you sure you want to delete this contract?')">Delete</a>
                         </td>
                     </tr>
                 <?php }
