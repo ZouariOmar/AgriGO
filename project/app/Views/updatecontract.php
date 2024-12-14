@@ -1,35 +1,46 @@
 <?php
 include "../Models/contract.php";
 include "../Controllers/contractController.php";
+include "../Controllers/partnerController.php";
+
 $contract = null;
 $error = "";
 // create an instance of the controller
 $contractController = new contractController();
+$partnerController = new partnerController();
 
-//utiliser la fonction isset() pour vérifier si les clés titre, description, date_creation et date_fin existe avant d'y accéder
+// Vérification des clés avant traitement
 if (
-    isset($_POST["titre"])  && isset($_POST["description"]) && isset($_POST["date_creation"]) && isset($_POST["date_fin"])
+    isset($_POST["titre"]) && isset($_POST["description"]) && isset($_POST["date_creation"]) && isset($_POST["date_fin"]) && isset($_POST["partner_id"])
 ) {
-    //utiliser la fonction empty() pour vérifier si les clés titre, description, date_creation et date_fin posséde des valeurs
     if (
-        !empty($_POST["titre"])  && !empty($_POST["description"]) && !empty($_POST["date_creation"]) && !empty($_POST["date_fin"])
+        !empty($_POST["titre"]) && !empty($_POST["description"]) && !empty($_POST["date_creation"]) && !empty($_POST["date_fin"]) && !empty($_POST["partner_id"])
     ) {
-        // créer un objet à partir des nouvelles valeurs passées pour mettre à jour l'Offre choisi
+        // Créer un objet contract avec toutes les données, y compris partner_id
         $contract = new contract(
             null,
             $_POST['titre'],
             $_POST['description'],
             $_POST['date_creation'],
             $_POST['date_fin'],
+            $_POST['partner_id']  // Utiliser partner_id
         );
-        // appelle de la fonction updatecontract
-        $contractController->updatecontract($contract, $_POST['id']);
-        // une fois l'update est faite une redirection vers la page liste des Offres sera faite
-        header('Location:contractList.php');
-    } else
-        // message en cas de manque d'information
-        $error = "Missing information";
+        
+        // Appeler la méthode pour mettre à jour le contrat
+        $contractController->updateContract($contract, $_POST['id']);
+        header('Location:contractList.php'); // Rediriger vers la liste des contrats
+    } else {
+        $error = "Missing information"; // Afficher un message si des informations manquent
+    }
 }
+
+// Récupérer le contrat à mettre à jour si l'ID est passé
+if (isset($_POST['id'])) {
+    $contract = $contractController->getcontractById($_POST['id']);
+}
+
+// Récupérer la liste des partenaires
+$partners = $partnerController->partnerList();
 ?>
 
 <!DOCTYPE html>
@@ -39,41 +50,53 @@ if (
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/stylecontract-2.css">
-    <title>UPDATECONTRACT</title>
+    <title>Update Contract</title>
 </head>
 
 <body>
-
+    <div style="text-align: right; margin: 10px;">
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </div>
     <?php
-    // $_POST['id'] récupérer à partir du form relative au bouton update dans la page contractList
-    if (isset($_POST['id'])) {
-        //récupération du contract à mettre à jour par son ID
-        $contract = $contractController->getcontractById($_POST['id']);
+    if ($contract) {
     ?>
-        <!-- remplir le vormulaire par les données des offres à mettre à jour -->
+        <!-- Formulaire pré-rempli avec les données actuelles du contrat -->
         <form id="contract" action="" method="POST">
-            <label for="id">ID contract:</label>
-            <!-- remplir chaque input par la valeur adéquate dans l'attribut value  -->
-            <input class="form-control form-control-user" type="text" id="id" name="id" readonly value="<?php echo $_POST['id'] ?>"><br>
+    <!-- Sélectionner un partenaire -->
+    <label for="partner_id">Choisir un partenaire</label>
+    <select name="partner_id" id="partner_id">
+        <?php foreach ($partners as $partner): ?>
+            <option value="<?= $partner['id_partner'] ?>" 
+                <?= ($partner['id_partner'] == $contract['partner_id']) ? 'selected' : ''; ?>>
+                <?= $partner['name'] ?>
+            </option>
+        <?php endforeach; ?>
+    </select><br>
 
-            <label for="id">contract title </label>
-            <!-- remplir chaque input par la valeur adéquate dans l'attribut value  -->
+    <!-- Récupérer les informations du contrat à mettre à jour -->
+    <label for="titre">Titre du contrat</label>
+    <input class="form-control" type="text" id="titre" name="titre" value="<?= $contract['titre']; ?>"><br>
 
-            <input class="form-control form-control-user" type="text" id="name" name="titre" value="<?php echo $contract['titre'] ?>"><br>
-            <label for="title">description</label>
-            <input class="form-control form-control-user" type="text" id="description" name="description" value="<?php echo $contract['description'] ?>"><br>
-            <label for="title">date_creation</label>
-            <input class="form-control form-control-user" type="date" id="date_creation" name="date_creation" value="<?php echo $contract['date_creation'] ?>"><br>
-            <label for="title">date_fin</label>
-            <input class="form-control form-control-user" type="date" id="date_fin" name="date_fin" value="<?php echo $contract['date_fin'] ?>"><br>
-            <input type="submit" value="save">
-        </form>
+    <label for="description">Description</label>
+    <input class="form-control" type="text" id="description" name="description" value="<?= $contract['description']; ?>"><br>
+
+    <label for="date_creation">Date de création</label>
+    <input class="form-control" type="date" id="date_creation" name="date_creation" value="<?= $contract['date_creation']; ?>"><br>
+
+    <label for="date_fin">Date de fin</label>
+    <input class="form-control" type="date" id="date_fin" name="date_fin" value="<?= $contract['date_fin']; ?>"><br>
+
+    <input type="hidden" name="id" value="<?= $contract['id']; ?>"> <!-- Le champ caché pour l'ID -->
+    <input type="submit" value="Mettre à jour">
+</form>
+
     <?php
+    } else {
+        echo "<p>Contract not found.</p>";
     }
     ?>
 
-<script src="../public/js/scriptcontract-2.js" defer></script>
-
+    <script src="../public/js/scriptcontract-2.js" defer></script>
 
 </body>
 

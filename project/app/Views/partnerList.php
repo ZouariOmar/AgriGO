@@ -29,7 +29,7 @@ $paginationInfo = $partnerC->getPaginationInfo($currentPage, $resultsPerPage, $s
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/stylepartner.css">
-    <title>Partners List</title>
+    <title>Partner List</title>
 </head>
 
 <body>
@@ -83,7 +83,7 @@ $paginationInfo = $partnerC->getPaginationInfo($currentPage, $resultsPerPage, $s
                                 <input type="hidden" value="<?= $partner['id_partner'] ?>" name="id_partner">
                                 <button type="submit" name="update">Update</button>
                             </form>
-                            <a href="deletepartner.php?id_partner=<?= $partner['id_partner'] ?>">Delete</a>
+                            <a href="deletepartner.php?id_partner=<?= $partner['id_partner'] ?>" onclick="return confirm('Are you sure you want to delete this partner?')">Delete</a>
                         </td>
                     </tr>
                 <?php }

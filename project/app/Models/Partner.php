@@ -1,15 +1,8 @@
 <?php
 
-class partner{
-    private $id_partner;
-    private $name;
-    private $email;
-    private $number;
-    private $status;
-
-
-    public function __construct($id_partner,$name,$email,$number,$status) {
-        $this->id_partner=$id_partner;
+class Partner {
+    public function __construct($id, $name, $email, $number, $status) {
+        $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->number = $number;
