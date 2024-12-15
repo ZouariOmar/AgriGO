@@ -22,7 +22,7 @@
 
         ?>
         <a class="btn float-end" href="../"><i class="fa-solid fa-screwdriver-wrench"></i> Backoffice</a>
-        <a class="btn float-end" href="panier.php"><i class="fa-solid fa-cart-shopping"></i> Panier
+        <a class="btn float-end" href="../views/panier.php"><i class="fa-solid fa-cart-shopping"></i> Panier
             (<?php echo $productCount; ?>)</a>
     </div>
 </nav>

@@ -1,2 +1,2 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=ecommerce','root','');
+$pdo = new PDO('mysql:host=localhost;dbname=agtn','root','');
