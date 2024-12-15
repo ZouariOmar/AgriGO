@@ -1,0 +1,170 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Title styling */
+.reports-title {
+    text-align: center;
+    color: #28a745;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Add Report link styling */
+.reports-add-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: #28a745;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 20px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.reports-add-link:hover {
+    background-color: #218838;
+}
+
+/* Filter form styling */
+.reports-filter-form {
+    width: 90%;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+.reports-filter-form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.reports-category-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.reports-filter-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.reports-filter-button:hover {
+    background-color: #218838;
+}
+
+/* Table styling */
+.reports-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header styling */
+.reports-table-header {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Table data cell styling */
+.reports-table-cell {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Alternate row coloring */
+.reports-table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Table row hover effect */
+.reports-table-row:hover {
+    background-color: #e2f9e1;
+}
+
+/* General button styling */
+.reports-done-button,
+.reports-in-process-button,
+.reports-view-responses-button,
+.reports-response-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+}
+
+/* Mark as Done button styling */
+.reports-done-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.reports-done-button:hover {
+    background-color: #218838;
+}
+
+/* Mark as In Process button styling */
+.reports-in-process-button {
+    background-color: #ffc107;
+    color: white;
+}
+
+.reports-in-process-button:hover {
+    background-color: #e0a800;
+}
+
+/* View Responses button styling */
+.reports-view-responses-button {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.reports-view-responses-button:hover {
+    background-color: #138496;
+}
+
+/* Add Response button styling */
+.reports-response-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.reports-response-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .reports-table {
+        font-size: 12px;
+    }
+    .reports-add-link {
+        padding: 10px 20px;
+    }
+}

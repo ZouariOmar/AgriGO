@@ -17,7 +17,7 @@ is_suspend($admin_id, 'Location: login.php');
 // Fetching
 $fetch = new Fetch();
 $user = $fetch->fetch_user($admin_id);
-$clients = $fetch->__fetch_users(3);
+$reports = $fetch->fetch_reports();
 $user_profile = $fetch->fetch_user_profile($admin_id);
 $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 ?>
@@ -137,7 +137,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- / Account Settings -->
 
           <!-- Users Management -->
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Users Management</div>
@@ -189,14 +189,14 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- / Authentications -->
 
           <!-- Maintenance -->
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-cube-alt"></i>
               <div data-i18n="Misc">Maintenance</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="Reports.php?id=<?php echo $admin_id ?>" class="menu-link">
+                <a href="pages-misc-error.html" class="menu-link">
                   <div data-i18n="Error">Reports</div>
                 </a>
               </li>
@@ -337,51 +337,35 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light">Users Management /</span>
-              Clients
+              <span class="text-muted fw-light">Maintenance /</span>
+              Reports Table
             </h4>
             <div class="row">
-
-              <div class="col-md-12">
-                <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Clients</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="farmers.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
-                      Farmers</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="admins.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
-                      Admins</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- Clients Table -->
+              <!-- Reports Table -->
               <ul class="order-5">
-                <div class="card col-lg order-4 mb-4">
-                  <h5 class="card-header">Clients Table</h5>
+                <div class="card col-lg order-5 mb-4">
+                  <h5 class="card-header">Reports Table</h5>
                   <div class="table-responsive text-nowrap">
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>Username</th>
-                          <th>Email</th>
-                          <th>Profile Link</th>
-                          <th>Created At</th>
+                          <th>Category</th>
+                          <th>Subject</th>
+                          <th>Description</th>
                           <th>Update At</th>
+                          <th>Created At</th>
                           <th>Status</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody class="table-border-bottom-0">
-                        <?php users_table($clients, $admin_id, 3); ?>
+                        <?php reports_table($reports, $admin_id); ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </ul>
-              <!--/ Clients Table -->
+              <!--/ Reports Table -->
             </div>
           </div>
           <!-- / Content -->
@@ -426,8 +410,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
   <!-- / Layout wrapper -->
 
   <div class="buy-now">
-    <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
-      class="btn btn-danger btn-buy-now">New Event</a>
+    <a href="#" target="_blank" class="btn btn-danger btn-buy-now">New Event</a>
   </div>
 
   <!-- Core JS -->
@@ -445,9 +428,6 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
   <!-- Main JS -->
   <script src="../../public/js/main.js"></script>
-
-  <!-- Page JS -->
-  <script src="../../public/js/dashboards-analytics.js"></script>
   <script src="../../public/js/search-bar.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->

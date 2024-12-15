@@ -214,26 +214,21 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 					</li>
 					<!-- / Authentications -->
 
-					<!-- Others -->
+					<!-- Maintenance -->
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
 							<i class="menu-icon tf-icons bx bx-cube-alt"></i>
-							<div data-i18n="Misc">Others</div>
+							<div data-i18n="Misc">Maintenance</div>
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="pages-misc-error.html" class="menu-link">
-									<div data-i18n="Error">Error</div>
-								</a>
-							</li>
-							<li class="menu-item">
-								<a href="pages-misc-under-maintenance.html" class="menu-link">
-									<div data-i18n="Under Maintenance">Under Maintenance</div>
+								<a href="Reports.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Error">Reports</div>
 								</a>
 							</li>
 						</ul>
 					</li>
-					<!-- / Others -->
+					<!-- / Maintenance -->
 
 					<li class="menu-item">
 						<!-- MISC -->

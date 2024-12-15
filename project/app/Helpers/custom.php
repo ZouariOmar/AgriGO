@@ -60,7 +60,6 @@ function users_table($array, $admin_id, $role)
         </td>
         <td class="created_at">' . $raw['Created_at'] . '</td>
         <td class="updated_at">' . $raw['Updated_at'] . '</td>
-        <td class="updated_at">' . $raw['Updated_at'] . '</td>
         <td>
             <span class="badge status ' .
             (($raw['Status'] === 'ACTIVE') ? " bg-label-success" : (($raw['Status'] === 'INACTIVE') ? "bg-label-warning"
@@ -106,6 +105,73 @@ function del_AToAA($raw, $admin_id, $role)
         ';
     }
     return '';
+}
+
+function reports_table($array, $admin_id)
+{
+    if (empty($array)) {
+        echo '<tr><td colspan="7" class="text-center">Nothing Her!</td></tr>';
+        return;
+    }
+    // $fetch = new Fetch();
+    foreach ($array as $raw) {
+        // Fetching
+        // $user = $fetch->fetch_user_profile($raw['ID']);
+        // $user_profile_image = $fetch->fetch_user_image($user['Image_ID']);
+        echo '
+    <tr class="user-row">
+        <td class="username fw-bold">' . htmlspecialchars($raw['category']) . '</td>
+        <td class="email">' . htmlspecialchars($raw['subject']) . '</td>
+        <td >' . htmlspecialchars($raw['description']) . '</td>
+        <td class="updated_at">' . $raw['Update_at'] . '</td>
+        <td class="created_at">' . $raw['Created_at'] . '</td>
+        <td class="status">
+            <span class="badge status ' .
+            (($raw['sta'] === 'DONE') ? " bg-label-success" : (($raw['sta'] === 'RECIEVED') ? "bg-label-warning"
+                : "bg-label-danger")) . ' me-1">
+            ' . $raw['sta'] . '
+            </span>
+        </td>
+        <td>
+            <div class="dropdown">
+                <button
+                    type="button"
+                    class="btn p-0 dropdown-toggle hide-arrow"
+                    data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a
+                        class="dropdown-item"
+                        href="addResponse.php?reportid=' . $raw['Report_ID'] .'&id=' . $admin_id . '"
+                        ><i class="bx bx-message-rounded-add me-1"></i> Add Response</a
+                    >
+                    <a
+                        class="dropdown-item"
+                        href="viewResponses.php?reportid=' . $raw['Report_ID'] . '&id=' . $admin_id . '"
+                        ><i class="bx bx-list-ul me-1"></i> View Responses</a
+                    >'
+                    . (
+                    $raw['sta'] != 'DONE'
+                    ? 
+                    '<a
+                        class="dropdown-item"
+                        href="updateReportStatus.php?id=' . $admin_id . '&reportID=' . $raw['Report_ID'] . '&status=' . ($raw['sta'] == 'RECIEVED' ? 'IN PROCESS' : 'DONE') . '"
+                        ><i class="bx bx-check-double me-1"></i> ' . ($raw['sta'] == 'RECIEVED' ? 'Mark as In Process' : 'Mark as Done') . '</a
+                    >'
+                    :
+                    ''
+                    ) .
+                    '<a
+                        class="dropdown-item"
+                        href="deleteReport.php?admin_id=' . $admin_id . '&id=' . $raw['Report_ID'] . '"
+                        ><i class="bx bx-folder-minus me-1"></i> Delete</a
+                    >
+                </div>
+            </div>
+        </td>
+    </tr>';
+    }
 }
 
 /**

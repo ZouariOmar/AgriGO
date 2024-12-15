@@ -195,6 +195,12 @@ class Fetch
     ]);
     return $users_count[0]['UsersCount'] ?? 0; // Default to 0 if no rows
   }
+
+  public function fetch_reports()
+  {
+    $reports = $this->db->query("SELECT * FROM rapports");
+    return $reports ?? null;
+  }
 }  // Fetch class
 
 class SignIn

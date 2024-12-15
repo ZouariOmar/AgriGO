@@ -27,12 +27,169 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `Images`
 --
+
 CREATE TABLE `Images` (
-`Image_ID` int(11) NOT NULL COMMENT 'Image ID',
-`Image_Name` varchar(255) NOT NULL COMMENT 'Image Name',
-`Image_Type` varchar(50) NOT NULL COMMENT 'Image Type (jpeg/png)',
-`Image_Data` longblob NOT NULL COMMENT 'Image binary data'
+  `Image_ID` int(11) NOT NULL COMMENT 'Image ID',
+  `Name` varchar(255) NOT NULL COMMENT 'Image Name',
+  `Path` varchar(255) NOT NULL COMMENT 'Image path',
+  `Type` varchar(50) DEFAULT NULL COMMENT 'Image Type (jpeg/png)'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_uca1400_ai_ci;
+--
+-- Dumping data for table `Images`
+--
+
+INSERT INTO `Images` (`Image_ID`, `Name`, `Path`, `Type`)
+VALUES (
+    39,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    40,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    41,
+    'Linkedin Banner.png',
+    'uploads/Linkedin Banner.png',
+    'image/png'
+  ),
+  (
+    42,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    43,
+    'Linkedin Banner.png',
+    '../../public/assets/uploads/Linkedin Banner.png',
+    'image/png'
+  ),
+  (
+    44,
+    'Linkedin Banner.png',
+    '../../public/assets/uploads/Linkedin Banner.png',
+    'image/png'
+  ),
+  (
+    45,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    46,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    47,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    48,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    49,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    50,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    51,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    52,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    53,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    54,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    55,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    56,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (57, '', '../../public/assets/uploads/', ''),
+  (
+    58,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (2).png',
+    'image/png'
+  ),
+  (
+    59,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    60,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview.png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview.png',
+    'image/png'
+  ),
+  (
+    61,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    62,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    63,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  ),
+  (
+    64,
+    '401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    '../../public/assets/uploads/401700700_201885956291933_7864594178641459272_n-removebg-preview (1).png',
+    'image/png'
+  );
 -- --------------------------------------------------------
 --
 -- Table structure for table `Login_History`
@@ -65,113 +222,333 @@ INSERT INTO `Login_History` (
     `Status`
   )
 VALUES (
-    78,
+    116,
     60,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-23 22:03:46',
+    '2024-12-02 14:53:59',
     'SUCCESS'
   ),
   (
-    79,
+    117,
     60,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-23 22:33:16',
+    '2024-12-02 14:56:06',
     'SUCCESS'
   ),
   (
-    80,
+    118,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 20:20:18',
+    'SUCCESS'
+  ),
+  (
+    119,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 20:20:24',
+    'SUCCESS'
+  ),
+  (
+    120,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 20:21:34',
+    'SUCCESS'
+  ),
+  (
+    121,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 21:17:31',
+    'SUCCESS'
+  ),
+  (
+    122,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 21:17:39',
+    'SUCCESS'
+  ),
+  (
+    123,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 21:20:26',
+    'SUCCESS'
+  ),
+  (
+    124,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 21:31:32',
+    'SUCCESS'
+  ),
+  (
+    125,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 22:04:59',
+    'FAILED'
+  ),
+  (
+    126,
     61,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-24 13:22:22',
+    '2024-12-02 22:08:27',
     'SUCCESS'
   ),
   (
-    81,
-    60,
-    '127.0.0.1',
-    NULL,
-    '127.0.0.1',
-    'localhost',
-    'HTTP/1.1',
-    '2024-11-24 13:22:49',
-    'SUCCESS'
-  ),
-  (
-    82,
+    127,
     61,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-25 12:19:23',
-    'SUCCESS'
+    '2024-12-02 22:08:53',
+    'FAILED'
   ),
   (
-    83,
+    128,
+    61,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 22:09:17',
+    'FAILED'
+  ),
+  (
+    129,
+    61,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 22:10:49',
+    'FAILED'
+  ),
+  (
+    130,
+    61,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 22:12:40',
+    'FAILED'
+  ),
+  (
+    131,
+    61,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-02 22:13:05',
+    'FAILED'
+  ),
+  (
+    132,
     60,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-25 12:19:43',
+    '2024-12-02 22:13:40',
     'SUCCESS'
   ),
   (
-    84,
+    133,
     60,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-25 13:15:05',
+    '2024-12-05 17:40:11',
     'SUCCESS'
   ),
   (
-    85,
-    64,
-    '127.0.0.1',
-    NULL,
-    '127.0.0.1',
-    'localhost',
-    'HTTP/1.1',
-    '2024-11-25 13:22:34',
-    'SUCCESS'
-  ),
-  (
-    86,
+    134,
     60,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-25 13:22:58',
+    '2024-12-06 18:17:41',
     'SUCCESS'
   ),
   (
-    87,
+    135,
     60,
     '127.0.0.1',
     NULL,
     '127.0.0.1',
     'localhost',
     'HTTP/1.1',
-    '2024-11-26 08:13:26',
+    '2024-12-06 21:03:48',
+    'SUCCESS'
+  ),
+  (
+    136,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-06 21:06:55',
+    'SUCCESS'
+  ),
+  (
+    137,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 08:34:54',
+    'SUCCESS'
+  ),
+  (
+    138,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 08:44:41',
+    'SUCCESS'
+  ),
+  (
+    139,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 08:49:16',
+    'SUCCESS'
+  ),
+  (
+    140,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 09:09:53',
+    'SUCCESS'
+  ),
+  (
+    141,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 13:58:45',
+    'SUCCESS'
+  ),
+  (
+    142,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 14:01:59',
+    'SUCCESS'
+  ),
+  (
+    143,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 14:15:16',
+    'SUCCESS'
+  ),
+  (
+    144,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 14:47:24',
+    'SUCCESS'
+  ),
+  (
+    145,
+    60,
+    '127.0.0.1',
+    NULL,
+    '127.0.0.1',
+    'localhost',
+    'HTTP/1.1',
+    '2024-12-09 14:52:03',
     'SUCCESS'
   );
 -- --------------------------------------------------------
@@ -232,7 +609,7 @@ CREATE TABLE `Usrs` (
   `Email` varchar(100) NOT NULL COMMENT 'Email address',
   `Password_hash` varchar(255) NOT NULL COMMENT 'Hashed password',
   `Created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Account creation date',
-  `Updated_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Last profile update timestamp',
+  `Updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Last profile update timestamp',
   `Status` enum('ACTIVE', 'INACTIVE', 'SUSPENDED') NOT NULL COMMENT 'Status of the account'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_uca1400_ai_ci;
 --
@@ -254,7 +631,7 @@ VALUES (
     'admin@admin.com',
     '$2y$10$Jm0i/zt9sXVJsJK1VIVsoeJnqDXYfAuyL.K9tZ9Ilb2J1zGznq6fG',
     '2024-11-23 22:03:03',
-    '2024-11-23 22:03:03',
+    '2024-12-05 17:44:14',
     'ACTIVE'
   ),
   (
@@ -262,8 +639,8 @@ VALUES (
     'omarzouari',
     'rvrrv@fefef.com',
     '$2y$10$T5qOq0J8.8LE5KyQmyFKuew52eCI5Dbsc3PiAU0LnuwqQ646UO42C',
-    '2024-11-23 22:23:17',
-    '2024-11-23 22:23:17',
+    '2024-01-23 22:23:17',
+    '2024-12-02 13:53:47',
     'ACTIVE'
   ),
   (
@@ -272,8 +649,53 @@ VALUES (
     'emna@gmail.com',
     '$2y$10$XCDWyX72y4qHCRuA/5w5M.aBMeSj21FTOpmqlXebsOFy1sQ1ZRF22',
     '2024-11-25 13:21:31',
-    '2024-11-25 13:21:31',
+    '2024-11-27 15:14:36',
     'ACTIVE'
+  ),
+  (
+    65,
+    'test123',
+    'help@gmail.com',
+    '$2y$10$KQaiijBR/016Qy.O3/ceR.cMFig8BQBzyPYHybdFe43JllmA4Djye',
+    '2024-11-26 19:31:16',
+    '2024-11-26 19:31:16',
+    'ACTIVE'
+  ),
+  (
+    66,
+    'omarzouaridsdsd',
+    'dsdef@gmail.com',
+    '$2y$10$rKr5yCeX7Z1wGzLxlMO94.sJ8iPPJ./sTnmhO1vdPtRa3YeyLSnfa',
+    '2024-11-26 21:17:12',
+    '2024-11-29 16:47:48',
+    'ACTIVE'
+  ),
+  (
+    67,
+    'aazaz555',
+    'efzerg@fefz.com',
+    '$2y$10$dxWfGIeJ3qEzf4Fyassd5.iZCF6fRbBWdaOOOY0d7KKQ7B6o5//QK',
+    '2024-11-26 21:18:07',
+    '2024-11-29 16:50:47',
+    'SUSPENDED'
+  ),
+  (
+    69,
+    'contact',
+    'contact@contact.com',
+    '$2y$10$9wQsOY9naDktz1AwXQGzc.QptUk.K36bJWIxzJ1NnUQn1sxnN5nyS',
+    '2024-11-28 21:42:46',
+    '2024-11-28 22:34:30',
+    'ACTIVE'
+  ),
+  (
+    70,
+    'hhehhz',
+    'zzg@ezgz.com',
+    '$2y$10$Bo518m/Ndj/sJXTfAxghuOIQz/XHBubJiX26iHk2A/FqljLQLZp06',
+    '2024-11-29 23:22:55',
+    '2024-12-02 14:12:30',
+    'INACTIVE'
   );
 -- --------------------------------------------------------
 --
@@ -317,17 +739,17 @@ INSERT INTO `Usr_Profile` (
 VALUES (
     21,
     60,
-    NULL,
+    64,
     'omar',
     'zouari',
     '93940909',
-    'FEMALE',
-    'Bangladesh',
+    'MALE',
+    'Beja',
     'Tunis, Sfax',
     4445,
     'HelloWorld!																					',
     '2024-11-23 22:03:03',
-    '2024-11-26 12:37:53'
+    '2024-12-02 22:03:22'
   ),
   (
     22,
@@ -358,6 +780,81 @@ VALUES (
     NULL,
     '2024-11-25 13:21:31',
     '2024-11-25 13:21:31'
+  ),
+  (
+    26,
+    65,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '2024-11-26 19:31:16',
+    '2024-11-26 19:31:16'
+  ),
+  (
+    27,
+    66,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '2024-11-26 21:17:12',
+    '2024-11-26 21:17:12'
+  ),
+  (
+    28,
+    67,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '2024-11-26 21:18:07',
+    '2024-11-26 21:18:07'
+  ),
+  (
+    30,
+    69,
+    60,
+    'omare',
+    'zouari',
+    '97900213',
+    'MALE',
+    'Kef',
+    'kef, serse',
+    3000,
+    'my name is youssef 7alawa',
+    '2024-11-28 21:42:46',
+    '2024-11-28 22:48:46'
+  ),
+  (
+    31,
+    70,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '2024-11-29 23:22:55',
+    '2024-11-29 23:22:55'
   );
 -- --------------------------------------------------------
 --
@@ -376,7 +873,12 @@ CREATE TABLE `Usr_Roles` (
 INSERT INTO `Usr_Roles` (`Usr_Role_ID`, `Usr_ID`, `Role_ID`)
 VALUES (25, 60, 2),
   (26, 61, 3),
-  (29, 64, 3);
+  (29, 64, 3),
+  (30, 65, 4),
+  (31, 66, 3),
+  (32, 67, 3),
+  (34, 69, 2),
+  (35, 70, 4);
 --
 -- Indexes for dumped tables
 --
@@ -430,13 +932,14 @@ ADD PRIMARY KEY (`Usr_Role_ID`),
 -- AUTO_INCREMENT for table `Images`
 --
 ALTER TABLE `Images`
-MODIFY `Image_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Image ID';
+MODIFY `Image_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Image ID',
+  AUTO_INCREMENT = 65;
 --
 -- AUTO_INCREMENT for table `Login_History`
 --
 ALTER TABLE `Login_History`
 MODIFY `Login_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for each login attempt',
-  AUTO_INCREMENT = 88;
+  AUTO_INCREMENT = 146;
 --
 -- AUTO_INCREMENT for table `Roles`
 --
@@ -448,19 +951,19 @@ MODIFY `Role_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for 
 --
 ALTER TABLE `Usrs`
 MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for each user',
-  AUTO_INCREMENT = 65;
+  AUTO_INCREMENT = 71;
 --
 -- AUTO_INCREMENT for table `Usr_Profile`
 --
 ALTER TABLE `Usr_Profile`
 MODIFY `Usr_profile_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for the profile',
-  AUTO_INCREMENT = 26;
+  AUTO_INCREMENT = 32;
 --
 -- AUTO_INCREMENT for table `Usr_Roles`
 --
 ALTER TABLE `Usr_Roles`
 MODIFY `Usr_Role_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for each entry',
-  AUTO_INCREMENT = 30;
+  AUTO_INCREMENT = 36;
 --
 -- Constraints for dumped tables
 --
@@ -707,6 +1210,69 @@ COMMIT;
 -- --------------------------------------------------------
 -- ### Gamma branch tables ###
 -- --------------------------------------------------------
+--
+-- Table structure for table `contract`
+--
+
+CREATE TABLE `contract` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `date_creation` date NOT NULL,
+  `date_fin` date NOT NULL,
+  `partner_id` int(11) NOT NULL
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+-- --------------------------------------------------------
+--
+-- Table structure for table `partner`
+--
+
+CREATE TABLE `partner` (
+  `id_partner` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `number` varchar(20) NOT NULL,
+  `status` enum('active', 'inactive') NOT NULL
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `contract`
+--
+ALTER TABLE `contract`
+ADD PRIMARY KEY (`id`),
+  ADD KEY `partner_id` (`partner_id`);
+--
+-- Indexes for table `partner`
+--
+ALTER TABLE `partner`
+ADD PRIMARY KEY (`id_partner`);
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contract`
+--
+ALTER TABLE `contract`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `partner`
+--
+ALTER TABLE `partner`
+MODIFY `id_partner` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `contract`
+--
+ALTER TABLE `contract`
+ADD CONSTRAINT `contract_ibfk_1` FOREIGN KEY (`partner_id`) REFERENCES `partner` (`id_partner`) ON DELETE CASCADE;
+COMMIT;
 -- --------------------------------------------------------
 -- ### Beta & Delta branch tables ###
 -- --------------------------------------------------------
@@ -767,7 +1333,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_client` (`id_client`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT = 76;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT = 90;
 --
 -- Dumping data for table `commande`
 --
@@ -783,7 +1349,21 @@ VALUES (71, 9, '15', 0, '2024-12-09 14:56:57'),
   (72, 9, '45', 1, '2024-12-09 16:21:32'),
   (73, 9, '42', 0, '2024-12-09 16:22:50'),
   (74, 9, '18', 1, '2024-12-09 16:24:00'),
-  (75, 7, '16', 1, '2024-12-13 00:23:47');
+  (75, 7, '16', 1, '2024-12-13 00:23:47'),
+  (76, 7, '16', 0, '2024-12-13 11:24:31'),
+  (77, 7, '16', 0, '2024-12-13 15:50:16'),
+  (78, 7, '0', 0, '2024-12-13 15:52:27'),
+  (79, 7, '0', 0, '2024-12-13 15:52:57'),
+  (80, 7, '0', 0, '2024-12-13 15:55:57'),
+  (81, 7, '0', 0, '2024-12-13 15:56:31'),
+  (82, 7, '118', 0, '2024-12-13 16:33:28'),
+  (83, 7, '49', 0, '2024-12-13 16:37:58'),
+  (84, 7, '13', 0, '2024-12-14 13:19:58'),
+  (85, 7, '16', 0, '2024-12-14 13:29:11'),
+  (86, 7, '8', 0, '2024-12-14 13:35:39'),
+  (87, 7, '0', 0, '2024-12-14 13:43:52'),
+  (88, 7, '0', 0, '2024-12-14 13:43:52'),
+  (89, 7, '44', 0, '2024-12-14 14:01:39');
 -- --------------------------------------------------------
 --
 -- Table structure for table `ligne_commande`
@@ -799,7 +1379,7 @@ CREATE TABLE IF NOT EXISTS `ligne_commande` (
   PRIMARY KEY (`id`),
   KEY `id_produit` (`id_produit`),
   KEY `id_commande` (`id_commande`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT = 77;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT = 88;
 --
 -- Dumping data for table `ligne_commande`
 --
@@ -818,7 +1398,18 @@ VALUES (70, 45, 71, '15', 1, '15'),
   (73, 41, 73, '5', 2, '10'),
   (74, 40, 74, '8', 1, '8'),
   (75, 41, 74, '5', 2, '10'),
-  (76, 40, 75, '8', 2, '16');
+  (76, 40, 75, '8', 2, '16'),
+  (77, 40, 76, '8', 2, '16'),
+  (78, 40, 77, '8', 2, '16'),
+  (79, 50, 82, '44', 2, '88'),
+  (80, 45, 82, '15', 2, '30'),
+  (81, 41, 83, '5', 1, '5'),
+  (82, 50, 83, '44', 1, '44'),
+  (83, 41, 84, '5', 1, '5'),
+  (84, 40, 84, '8', 1, '8'),
+  (85, 40, 85, '8', 2, '16'),
+  (86, 40, 86, '8', 1, '8'),
+  (87, 50, 89, '44', 1, '44');
 -- --------------------------------------------------------
 --
 -- Table structure for table `produit`
@@ -832,9 +1423,11 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `date_creation` datetime NOT NULL,
   `description` varchar(255) NOT NULL,
   `image` varchar(150) NOT NULL,
+  `location` varchar(255) DEFAULT NULL COMMENT 'Location of the product',
+  `Quantitie` int(11) DEFAULT NULL COMMENT 'Quantity of the product',
   PRIMARY KEY (`id`),
   KEY `id_categorie` (`id_categorie`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT = 47;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT = 51;
 --
 -- Dumping data for table `produit`
 --
@@ -846,7 +1439,9 @@ INSERT INTO `produit` (
     `id_categorie`,
     `date_creation`,
     `description`,
-    `image`
+    `image`,
+    `location`,
+    `Quantitie`
   )
 VALUES (
     40,
@@ -855,7 +1450,9 @@ VALUES (
     18,
     '0000-00-00 00:00:00',
     '',
-    'Fiche-aliment-Images-36.jpg'
+    'Fiche-aliment-Images-36.jpg',
+    NULL,
+    0
   ),
   (
     41,
@@ -864,7 +1461,9 @@ VALUES (
     18,
     '0000-00-00 00:00:00',
     '',
-    'download.jpg'
+    'download.jpg',
+    NULL,
+    0
   ),
   (
     45,
@@ -873,16 +1472,64 @@ VALUES (
     20,
     '0000-00-00 00:00:00',
     '15dt/H',
-    'submarine.png'
+    'submarine.png',
+    NULL,
+    0
   ),
   (
     46,
     'pasta',
     '15',
-    18,
+    20,
     '0000-00-00 00:00:00',
     'hfgqshfs',
-    'pasta.jpg'
+    'pasta.jpg',
+    NULL,
+    0
+  ),
+  (
+    47,
+    'male',
+    '15',
+    19,
+    '0000-00-00 00:00:00',
+    'f;sfd',
+    '../upload/produit/675c1600479a7.jpg',
+    NULL,
+    0
+  ),
+  (
+    48,
+    'aziz',
+    '10',
+    20,
+    '0000-00-00 00:00:00',
+    'tafar',
+    '../upload/produit/675c16355eca3.png',
+    NULL,
+    0
+  ),
+  (
+    49,
+    'nike',
+    '15',
+    18,
+    '0000-00-00 00:00:00',
+    'dsqds',
+    '../upload/produit/675c172364c62.jpg',
+    NULL,
+    0
+  ),
+  (
+    50,
+    'bza3 bheyim',
+    '44',
+    18,
+    '0000-00-00 00:00:00',
+    'plkoijiuhiu ohhhh bza3',
+    '',
+    NULL,
+    0
   );
 -- --------------------------------------------------------
 --
