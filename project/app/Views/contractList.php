@@ -33,10 +33,12 @@ $paginationInfo = $contractC->getPaginationInfo($currentPage, $resultsPerPage, $
 
 <body>
     <h1>Contract Management</h1>
-
+    <div style="text-align: right; margin: 10px;">
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </div>
     <!-- Filtrage par date_fin -->
     <form method="get" action="">
-        <label for="date_fin">Filter by End Date:</label>
+        <label for="date_fin"></label>
         <input type="date" name="date_fin" value="<?= htmlspecialchars($endDateFilter) ?>">
         <button type="submit">Filter</button>
         <a href="contractList.php">Clear Filter</a>
@@ -68,7 +70,7 @@ $paginationInfo = $contractC->getPaginationInfo($currentPage, $resultsPerPage, $
                                 <input type="hidden" value="<?= $contract['id'] ?>" name="id">
                                 <button type="submit" name="update">Update</button>
                             </form>
-                            <a href="deletecontract.php?id=<?= $contract['id'] ?>" onclick="return confirm('Are you sure you want to delete this contract?')">Delete</a>
+                            <a href="deletecontract.php?id=<?= $contract['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php }
@@ -98,7 +100,7 @@ $paginationInfo = $contractC->getPaginationInfo($currentPage, $resultsPerPage, $
     <!-- Bouton pour ajouter un contrat -->
     <a href="addcontract.php">Add New Contract</a>
 
-    <script src="../public/js/scriptcontract.js"></script>
+    <script src="../../public/js/scriptcontract.js"></script>
 </body>
 
 </html>

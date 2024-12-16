@@ -83,7 +83,7 @@ $paginationInfo = $partnerC->getPaginationInfo($currentPage, $resultsPerPage, $s
                                 <input type="hidden" value="<?= $partner['id_partner'] ?>" name="id_partner">
                                 <button type="submit" name="update">Update</button>
                             </form>
-                            <a href="deletepartner.php?id_partner=<?= $partner['id_partner'] ?>" onclick="return confirm('Are you sure you want to delete this partner?')">Delete</a>
+                            <a href="deletepartner.php?id_partner=<?= $partner['id_partner'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php }
@@ -113,7 +113,7 @@ $paginationInfo = $partnerC->getPaginationInfo($currentPage, $resultsPerPage, $s
     <!-- Bouton pour ajouter un partenaire -->
     <a href="addpartner.php">Add New Partner</a>
 
-    <script src="../public/js/scriptpartner.js"></script>
+    <script src="../../public/js/scriptpartner.js"></script>
 </body>
 
 </html>

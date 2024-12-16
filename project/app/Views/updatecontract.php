@@ -95,7 +95,7 @@ $partners = $partnerController->partnerList();
     }
     ?>
 
-    <script src="../public/js/scriptcontract-2.js" defer></script>
+    <script src="../../public/js/scriptcontract-2.js" defer></script>
 
 </body>
 
