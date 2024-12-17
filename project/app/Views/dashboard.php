@@ -114,7 +114,7 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 
 				<ul class="menu-inner py-1">
 					<!-- Dashboard -->
-					<li class="menu-item active	">
+					<li class="menu-item active">
 						<a href="dashboard.php?id=<?php echo $admin_id ?>" class="menu-link">
 							<i class="menu-icon tf-icons bx bx-home-circle"></i>
 							<div data-i18n="Analytics">Dashboard</div>
@@ -165,7 +165,7 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 					<!-- Users Management -->
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-dock-top"></i>
+							<i class="menu-icon tf-icons bx bx-group"></i>
 							<div data-i18n="Account Settings">Users Management</div>
 						</a>
 						<ul class="menu-sub">
@@ -187,6 +187,27 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 						</ul>
 					</li>
 					<!-- / Users Management -->
+
+					<!-- Partners & Contract Management -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-badge-check"></i>
+							<div data-i18n="Account Settings">Our Partners</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="partners.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Account">Partners Table</div>
+								</a>
+							</li>
+							<li class="menu-item">
+								<a href="contracts.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Notifications">Contracts Table</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- / Partners & Contract Management -->
 
 					<!-- Authentications -->
 					<li class="menu-item">
@@ -240,7 +261,7 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 
 							<!-- Support -->
 							<li class="menu-item">
-								<a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
+								<a href="https://github.com/ZouariOmar/AgriGO/issues" target="_blank"
 									class="menu-link">
 									<i class="menu-icon tf-icons bx bx-support"></i>
 									<div data-i18n="Support">Support</div>

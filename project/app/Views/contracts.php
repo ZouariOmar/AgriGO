@@ -16,8 +16,8 @@ is_suspend($admin_id, 'Location: login.php');
 
 // Fetching
 $fetch = new Fetch();
-$user = $fetch->fetch_user($admin_id);
-$admins = $fetch->__fetch_users(2);
+$user = $fetch->fetch_user(user_id: $admin_id);
+$contracts = $fetch->fetch_contracts();
 $user_profile = $fetch->fetch_user_profile($admin_id);
 $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 ?>
@@ -88,7 +88,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
-          <li class="menu-item	">
+          <li class="menu-item">
             <a href="dashboard.php?id=<?php echo $admin_id ?>" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -137,7 +137,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- / Account Settings -->
 
           <!-- Users Management -->
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-group"></i>
               <div data-i18n="Account Settings">Users Management</div>
@@ -153,7 +153,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
                   <div data-i18n="Notifications">Farmers Table</div>
                 </a>
               </li>
-              <li class="menu-item active">
+              <li class="menu-item">
                 <a href="admins.php?id=<?php echo $admin_id ?>" class="menu-link">
                   <div data-i18n="Connections">Admins Table</div>
                 </a>
@@ -163,7 +163,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- / Users Management -->
 
           <!-- Partners & Contract Management -->
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-badge-check"></i>
               <div data-i18n="Account Settings">Our Partners</div>
@@ -174,7 +174,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
                   <div data-i18n="Account">Partners Table</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item active">
                 <a href="contracts.php?id=<?php echo $admin_id ?>" class="menu-link">
                   <div data-i18n="Notifications">Contracts Table</div>
                 </a>
@@ -235,7 +235,8 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
               <!-- Support -->
               <li class="menu-item">
-                <a href="https://github.com/ZouariOmar/AgriGO/issues" target="_blank" class="menu-link">
+                <a href="https://github.com/ZouariOmar/AgriGO/issues" target="_blank"
+                  class="menu-link">
                   <i class="menu-icon tf-icons bx bx-support"></i>
                   <div data-i18n="Support">Support</div>
                 </a>
@@ -357,50 +358,47 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light">Users Management /</span>
-              Admins Table
+              <span class="text-muted fw-light">Our Partners /</span>
+              Contracts
             </h4>
             <div class="row">
+
               <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                   <li class="nav-item">
-                    <a class="nav-link" href="clients.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
-                      Clients</a>
+                    <a class="nav-link" href="partners.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
+                      Partners</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="farmers.php?id=<?php echo $admin_id ?>"><i class="bx bx-user me-1"></i>
-                      Farmers</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i>
-                      Admins</a>
+                    <a class="nav-link active" href="contracts.php?id=<?php echo $admin_id ?>"><i
+                        class="bx bx-pen me-1"></i>
+                      Contracts</a>
                   </li>
                 </ul>
               </div>
-              <!-- Admin Table -->
+              <!-- Clients Table -->
               <ul class="order-5">
-                <div class="card col-lg order-5 mb-4">
-                  <h5 class="card-header">Admin Table</h5>
+                <div class="card col-lg order-4 mb-4">
+                  <h5 class="card-header">Contracts Table</h5>
                   <div class="table-responsive text-nowrap">
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>Username</th>
-                          <th>Email</th>
-                          <th>Profile Link</th>
+                          <th>Title</th>
+                          <th>Description</th>
                           <th>Created At</th>
-                          <th>Update At</th>
-                          <th>Status</th>
+                          <th>End At</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody class="table-border-bottom-0">
-                        <?php users_table($admins, $admin_id, 2); ?>
+                        <?php contracts_table($contracts, $admin_id); ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </ul>
-              <!--/ Admin Table -->
+              <!--/ Clients Table -->
             </div>
           </div>
           <!-- / Content -->
@@ -445,7 +443,8 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
   <!-- / Layout wrapper -->
 
   <div class="buy-now">
-    <a href="#" target="_blank" class="btn btn-danger btn-buy-now">New Event</a>
+    <a href="addcontract.php?admin_id=<?php echo $admin_id; ?>" target="_blank" class="btn btn-danger btn-buy-now">Add
+      New Contract</a>
   </div>
 
   <!-- Core JS -->
@@ -463,6 +462,9 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
   <!-- Main JS -->
   <script src="../../public/js/main.js"></script>
+
+  <!-- Page JS -->
+  <script src="../../public/js/dashboards-analytics.js"></script>
   <script src="../../public/js/search-bar.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->

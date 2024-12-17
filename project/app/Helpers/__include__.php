@@ -201,6 +201,26 @@ class Fetch
     $reports = $this->db->query("SELECT * FROM rapports");
     return $reports ?? null;
   }
+
+  public function fetch_partners()
+  {
+    $reports = $this->db->query("SELECT * FROM partner");
+    return $reports ?? null;
+  }
+
+  public function fetch_partner_by_id($partner_id)
+  {
+    $partner = $this->db->query("SELECT * FROM partner WHERE id_partner = :partner_id", [
+      'partner_id' => $partner_id
+    ]);
+    return $partner[0] ?? null;
+  }
+
+  public function fetch_contracts()
+  {
+    $contracts = $this->db->query("SELECT * FROM contract");
+    return $contracts ?? null;
+  }
 }  // Fetch class
 
 class SignIn

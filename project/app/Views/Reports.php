@@ -214,7 +214,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
               <!-- Support -->
               <li class="menu-item">
-                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
+                <a href="https://github.com/ZouariOmar/AgriGO/issues" target="_blank"
                   class="menu-link">
                   <i class="menu-icon tf-icons bx bx-support"></i>
                   <div data-i18n="Support">Support</div>

@@ -115,7 +115,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 							<div data-i18n="Account Settings">Account Settings</div>
 						</a>
 						<ul class="menu-sub">
-							<li class="menu-item">
+							<li class="menu-item active">
 								<a href="pages-account-settings-account.php?id=<?php echo $id ?>" class="menu-link">
 									<div data-i18n="Account">Account</div>
 								</a>

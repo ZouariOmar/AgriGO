@@ -143,7 +143,7 @@ function reports_table($array, $admin_id)
                 <div class="dropdown-menu">
                     <a
                         class="dropdown-item"
-                        href="addResponse.php?reportid=' . $raw['Report_ID'] .'&id=' . $admin_id . '"
+                        href="addResponse.php?reportid=' . $raw['Report_ID'] . '&id=' . $admin_id . '"
                         ><i class="bx bx-message-rounded-add me-1"></i> Add Response</a
                     >
                     <a
@@ -151,20 +151,109 @@ function reports_table($array, $admin_id)
                         href="viewResponses.php?reportid=' . $raw['Report_ID'] . '&id=' . $admin_id . '"
                         ><i class="bx bx-list-ul me-1"></i> View Responses</a
                     >'
-                    . (
-                    $raw['sta'] != 'DONE'
-                    ? 
-                    '<a
+            . (
+                $raw['sta'] != 'DONE'
+                ?
+                '<a
                         class="dropdown-item"
                         href="updateReportStatus.php?id=' . $admin_id . '&reportID=' . $raw['Report_ID'] . '&status=' . ($raw['sta'] == 'RECIEVED' ? 'IN PROCESS' : 'DONE') . '"
                         ><i class="bx bx-check-double me-1"></i> ' . ($raw['sta'] == 'RECIEVED' ? 'Mark as In Process' : 'Mark as Done') . '</a
                     >'
-                    :
-                    ''
-                    ) .
-                    '<a
+                :
+                ''
+            ) .
+            '<a
                         class="dropdown-item"
                         href="deleteReport.php?admin_id=' . $admin_id . '&id=' . $raw['Report_ID'] . '"
+                        ><i class="bx bx-folder-minus me-1"></i> Delete</a
+                    >
+                </div>
+            </div>
+        </td>
+    </tr>';
+    }
+}
+
+function partners_table($array, $admin_id)
+{
+    if (empty($array)) {
+        echo '<tr><td colspan="7" class="text-center">Nothing Her!</td></tr>';
+        return;
+    }
+    foreach ($array as $raw) {
+        echo '
+    <tr class="user-row">
+        <td class="username fw-bold">' . htmlspecialchars($raw['name']) . '</td>
+        <td class="email">' . htmlspecialchars($raw['email']) . '</td>
+        <td >' . htmlspecialchars($raw['number']) . '</td>
+        <td class="updated_at">' . $raw['Update_at'] . '</td>
+        <td class="created_at">' . $raw['Created_at'] . '</td>
+        <td class="status">
+            <span class="badge status ' .
+            (($raw['status'] === 'active') ? " bg-label-success" : "bg-label-warning") . ' me-1">
+            ' . $raw['status'] . '
+            </span>
+        </td>
+        <td>
+            <div class="dropdown">
+                <button
+                    type="button"
+                    class="btn p-0 dropdown-toggle hide-arrow"
+                    data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a
+                        class="dropdown-item"
+                        href="updatepartner.php?admin_id=' . $admin_id . '&id_partner=' . $raw['id_partner'] . '"
+                        ><i class="bx bx-edit-alt me-1"></i> Update</a
+                    >
+                    <a
+                        class="dropdown-item"
+                        href="deletepartner.php?admin_id=' . $admin_id . '&id_partner=' . $raw['id_partner'] . '"
+                        ><i class="bx bx-folder-minus me-1"></i> Delete</a
+                    >
+                </div>
+            </div>
+        </td>
+    </tr>';
+    }
+}
+
+function contracts_table($array, $admin_id)
+{
+    if (empty($array)) {
+        echo '<tr><td colspan="7" class="text-center">Nothing Her!</td></tr>';
+        return;
+    }
+    $fetch = new Fetch();
+    foreach ($array as $raw) {
+        // Fetching
+        $partner = $fetch->fetch_partner_by_id($raw['partner_id']);
+        echo '
+    <tr class="user-row">
+        <td class="username fw-bold">' . htmlspecialchars($partner['name']) . '</td>
+        <td class="email">' . htmlspecialchars($raw['titre']) . '</td>
+        <td class="status">' . htmlspecialchars($raw['description']) . '</td>
+        <td class="updated_at">' . $raw['date_creation'] . '</td>
+        <td class="created_at">' . $raw['date_fin'] . '</td>
+        <td>
+            <div class="dropdown">
+                <button
+                    type="button"
+                    class="btn p-0 dropdown-toggle hide-arrow"
+                    data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a
+                        class="dropdown-item"
+                        href="updatecontract.php?admin_id=' . $admin_id . '&cnt_id=' . $raw['id'] . '"
+                        ><i class="bx bx-edit-alt me-1"></i> Update</a
+                    >
+                    <a
+                        class="dropdown-item"
+                        href="deletecontract.php?admin_id=' . $admin_id . '&cnt_id=' . $raw['id'] . '"
                         ><i class="bx bx-folder-minus me-1"></i> Delete</a
                     >
                 </div>
