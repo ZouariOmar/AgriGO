@@ -39,7 +39,7 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 	<link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/imgs/favicons/apple-touch-icon.png" />
 	<link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/imgs/favicons/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/imgs/favicons/favicon-16x16.png" />
-	<link rel="manifest" href="../../publicassets/imgs/favicons/site.webmanifest" />
+	<link rel="manifest" href="../../public/assets/imgs/favicons/site.webmanifest" />
 
 	<!-- Login css -->
 	<link rel="stylesheet" href="../../public/css/login.css" />
@@ -122,8 +122,8 @@ unset($_SESSION['status'], $_SESSION['user_id'], $_SESSION['user_role']);
 	elseif ($status === "Login successful!"):
 		alert("alert success", "Login successful!");
 		$redirectUrl = ($user_role != 2)
-			? "../../public/html/contact.html?id=$user_id"   // Redirect to the home
-			: "dashboard.php?id=$user_id"; 									 // Redirect to the admin_dashboard
+			? "index.php?id=$user_id"   // Redirect to the home
+			: "dashboard.php?id=$user_id"; 				   // Redirect to the admin_dashboard
 		redirect($redirectUrl, 2000);
 	elseif ($status === "Registration has been successful!"):
 		alert("alert success", "Registration has been successful!");

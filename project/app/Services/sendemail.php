@@ -97,6 +97,7 @@ try {
 			<h1 class="site-header__title" data-lead-id="site-header-title">THANK YOU!</h1>
 		</header>
 		<main class="main-content">
+			<input type="text" id="user_id" value="<?php echo htmlspecialchars($_GET['id']); ?>" hidden>
 			<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
 			<p class="main-content__body" data-lead-id="main-content-body">Thanks for contacting us. We will contact you ASAP!
 			</p>

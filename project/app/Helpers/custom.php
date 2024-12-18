@@ -231,35 +231,35 @@ function contracts_table($array, $admin_id)
         // Fetching
         $partner = $fetch->fetch_partner_by_id($raw['partner_id']);
         echo '
-    <tr class="user-row">
-        <td class="username fw-bold">' . htmlspecialchars($partner['name']) . '</td>
-        <td class="email">' . htmlspecialchars($raw['titre']) . '</td>
-        <td class="status">' . htmlspecialchars($raw['description']) . '</td>
-        <td class="updated_at">' . $raw['date_creation'] . '</td>
-        <td class="created_at">' . $raw['date_fin'] . '</td>
-        <td>
-            <div class="dropdown">
-                <button
-                    type="button"
-                    class="btn p-0 dropdown-toggle hide-arrow"
-                    data-bs-toggle="dropdown">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                    <a
-                        class="dropdown-item"
-                        href="updatecontract.php?admin_id=' . $admin_id . '&cnt_id=' . $raw['id'] . '"
-                        ><i class="bx bx-edit-alt me-1"></i> Update</a
-                    >
-                    <a
-                        class="dropdown-item"
-                        href="deletecontract.php?admin_id=' . $admin_id . '&cnt_id=' . $raw['id'] . '"
-                        ><i class="bx bx-folder-minus me-1"></i> Delete</a
-                    >
+        <tr class="user-row">
+            <td class="username fw-bold">' . htmlspecialchars($partner['name']) . '</td>
+            <td class="email">' . htmlspecialchars($raw['titre']) . '</td>
+            <td class="status">' . htmlspecialchars($raw['description']) . '</td>
+            <td class="updated_at">' . $raw['date_creation'] . '</td>
+            <td class="created_at">' . $raw['date_fin'] . '</td>
+            <td>
+                <div class="dropdown">
+                    <button
+                        type="button"
+                        class="btn p-0 dropdown-toggle hide-arrow"
+                        data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a
+                            class="dropdown-item"
+                            href="updatecontract.php?admin_id=' . $admin_id . '&cnt_id=' . $raw['id'] . '"
+                            ><i class="bx bx-edit-alt me-1"></i> Update</a
+                        >
+                        <a
+                            class="dropdown-item"
+                            href="deletecontract.php?admin_id=' . $admin_id . '&cnt_id=' . $raw['id'] . '"
+                            ><i class="bx bx-folder-minus me-1"></i> Delete</a
+                        >
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>';
+            </td>
+        </tr>';
     }
 }
 
