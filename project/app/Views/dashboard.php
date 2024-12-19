@@ -209,6 +209,22 @@ $users_in_dec = $fetch->count_user_by_month('2024-12');
 					</li>
 					<!-- / Partners & Contract Management -->
 
+					<!-- Users Management -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-cart"></i>
+							<div data-i18n="Account Settings">Cmd Management</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="commend.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Account">Commend Table</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- / Users Management -->
+
 					<!-- Authentications -->
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">

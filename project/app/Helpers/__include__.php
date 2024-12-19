@@ -221,6 +221,12 @@ class Fetch
     $contracts = $this->db->query("SELECT * FROM contract");
     return $contracts ?? null;
   }
+
+  public function fetch_cmd()
+  {
+    $Commend = $this->db->query("SELECT * FROM Commend");
+    return $Commend ?? null;
+  }
 }  // Fetch class
 
 class SignIn

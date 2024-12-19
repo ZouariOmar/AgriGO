@@ -263,6 +263,122 @@ function contracts_table($array, $admin_id)
     }
 }
 
+function cart_table($array, $user_id)
+{
+    if (empty($array)) {
+        echo '
+        <tr>
+            <td colspan="6" class="text-center">
+                <div class="alert alert-warning" role="alert">
+                    Votre panier est vide ! Commencez vos achats
+                    <a class="btn btn-success btn-sm" href="Store.php?id=' . $user_id . '"
+                        >Acheter des produits</a
+                    >
+                </div>
+            </td>
+        </tr>';
+        return;
+    }
+    //* Connect to the DB
+    $db = new Database('../../');
+    $total = 0;
+    $list = '-';
+
+    echo '<tbody>';
+    foreach ($array as $raw) {
+        // Fetching
+        $product = $db->query("SELECT * FROM produit WHERE id = :product_id", [
+            'product_id' => $raw['Product_ID']
+        ]);
+        $product = $product[0];
+        echo '
+        <tr>
+            <td class="text-center">
+                <a href="single-product.html">
+                    <img title="ana" src="../../public/assets/' . $product['image'] . '" style="width: 100px; height: 80px;">
+                </a>
+            </td>
+            <td class="text-left"><a href="#">' . $product['libelle'] . '</a>
+            </td>
+            <td class="text-left"><br>' . $product['description'] . '</td>
+            <td class="text-left"><br>
+                <div style="max-width: 200px;" class="input-group btn-block">
+                    <input type="text" class="form-control input-sm" value="' . $raw['Quantity'] . '">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"
+                            data-original-title="Update"><i class="fa fa-refresh"></i></button>
+                        <button class="btn btn-danger" type="button" data-original-title="Remove"><i
+                                class="fa fa-times-circle"></i></button>
+                    </span>
+                </div>
+            </td>
+            <td class="text-right"><br>' . $product['prix'] . 'DT</td>
+            <td class="text-right"><br>' . $product['prix'] * $raw['Quantity'] . 'DT</td>
+        </tr>
+        ';
+        $total += $product['prix'] * $raw['Quantity'];
+        $list .= $product['libelle'] . '*' . $raw['Quantity'] . '-';
+    }
+    echo '</tbody>';
+
+    echo '
+    <tfoot>
+        <tr>
+            <td colspan="6" class="text-right"><strong>Total: ' . $total . 'DT</strong></td>
+        </tr>
+        <tr>
+            <td colspan="7" class="text-right">
+                <a
+                    href="../Controllers/addCmd.php?id=' . $user_id . '&total=' . $total . '&list=' . $list . '"
+                    ><i class="btn btn-success">Valider le panier</i></a
+                >
+                <a
+                    href="../Controllers/delCart.php?id=' . $user_id . '"
+                    ><i class="btn btn-danger">Vider le panier</i></a
+                >
+            </td>
+        </tr>
+    </tfoot>';
+}
+
+function cmd_table($array, $admin_id)
+{
+    if (empty($array)) {
+        echo '<tr><td colspan="7" class="text-center">Nothing Her!</td></tr>';
+        return;
+    }
+    $fetch = new Fetch();
+    foreach ($array as $raw) {
+        // Fetching
+        $user = $fetch->fetch_user($raw['Usr_ID']);
+        echo '
+        <tr class="user-row">
+            <td class="username fw-bold">' . htmlspecialchars($user['Username']) . '</td>
+            <td class="email">' . htmlspecialchars($raw['Product_List']) . '</td>
+            <td class="status">' . htmlspecialchars($raw['Validation']) . '</td>
+            <td class="created_at">' . $raw['Created_at'] . '</td>
+            <td class="updated_at">' . $raw['date_creation'] . '</td>
+            <td>
+                <div class="dropdown">
+                    <button
+                        type="button"
+                        class="btn p-0 dropdown-toggle hide-arrow"
+                        data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a
+                            class="dropdown-item"
+                            href="../Controllers/updateCmd.php?admin_id=' . $admin_id . '&cmd_id=' . $raw['Cmd_ID'] . '"
+                            ><i class="bx bx-check me-1"></i> Validate</a
+                        >
+                    </div>
+                </div>
+            </td>
+        </tr>';
+    }
+}
+
 /**
  * Summary of is_suspend
  * * Verify if the user is suspended or not

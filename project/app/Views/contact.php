@@ -94,17 +94,17 @@ is_suspend($user_id, 'Location: login.php');
 
 										<ul class="main-menu__list">
 											<li class="dropdown">
-												<a href="index.html">Home <span class="line"></span></a>
+												<a href="index.php?id=<?php echo $user_id; ?>">Home <span class="line"></span></a>
 												<ul>
 													<li>
-														<a href="index.html">Home One</a>
+														<a href="index.php?id=<?php echo $user_id; ?>">Home One</a>
 													</li>
 													<li><a href="index-2.html">Home Two</a></li>
 													<li><a href="index-3.html">Home Three</a></li>
 													<li class="dropdown">
 														<a href="#">Header Styles</a>
 														<ul>
-															<li><a href="index.html">Header One</a></li>
+															<li><a href="index.php?id=<?php echo $user_id; ?>">Header One</a></li>
 															<li><a href="index-2.html">Header Two</a></li>
 															<li><a href="index-3.html">Header Three</a></li>
 														</ul>
@@ -173,7 +173,7 @@ is_suspend($user_id, 'Location: login.php');
 
 								<div class="main-header-three__middle">
 									<div class="logo-box-one">
-										<a href="index.html">
+										<a href="index.php?id=<?php echo $user_id; ?>">
 											<img src="../../public/assets/imgs/resources/logo-3.png" alt="AgriGO.png" title="AgriGO" />
 										</a>
 									</div>
@@ -241,7 +241,7 @@ is_suspend($user_id, 'Location: login.php');
 				<div class="page-header__inner">
 					<h2>Contact</h2>
 					<ul class="thm-breadcrumb">
-						<li><a href="index.html">Home</a></li>
+						<li><a href="index.php?id=<?php echo $user_id; ?>">Home</a></li>
 						<li><span>-</span></li>
 						<li>Contact</li>
 					</ul>
@@ -431,7 +431,7 @@ is_suspend($user_id, 'Location: login.php');
 							<div class="footer-widget__single">
 								<div class="footer-widget__single-about">
 									<div class="logo-box">
-										<a href="index.html"><img src="../../public/assets/imgs/resources/footer-logo.png" alt="#" /></a>
+										<a href="index.php?id=<?php echo $user_id; ?>"><img src="../../public/assets/imgs/resources/footer-logo.png" alt="#" /></a>
 									</div>
 
 									<form class="footer-widget__subscribe-box">
@@ -577,7 +577,7 @@ is_suspend($user_id, 'Location: login.php');
 				<i class="icon-plus"></i>
 			</span>
 			<div class="logo-box">
-				<a href="index.html" aria-label="logo image">
+				<a href="index.php?id=<?php echo $user_id; ?>" aria-label="logo image">
 					<img src="../../public/assets/imgs/resources/mobile-nav-logo.png" alt="" />
 				</a>
 			</div>

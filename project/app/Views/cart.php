@@ -1,34 +1,22 @@
 <?php
-include_once '../Controllers/ProductController.php';
-include_once '../config.php';
+include '../Controllers/ProductController.php';
+//? Include declaration part
+include_once '../../../vendor/autoload.php';  // Load Composer autoload
+include_once '../../conf/database.php';
+include '../Helpers/custom.php';
 
-$userId = $_GET['id'] ?? null;
+// Initialize cart
+$user_id = $_GET['id'] ?? $_POST['id'] ?? null;
 
-function checkUserRole($userId)
-{
-    $pdo = new PDO('mysql:host=localhost;dbname=SDD', 'zouari_omar', 'root');
-    $stmt = $pdo->prepare("SELECT * FROM Usr_Roles WHERE Usr_ID = :userId");
-    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $stmt->execute();
+// Verify if the user is suspended or not
+is_suspend($user_id, 'Location: login.php');
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $roleId = $result['Role_ID'];
-    if ($roleId == 3) {
-        header("Location: Store_U.php?id=" . $userId);
-        exit();
-    } elseif ($roleId == 2 || $roleId == 1) {
-        header("Location: index.php?id=" . $userId);
-        exit();
-    }
-}
+//* Connect to the DB
+$db = new Database('../../');
 
-// Check if user ID is provided in the URL
-if ($userId)
-    checkUserRole($userId);
-
-
-
-session_start();
+$usr_cart = $db->query("SELECT * FROM Cart WHERE Usr_ID = :usr_id", [
+    'usr_id' => $user_id
+]);
 ?>
 
 <!DOCTYPE html>
@@ -37,15 +25,14 @@ session_start();
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AgriGO - Store</title>
+    <link rel="icon" href="images/favicon.png" />
+    <title>AgriGO || Cart</title>
     <link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../../public/css/style copy.css" />
-    <link rel="stylesheet" type="text/css" href="../../../pkg/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../../public/css/owl-carousel.css" />
-    <script src="../../public/js/jquery.min.js"></script>
-    <script src="../../public/js/owl-carousel.js"></script>
-    <script src="../../public/js/bootstrap.min.js"></script>
-    <script src="../../public/js/custom copy.js"></script>
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- the head -->
     <link rel="stylesheet" href="../../../vendor/animate/animate.min.css" />
@@ -70,23 +57,27 @@ session_start();
     <link rel="stylesheet" href="../../../vendor/slick-slider/slick.css">
     <link rel="stylesheet" href="../../../vendor/language-switcher/polyglot-language-switcher.css">
     <link rel="stylesheet" href="../../../vendor/reey-font/stylesheet.css">
+
+
     <!-- loop -->
     <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css" />
     <!-- template styles -->
     <link rel="stylesheet" href="../../public/css/style.css" />
     <link rel="stylesheet" href="../../public/css/responsive.css" />
     <link rel="stylesheet" href="../../public/css/style-2.css" />
-    <!-- js scripts -->
+
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/bootstrap.min.js"></script>
+    <script src="../../public/js/custom copy.js"></script>
+
     <!-- the stoping loop -->
     <script src="../../../vendor/timepicker/timePicker.js"></script>
     <!-- Template js -->
     <script src="../../public/js/custom.js"></script>
-    <!-- search script -->
-    <script src="../../public/js/ahh.js"></script>
+
 </head>
 
 <body>
-
     <!-- Start Preloader -->
     <div class="loader-wrap">
         <div class="preloader">
@@ -120,8 +111,7 @@ session_start();
     </div>
     <!-- End Preloader -->
 
-
-    <!--Start Main Header Two-->
+    <!-- head -->
     <header class="main-header main-header-one main-header-two">
         <!--Start Main Header Two Top-->
         <div class="main-header-two__top">
@@ -206,12 +196,11 @@ session_start();
                         <div class="auto-container">
                             <div class="main-menu__wrapper-inner">
                                 <div class="main-header-one__bottom-left">
-                                    <a href="index.php?id=<?php echo $userId; ?>">
+                                    <a href="index.php?id=<?php echo $user_id; ?>">
                                         <img src="../../public/assets/imgs/favicons/favicon-16x16.png" alt="logo.png"
                                             title="AgriGO" width="100">
                                     </a>
                                 </div>
-
                                 <div class="main-header-one__bottom-middle">
                                     <div class="main-menu-box">
                                         <a href="#" class="mobile-nav__toggler">
@@ -220,17 +209,18 @@ session_start();
 
                                         <ul class="main-menu__list">
                                             <li class="dropdown current">
-                                                <a href="index.php?id=<?php echo $userId; ?>">Home <span class="line"></span></a>
+                                                <a href="index.php?id=<?php echo $user_id; ?>">Home <span
+                                                        class="line"></span></a>
                                                 <ul>
                                                     <li>
-                                                        <a href="index.php?id=<?php echo $userId; ?>">Home One</a>
+                                                        <a href="index.html">Home One</a>
                                                     </li>
                                                     <li><a href="index-2.html">Home Two</a></li>
-                                                    <li><a href="Cart.php?id=<?php echo $userId; ?>">Store</a></li>
+                                                    <li><a href="Store.php?id=<?php echo $user_id; ?>">Store</a></li>
                                                     <li class="dropdown">
                                                         <a href="#">Header Styles</a>
                                                         <ul>
-                                                            <li><a href="index.php?id=<?php echo $userId; ?>">Header One</a></li>
+                                                            <li><a href="index.html">Header One</a></li>
                                                             <li><a href="index-2.html">Header Two</a></li>
                                                             <li><a href="index-3.html">Header Three</a></li>
                                                         </ul>
@@ -282,7 +272,7 @@ session_start();
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="contact.php?id=<?php echo $userId; ?>">Contact <span
+                                                <a href="contact.php?id=<?php echo $user_id; ?>">Contact <span
                                                         class="line"></span></a>
                                             </li>
                                         </ul>
@@ -295,7 +285,7 @@ session_start();
                                         </a>
                                     </div>
                                     <div class="main-header-one__bottom-right-btn">
-                                        <a href="cart.php?id=<?php echo $userId; ?>"><i class='fa fa-shopping-cart'>
+                                        <a href="Store.php?id=<?php echo $user_id; ?>"><i class='fa fa-shopping-cart'>
                                                 Cart</i></a>
                                     </div>
                                 </div>
@@ -307,231 +297,43 @@ session_start();
         </div>
         <!--End Main Header Two Bottom-->
     </header>
-    <!--End Main Header Two-->
+    <!--End Main Header One-->
 
-    <div class="row" id="search_manu" style="margin-left: 800px">
-        <div class="col-md-6 col-xs-12">
-            <form name="quick_find">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" placeholder="Search Here" class="form-control input-lg" id="inputGroup" />
-                        <span class="input-group-addon" hidden>
-                            <a href="#" style="color:white " hidden>Search</a>
-                        </span>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <!-- somerevs -->
-
-    <div id="site_content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-12 left_sidebar1">
-                    <div id="left_part">
-                        <div class="bs-example">
-                            <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <div class="infoBoxHeading">
-                                            <a data-toggle="collapse" data-parent="#accordion"
-                                                href="#collapseOne">Categories</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                <i id="accordan_plus"
-                                                    class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div id="collapseOne">
-                                        <div class="panel-body">
-                                            <div class="infoBoxContents">
-                                                <a href="Prod.html">Product</a>&nbsp;(8)<br />
-                                                <a href="Prod.html">Lending</a>&nbsp;(9)<br />
-                                                <a href="Prod.html">Job</a>&nbsp;(5)<br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <script>
-                        function toggleChevron(e) {
-                            $(e.target)
-                                .prev('.panel-heading')
-                                .find("i.indicator")
-                                .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-                        }
-                        $('#accordion').on('hidden.bs.collapse', toggleChevron);
-                        $('#accordion').on('shown.bs.collapse', toggleChevron);
-                    </script>
-
-                </div>
-                <div class="col-md-9 col-sm-8 col-xs-12 right_sidebar1">
-                    <div id="right_part">
-                        <div class="contentContainer">
-                            <div class="contentText">
-
-                                <div class="breadcrumbs">
-                                    <a href="addOffre.php?id=<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>"
-                                        class="headerNavigation"><i class="fa fa-home"></i></a>
-                                    <a
-                                        href="addOffre.php?id=<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>">Make
-                                        your offre +</a>
-                                    <br><a
-                                        href="Usr_prodlist.php?id=<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>"
-                                        class="headerNavigation"><i class="fa fa-home"></i></a>
-                                    <a
-                                        href="Usr_prodlist.php?id=<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>">Handle
-                                        your offres +</a>
-                                </div>
-                            </div>
-
-
-                            <!----content_2 For New Products--!-->
-                            <div class="contentText">
-                                <h1>New Products</h1>
-                                <div class="row margin-top product-layout_width">
-                                    <!-- new add ons offre -->
-                                    <?php
-                                    try {
-                                        $productController = new ProductController();
-
-                                        // Pagination settings
-                                        $perPage = 9; // Number of products per page
-                                        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-                                        $totalProducts = $productController->getTotalProducts();
-                                        $totalPages = ceil($totalProducts / $perPage);
-
-                                        // Ensure the page number is valid
-                                        if ($page < 1) {
-                                            $page = 1;
-                                        } elseif ($page > $totalPages) {
-                                            $page = $totalPages;
-                                        }
-
-                                        $products = $productController->getProductsPaginated($page, $perPage);
-
-                                        if ($products) {
-                                            $i = 0;
-                                            echo '<div class="row">';
-                                            foreach ($products as $product) {
-                                                if ($i % 3 == 0 && $i > 0) {
-                                                    echo '</div><div class="row">';
-                                                }
-                                                echo '
-                                                        <div class="col-md-4 col-sm-6 col-xs-12">
-                                                            <div class="product-thumb-height">
-                                                                <div class="product-thumb transition">
-                                                                    <ul>
-                                                                        <li class="li_product_title">
-                                                                            <div class="product_title">
-                                                                                <a href="single-prod.html">' . htmlspecialchars($product->libelle) . '</a>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="li_product_image">
-                                                                            <div class="image">
-                                                                                <form method="post" action="single_prod.php?id=' . (isset($_GET['id']) ? htmlspecialchars($_GET['id']) : '') . '" style="display: inline;">
-                                                                                    <input type="hidden" name="product_id" value="' . $product->id . '">
-                                                                                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                                                        <img src="../../public/assets/' . htmlspecialchars($product->image) . '" class="img-responsive" width="200" height="200" alt="' . htmlspecialchars($product->libelle) . '"/>
-                                                                                    </button>
-                                                                                </form>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="li_product_price">
-                                                                            <span class="new_price1">' . number_format($product->prix, 2) . ' DT</span>
-                                                                        </li>
-                                                                        <li class="li_product_desc">
-                                                                            <div class="caption">
-                                                                                <p>Description:</p>
-                                                                                <p>' . htmlspecialchars(substr($product->description, 0, 100)) . '...</p>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="li_product_desc">
-                                                                            <div class="caption">
-                                                                                <p>Category:</p>
-                                                                                <p>' . htmlspecialchars($product->categorie_libelle) . '</p>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="li_product_desc">
-                                                                            <div class="caption">
-                                                                                <p>Localisation</p>
-                                                                                <p>' . htmlspecialchars($product->location) . '</p>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="li_product_desc">
-                                                                            <div class="caption">
-                                                                                <p>Quantité</p>
-                                                                                <p>' . htmlspecialchars($product->Quantitie) . '</p>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="li_product_buy_button">
-                                                                            <form method="post" action="single_prod.php?id=' . (isset($_GET['id']) ? htmlspecialchars($_GET['id']) : '') . '">
-                                                                                <button type="submit" class="btn btn-default">View Details</button>
-                                                                                <input type="hidden" name="product_id" value="' . $product->id . '">
-                                                                            </form>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>';
-                                                $i++;
-                                            }
-                                            echo '</div>';
-
-                                            echo '<nav aria-label="Page navigation" class="mt-4">
-                                                    <ul class="pagination justify-content-center">';
-                                            if ($page > 1) {
-                                                echo '<li class="page-item"><a class="page-link bg-success text-white" href="?page=' . ($page - 1) . '">&laquo; Previous</a></li>';
-                                            }
-                                            for ($i = 1; $i <= $totalPages; $i++) {
-                                                if ($i == $page) {
-                                                    echo '<li class="page-item active"><span class="page-link bg-success border-success">' . $i . '</span></li>';
-                                                } else {
-                                                    echo '<li class="page-item"><a class="page-link bg-success text-white" href="?page=' . $i . '">' . $i . '</a></li>';
-                                                }
-                                            }
-                                            if ($page < $totalPages) {
-                                                echo '<li class="page-item"><a class="page-link bg-success text-white" href="?page=' . ($page + 1) . '">Next &raquo;</a></li>';
-                                            }
-                                            echo '</ul></nav>';
-
-                                        } else {
-                                            echo "<p class='error-message'>No products available at the moment.</p>";
-                                        }
-                                    } catch (Exception $e) {
-                                        echo '<p class="error-message">Error: ' . htmlspecialchars($e->getMessage()) . '</p>';
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                            <!----content_2 End--!-->
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+    <div class="main-content">
+        <div class="container cart-block-style">
+            <div class="breadcrumbs">
+                <a href="home.html"><i class="fa fa-home"></i></a>
+                <a href="#">Shopping Cart</a>
             </div>
+            <div class="contentText">
+                <h1>Shopping Cart
+                </h1>
+            </div>
+            <div class="table-responsive margin-top">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="text-center"></td>
+                            <td class="text-left">PRODUCT NAME</td>
+                            <td class="text-left">DESCRIPTION</td>
+                            <td class="text-left">QUANTITY</td>
+                            <td class="text-right">UNIT PRICE</td>
+                            <td class="text-right">TOTAL</td>
+                        </tr>
+                    </thead>
+                    <?php cart_table($usr_cart, $user_id) ?>
+                </table>
+            </div>
+            <button id="generateReceipt" class="btn btn-primary">Download the facture</button>
         </div>
     </div>
-
-
 
     <!--Start Footer One -->
     <footer class="footer-one">
-        <div class="footer-one__bg" style="background-image: url(assets/images/shapes/footer-v1-shape3.png);"></div>
-        <div class="shape1 float-bob-y"><img src="assets/images/shapes/footer-v1-shape1.png" alt="#"></div>
-        <div class="shape2 float-bob-y"><img src="assets/images/shapes/footer-v1-shape2.png" alt="#"></div>
+        <div class="footer-one__bg"
+            style="background-image: url(../../public/assets/imgs/shapes/footer-v1-shape3.png);"></div>
+        <div class="shape1 float-bob-y"><img src="../../public/assets/imgs/shapes/footer-v1-shape1.png" alt="#"></div>
+        <div class="shape2 float-bob-y"><img src="../../public/assets/imgs/shapes/footer-v1-shape2.png" alt="#"></div>
         <!--Start Footer-->
         <div class="footer">
             <div class="container">
@@ -541,7 +343,8 @@ session_start();
                         <div class="footer-widget__single">
                             <div class="footer-widget__single-about">
                                 <div class="logo-box">
-                                    <a href="index.php?id=<?php echo $userId; ?>"><img src="assets/images/resources/footer-logo.png" alt="#"></a>
+                                    <a href="index.html"><img src="../../public/assets/imgs/resources/footer-logo.png"
+                                            alt="#"></a>
                                 </div>
 
                                 <form class="footer-widget__subscribe-box">
@@ -593,9 +396,11 @@ session_start();
                                             <ul class="footer-one__right-single-list">
                                                 <li><a href="about.html">About Us</a></li>
                                                 <li><a href="team.html">Our Team</a></li>
-                                                <li><a href="contact.html">Contact Us</a></li>
+                                                <li><a href="contact.php?id=<?php echo $user_id; ?>">Contact
+                                                        Us</a></li>
                                                 <li><a href="#">Our History</a></li>
-                                                <li><a href="#">Testimonials</a></li>
+                                                <li><a href="addReport.php?id=<?php echo $user_id; ?>">Repport</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -609,11 +414,11 @@ session_start();
                                             <h2>Contact</h2>
                                         </div>
                                         <div class="footer-one__right-single-contact">
-                                            <p> <a href="mailto:yourmail@email.com">needhelp@company.com</a>
-                                                <br> 80 Broklyn Road Street <br>
-                                                New York. USA
+                                            <p> <a href="mailto:agrigo999@gmail.com">agrigo999@gmail.com</a>
+                                                <br> Ariana <br>
+                                                Arian Soghra
                                             </p>
-                                            <a href=" mailto:yourmail@email.com">info@example.com</a>
+                                            <a href=" mailto:agrigo999@gmail.com">info@example.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -634,7 +439,7 @@ session_start();
                                     </div>
                                     <div class="content-box">
                                         <p>Call Anytime</p>
-                                        <h4><a href="tel:9288006780">+92 ( 8800 ) - 6780</a></h4>
+                                        <h4><a href="tel:21693490909">+216 ( 9349 ) - 0909</a></h4>
                                     </div>
                                 </div>
 
@@ -667,6 +472,14 @@ session_start();
     </footer>
     <!--End Footer One-->
 
+    <a style="display: none" href="javascript:void(0);" class="scrollTop back-to-top" id="back-to-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <!-- the stoping loop -->
+    <script src="../../../vendor/timepicker/timePicker.js"></script>
+    <!-- Template js -->
+    <script src="../../public/js/custom.js"></script>
     <script src="../../../vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../../vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
@@ -696,6 +509,28 @@ session_start();
     <script src="../../../vendor/slick-slider/slick.js"></script>
     <script src="../../../vendor/jquery-circle-progress/jquery.circle-progress.min.js"></script>
     <script src="../../../vendor/progress-bar/knob.js"></script>
+
+    <!-- JavaScript for generating the PDF receipt -->
+    <script>
+        document.getElementById("generateReceipt").addEventListener("click", function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const panierData = <?php echo json_encode($panier); ?>;
+            const produitsData = <?php echo json_encode($produits); ?>;
+            const totalAmount = "<?php echo $total; ?>";
+
+            doc.text("Facture de commande", 15, 15);
+            let yPosition = 25;
+
+            doc.text(`
+                    - Commande:${produit.libelle}
+                    - Quantité: ${qty} 
+                    - Prix Unitaire: ${produit.prix} 
+                    - Total: ${productTotal} $`, 5, yPosition + 5 * (index + 1));
+            doc.save("receipt.pdf");
+        });
+    </script>
 </body>
 
 </html>

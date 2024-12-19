@@ -56,7 +56,6 @@ is_suspend($user_id, 'Location: login.php');
 
 </head>
 
-
 <body>
 
   <!-- Start Preloader -->
@@ -120,7 +119,9 @@ is_suspend($user_id, 'Location: login.php');
                       <span class="icon-email"></span>
                     </div>
                     <div class="text-box">
-                      <p><igo href="mailto:agrigo999@gmail.com">agrigo999@gmail.com</igo></p>
+                      <p>
+                        <igo href="mailto:agrigo999@gmail.com">agrigo999@gmail.com</igo>
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -157,11 +158,10 @@ is_suspend($user_id, 'Location: login.php');
               <div class="auto-container">
                 <div class="main-menu__wrapper-inner">
                   <div class="main-header-one__bottom-left">
-                    <div >
-                      <a href="index.php?id=<?php echo $user_id; ?>">
-                        <img src="../../public/assets/imgs/favicons/favicon-16x16.png" alt="logo.png" title="AgriGO" width="100">
-                      </a>
-                    </div>
+                    <a href="index.php?id=<?php echo $user_id; ?>">
+                      <img src="../../public/assets/imgs/favicons/favicon-16x16.png" alt="logo.png" title="AgriGO"
+                        width="100">
+                    </a>
                   </div>
 
                   <div class="main-header-one__bottom-middle">
@@ -175,14 +175,14 @@ is_suspend($user_id, 'Location: login.php');
                           <a href="index.php?id=<?php echo $user_id; ?>">Home <span class="line"></span></a>
                           <ul>
                             <li>
-                              <a href="index.html">Home One</a>
+                              <a href="index.php?id=<?php echo $user_id; ?>">Home One</a>
                             </li>
                             <li><a href="index-2.html">Home Two</a></li>
                             <li><a href="index-3.html">Home Three</a></li>
                             <li class="dropdown">
                               <a href="#">Header Styles</a>
                               <ul>
-                                <li><a href="index.html">Header One</a></li>
+                                <li><a href="index.php?id=<?php echo $user_id; ?>">Header One</a></li>
                                 <li><a href="index-2.html">Header Two</a></li>
                                 <li><a href="index-3.html">Header Three</a></li>
                               </ul>
@@ -219,7 +219,7 @@ is_suspend($user_id, 'Location: login.php');
                             <li><a href="team.html">Team</a></li>
                             <li><a href="team-details.html">Team Details</a></li>
                             <li><a href="portfolio-1.html">Portfolio 01</a></li>
-                            <li><a href="portfolio-2.html">Portfolio 02</a>
+                            <li><a href="partners_page.php?id=<?php echo $user_id; ?>">Our Partners</a>
                             <li><a href="faq.html">Faq</a>
                             </li>
                           </ul>
@@ -298,7 +298,8 @@ is_suspend($user_id, 'Location: login.php');
           <div class="swiper-slide">
             <div class="image-layer" style="background-image:url(../../public/assets/imgs/slides/slider-v1-img1.jpg)">
             </div>
-            <div class="shape1"><img class="float-bob-y" src="../../public/assets/imgs/shapes/slider-v1-shape1.png" alt="#"></div>
+            <div class="shape1"><img class="float-bob-y" src="../../public/assets/imgs/shapes/slider-v1-shape1.png"
+                alt="#"></div>
             <div class="shape2"><img src="../../public/assets/imgs/shapes/slider-v1-shape2.png" alt="#"></div>
 
             <div class="main-slider-two__outer-content">
@@ -347,7 +348,8 @@ is_suspend($user_id, 'Location: login.php');
           <div class="swiper-slide">
             <div class="image-layer" style="background-image:url(../../public/assets/imgs/slides/slider-v1-img2.jpg)">
             </div>
-            <div class="shape1"><img class="float-bob-y" src="../../public/assets/imgs/shapes/slider-v1-shape1.png" alt="#"></div>
+            <div class="shape1"><img class="float-bob-y" src="../../public/assets/imgs/shapes/slider-v1-shape1.png"
+                alt="#"></div>
             <div class="shape2"><img src="../../public/assets/imgs/shapes/slider-v1-shape2.png" alt="#"></div>
 
             <div class="main-slider-two__outer-content">
@@ -396,7 +398,8 @@ is_suspend($user_id, 'Location: login.php');
           <div class="swiper-slide">
             <div class="image-layer" style="background-image:url(../../public/assets/imgs/slides/slider-v1-img3.jpg)">
             </div>
-            <div class="shape1"><img class="float-bob-y" src="../../public/assets/imgs/shapes/slider-v1-shape1.png" alt="#"></div>
+            <div class="shape1"><img class="float-bob-y" src="../../public/assets/imgs/shapes/slider-v1-shape1.png"
+                alt="#"></div>
             <div class="shape2"><img src="../../public/assets/imgs/shapes/slider-v1-shape2.png" alt="#"></div>
 
             <div class="main-slider-two__outer-content">
@@ -463,7 +466,8 @@ is_suspend($user_id, 'Location: login.php');
       <div class="shape1"></div>
       <div class="shape2"><img src="../../public/assets/imgs/shapes/why-choose-v1-shape1.png" alt="#"></div>
       <div class="shape3"><img src="../../public/assets/imgs/shapes/why-choose-v1-shape2.png" alt="#"></div>
-      <div class="why-choose-one__bg" style="background-image: url(../../public/assets/imgs/pattern/why-choose-v1-pattern.png);">
+      <div class="why-choose-one__bg"
+        style="background-image: url(../../public/assets/imgs/pattern/why-choose-v1-pattern.png);">
       </div>
       <div class="container">
         <div class="sec-title text-center">
@@ -947,7 +951,7 @@ is_suspend($user_id, 'Location: login.php');
                     <span class="icon-gardening-1"></span>
                   </div>
                 </div>
-                <img src="../../public/assets/imgs/services/services-v1-img1.jpg" alt="#">
+                <img src="../../public/assets/imgs/team/services-v1-img1.jpg" alt="#">
               </div>
 
               <div class="services-one__single-content text-center">
@@ -975,7 +979,7 @@ is_suspend($user_id, 'Location: login.php');
                     <span class="icon-gardening-1"></span>
                   </div>
                 </div>
-                <img src="../../public/assets/imgs/services/services-v1-img2.jpg" alt="#">
+                <img src="../../public/assets/imgs/team/services-v1-img6.jpg" alt="#">
               </div>
 
               <div class="services-one__single-content text-center">
@@ -1003,7 +1007,7 @@ is_suspend($user_id, 'Location: login.php');
                     <span class="icon-gardening-1"></span>
                   </div>
                 </div>
-                <img src="../../public/assets/imgs/services/services-v1-img3.jpg" alt="#">
+                <img src="../../public/assets/imgs/team/services-v1-img2.jpg" alt="#">
               </div>
 
               <div class="services-one__single-content text-center">
@@ -1031,7 +1035,63 @@ is_suspend($user_id, 'Location: login.php');
                     <span class="icon-gardening-1"></span>
                   </div>
                 </div>
-                <img src="../../public/assets/imgs/services/services-v1-img4.jpg" alt="#">
+                <img src="../../public/assets/imgs/team/services-v1-img5.jpg" alt="#">
+              </div>
+
+              <div class="services-one__single-content text-center">
+                <h2><a href="arbor-management.html">Lawn And Garden br Care</a></h2>
+                <p>I was impresed by the agrion services, not lorem ipsum is simply free text.</p>
+              </div>
+            </div>
+          </div>
+          <!--End Services One Single-->
+
+          <!--Start Services One Single-->
+          <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="100ms" data-wow-duration="1000ms">
+            <div class="services-one__single">
+              <div class="shape1"><img src="../../public/assets/imgs/shapes/services-v1-shape2.png" alt="#">
+              </div>
+              <div class="shape2"><img src="../../public/assets/imgs/shapes/services-v1-shape3.png" alt="#">
+              </div>
+              <div class="shape3"><img src="../../public/assets/imgs/shapes/services-v1-shape4.png" alt="#">
+              </div>
+              <div class="services-one__single-img">
+                <div class="services-one__single-img-bg"
+                  style="background-image: url(../../public/assets/imgs/shapes/services-v1-shape1.png);"></div>
+                <div class="overlay-icon">
+                  <div class="icon-box">
+                    <span class="icon-gardening-1"></span>
+                  </div>
+                </div>
+                <img src="../../public/assets/imgs/team/services-v1-img4.jpg" alt="#">
+              </div>
+
+              <div class="services-one__single-content text-center">
+                <h2><a href="arbor-management.html">Lawn And Garden br Care</a></h2>
+                <p>I was impresed by the agrion services, not lorem ipsum is simply free text.</p>
+              </div>
+            </div>
+          </div>
+          <!--End Services One Single-->
+
+          <!--Start Services One Single-->
+          <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="100ms" data-wow-duration="1000ms">
+            <div class="services-one__single">
+              <div class="shape1"><img src="../../public/assets/imgs/shapes/services-v1-shape2.png" alt="#">
+              </div>
+              <div class="shape2"><img src="../../public/assets/imgs/shapes/services-v1-shape3.png" alt="#">
+              </div>
+              <div class="shape3"><img src="../../public/assets/imgs/shapes/services-v1-shape4.png" alt="#">
+              </div>
+              <div class="services-one__single-img">
+                <div class="services-one__single-img-bg"
+                  style="background-image: url(../../public/assets/imgs/shapes/services-v1-shape1.png);"></div>
+                <div class="overlay-icon">
+                  <div class="icon-box">
+                    <span class="icon-gardening-1"></span>
+                  </div>
+                </div>
+                <img src="../../public/assets/imgs/team/services-v1-img3.jpg" alt="#">
               </div>
 
               <div class="services-one__single-content text-center">
@@ -1049,7 +1109,8 @@ is_suspend($user_id, 'Location: login.php');
 
     <!--Start Projects One-->
     <section class="projects-one">
-      <div class="projects-one__bg" style="background-image: url(../../public/assets/imgs/backgrounds/projects-v1-bg.jpg);">
+      <div class="projects-one__bg"
+        style="background-image: url(../../public/assets/imgs/backgrounds/projects-v1-bg.jpg);">
       </div>
       <div class="container">
         <div class="sec-title">
@@ -1899,7 +1960,8 @@ is_suspend($user_id, 'Location: login.php');
 
     <!--Start Footer One -->
     <footer class="footer-one">
-      <div class="footer-one__bg" style="background-image: url(../../public/assets/imgs/shapes/footer-v1-shape3.png);"></div>
+      <div class="footer-one__bg" style="background-image: url(../../public/assets/imgs/shapes/footer-v1-shape3.png);">
+      </div>
       <div class="shape1 float-bob-y"><img src="../../public/assets/imgs/shapes/footer-v1-shape1.png" alt="#"></div>
       <div class="shape2 float-bob-y"><img src="../../public/assets/imgs/shapes/footer-v1-shape2.png" alt="#"></div>
       <!--Start Footer-->
@@ -1911,7 +1973,8 @@ is_suspend($user_id, 'Location: login.php');
               <div class="footer-widget__single">
                 <div class="footer-widget__single-about">
                   <div class="logo-box">
-                    <a href="index.html"><img src="../../public/assets/imgs/resources/footer-logo.png" alt="#"></a>
+                    <a href="index.php?id=<?php echo $user_id; ?>"><img
+                        src="../../public/assets/imgs/resources/footer-logo.png" alt="#"></a>
                   </div>
 
                   <form class="footer-widget__subscribe-box">
@@ -2047,7 +2110,7 @@ is_suspend($user_id, 'Location: login.php');
         <i class="icon-plus"></i>
       </span>
       <div class="logo-box">
-        <a href="index.html" aria-label="logo image">
+        <a href="index.php?id=<?php echo $user_id; ?>" aria-label="logo image">
           <img src="../../public/assets/imgs/resources/mobile-nav-logo.png" alt="" />
         </a>
       </div>

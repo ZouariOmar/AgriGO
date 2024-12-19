@@ -1,0 +1,37 @@
+<!-- @format -->
+
+<tr>
+	<td colspan="6" class="text-center">
+		<div class="alert alert-warning" role="alert">
+			Votre panier est vide ! Commencez vos achats
+			<a class="btn btn-success btn-sm" href="store.php"
+				>Acheter des produits</a
+			>
+		</div>
+	</td>
+</tr>
+
+<tfoot>
+	<tr>
+		<td colspan="6" class="text-right"><strong>Total</strong></td>
+		<td class="text-right">
+			<?php echo $total; ?>
+			<i class="fa fa-dollar"></i>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="7" class="text-right">
+			<input
+				type="submit"
+				class="btn btn-success"
+				name="valider"
+				value="Valider la commande" />
+			<input
+				onclick="return confirm('Voulez-vous vraiment vider le panier ?')"
+				type="submit"
+				class="btn btn-danger"
+				name="vider"
+				value="Vider le panier" />
+		</td>
+	</tr>
+</tfoot>
