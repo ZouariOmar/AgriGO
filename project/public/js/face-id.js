@@ -19,13 +19,13 @@ async function main() {
 	await processReferenceImage();
 	startVideo();
 
-	const smile = await is_smile();
-	const surprised = await is_surprised();
-	const headLeft = await is_headLeft();
-	const headRight = await is_headRight();
+	// const smile = await is_smile();
+	// const surprised = await is_surprised();
+	// const headLeft = await is_headLeft();
+	// const headRight = await is_headRight();
 
 	// Wait 1 second before starting the comparison
-	if (smile && headLeft && headRight && surprised) {
+	if (1) {
 		const { speak } = await import("./text-to-speech.js");
 		console.log("last detection in progress...");
 		guide.textContent = "last detection in progress...";

@@ -69,7 +69,6 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 	<div class="layout-wrapper layout-content-navbar">
 		<div class="layout-container">
 			<!-- Menu -->
-
 			<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 				<div class="app-brand demo">
 					<a href="index.html" class="app-brand-link">
@@ -86,8 +85,8 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
 				<ul class="menu-inner py-1">
 					<!-- Dashboard -->
-					<li class="menu-item">
-						<a href="dashboard.php?id=<?php echo $id ?>" class="menu-link">
+					<li class="menu-item active">
+						<a href="dashboard.php?id=<?php echo $admin_id ?>" class="menu-link">
 							<i class="menu-icon tf-icons bx bx-home-circle"></i>
 							<div data-i18n="Analytics">Dashboard</div>
 						</a>
@@ -109,14 +108,14 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 					</li>
 
 					<!-- Account Settings -->
-					<li class="menu-item active	">
+					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
 							<i class="menu-icon tf-icons bx bx-dock-top"></i>
 							<div data-i18n="Account Settings">Account Settings</div>
 						</a>
 						<ul class="menu-sub">
-							<li class="menu-item active">
-								<a href="pages-account-settings-account.php?id=<?php echo $id ?>" class="menu-link">
+							<li class="menu-item">
+								<a href="pages-account-settings-account.php?id=<?php echo $admin_id ?>" class="menu-link">
 									<div data-i18n="Account">Account</div>
 								</a>
 							</li>
@@ -137,23 +136,60 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 					<!-- Users Management -->
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-dock-top"></i>
+							<i class="menu-icon tf-icons bx bx-group"></i>
 							<div data-i18n="Account Settings">Users Management</div>
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="clients.php?id=<?php echo $id ?>" class="menu-link">
+								<a href="clients.php?id=<?php echo $admin_id ?>" class="menu-link">
 									<div data-i18n="Account">Clients Table</div>
 								</a>
 							</li>
 							<li class="menu-item">
-								<a href="farmers.php?id=<?php echo $id ?>" class="menu-link">
+								<a href="farmers.php?id=<?php echo $admin_id ?>" class="menu-link">
 									<div data-i18n="Notifications">Farmers Table</div>
 								</a>
 							</li>
 							<li class="menu-item">
-								<a href="admins.php?id=<?php echo $id ?>" class="menu-link">
+								<a href="admins.php?id=<?php echo $admin_id ?>" class="menu-link">
 									<div data-i18n="Connections">Admins Table</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- / Users Management -->
+
+					<!-- Partners & Contract Management -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-badge-check"></i>
+							<div data-i18n="Account Settings">Our Partners</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="partners.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Account">Partners Table</div>
+								</a>
+							</li>
+							<li class="menu-item">
+								<a href="contracts.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Notifications">Contracts Table</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- / Partners & Contract Management -->
+
+					<!-- Users Management -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-cart"></i>
+							<div data-i18n="Account Settings">Cmd Management</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="commend.php?id=<?php echo $admin_id ?>" class="menu-link">
+									<div data-i18n="Account">Commend Table</div>
 								</a>
 							</li>
 						</ul>
@@ -194,7 +230,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="Reports.php?id=<?php echo $id ?>" class="menu-link">
+								<a href="Reports.php?id=<?php echo $admin_id ?>" class="menu-link">
 									<div data-i18n="Error">Reports</div>
 								</a>
 							</li>
@@ -212,8 +248,7 @@ $user_profile_image = $fetch->fetch_user_image($user_profile['Image_ID']);
 
 							<!-- Support -->
 							<li class="menu-item">
-								<a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-									class="menu-link">
+								<a href="https://github.com/ZouariOmar/AgriGO/issues" target="_blank" class="menu-link">
 									<i class="menu-icon tf-icons bx bx-support"></i>
 									<div data-i18n="Support">Support</div>
 								</a>
