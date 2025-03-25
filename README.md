@@ -57,6 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+**AgriGO is an innovative e-commerce platform dedicated to the buying and selling of agricultural materials. Designed to meet the specific needs of the agricultural sector, it provides farmers, merchants, and companies with a secure and intuitive space to manage their transactions. The site enables users to browse diverse product catalogs, place orders with ease, and track their sales and purchases through a comprehensive admin dashboard. With the integration of modern technologies and advanced security protocols, AgriGO ensures a smooth, reliable user experience that meets the demands of the agricultural market.**
 
 ![AgriGO Website](project/res/screenshots/home.png)
 
