@@ -28,7 +28,7 @@
             },
             "require-dev": {
                 "doctrine/dbal": "^4.0.0",
-                "nesbot/carbon": "^2.71.0 || ^3.0.0",
+                "nesbot/carbon": "2.72.6",
                 "phpunit/phpunit": "^10.3"
             },
             "type": "library",
@@ -1077,7 +1077,7 @@
                 "illuminate/collections": "^8.0",
                 "illuminate/contracts": "^8.0",
                 "illuminate/macroable": "^8.0",
-                "nesbot/carbon": "^2.53.1",
+                "nesbot/carbon": "2.72.6",
                 "php": "^7.3|^8.0",
                 "voku/portable-ascii": "^1.6.1"
             },
